@@ -116,6 +116,7 @@ type Query {
   getAllFriendsOfUser: [UserModel!]!
   getMessages(input: GetMessageInput!): [MessageModel]!
   getUsersChannel: [ChannelOutputDTO]!
+  testingConnexion: String!
   userInformation: UserModel!
   users: [UserModel!]!
 }

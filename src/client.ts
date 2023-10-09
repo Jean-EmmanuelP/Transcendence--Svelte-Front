@@ -1,4 +1,4 @@
-import { HoudiniClient } from '$houdini';
+ import { HoudiniClient } from '$houdini';
 
 export default new HoudiniClient({
     url: 'http://42pong.com:3000/graphql'
