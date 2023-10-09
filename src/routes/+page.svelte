@@ -114,7 +114,7 @@
 							/>
 							<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
 						</svg>
-						<span class="text-sm font-semibold leading-6">42</span>
+						<span class="text-sm font-semibold leading-6">Intra</span>
 					</a>
 
 					<a
@@ -143,7 +143,7 @@
 
 		<p class="mt-10 text-center text-sm text-gray-500">
 			Not a member?
-			<a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+			<a href="/register" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
 				>Register an account</a
 			>
 		</p>
