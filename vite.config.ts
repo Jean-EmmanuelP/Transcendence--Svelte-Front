@@ -1,12 +1,12 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import houdini from 'houdini/vite';
+import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-	plugins: [houdini(), sveltekit()],
+	plugins: [sveltekit()],
 	resolve: {
 		alias: {
-			$components: '/src/components'
+			$components: path.resolve(__dirname, 'src/components/')
 		}
 	}
 });
