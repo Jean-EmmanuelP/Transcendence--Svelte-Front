@@ -15,19 +15,23 @@
 		<a href="{component}/search-padding" class="underline">/action_components/search-padding</a>
 	</li>
 	<li class="flex flex-row gap-2 p-2">
-		<p />
-		<a href="{component}/create-group-form" class="underline"> a</a>
+		<p>this is for the confirmation of a notification</p>
+		<a href="{component}/confirmation" class="underline">/notifications/confirmation</a>
 	</li>
 	<li class="flex flex-row gap-2 p-2">
-		<p />
-		<a href="{component}/create-group-form" class="underline"> a</a>
+		<p>this is when you receive a message</p>
+		<a href="{component}/message" class="underline">/notifications/message</a>
 	</li>
 	<li class="flex flex-row gap-2 p-2">
-		<p />
-		<a href="{component}/create-group-form" class="underline"> a</a>
+		<p>this is to accept a request or not</p>
+		<a href="{component}/request" class="underline">/notifications/request</a>
 	</li>
 	<li class="flex flex-row gap-2">
-		<p />
-		<a href="{component}/create-group-form" class="underline"> a</a>
+		<p>this is the sidebar</p>
+		<a href="{component}/sidebar" class="underline">sidebar</a>
+	</li>
+	<li class="flex flex-row gap-2">
+		<p>this is the navbar</p>
+		<a href="{component}/navbar" class="underline">navbar</a>
 	</li>
 </div>
