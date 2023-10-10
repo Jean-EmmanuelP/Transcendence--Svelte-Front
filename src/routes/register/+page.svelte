@@ -1,8 +1,36 @@
 <script lang="ts">
+
+import { writable } from 'svelte/store';
+	import { goto } from '$app/navigation';
+	import AuthServices from "../../services/auth";
+	import Cookies from 'js-cookie';
+
+
 	let email: string = "";
 	let password: string = "";
 	let firstName: string = "";
 	let lastName: string = "";
+
+	const loading = writable(false);
+
+	async function handleSignUp() {
+		loading.set(true);
+		if (email.length > 0 && password.length > 0 && firstName.length > 0 && lastName.length > 0) {
+			try {
+				const response = await AuthServices.register({
+					firstName, lastName, email, password
+				});
+				if (Cookies.get("access_token"))
+					Cookies.remove("access_token");
+				Cookies.set("access_token", response.accessToken, { expires: 1 });
+				goto('/home')
+			}
+			catch (error) {
+				console.log(error);
+				loading.set(false);
+			}
+		}
+	}
 </script>
 
 <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -19,7 +47,7 @@
 
 	<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
 		<div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-			<form class="space-y-6" action="#" method="POST">
+			<form class="space-y-6">
 				<div>
 					<label for="firstName" class="block text-sm font-medium leading-6 text-gray-900"
 						>First name</label
@@ -85,7 +113,7 @@
 				</div>
 				<div>
 					<button
-						type="submit"
+						on:click|preventDefault={handleSignUp}
 						class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 						>Sign up</button
 					>

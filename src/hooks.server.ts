@@ -9,10 +9,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 	if (!access_token && !unProtectedRoutes.includes(event.url.pathname)) {
 		throw redirect(303, '/');
 	}
-	if (event.url.pathname.startsWith('/custom')) {
-		return new Response('custom response');
-	}
-
 	const query = event.url.searchParams.get('signout');
 	if (Boolean(query) == true) {
 		event.cookies.delete('access_token', { path: '/' });

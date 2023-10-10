@@ -17,6 +17,7 @@
         "@playwright/test": "^1.28.1",
         "@sveltejs/adapter-auto": "^1.0.0-next.90",
         "@sveltejs/kit": "^1.0.0-next.587",
+        "@types/js-cookie": "^3.0.4",
         "@typescript-eslint/eslint-plugin": "^5.45.0",
         "@typescript-eslint/parser": "^5.45.0",
         "autoprefixer": "^10.4.16",
@@ -42,6 +43,7 @@
         "@urql/svelte": "^4.0.4",
         "axios": "^1.5.1",
         "graphql": "^16.8.1",
-        "graphql-tag": "^2.12.6"
+        "graphql-tag": "^2.12.6",
+        "js-cookie": "^3.0.5"
     }
 }
