@@ -1,36 +1,47 @@
 <script lang="ts">
-
-import { writable } from 'svelte/store';
+	import { writable } from 'svelte/store';
 	import { goto } from '$app/navigation';
-	import AuthServices from "../../services/auth";
+	import AuthServices from '../../services/auth';
 	import Cookies from 'js-cookie';
-
-
-	let email: string = "";
-	let password: string = "";
-	let firstName: string = "";
-	let lastName: string = "";
+	import { createForm } from 'svelte-forms-lib';
+	import * as yup from 'yup';
 
 	const loading = writable(false);
+	const serverError = writable(undefined);
 
-	async function handleSignUp() {
-		loading.set(true);
-		if (email.length > 0 && password.length > 0 && firstName.length > 0 && lastName.length > 0) {
+	const { form, handleChange, errors, state, handleSubmit } = createForm({
+		initialValues: {
+			password: '',
+			firstName: '',
+			lastName: '',
+			email: ''
+		},
+		validationSchema: yup.object().shape({
+			password: yup
+				.string()
+				.min(8, 'Password must be at least 8 characters long')
+				.matches(
+					/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+					'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character'
+				)
+				.required('Password is required'),
+			firstName: yup.string().required("First name is required"),
+			lastName: yup.string().required("Last name is required"),
+			email: yup.string().email().required()
+		}),
+		onSubmit: async (values) => {
+			loading.set(true);
 			try {
-				const response = await AuthServices.register({
-					firstName, lastName, email, password
-				});
-				if (Cookies.get("access_token"))
-					Cookies.remove("access_token");
-				Cookies.set("access_token", response.accessToken, { expires: 1 });
-				goto('/home')
-			}
-			catch (error) {
-				console.log(error);
+				const response = await AuthServices.register(values);
+				if (Cookies.get('access_token')) Cookies.remove('access_token');
+				Cookies.set('access_token', response.accessToken, { expires: 1 });
+				goto('/home');
+			} catch (error) {
+				serverError.set(error.statusText);
 				loading.set(false);
 			}
 		}
-	}
+	});
 </script>
 
 <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -47,7 +58,7 @@ import { writable } from 'svelte/store';
 
 	<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
 		<div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-			<form class="space-y-6">
+			<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
 				<div>
 					<label for="firstName" class="block text-sm font-medium leading-6 text-gray-900"
 						>First name</label
@@ -57,11 +68,14 @@ import { writable } from 'svelte/store';
 							id="firstName"
 							name="firstName"
 							type="firstName"
-							bind:value={firstName}
-							required
+							on:change={handleChange}
+							bind:value={$form.firstName}
 							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
+					{#if $errors.firstName}
+						<small>{$errors.firstName}</small>
+					{/if}
 				</div>
 				<div>
 					<label for="lastName" class="block text-sm font-medium leading-6 text-gray-900"
@@ -72,11 +86,14 @@ import { writable } from 'svelte/store';
 							id="lastName"
 							name="lastName"
 							type="lastName"
-							bind:value={lastName}
-							required
+							on:change={handleChange}
+							bind:value={$form.lastName}
 							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
+					{#if $errors.lastName}
+						<small>{$errors.lastName}</small>
+					{/if}
 				</div>
 				<div>
 					<label for="email" class="block text-sm font-medium leading-6 text-gray-900"
@@ -88,11 +105,14 @@ import { writable } from 'svelte/store';
 							name="email"
 							type="email"
 							autocomplete="email"
-							bind:value={email}
-							required
+							on:change={handleChange}
+							bind:value={$form.email}
 							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
+					{#if $errors.email}
+						<small>{$errors.email}</small>
+					{/if}
 				</div>
 
 				<div>
@@ -104,16 +124,22 @@ import { writable } from 'svelte/store';
 							id="password"
 							name="password"
 							type="password"
-							bind:value={password}
+							on:change={handleChange}
+							bind:value={$form.password}
 							autocomplete="current-password"
-							required
 							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
+					{#if $errors.password}
+						<small>{$errors.password}</small>
+					{/if}
 				</div>
 				<div>
+					{#if $serverError}
+						<small>{$serverError}</small>
+					{/if}
 					<button
-						on:click|preventDefault={handleSignUp}
+						type="submit"
 						class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 						>Sign up</button
 					>
@@ -186,9 +212,7 @@ import { writable } from 'svelte/store';
 
 		<p class="mt-10 text-center text-sm text-gray-500">
 			Already a member?
-			<a href="/" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-				>Sign in</a
-			>
+			<a href="/" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign in</a>
 		</p>
 	</div>
 </div>

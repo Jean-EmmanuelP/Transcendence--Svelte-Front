@@ -17,7 +17,7 @@ axiosAPI.interceptors.response.use(
 		Cookie.remove("acess_token");
 		window.location.reload();
 	  }
-	  return Promise.reject(error);
+	  return Promise.reject(error.response);
 	}
 );
 
