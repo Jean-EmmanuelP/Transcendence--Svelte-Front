@@ -5,6 +5,7 @@
 			src="https://tailwindui.com/img/logos/mark.svg?color=white"
 			alt="Your Company"
 		/>
+		
 	</div>
 	<nav class="flex flex-1 flex-col">
 		<ul role="list" class="flex flex-1 flex-col gap-y-7">
