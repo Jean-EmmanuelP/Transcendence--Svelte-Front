@@ -2,7 +2,7 @@
 	import Sidebar from '$components/sidebar.svelte';
 	import Navbar from '$components/navbar.svelte';
 	import StoryPong from '$components/story_pong.svelte';
-	import Gif from '../components/gif.svelte';
+	import Play from '$components/play.svelte';
 </script>
 
 <div class="h-screen w-screen flex overflow-hidden">
@@ -11,8 +11,8 @@
 	</div>
 	<div class="w-full h-screen flex flex-col">
 		<Navbar />
-		<div class="flex justify-center items-center h-full w-full">
-			<Gif />
+		<div class="flex bg-red-500 m-10 rounded-md h-full ring-1 ring-gray-400/5">
+			<Play />
 		</div>
 	</div>
 </div>
