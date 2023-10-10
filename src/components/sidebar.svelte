@@ -38,7 +38,6 @@
 							href="#"
 							class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
 						>
-						
 							<svg
 								class="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
 								fill="none"
@@ -72,14 +71,15 @@
 								<path
 									stroke-linecap="round"
 									stroke-linejoin="round"
-									d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"
+									d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z"
+								/>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z"
 								/>
 							</svg>
-							Conversations
-							<span
-								class="ml-auto w-9 min-w-max whitespace-nowrap rounded-full bg-indigo-600 px-2.5 py-0.5 text-center text-xs font-medium leading-5 text-white ring-1 ring-inset ring-indigo-500"
-								aria-hidden="true">12</span
-							>
+							Statistics
 						</a>
 					</li>
 				</ul>
