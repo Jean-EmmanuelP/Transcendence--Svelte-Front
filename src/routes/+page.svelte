@@ -1,7 +1,6 @@
 <script>
 	import Sidebar from '$components/sidebar.svelte';
 	import Navbar from '$components/navbar.svelte';
-	import StoryPong from '$components/story_pong.svelte';
 	import Play from '$components/play.svelte';
 </script>
 
