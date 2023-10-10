@@ -1,6 +1,7 @@
 <script>
-	import Sidebar from "../components/sidebar.svelte";
-	import Navbar from "../components/navbar.svelte";
+	import Sidebar from "$components/sidebar.svelte";
+	import Navbar from "$components/navbar.svelte";
+	import StoryPong from "$components/story_pong.svelte";
 </script>
 <div class="h-screen w-screen flex overflow-hidden">
 
@@ -15,7 +16,9 @@
 
 				</div>
 			</div>
-			<div class="h-full w-1/2"></div>
+			<div class="h-full w-1/2">
+				
+			</div>
 		</div>
 	</div>
 	
