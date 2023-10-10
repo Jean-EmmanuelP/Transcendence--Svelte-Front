@@ -10,13 +10,8 @@
 	</div>
 	<div class="w-full h-screen flex flex-col">
 		<Navbar />
-		<div class="flex bg-red-500 m-5 h-full">
-			<div class="h-full w-[55%] bg-green-500">
-				<div class="h-1/3 w-full bg-yellow-500" />
-			</div>
-			<div class="h-full w-1/2">
-				<StoryPong />
-			</div>
+		<div class="flex bg-red-500 m-10 rounded-md h-full ring-1 ring-gray-400/5">
+			
 		</div>
 	</div>
 </div>
