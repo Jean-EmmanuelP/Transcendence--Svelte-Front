@@ -1,3 +1,5 @@
-<div class="h-full w-full">
-    <h1>The story of Pong</h1>
-</div>
+<script>
+	import Youtube from 'svelte-youtube-embed';
+</script>
+
+<Youtube id="763CFRuxovo" />
