@@ -1,5 +1,5 @@
 <script>
-	import Confirmation from '../../../../../components/notifications/confirmation.svelte';
+	import Confirmation from '$components/notifications/confirmation.svelte';
 </script>
 
 <Confirmation />
