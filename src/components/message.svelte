@@ -1,5 +1,6 @@
 <script>
     import PrimaryButton from "./buttons/primary_button.svelte";
+    import ConversationInfo from "./chat/conversation.svelte";
 </script>
 
 <div class="flex h-full w-full">
@@ -17,7 +18,11 @@
                 <h1 class="text-gray-500 text-[15px]">Demands</h1>
             </div>
         </div>
-        <div class="w-full h-[85%] border border-black"></div>
+        <div class="w-full h-[85%] border border-black">
+            <div class="w-full bg-red-500 h-[65px]">
+                <ConversationInfo />
+            </div>
+        </div>
     </div>
     <div class="flex flex-col border border-black h-full w-[73%]">
         <div class="h-[10%] w-full border border-black"></div>
