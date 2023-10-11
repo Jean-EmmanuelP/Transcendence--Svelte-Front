@@ -1,9 +1,13 @@
+<script>
+    import PrimaryButton from "./buttons/primary_button.svelte";
+</script>
+
 <div class="flex h-full w-full">
     <div class="flex flex-col border border-black h-full w-[27%]">
         <div class="w-full h-[15%] border border-black">
             <div class="flex w-full border border-black h-[65%] items-center justify-around">
                 <h1>jean.emp</h1>
-                
+                <PrimaryButton text="Create a group" />
             </div>
         </div>
         <div class="w-full h-[85%] border border-black"></div>
