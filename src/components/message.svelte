@@ -2,8 +2,9 @@
     import PrimaryButton from "./buttons/primary_button.svelte";
     import ConversationInfo from "./chat/conversation.svelte";
 
+    let selectedConversation = null;
     function handleClick(event: any) {
-        console.log(event.detail);
+        selectedConversation = event.detail;
     }
 </script>
 
@@ -24,7 +25,7 @@
         </div>
         <div class="w-full h-[85%] border border-black">
             <div class="w-full h-[80px]">
-                <ConversationInfo on:click={handleClick} />
+                <ConversationInfo on:select={handleClick} />
             </div>
         </div>
     </div>

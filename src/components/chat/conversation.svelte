@@ -9,7 +9,8 @@
 
 	const dispatch = createEventDispatcher();
 	function handleClick() {
-		dispatch('click', { clicked: true });
+		const conversationDetails = { name }
+		dispatch('select', conversationDetails);
 	}
 </script>
 
