@@ -6,8 +6,15 @@
     <div class="flex flex-col border border-black h-full w-[27%]">
         <div class="w-full h-[15%] border border-black">
             <div class="flex w-full border border-black h-[65%] items-center justify-around">
-                <h1>jean.emp</h1>
-                <PrimaryButton text="Create a group" />
+                <h1 class="font-bold text-[16px]">jean.emp</h1>
+                <div>
+                    <PrimaryButton text="Create a group" />
+                    <PrimaryButton text="Add a friend" />
+                </div>
+            </div>
+            <div class="flex justify-between px-2 h-[35%] items-center justify-content w-full flex">
+                <h1 class="font-bold text-[18px]">Messages</h1>
+                <h1 class="text-gray-500 text-[15px]">Demands</h1>
             </div>
         </div>
         <div class="w-full h-[85%] border border-black"></div>
