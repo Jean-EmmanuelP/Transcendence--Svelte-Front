@@ -1,4 +1,11 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	let cookieValue;
+
+	onMount(() => {
+		cookieValue = Cookies.get('access_token');
+		console.log('Cookie Value:', cookieValue);
+	});
 </script>
 
 <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
