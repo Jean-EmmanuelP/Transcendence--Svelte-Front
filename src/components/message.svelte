@@ -35,8 +35,9 @@
 	</div>
 	<div class="flex flex-col border border-black h-full w-[73%]">
 		{#if selectedConversation}
-			<div class="h-[10%] w-full border border-black">
-                
+			<div class="px-2 flex justify-between h-[10%] w-full border border-black">
+                <div>a</div>
+                <div>b</div>
             </div>
 			<div class="h-[90%] bg-red-500 w-full border border-black">
 
