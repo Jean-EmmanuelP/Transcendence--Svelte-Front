@@ -1,7 +1,6 @@
 <script lang="ts">
 	import PrimaryButton from './buttons/primary_button.svelte';
 	import ConversationInfo from './chat/conversation.svelte';
-
 	interface Conversation {
 		name: String;
 	}
@@ -38,6 +37,12 @@
 		{#if selectedConversation}
 			<div class="h-[10%] w-full border border-black" />
 			<div class="h-[90%] bg-red-500 w-full border border-black" />
+		{:else}
+			<div class=" flex flex-col items-center justify-center h-full w-full border border-black">
+				<img src="https://i.postimg.cc/6p8Hp6fr/Screenshot-2023-10-12-004957.png" width="100px" height="100px" alt="">
+                <h1>Your Messages</h1>
+				<p>Send photos and private messages to a friend or group</p>
+			</div>
 		{/if}
 	</div>
 </div>
