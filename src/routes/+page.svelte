@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 	import { page, navigating } from '$app/stores';
 	import { activePage } from '../stores/currentNavigation';
+	import Messages from '$components/message.svelte';
 	let cookieValue;
 
 	onMount(() => {

@@ -1,0 +1,1 @@
+<div>You are on the component message</div>
