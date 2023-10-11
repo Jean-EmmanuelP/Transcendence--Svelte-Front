@@ -35,8 +35,12 @@
 	</div>
 	<div class="flex flex-col border border-black h-full w-[73%]">
 		{#if selectedConversation}
-			<div class="h-[10%] w-full border border-black" />
-			<div class="h-[90%] bg-red-500 w-full border border-black" />
+			<div class="h-[10%] w-full border border-black">
+                
+            </div>
+			<div class="h-[90%] bg-red-500 w-full border border-black">
+
+            </div>
 		{:else}
 			<div
 				class=" flex flex-col items-center justify-center h-full w-full border border-black gap-2"

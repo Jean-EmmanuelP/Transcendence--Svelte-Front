@@ -8,8 +8,15 @@
 		lastmessage_hour = '1 h';
 
 	const dispatch = createEventDispatcher();
+	let conversationInfo = {
+		avatar,
+		name,
+		lastmessage_author,
+		lastmessage_content,
+		lastmessage_hour
+	};
 	function handleClick() {
-		dispatch('select', { clicked: true });
+		dispatch('select', conversationInfo);
 	}
 </script>
 
