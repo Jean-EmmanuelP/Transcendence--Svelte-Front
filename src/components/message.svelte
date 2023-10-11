@@ -40,10 +40,11 @@
 	<div class="flex flex-col border border-black h-full w-[73%]">
 		{#if selectedConversation}
 			<div class="px-2 flex items-center justify-between h-[10%] w-full border border-black">
-				<div class="border border-black h-full w-[30%]">
+				<div class="border border-black h-full w-[30%] flex items-center gap-2">
                     <div class="h-16 w-16">
                         <img src={selectedConversation.avatar} class="rounded-full w-full h-full object-cover" alt="avatar">
                     </div>
+                    <h1 class="font-bold">{selectedConversation.name}</h1>
                 </div>
 				<div class="border border-black h-full w-[30%]"></div>
 			</div>
