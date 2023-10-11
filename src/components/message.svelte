@@ -5,7 +5,7 @@
 		name: String;
 	}
 
-	let selectedConversation: Conversation | null = null;
+	let selectedConversation: Conversation | null = {avatar: 'https://cdn.intra.42.fr/users/f1bc7681cd8be9d098d36bb8ac9eb702/jperrama.jpg', name: 'pascal', lastmessage_author: 'Vous', lastmessage_content: 'si c vrai bien vu', lastmessage_hour: '1 h'};
 	function handleClick(event: CustomEvent<Conversation>) {
 		selectedConversation = event.detail;
 		console.log(selectedConversation);
@@ -35,13 +35,13 @@
 	</div>
 	<div class="flex flex-col border border-black h-full w-[73%]">
 		{#if selectedConversation}
-			<div class="px-2 flex justify-between h-[10%] w-full border border-black">
-                <div>a</div>
-                <div>b</div>
-            </div>
-			<div class="h-[90%] bg-red-500 w-full border border-black">
-
-            </div>
+			<div class="px-2 flex items-center justify-between h-[10%] w-full border border-black">
+				<div class="border border-black h-full w-[30%]">
+                    
+                </div>
+				<div class="border border-black h-full w-[30%]"></div>
+			</div>
+			<div class="h-[90%] bg-red-500 w-full border border-black" />
 		{:else}
 			<div
 				class=" flex flex-col items-center justify-center h-full w-full border border-black gap-2"
@@ -54,9 +54,11 @@
 				/>
 				<div class="flex items-center justify-center flex-col">
 					<h1>Your Messages</h1>
-					<p class="text-[#737373] text-[15px]">Send photos and private messages to a friend or group</p>
+					<p class="text-[#737373] text-[15px]">
+						Send photos and private messages to a friend or group
+					</p>
 				</div>
-                <PrimaryButton text="Send a message" />
+				<PrimaryButton text="Send a message" />
 			</div>
 		{/if}
 	</div>
