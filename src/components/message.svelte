@@ -51,6 +51,7 @@
 					<h1>Your Messages</h1>
 					<p class="text-[#737373] text-[15px]">Send photos and private messages to a friend or group</p>
 				</div>
+                <PrimaryButton text="Send a message" />
 			</div>
 		{/if}
 	</div>
