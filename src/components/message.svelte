@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="w-full h-[85%] border border-black">
-            <div class="w-full bg-red-500 h-[65px]">
+            <div class="w-full bg-red-500 h-[80px]">
                 <ConversationInfo />
             </div>
         </div>
