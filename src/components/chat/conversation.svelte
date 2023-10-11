@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import { createEventDispatcher } from 'svelte';
 
 	export let avatar = 'https://cdn.intra.42.fr/users/f1bc7681cd8be9d098d36bb8ac9eb702/jperrama.jpg',
@@ -9,8 +9,7 @@
 
 	const dispatch = createEventDispatcher();
 	function handleClick() {
-		const conversationDetails = { name }
-		dispatch('select', conversationDetails);
+		dispatch('select', { clicked: true });
 	}
 </script>
 

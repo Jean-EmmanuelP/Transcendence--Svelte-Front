@@ -1,10 +1,10 @@
-<script lang="ts">
+<script>
     import PrimaryButton from "./buttons/primary_button.svelte";
     import ConversationInfo from "./chat/conversation.svelte";
 
-    let selectedConversation = null;
-    function handleClick(event: any) {
-        selectedConversation = event.detail;
+    function handleClick(event) {
+        console.log(event)
+        console.log(event.detail)
     }
 </script>
 
