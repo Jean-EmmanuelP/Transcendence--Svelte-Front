@@ -2,7 +2,11 @@
 	import PrimaryButton from './buttons/primary_button.svelte';
 	import ConversationInfo from './chat/conversation.svelte';
 	interface Conversation {
-		name: String;
+		name: string;
+        avatar: string;
+        lastmessage_author: string;
+        lastmessage_content: string;
+        lastmessage_hour: string;
 	}
 
 	let selectedConversation: Conversation | null = {avatar: 'https://cdn.intra.42.fr/users/f1bc7681cd8be9d098d36bb8ac9eb702/jperrama.jpg', name: 'pascal', lastmessage_author: 'Vous', lastmessage_content: 'si c vrai bien vu', lastmessage_hour: '1 h'};
@@ -37,7 +41,9 @@
 		{#if selectedConversation}
 			<div class="px-2 flex items-center justify-between h-[10%] w-full border border-black">
 				<div class="border border-black h-full w-[30%]">
-                    
+                    <div class="h-16 w-16">
+                        <img src={selectedConversation.avatar} class="rounded-full w-full h-full object-cover" alt="avatar">
+                    </div>
                 </div>
 				<div class="border border-black h-full w-[30%]"></div>
 			</div>
