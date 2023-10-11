@@ -26,5 +26,6 @@
     </div>
     <div class="flex flex-col border border-black h-full w-[73%]">
         <div class="h-[10%] w-full border border-black"></div>
+        <div class="h-[90%] bg-red-500 w-full border border-black"></div>
     </div>
 </div>
