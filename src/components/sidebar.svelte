@@ -1,3 +1,11 @@
+<script lang="ts">
+	import { activePage } from "../stores/currentNavigation";
+
+	function setActivePage(page: string) {
+		activePage.set(page);
+	}
+</script>
+
 <div class="flex flex-grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 h-full w-full">
 	<div class="flex h-16 shrink-0 items-center">
 		<img
@@ -5,7 +13,6 @@
 			src="https://tailwindui.com/img/logos/mark.svg?color=white"
 			alt="Your Company"
 		/>
-		
 	</div>
 	<nav class="flex flex-1 flex-col">
 		<ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -14,7 +21,7 @@
 					<li>
 						<!-- Current: "bg-indigo-700 text-white", Default: "text-indigo-200 hover:text-white hover:bg-indigo-700" -->
 						<a
-							href="#"
+							on:click={() => setActivePage('dashboard')}
 							class="bg-indigo-700 text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
 						>
 							<svg
@@ -36,7 +43,7 @@
 					</li>
 					<li>
 						<a
-							href="#"
+						on:click={() => setActivePage('messages')}
 							class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
 						>
 							<svg
@@ -58,7 +65,7 @@
 					</li>
 					<li>
 						<a
-							href="#"
+						on:click={() => setActivePage('statistics')}
 							class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
 						>
 							<svg
