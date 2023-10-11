@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { activePage } from "../stores/currentNavigation";
+	import { activePage } from "../../../../../stores/currentNavigation";
 
 	function setActivePage(page: string) {
 		activePage.set(page);
