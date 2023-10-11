@@ -10,7 +10,7 @@
 	</div>
 	<div class="w-full h-screen flex flex-col">
 		<Navbar />
-		<div class="flex bg-red-500 m-10 rounded-md h-full ring-1 ring-gray-400/5">
+		<div class="flex border border-black m-10 rounded-md h-full ring-1 ring-gray-400/5">
 			<slot />
 		</div>
 	</div>
