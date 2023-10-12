@@ -3,5 +3,5 @@
 	import Cookies from 'js-cookie';
 
 	Cookies.remove("access_token");
-	goto("/");
+	goto("/login");
 </script>
