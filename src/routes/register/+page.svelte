@@ -1,4 +1,47 @@
 <script lang="ts">
+	import { writable } from 'svelte/store';
+	import { goto } from '$app/navigation';
+	import AuthServices from '../../services/auth';
+	import Cookies from 'js-cookie';
+	import { createForm } from 'svelte-forms-lib';
+	import * as yup from 'yup';
+
+	const loading = writable(false);
+	const serverError = writable(undefined);
+
+	const { form, handleChange, errors, state, handleSubmit } = createForm({
+		initialValues: {
+			password: '',
+			firstName: '',
+			lastName: '',
+			email: ''
+		},
+		validationSchema: yup.object().shape({
+			password: yup
+				.string()
+				.min(8, 'Password must be at least 8 characters long')
+				.matches(
+					/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+					'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character'
+				)
+				.required('Password is required'),
+			firstName: yup.string().required("First name is required"),
+			lastName: yup.string().required("Last name is required"),
+			email: yup.string().email().required()
+		}),
+		onSubmit: async (values) => {
+			loading.set(true);
+			try {
+				const response = await AuthServices.register(values);
+				if (Cookies.get('access_token')) Cookies.remove('access_token');
+				Cookies.set('access_token', response.accessToken, { expires: 1 });
+				goto('/home');
+			} catch (error) {
+				serverError.set(error.statusText);
+				loading.set(false);
+			}
+		}
+	});
 </script>
 
 <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -15,36 +58,43 @@
 
 	<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
 		<div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-			<form class="space-y-6" action="#" method="POST">
-                <div>
-					<label for="email" class="block text-sm font-medium leading-6 text-gray-900"
-						>First Name</label
+			<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
+				<div>
+					<label for="firstName" class="block text-sm font-medium leading-6 text-gray-900"
+						>First name</label
 					>
 					<div class="mt-2">
 						<input
-							id="email"
-							name="email"
-							type="email"
-							autocomplete="email"
-							required
+							id="firstName"
+							name="firstName"
+							type="firstName"
+							on:change={handleChange}
+							bind:value={$form.firstName}
 							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
+					{#if $errors.firstName}
+						<small>{$errors.firstName}</small>
+					{/if}
 				</div>
-                <div>
-					<label for="email" class="block text-sm font-medium leading-6 text-gray-900"
-						>Last Name</label
+				<div>
+					<label for="lastName" class="block text-sm font-medium leading-6 text-gray-900"
+						>Last name</label
 					>
 					<div class="mt-2">
 						<input
-							id="email"
-							name="email"
-							type="email"
-							autocomplete="email"
-							required
+							id="lastName"
+							name="lastName"
+							type="lastName"
+							on:change={handleChange}
+							bind:value={$form.lastName}
 							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
+					{#if $errors.lastName}
+						<small>{$errors.lastName}</small>
+					{/if}
+
 				</div>
 				<div>
 					<label for="email" class="block text-sm font-medium leading-6 text-gray-900"
@@ -56,10 +106,15 @@
 							name="email"
 							type="email"
 							autocomplete="email"
-							required
+							on:change={handleChange}
+							bind:value={$form.email}
 							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
+					{#if $errors.email}
+						<small>{$errors.email}</small>
+					{/if}
+
 				</div>
 
 				<div>
@@ -71,34 +126,20 @@
 							id="password"
 							name="password"
 							type="password"
+							on:change={handleChange}
+							bind:value={$form.password}
 							autocomplete="current-password"
-							required
 							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
+					{#if $errors.password}
+						<small>{$errors.password}</small>
+					{/if}
 				</div>
-
-				<div class="flex items-center justify-between">
-					<div class="flex items-center">
-						<input
-							id="remember-me"
-							name="remember-me"
-							type="checkbox"
-							class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-						/>
-						<label for="remember-me" class="ml-3 block text-sm leading-6 text-gray-900"
-							>Remember me</label
-						>
-					</div>
-
-					<div class="text-sm leading-6">
-						<a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500"
-							>Forgot password?</a
-						>
-					</div>
-				</div>
-
 				<div>
+					{#if $serverError}
+						<small>{$serverError}</small>
+					{/if}
 					<button
 						type="submit"
 						class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -134,7 +175,7 @@
 						>
 							<polygon
 								id="polygon5"
-								points="32,412.6 362.1,412.6 362.1,578 526.8,578 526.8,279.1 197.3,279.1 526.8,-51.1 362.1,-51.1 
+								points="32,412.6 362.1,412.6 362.1,578 526.8,578 526.8,279.1 197.3,279.1 526.8,-51.1 362.1,-51.1
 	32,279.1 "
 							/>
 							<polygon id="polygon7" points="597.9,114.2 762.7,-51.1 597.9,-51.1 " />
@@ -144,7 +185,7 @@
 							/>
 							<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
 						</svg>
-						<span class="text-sm font-semibold leading-6">Intra</span>
+						<span class="text-sm font-semibold leading-6">42</span>
 					</a>
 
 					<a
@@ -172,10 +213,8 @@
 		</div>
 
 		<p class="mt-10 text-center text-sm text-gray-500">
-			Have an account?
-			<a href="/login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-				>Sign in</a
-			>
+			Already a member?
+			<a href="/login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign in</a>
 		</p>
 	</div>
 </div>
