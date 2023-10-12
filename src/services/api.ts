@@ -23,7 +23,7 @@ axiosAPI.interceptors.response.use(
 
 const apiRequest = async (method: string, url: any, request: any) => {
 	const headers = {
-		authorization: Cookie.get("acess_token")
+		authorization: `Bearer ${Cookie.get("acess_token")}`
 	}
 	try {
 		const res = await axiosAPI({
