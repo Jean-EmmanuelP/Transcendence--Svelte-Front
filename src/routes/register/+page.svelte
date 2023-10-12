@@ -52,7 +52,7 @@
 			alt="Your Company"
 		/>
 		<h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-			Sign up
+			Sign up 
 		</h2>
 	</div>
 
@@ -94,6 +94,7 @@
 					{#if $errors.lastName}
 						<small>{$errors.lastName}</small>
 					{/if}
+
 				</div>
 				<div>
 					<label for="email" class="block text-sm font-medium leading-6 text-gray-900"
@@ -113,6 +114,7 @@
 					{#if $errors.email}
 						<small>{$errors.email}</small>
 					{/if}
+
 				</div>
 
 				<div>

@@ -1,4 +1,5 @@
 <script lang="ts">
+
 	import { writable } from 'svelte/store';
 	import { goto } from '$app/navigation';
 	import AuthServices from "../../services/auth";
@@ -69,6 +70,7 @@
 					{#if $errors.email}
 						<small>{$errors.email}</small>
 					{/if}
+
 				</div>
 
 				<div>
@@ -93,6 +95,7 @@
 
 				<div class="flex items-center justify-between">
 
+
 					<div class="text-sm leading-6">
 						<a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500"
 							>Forgot password?</a
@@ -101,6 +104,7 @@
 				</div>
 
 				<div>
+
 					{#if $serverError}
 						<small>{$serverError}</small>
 					{/if}
@@ -118,6 +122,7 @@
 						class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 						>Sign in</button>
 					{/if}
+
 				</div>
 			</form>
 
@@ -159,6 +164,7 @@
 							<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
 						</svg>
 						<span class="text-sm font-semibold leading-6">42</span>
+
 					</a>
 
 					<a
