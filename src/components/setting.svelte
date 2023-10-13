@@ -32,6 +32,21 @@
 						<div
 							class="flex rounded-md bg-gray-500/5 border border-black/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
 						>
+							<div class="flex items-center pl-2">
+								<svg
+									class="h-5 w-5 text-gray-400"
+									viewBox="0 0 20 20"
+									fill="currentColor"
+									aria-hidden="true"
+								>
+									<path
+										d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"
+									/>
+									<path
+										d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"
+									/>
+								</svg>
+							</div>
 							<input
 								type="text"
 								name="email"
@@ -128,7 +143,7 @@
 			<div class="mt-8 flex">
 				<button
 					type="submit"
-					class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+					class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					>Save</button
 				>
 			</div>
@@ -148,7 +163,7 @@
 		<form class="flex items-start md:col-span-2">
 			<button
 				type="submit"
-				class="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-red-400"
+				class="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-red-400 text-white"
 				>Yes, delete my account</button
 			>
 		</form>
