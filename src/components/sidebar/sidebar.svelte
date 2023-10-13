@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { activePage } from "../../stores/currentNavigation";
+	import { activePage } from '../../stores/currentNavigation';
+	import { goto } from '$app/navigation';
 
 	function setActivePage(page: string) {
 		activePage.set(page);
@@ -8,11 +9,17 @@
 
 <div class="flex flex-grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 h-full w-full">
 	<div class="flex h-16 shrink-0 items-center">
-		<img
-			class="h-8 w-auto"
-			src="https://tailwindui.com/img/logos/mark.svg?color=white"
-			alt="Your Company"
-		/>
+		<button
+			on:click={() => {
+				goto('/');
+			}}
+		>
+			<img
+				class="h-8 w-auto"
+				src="https://tailwindui.com/img/logos/mark.svg?color=white"
+				alt="Your Company"
+			/>
+		</button>
 	</div>
 	<nav class="flex flex-1 flex-col">
 		<ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -43,7 +50,7 @@
 					</li>
 					<li>
 						<a
-						on:click={() => setActivePage('messages')}
+							on:click={() => setActivePage('messages')}
 							class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
 						>
 							<svg
@@ -65,7 +72,7 @@
 					</li>
 					<li>
 						<a
-						on:click={() => setActivePage('statistics')}
+							on:click={() => setActivePage('statistics')}
 							class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
 						>
 							<svg
