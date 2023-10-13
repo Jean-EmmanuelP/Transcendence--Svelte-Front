@@ -1,3 +1,7 @@
+<script>
+	let enabled = true;
+</script>
+
 <div class="w-full h-full overflow-auto">
 	<div
 		class="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
@@ -136,6 +140,52 @@
 							autocomplete="new-password"
 							class="block w-full ring-0 border border-gray-500/5 rounded-md shadow-sm bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
 						/>
+					</div>
+				</div>
+			</div>
+
+			<div class="mt-8 flex">
+				<button
+					type="submit"
+					class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+					>Save</button
+				>
+			</div>
+		</form>
+	</div>
+	<div
+		class="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
+	>
+		<div>
+			<h2 class="text-base font-semibold leading-7">Activate Two Factor Authentication</h2>
+			<p class="mt-1 text-sm leading-6 text-gray-400">
+				Make your account more safe by activating 2FA
+			</p>
+		</div>
+
+		<form class="md:col-span-2">
+			<div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
+				<div class="col-span-full">
+					<div class="flex items-center">
+						<button
+							type="button"
+							class={`${
+								enabled ? 'bg-indigo-600' : 'bg=gray-200'
+							} relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2`}
+							role="switch"
+							aria-checked="false"
+							aria-labelledby="annual-billing-label"
+						>
+							<span
+								aria-hidden="true"
+								class={` ${
+									enabled ? 'translate-x-5' : 'translate-x-0'
+								} translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out`}
+							/>
+						</button>
+						<span class="ml-3 text-sm" id="annual-billing-label">
+							<span class="font-medium text-gray-900">Enable 2FA</span>
+						</span>
 					</div>
 				</div>
 			</div>
