@@ -4,11 +4,8 @@
 	import { activePage } from '../stores/currentNavigation';
 	import Messages from '$components/message.svelte';
 	import {testRequest} from "../services/gqlTest"
-	import Cookies from 'js-cookie';
-	let cookieValue;
-  import { gql, ApolloClient, InMemoryCache } from '@apollo/client/core';
-
-  let data;
+  import { ApolloClient, InMemoryCache } from '@apollo/client/core';
+	import Setting from '../components/setting.svelte';
 
   onMount(async () => {
     const client = new ApolloClient({
@@ -32,7 +29,7 @@
 	<Play />
 {:else if $activePage === 'messages'}
 	<Messages />
-{:else}
-	<p>Page non trouvee</p>
+{:else if $activePage === 'statistics'}
+	<Setting />
 {/if}
 
