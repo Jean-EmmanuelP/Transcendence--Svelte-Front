@@ -5,7 +5,7 @@
 	import Messages from '$components/message.svelte';
 	import {testRequest} from "../services/gqlTest"
   import { ApolloClient, InMemoryCache } from '@apollo/client/core';
-	import Setting from '../components/setting.svelte';
+	import Setting from '$components/setting.svelte';
 
   onMount(async () => {
     const client = new ApolloClient({
