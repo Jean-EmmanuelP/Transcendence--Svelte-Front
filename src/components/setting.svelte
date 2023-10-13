@@ -66,7 +66,7 @@
 								type="text"
 								name="pseudo"
 								id="pseudo"
-								class="flex-1 border-0 bg-transparent py-1.5 pl-1 focus:ring-0 sm:text-sm sm:leading-6"
+								class="flex-1 ring-0 border border-gray-500/5 rounded-md shadow-sm bg-transparent py-1.5 pl-1 focus:ring-0 sm:text-sm sm:leading-6"
 								placeholder="janesmith"
 							/>
 						</div>
@@ -106,7 +106,7 @@
 							name="current_password"
 							type="password"
 							autocomplete="current-password"
-							class="block w-full rounded-md border-0 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+							class="block w-full ring-0 border border-gray-500/5 rounded-md shadow-sm bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
 						/>
 					</div>
 				</div>
@@ -119,7 +119,7 @@
 							name="new_password"
 							type="password"
 							autocomplete="new-password"
-							class="block w-full rounded-md border-0 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+							class="block w-full ring-0 border border-gray-500/5 rounded-md shadow-sm bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
 						/>
 					</div>
 				</div>
@@ -134,7 +134,7 @@
 							name="confirm_password"
 							type="password"
 							autocomplete="new-password"
-							class="block w-full rounded-md border-0 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+							class="block w-full ring-0 border border-gray-500/5 rounded-md shadow-sm bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
 						/>
 					</div>
 				</div>
