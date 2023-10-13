@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
 	import Navbar from '$components/navbar.svelte';
-	import Sidebar from '$components/sidebar.svelte';
+	import Sidebar from '$components/sidebar/sidebar.svelte';
 	import { page } from '$app/stores';
 	let currentpage = $page.url.pathname;
 	$: console.log(`the current page is `, currentpage);
