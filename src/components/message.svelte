@@ -13,13 +13,7 @@
 		{ sender: 'Him', text: 'bonjour le monde' },
 		{ sender: 'Him', text: 'bonjour le monde' }
 	];
-	let selectedConversation: Conversation | null = {
-		avatar: 'https://cdn.intra.42.fr/users/f1bc7681cd8be9d098d36bb8ac9eb702/jperrama.jpg',
-		name: 'pascal',
-		lastmessage_author: 'Vous',
-		lastmessage_content: 'si c vrai bien vu',
-		lastmessage_hour: '1 h'
-	};
+	let selectedConversation: Conversation | null = null;
 
 	function handleClick(event: CustomEvent<Conversation>) {
 		selectedConversation = event.detail;
