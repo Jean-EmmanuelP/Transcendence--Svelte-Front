@@ -169,7 +169,7 @@
 	</div>
 
 	<!-- Mobile menu, show/hide based on menu state. -->
-	<nav class="lg:hidden" aria-label="Global">
+	<nav class="md:hidden" aria-label="Global">
 		<div class="mx-auto max-w-3xl space-y-1 px-2 pb-3 pt-2 sm:px-4">
 			<!-- Current: "bg-gray-100 text-gray-900", Default: "hover:bg-gray-50" -->
 			<a

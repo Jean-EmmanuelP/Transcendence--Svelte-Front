@@ -74,7 +74,7 @@
 				</div>
 				<div class="h-full w-[30%]" />
 			</div>
-			<div class="h-[83%] w-full px-2">
+			<div class="h-[83%] w-full px-2 pt-2">
 				{#each messages as message}
 					<div class={`${message.sender === 'You' ? 'text-right' : ''} mb-2.5`}>
 						<div
