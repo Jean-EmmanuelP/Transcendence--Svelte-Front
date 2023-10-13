@@ -27,10 +27,10 @@
 					</div>
 				</div>
 				<div class="col-span-full">
-                    <label for="email" class="block text-sm font-medium leading-6">Email</label>
+					<label for="email" class="block text-sm font-medium leading-6">Email</label>
 					<div class="mt-2">
 						<div
-							class="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
+							class="flex rounded-md bg-gray-500/5 border border-black/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
 						>
 							<input
 								type="text"
@@ -38,7 +38,7 @@
 								id="email"
 								class="flex-1 border-0 bg-transparent py-1.5 pl-1 focus:ring-0 sm:text-sm sm:leading-6"
 								placeholder="janesmith@gmail.com"
-                                readonly
+								readonly
 							/>
 						</div>
 					</div>
@@ -57,27 +57,12 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="col-span-full">
-					<label for="timezone" class="block text-sm font-medium leading-6">Timezone</label>
-					<div class="mt-2">
-						<select
-							id="timezone"
-							name="timezone"
-							class="block w-full rounded-md border-0 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 [&_*]:text-black"
-						>
-							<option>Pacific Standard Time</option>
-							<option>Eastern Standard Time</option>
-							<option>Greenwich Mean Time</option>
-						</select>
-					</div>
-				</div>
 			</div>
 
 			<div class="mt-8 flex">
 				<button
 					type="submit"
-					class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+					class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					>Save</button
 				>
 			</div>
