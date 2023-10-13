@@ -5,7 +5,7 @@
 	import Messages from '$components/message.svelte';
 	import {testRequest} from "../services/gqlTest"
   import { ApolloClient, InMemoryCache } from '@apollo/client/core';
-	import Setting from '$components/setting.svelte';
+	import Profile from '$components/profile.svelte';
 
   onMount(async () => {
     const client = new ApolloClient({
@@ -30,6 +30,6 @@
 {:else if $activePage === 'messages'}
 	<Messages />
 {:else if $activePage === 'statistics'}
-	<Setting />
+	<Profile />
 {/if}
 
