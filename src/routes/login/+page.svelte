@@ -6,6 +6,7 @@
 	import Cookies from 'js-cookie';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
+	import { authentication } from '../../stores/authentication';
 
 	const loading = writable(false);
 	const serverError = writable(undefined);
@@ -28,6 +29,7 @@
 				if (Cookies.get("access_token"))
 					Cookies.remove("access_token");
 				Cookies.set("access_token", response.token, { expires: 1 });
+				authentication.setUser(response);
 				goto('/home')
 			} catch (error) {
 				serverError.set(error.statusText);

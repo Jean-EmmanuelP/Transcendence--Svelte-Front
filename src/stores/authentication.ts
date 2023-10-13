@@ -1,19 +1,33 @@
 import { writable } from 'svelte/store';
 
-type AuthenticationType = {
-	message: string;
-	user: {
-		id: string;
-		email: string;
-		password: string | null;
-		name: string;
-		pseudo: string;
-		avatar: string;
-		twoFactorSecret: string | null;
-		isTwoFactorEnabled: boolean;
-		status: string;
-	};
-	access_token: string;
+export type AuthenticationType = {
+	id: string;
+	email: string;
+	name: string;
+	pseudo: string;
+	avatar: string;
+	isTwoFactorEnabled: boolean;
+	status: string;
 };
+function createAuthentication() {
+	const { subscribe, set, update } = writable<AuthenticationType>({
+		id: "",
+		email: "",
+		name: "",
+		pseudo: "",
+		avatar: "",
+		isTwoFactorEnabled: false,
+		status: "ONLINE"
+	});
 
-export const authentication = writable<AuthenticationType>();
+	return {
+	  subscribe,
+	  setUser: (user: AuthenticationType) => {
+		console.log("storeUser", user);
+		set({...user});
+	},
+	  // Add other necessary methods or customizations here
+	};
+}
+
+export const authentication = createAuthentication();

@@ -1,3 +1,15 @@
+<script lang="ts">
+	import { onDestroy } from "svelte";
+	import type { LayoutData } from "../routes/$types";
+	import { authentication, type AuthenticationType } from "../stores/authentication";
+
+	let user: AuthenticationType;
+	const unsubscribe = authentication.subscribe((value) => {
+		user = value;
+	})
+	onDestroy(unsubscribe);
+</script>
+
 <header class="bg-white shadow-sm lg:static lg:overflow-y-visible">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
@@ -46,7 +58,7 @@
 					<span class="sr-only">Open menu</span>
 					<!--
               Icon when menu is closed.
-  
+
               Menu open: "hidden", Menu closed: "block"
             -->
 					<svg
@@ -65,7 +77,7 @@
 					</svg>
 					<!--
               Icon when menu is open.
-  
+
               Menu open: "block", Menu closed: "hidden"
             -->
 					<svg
@@ -117,7 +129,7 @@
 							<span class="sr-only">Open user menu</span>
 							<img
 								class="h-8 w-8 rounded-full"
-								src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+								src={user.avatar}
 								alt=""
 							/>
 						</button>
@@ -125,7 +137,7 @@
 
 					<!--
               Dropdown menu, show/hide based on menu state.
-  
+
               Entering: "transition ease-out duration-100"
                 From: "transform opacity-0 scale-95"
                 To: "transform opacity-100 scale-100"
