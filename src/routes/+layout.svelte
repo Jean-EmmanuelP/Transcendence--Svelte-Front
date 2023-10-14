@@ -9,7 +9,7 @@
 
 {#if currentpage !== '/register' && currentpage !== '/login'}
 	<div class="h-screen w-screen flex overflow-hidden">
-		<div class="w-[25%] h-screen">
+		<div class="w-[15%] h-screen">
 			<Sidebar />
 		</div>
 		<div class="w-full h-screen flex flex-col">
