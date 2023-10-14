@@ -1,6 +1,6 @@
-import Cookies from "js-cookie";
-import client from "./apolloClient";
-import { gql } from "@apollo/client/core/index.js";
+import Cookies from 'js-cookie';
+import client from './apolloClient';
+import { gql } from '@apollo/client/core/index.js';
 
 export const userInformation = async (access_token: string) => {
 	try {
@@ -48,7 +48,7 @@ export const userInformationNoToken = async () => {
 						status
 					}
 				}
-			`,
+			`
 		});
 		return response.data.userInformation;
 	} catch (error) {
@@ -57,4 +57,27 @@ export const userInformationNoToken = async () => {
 	}
 };
 
-
+export const updateUserPseudo = async (newPseudo: string) => {
+	try {
+		const response = await client.mutate({
+			mutation: gql`
+				mutation updatePseudo($newPseudo: String!) {
+					updatePseudo(newPseudo: $newPseudo) {
+						id
+						email
+						name
+						pseudo
+						avatar
+					}
+				}
+			`,
+			variables: {
+				newPseudo: newPseudo
+			}
+		});
+		return response.data.updatePseudo;
+	} catch (error) {
+		console.log(error);
+		throw new Error('Error updating user pseudo');
+	}
+};

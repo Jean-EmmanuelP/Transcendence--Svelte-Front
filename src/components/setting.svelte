@@ -14,6 +14,10 @@
 	function handle2FAClick() {
 		enabled = !enabled;
 	}
+	let pseudo: string;
+	function handleMutation() {
+		
+	}
 </script>
 
 <div class="w-full h-full overflow-auto">
@@ -86,6 +90,7 @@
 								id="pseudo"
 								class="flex-1 ring-0 border border-gray-500/5 rounded-md shadow-sm bg-transparent py-1.5 pl-1 focus:ring-0 sm:text-sm sm:leading-6"
 								placeholder={user.pseudo}
+								bind:value={pseudo}
 							/>
 						</div>
 					</div>
