@@ -7,11 +7,20 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  return {
-    headers: {
-      ...headers,
-    },
-  };
+	const token = Cookies.get("access_token");
+	if (token)
+		return {
+			headers: {
+				...headers,
+				Authorization: `Bearer ${token}`
+			},
+		};
+	else
+		return {
+			headers: {
+			...headers,
+			},
+		};
 });
 
 const client = new ApolloClient({
