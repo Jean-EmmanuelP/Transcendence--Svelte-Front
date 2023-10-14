@@ -1,26 +1,36 @@
-<script>
+<script lang="ts">
+	import { onDestroy } from 'svelte';
+	import { authentication, type AuthenticationType } from '../stores/authentication';
+
+	let user: AuthenticationType;
+	const onsubscribe = authentication.subscribe((value) => {
+		user = value;
+	});
+	onDestroy(onsubscribe);
+	// gqlInformation
+	// mutation
 </script>
 
 <div class="w-full h-full text-white flex flex-col gap-2">
 	<div
 		class="flex items-center h-[40%] w-full bg-[url(https://cdn.aglty.io/fortanix/web3/bg.svg)] bg-center bg-cover bg-no-repeat"
 	>
-		<div class="h-full w-1/4 flex items-center justify-center ">
-			<img
-				class="h-32 w-32 rounded-full shadow-md"
-				src="https://cdn.intra.42.fr/users/f1bc7681cd8be9d098d36bb8ac9eb702/jperrama.jpg"
-				alt=""
-			/>
+		<div class="h-full w-1/4 flex items-center justify-center">
+			<img class="h-32 w-32 border border-black rounded-full shadow-md" src={user.avatar} alt="" />
 		</div>
-		<div class="flex flex-col h-full w-2/4 flex items-center justify-center ">
-			<div class="flex items-center h-1/3 w-full ">
-				<div class="w-1/2 h-full flex items-center justify-center ">
+		<div class="flex flex-col h-full w-2/4 flex items-center justify-center">
+			<div class="flex items-center h-1/3 w-full">
+				<div class="w-1/2 h-full flex items-center justify-center">
 					Jean-Emmanuel<br />Perramant
 				</div>
 				<div class="w-1/2 h-full flex items-center justify-center">jperrama</div>
 			</div>
 			<div class="flex flex-col items-center gap-2 h-2/3 w-full p-2">
-				<div class="h-1/4 w-full bg-gradient-to-r from-[#4F46E5] to-blue-500/90 rounded-md flex items-center justify-center gap-2"><span class="text-blue-800 font-bold">Grade</span>Learner</div>
+				<div
+					class="h-1/4 w-full bg-gradient-to-r from-[#4F46E5] to-blue-500/90 rounded-md flex items-center justify-center gap-2"
+				>
+					<span class="text-blue-800 font-bold">Grade</span>Learner
+				</div>
 				<div class="h-2/4 w-full flex gap-4">
 					<div
 						class="h-full w-1/2 bg-gradient-to-r from-[#4F46E5] to-blue-500/90 rounded-md flex flex-col gap-2 items-center justify-center"
@@ -43,7 +53,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="flex flex-row h-full w-1/4 flex items-center justify-center ">
+		<div class="flex flex-row h-full w-1/4 flex items-center justify-center">
 			<div class="h-full w-[2%]" />
 			<div
 				class="flex flex-col items-center justify-around h-full w-[98%] bg-gradient-to-r from-[#4F46E5] to-blue-500/90"
@@ -100,7 +110,7 @@
 		</div>
 	</div>
 	<div class="h-full border border-black h-[30%] w-full text-black">
-        <h1 class="text-center">Achievments</h1>
+		<h1 class="text-center">Achievments</h1>
 	</div>
 	<div class="h-[30%] w-full text-black border border-black">
 		<h1 class="text-center">Match History</h1>

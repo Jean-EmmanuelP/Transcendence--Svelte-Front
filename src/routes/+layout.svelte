@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import Navbar from '$components/navbar.svelte';
-	import Sidebar from '$components/sidebar.svelte';
+	import Sidebar from '$components/sidebar/sidebar.svelte';
 	import type { LayoutData } from './$types';
 	import { page } from '$app/stores';
 	import { authentication } from "../stores/authentication";
@@ -23,7 +23,6 @@
 		currentpage = value.url.pathname;
 	})
 	onDestroy(unsubscribe)
-	import { page } from '$app/stores';
 	import { activePage } from '../stores/currentNavigation';
 
 	let menuOpen = false;

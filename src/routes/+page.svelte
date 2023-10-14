@@ -3,7 +3,6 @@
 	import { onMount } from 'svelte';
 	import { activePage } from '../stores/currentNavigation';
 	import Messages from '$components/message.svelte';
-	import {testRequest} from "../services/gqlTest"
   import { ApolloClient, InMemoryCache } from '@apollo/client/core';
 	import Profile from '$components/profile.svelte';
 
