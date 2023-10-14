@@ -1,10 +1,11 @@
-<script lang="ts">
-// @ts-nocheck
-
+<script>
 	import Play from '$components/play.svelte';
 	import { onMount } from 'svelte';
 	import { activePage } from '../stores/currentNavigation';
 	import Messages from '$components/message.svelte';
+	import {testRequest} from "../services/gqlTest"
+  import { ApolloClient, InMemoryCache } from '@apollo/client/core';
+	import Profile from '$components/profile.svelte';
 
 	export let data;
 
@@ -13,10 +14,4 @@
 	});
 </script>
 
-{#if $activePage === 'dashboard'}
-	<Play />
-{:else if $activePage === 'messages'}
-	<Messages />
-{:else}
-	<p>Page non trouvee</p>
-{/if}
+<Play />

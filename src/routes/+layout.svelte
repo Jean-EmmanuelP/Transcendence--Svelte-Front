@@ -23,17 +23,24 @@
 		currentpage = value.url.pathname;
 	})
 	onDestroy(unsubscribe)
-	$: console.log(`the current page is `, currentpage);
+	import { page } from '$app/stores';
+	import { activePage } from '../stores/currentNavigation';
+
+	let menuOpen = false;
+
+	function closeMenus() {
+		menuOpen = false;
+	}
 </script>
 
 {#if currentpage !== '/register' && currentpage !== '/login'}
-	<div class="h-screen w-screen flex overflow-hidden">
-		<div class="w-[25%] h-screen">
-			<Sidebar />
+	<div class="h-screen w-screen flex overflow-hidden" on:click={closeMenus}>
+		<div class={`${$activePage === 'dashboard' ? `w-[15%]` : `w-[5%]`} h-screen`}>
+			<Sidebar sidebaricon={$activePage !== 'dashboard' ? 'icon' : 'normal'} />
 		</div>
 		<div class="w-full h-screen flex flex-col">
-			<Navbar />
-			<div class="flex m-10 rounded-md h-full ring-1 ring-gray-400/5">
+			<Navbar bind:menuOpen />
+			<div class="flex rounded-md h-full ring-1 ring-gray-400/5">
 				<slot />
 			</div>
 		</div>

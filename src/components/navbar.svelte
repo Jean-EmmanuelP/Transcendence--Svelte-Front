@@ -8,18 +8,24 @@
 		user = value;
 	})
 	onDestroy(unsubscribe);
+	import { fly } from 'svelte/transition';
+	export let menuOpen = false;
+
+	function toggleMenu(event: MouseEvent) {
+		menuOpen = !menuOpen;
+		event.stopPropagation();
+	}
 </script>
 
 <header class="bg-white shadow-sm lg:static lg:overflow-y-visible">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
-			<div class="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
-			</div>
+			<div class="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2" />
 			<div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
 				<div
 					class="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0"
 				>
-					<div class="w-full">
+					<div class="w-full relative">
 						<label for="search" class="sr-only">Search</label>
 						<div class="relative">
 							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -39,10 +45,14 @@
 							<input
 								id="search"
 								name="search"
-								class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+								class="block w-full rounded-md pr-16 border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
 								placeholder="Search"
 								type="search"
 							/>
+							<kbd
+								class="absolute inset-y-0 right-3 top-1/2 transform -translate-y-1/2 rounded border border-gray-200 px-1 font-sans text-xs text-gray-400"
+								>⌘K</kbd
+							>
 						</div>
 					</div>
 				</div>
@@ -122,8 +132,9 @@
 							type="button"
 							class="relative flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 							id="user-menu-button"
-							aria-expanded="false"
+							aria-expanded={menuOpen}
 							aria-haspopup="true"
+							on:click={toggleMenu}
 						>
 							<span class="absolute -inset-1.5" />
 							<span class="sr-only">Open user menu</span>
@@ -145,42 +156,47 @@
                 From: "transform opacity-100 scale-100"
                 To: "transform opacity-0 scale-95"
             -->
-					<!-- <div
-						class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-						role="menu"
-						aria-orientation="vertical"
-						aria-labelledby="user-menu-button"
-						tabindex="-1"
-					>
-						<a
-							href="#"
-							class="block px-4 py-2 text-sm text-gray-700"
-							role="menuitem"
+					{#if menuOpen}
+						<div
+							class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+							role="menu"
+							aria-orientation="vertical"
+							aria-labelledby="user-menu-button"
 							tabindex="-1"
-							id="user-menu-item-0">Your Profile</a
+							on:click={toggleMenu}
+							in:fly={{ y: 20, duration: 300 }}
+							out:fly={{ y: -20, duration: 300 }}
 						>
-						<a
-							href="#"
-							class="block px-4 py-2 text-sm text-gray-700"
-							role="menuitem"
-							tabindex="-1"
-							id="user-menu-item-1">Settings</a
-						>
-						<a
-							href="#"
-							class="block px-4 py-2 text-sm text-gray-700"
-							role="menuitem"
-							tabindex="-1"
-							id="user-menu-item-2">Sign out</a
-						>
-					</div> -->
+							<a
+								href="/profile"
+								class="block px-4 py-2 text-sm text-gray-700"
+								role="menuitem"
+								tabindex="-1"
+								id="user-menu-item-0">Your Profile</a
+							>
+							<a
+								href="/settings"
+								class="block px-4 py-2 text-sm text-gray-700"
+								role="menuitem"
+								tabindex="-1"
+								id="user-menu-item-1">Settings</a
+							>
+							<a
+								href="/signout"
+								class="block px-4 py-2 text-sm text-gray-700"
+								role="menuitem"
+								tabindex="-1"
+								id="user-menu-item-2">Sign out</a
+							>
+						</div>
+					{/if}
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- Mobile menu, show/hide based on menu state. -->
-	<nav class="lg:hidden" aria-label="Global">
+	<nav class="md:hidden" aria-label="Global">
 		<div class="mx-auto max-w-3xl space-y-1 px-2 pb-3 pt-2 sm:px-4">
 			<!-- Current: "bg-gray-100 text-gray-900", Default: "hover:bg-gray-50" -->
 			<a
@@ -240,7 +256,7 @@
 					>Settings</a
 				>
 				<a
-					href="#"
+					href="/signout"
 					class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
 					>Sign out</a
 				>
