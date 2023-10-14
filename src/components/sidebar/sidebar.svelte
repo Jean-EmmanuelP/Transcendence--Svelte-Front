@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { activePage } from '../../stores/currentNavigation';
 	import { goto } from '$app/navigation';
+	import { activePage } from '../../stores/currentNavigation';
 
 	function setActivePage(page: string) {
 		activePage.set(page);
@@ -28,8 +28,13 @@
 					<li>
 						<!-- Current: "bg-indigo-700 text-white", Default: "text-indigo-200 hover:text-white hover:bg-indigo-700" -->
 						<a
-							on:click={() => setActivePage('dashboard')}
-							class="bg-indigo-700 text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+							on:click={() => {
+								setActivePage('dashboard');
+								goto('/');
+							}}
+							class={`${
+								$activePage === 'dashboard' ? `bg-indigo-700 text-white` : ''
+							} text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
 							<svg
 								class="h-6 w-6 shrink-0 text-white"
@@ -50,7 +55,7 @@
 					</li>
 					<li>
 						<a
-							on:click={() => setActivePage('messages')}
+							on:click={() => {setActivePage('messages'); goto('/messages');}}
 							class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
 						>
 							<svg
