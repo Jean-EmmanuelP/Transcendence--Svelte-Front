@@ -85,7 +85,7 @@
 								name="pseudo"
 								id="pseudo"
 								class="flex-1 ring-0 border border-gray-500/5 rounded-md shadow-sm bg-transparent py-1.5 pl-1 focus:ring-0 sm:text-sm sm:leading-6"
-								placeholder="janesmith"
+								placeholder={user.pseudo}
 							/>
 						</div>
 					</div>
