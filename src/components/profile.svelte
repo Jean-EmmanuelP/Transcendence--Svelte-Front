@@ -7,7 +7,7 @@
 	>
 		<div class="h-full w-1/4 flex items-center justify-center border border-black">
 			<img
-				class="h-48 w-48 rounded-full shadow-md"
+				class="h-32 w-32 rounded-full shadow-md"
 				src="https://cdn.intra.42.fr/users/f1bc7681cd8be9d098d36bb8ac9eb702/jperrama.jpg"
 				alt=""
 			/>
