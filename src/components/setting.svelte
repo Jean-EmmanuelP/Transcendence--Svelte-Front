@@ -1,4 +1,15 @@
-<script>
+<script lang="ts">
+	import { onDestroy } from 'svelte';
+	import { authentication, type AuthenticationType } from '../stores/authentication';
+
+	let user: AuthenticationType;
+	const onsubscribe = authentication.subscribe((value) => {
+		user = value;
+	});
+	onDestroy(onsubscribe);
+	// gqlInformation
+	// mutation
+
 	let enabled = true;
 	function handle2FAClick() {
 		enabled = !enabled;
@@ -20,7 +31,7 @@
 			<div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
 				<div class="col-span-full flex items-center gap-x-8">
 					<img
-						src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+						src={user.avatar}
 						alt=""
 						class="h-24 w-24 flex-none rounded-lg bg-gray-800 object-cover"
 					/>
@@ -59,7 +70,7 @@
 								name="email"
 								id="email"
 								class="flex-1 border-0 bg-transparent py-1.5 pl-1 focus:ring-0 sm:text-sm sm:leading-6"
-								placeholder="janesmith@gmail.com"
+								placeholder={user.email}
 								readonly
 							/>
 						</div>
