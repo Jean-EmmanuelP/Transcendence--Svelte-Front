@@ -3,6 +3,8 @@
 	import Navbar from '$components/navbar.svelte';
 	import Sidebar from '$components/sidebar/sidebar.svelte';
 	import { page } from '$app/stores';
+	
+	
 	let currentpage = $page.url.pathname;
 	import { activePage } from '../stores/currentNavigation';
 	$: console.log(`the current page is `, currentpage);
@@ -10,7 +12,7 @@
 
 {#if currentpage !== '/register' && currentpage !== '/login'}
 	<div class="h-screen w-screen flex overflow-hidden">
-		<div class="w-[15%] h-screen">
+		<div class={`${$activePage === 'dashboard' ? `w-[15%]` : `w-[5%]` } h-screen`}>
 			<Sidebar sidebaricon={$activePage !== 'dashboard' ? 'icon' : 'normal'} />
 		</div>
 		<div class="w-full h-screen flex flex-col">
