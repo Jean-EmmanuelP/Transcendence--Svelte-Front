@@ -3,11 +3,9 @@
 	import Navbar from '$components/navbar.svelte';
 	import Sidebar from '$components/sidebar/sidebar.svelte';
 	import { page } from '$app/stores';
-	
+	import { activePage } from '../stores/currentNavigation';
 	
 	let currentpage = $page.url.pathname;
-	import { activePage } from '../stores/currentNavigation';
-	$: console.log(`the current page is `, currentpage);
 </script>
 
 {#if currentpage !== '/register' && currentpage !== '/login'}

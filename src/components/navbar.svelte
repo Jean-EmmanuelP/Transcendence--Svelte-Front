@@ -1,9 +1,10 @@
 <script>
 	import { fly } from 'svelte/transition';
-	let menuOpen = false;
+	export let menuOpen = false;
 
-	function toggleMenu() {
+	function toggleMenu(event) {
 		menuOpen = !menuOpen;
+		event.stopPropagation();
 	}
 </script>
 
@@ -153,6 +154,7 @@
 							aria-orientation="vertical"
 							aria-labelledby="user-menu-button"
 							tabindex="-1"
+							on:click={toggleMenu}
 							in:fly={{ y: 20, duration: 300 }}
 							out:fly={{ y: -20, duration: 300 }}
 						>
