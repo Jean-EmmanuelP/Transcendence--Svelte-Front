@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client/core';
+import { ApolloClient, InMemoryCache, createHttpLink, type DefaultOptions } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
 import Cookies from 'js-cookie';
 
@@ -23,9 +23,21 @@ const authLink = setContext((_, { headers }) => {
 		};
 });
 
+const defaultOptions: DefaultOptions = {
+	watchQuery: {
+	  fetchPolicy: 'no-cache',
+	  errorPolicy: 'ignore',
+	},
+	query: {
+	  fetchPolicy: 'no-cache',
+	  errorPolicy: 'all',
+	},
+  }
+
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
+  defaultOptions: defaultOptions,
 });
 
 export default client

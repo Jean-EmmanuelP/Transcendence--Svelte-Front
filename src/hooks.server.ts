@@ -19,6 +19,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 			try {
 				const res = await userInformation(access_token ?? "");
 				const { id, email, name, pseudo, avatar, isTwoFactorEnabled, status } = res.userInformation;
+				console.log("Hook userInfo", res.userInformation);
 				event.locals.user = res.userInformation;
 				// authentication.setUser({id, email, name, pseudo, avatar, isTwoFactorEnabled, status});
 			} catch (e) {

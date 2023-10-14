@@ -7,8 +7,9 @@
 	let pseudo = writable('');
 	let user: AuthenticationType;
 	const onsubscribe = authentication.subscribe((value) => {
+		console.log("Subscribe", value);
 		user = value;
-		pseudo.set(user.pseudo);
+		pseudo.update(val => (user.pseudo));
 	});
 	onDestroy(onsubscribe);
 	// gqlInformation
@@ -20,8 +21,8 @@
 	}
 	async function handleMutation() {
 		try {
-			const updatedUser = await updateUserPseudo($pseudo);
-			authentication.setUser({ ...user, pseudo: $pseudo });
+			await updateUserPseudo($pseudo);
+			authentication.update(val => ({ ...val, pseudo: $pseudo }));
 		} catch (error) {
 			console.log(`Error`, error);
 		}
