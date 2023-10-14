@@ -1,9 +1,9 @@
 <script>
 </script>
 
-<div class="w-full h-full text-white">
+<div class="w-full h-full text-white flex flex-col gap-2">
 	<div
-		class="flex items-center h-1/3 w-full bg-[url(https://cdn.aglty.io/fortanix/web3/bg.svg)] bg-center bg-cover bg-no-repeat"
+		class="flex items-center h-[40%] w-full bg-[url(https://cdn.aglty.io/fortanix/web3/bg.svg)] bg-center bg-cover bg-no-repeat"
 	>
 		<div class="h-full w-1/4 flex items-center justify-center ">
 			<img
@@ -31,7 +31,7 @@
 					<div
 						class="flex flex-col gap-2 items-center justify-center h-full w-1/2 bg-gradient-to-r from-[#4F46E5] to-blue-500/90 rounded-md"
 					>
-						<h1>WINS - LOOSE</h1>
+						<h1>WINS - LOSSES</h1>
 						<p>00 - 00</p>
 					</div>
 				</div>
@@ -99,17 +99,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="h-1/3 w-full text-black">
-		<p>
-			Stats (such as: wins and losses, ladder level, achievements, and so forth) have to be
-			displayed on the user profile.
-		</p>
+	<div class="h-full border border-black h-[30%] w-full text-black">
+        <h1 class="text-center">Achievments</h1>
 	</div>
-	<div class="h-1/3 w-full text-black">
-		<p>
-			Each user should have a Match History including 1v1 games, ladder, and anything else useful.
-			Anyone who is logged in should be able to consult it.
-		</p>
+	<div class="h-[30%] w-full text-black border border-black">
+		<h1 class="text-center">Match History</h1>
 	</div>
 	<div />
 </div>
