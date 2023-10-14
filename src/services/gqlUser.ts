@@ -62,13 +62,7 @@ export const updateUserPseudo = async (newPseudo: string) => {
 		const response = await client.mutate({
 			mutation: gql`
 				mutation updatePseudo($newPseudo: String!) {
-					updatePseudo(newPseudo: $newPseudo) {
-						id
-						email
-						name
-						pseudo
-						avatar
-					}
+					updatePseudo(newPseudo: $newPseudo)
 				}
 			`,
 			variables: {

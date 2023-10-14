@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { onDestroy } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
+	import { updateUserPseudo } from '../services/gqlUser';
 
 	let user: AuthenticationType;
 	const onsubscribe = authentication.subscribe((value) => {
@@ -15,8 +16,13 @@
 		enabled = !enabled;
 	}
 	let pseudo: string;
-	function handleMutation() {
-		
+	async function handleMutation() {
+		try {
+			const updatedUser = await updateUserPseudo(pseudo);
+			authentication.setUser({ ...user, pseudo });
+		} catch (error) {
+			console.log(`Error`, error);
+		}
 	}
 </script>
 
@@ -99,9 +105,9 @@
 
 			<div class="mt-8 flex">
 				<button
-					type="submit"
+					type="button"
 					class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-					>Save</button
+					on:click={handleMutation}>Save</button
 				>
 			</div>
 		</form>

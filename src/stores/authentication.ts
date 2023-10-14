@@ -22,6 +22,7 @@ function createAuthentication() {
 
 	return {
 	  subscribe,
+	  update,
 	  setUser: (user: AuthenticationType) => {
 		console.log("storeUser", user);
 		set({...user});
