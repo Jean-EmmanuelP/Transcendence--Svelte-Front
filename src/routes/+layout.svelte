@@ -1,11 +1,31 @@
-<script>
+<script lang="ts">
 	import '../app.css';
 	import Navbar from '$components/navbar.svelte';
-	import Sidebar from '$components/sidebar/sidebar.svelte';
+	import Sidebar from '$components/sidebar.svelte';
+	import type { LayoutData } from './$types';
+	import { page } from '$app/stores';
+	import { authentication } from "../stores/authentication";
+	import { onDestroy, onMount } from 'svelte';
+	import Cookies from 'js-cookie';
+	import { userInformationNoToken } from '../services/gqlUser';
+
+	export let data: LayoutData;
+	if (data.user)
+		authentication.setUser(data.user);
+
+	onMount(async () => {
+		const userInfo = await userInformationNoToken();
+		console.log(userInfo.userInformation);
+		console.log("Access", Cookies.get("access_token"));
+	})
+	let currentpage = $page.url.pathname;
+	const unsubscribe = page.subscribe(value => {
+		currentpage = value.url.pathname;
+	})
+	onDestroy(unsubscribe)
 	import { page } from '$app/stores';
 	import { activePage } from '../stores/currentNavigation';
 
-	let currentpage = $page.url.pathname;
 	let menuOpen = false;
 
 	function closeMenus() {

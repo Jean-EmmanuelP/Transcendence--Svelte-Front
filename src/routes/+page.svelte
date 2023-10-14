@@ -7,23 +7,11 @@
   import { ApolloClient, InMemoryCache } from '@apollo/client/core';
 	import Profile from '$components/profile.svelte';
 
-  onMount(async () => {
-    const client = new ApolloClient({
-      uri: 'http://42pong.com:3000/graphql',
-      cache: new InMemoryCache()
-    });
+	export let data;
 
-    // const response = await client.query({
-    //   query: gql`
-    //     {
-	// 		testingConnexion
-    //     }
-    //   `
-    // });
-	await testRequest();
-	// console.log("Data", response.data)
-});
+	onMount(async () => {
+		console.log(data.user);
+	});
 </script>
 
 <Play />
-
