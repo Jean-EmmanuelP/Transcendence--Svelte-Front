@@ -55,8 +55,13 @@
 					</li>
 					<li>
 						<a
-							on:click={() => {setActivePage('messages'); goto('/messages');}}
-							class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+							on:click={() => {
+								setActivePage('messages');
+								goto('/messages');
+							}}
+							class={`${
+								$activePage === 'messages' ? `bg-indigo-700 text-white` : ''
+							} text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
 							<svg
 								class="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
@@ -77,8 +82,10 @@
 					</li>
 					<li>
 						<a
-							on:click={() => setActivePage('statistics')}
-							class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+							on:click={() => {setActivePage('profile'); goto('profile')}}
+							class={`${
+								$activePage === 'profile' ? `bg-indigo-700 text-white` : ''
+							} text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
 							<svg
 								class="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
