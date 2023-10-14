@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { activePage } from '../../stores/currentNavigation';
+	
+	export let sidebaricon: 'normal' | 'icon' = 'normal';
 
 	function setActivePage(page: string) {
 		activePage.set(page);
