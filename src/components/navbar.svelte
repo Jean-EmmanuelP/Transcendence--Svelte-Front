@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 	import { fly } from 'svelte/transition';
 	export let menuOpen = false;
 
-	function toggleMenu(event) {
+	function toggleMenu(event: MouseEvent) {
 		menuOpen = !menuOpen;
 		event.stopPropagation();
 	}
