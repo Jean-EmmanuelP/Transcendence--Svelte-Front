@@ -82,7 +82,10 @@
 					</li>
 					<li>
 						<a
-							on:click={() => {setActivePage('profile'); goto('profile')}}
+							on:click={() => {
+								setActivePage('profile');
+								goto('profile');
+							}}
 							class={`${
 								$activePage === 'profile' ? `bg-indigo-700 text-white` : ''
 							} text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
@@ -107,48 +110,6 @@
 								/>
 							</svg>
 							Profile
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<div class="text-xs font-semibold leading-6 text-indigo-200">Online</div>
-				<ul role="list" class="-mx-2 mt-2 space-y-1">
-					<li>
-						<!-- Current: "bg-indigo-700 text-white", Default: "text-indigo-200 hover:text-white hover:bg-indigo-700" -->
-						<a
-							href="#"
-							class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-						>
-							<span
-								class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-indigo-400 bg-indigo-500 text-[0.625rem] font-medium text-white"
-								>H</span
-							>
-							<span class="truncate">Heroicons</span>
-						</a>
-					</li>
-					<li>
-						<a
-							href="#"
-							class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-						>
-							<span
-								class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-indigo-400 bg-indigo-500 text-[0.625rem] font-medium text-white"
-								>T</span
-							>
-							<span class="truncate">Tailwind Labs</span>
-						</a>
-					</li>
-					<li>
-						<a
-							href="#"
-							class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-						>
-							<span
-								class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-indigo-400 bg-indigo-500 text-[0.625rem] font-medium text-white"
-								>W</span
-							>
-							<span class="truncate">Workcation</span>
 						</a>
 					</li>
 				</ul>
