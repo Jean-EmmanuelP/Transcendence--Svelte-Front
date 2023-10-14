@@ -25,11 +25,5 @@
 });
 </script>
 
-{#if $activePage === 'dashboard'}
-	<Play />
-{:else if $activePage === 'messages'}
-	<Messages />
-{:else if $activePage === 'statistics'}
-	<Profile />
-{/if}
+<Play />
 
