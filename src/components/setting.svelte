@@ -224,13 +224,12 @@
 			</p>
 		</div>
 
-		<form class="md:col-span-2">
+		<form class="md:col-span-2" on:submit|preventDefault={handleActivate2FA}>
 			<div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
 				<div class="col-span-full">
 					<div class="flex items-center">
 						<button
-							type="button"
-							on:click={handle2FAClick}
+							type="submit"
 							class={`${
 								enabled ? 'bg-indigo-600' : 'bg=gray-200'
 							} relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2`}
