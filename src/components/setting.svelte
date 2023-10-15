@@ -33,6 +33,9 @@
 
 	async function handleChangePassword() {
 		if (newPassword !== confirmPassword) {
+			currentPassword = '';
+			newPassword = '';
+			confirmPassword = '';
 			console.error(`New password and confirm password do not match.`);
 			return;
 		}
@@ -40,14 +43,18 @@
 			const result = await changeUserPassword(currentPassword, newPassword);
 			if (result) {
 				console.log(`Password changed successfully`);
-				currentPassword = ''
-				newPassword = ''
-				confirmPassword = ''
+				currentPassword = '';
 			} else {
 				console.error('Error changing password');
+				currentPassword = '';
 			}
 		} catch (error) {
 			console.error(error.message);
+			currentPassword = '';
+		} finally {
+			currentPassword = '';
+			newPassword = '';
+			confirmPassword = '';
 		}
 	}
 </script>
