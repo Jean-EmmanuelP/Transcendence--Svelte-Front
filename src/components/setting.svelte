@@ -10,6 +10,7 @@
 	let currentPassword = '';
 	let newPassword = '';
 	let confirmPassword = '';
+	let enabled = true;
 
 	const onsubscribe = authentication.subscribe((value) => {
 		console.log('Subscribe', value);
@@ -18,10 +19,6 @@
 	});
 	onDestroy(onsubscribe);
 
-	let enabled = true;
-	function handle2FAClick() {
-		enabled = !enabled;
-	}
 	async function handleMutationPseudo() {
 		try {
 			await updateUserPseudo($pseudo);
@@ -56,6 +53,10 @@
 			newPassword = '';
 			confirmPassword = '';
 		}
+	}
+
+	async function handleActivate2FA() {
+		enabled = !enabled;
 	}
 </script>
 
