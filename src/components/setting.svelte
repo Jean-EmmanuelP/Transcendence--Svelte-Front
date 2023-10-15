@@ -40,6 +40,9 @@
 			const result = await changeUserPassword(currentPassword, newPassword);
 			if (result) {
 				console.log(`Password changed successfully`);
+				currentPassword = ''
+				newPassword = ''
+				confirmPassword = ''
 			} else {
 				console.error('Error changing password');
 			}
