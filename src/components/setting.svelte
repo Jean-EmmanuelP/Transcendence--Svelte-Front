@@ -4,6 +4,7 @@
 	import { updateUserPseudo } from '../services/gqlUser';
 	import { changeUserPassword } from '../services/gqlUser';
 	import { writable } from 'svelte/store';
+	import API from '../services/api';
 
 	let pseudo = writable('');
 	let user: AuthenticationType;
@@ -11,6 +12,7 @@
 	let newPassword = '';
 	let confirmPassword = '';
 	let enabled = true;
+	let qrCodeUrl = null;
 
 	const onsubscribe = authentication.subscribe((value) => {
 		console.log('Subscribe', value);
@@ -57,6 +59,34 @@
 
 	async function handleActivate2FA() {
 		enabled = !enabled;
+		// 		loginCredentials: async (email: string, password: string): Promise<any> => {
+		//     try {
+		//       const response = await API.post("/auth/loginCredentials", {
+		//         email,
+		//         password
+		//       });
+		//       return response;
+		//     } catch (error) {
+		//       return Promise.reject(error);
+		//     }
+		//   },
+		try {
+			if (!enabled) {
+				const response = await API.post('/auth/enable-two-factor', {});
+				if (response && response.qrCodeUrl) {
+					qrCodeUrl = response.qrCodeUrl;
+				} else {
+					console.error(`Erreur lors de l'obtention du QR code.`);
+					enabled = false;
+				}
+			} else {
+				const response = await API.post('/auth/disable-two-factor', {});
+				qrCodeUrl = null;
+			}
+		} catch (error) {
+			console.log(error);
+			alert('Une erreur est survenue. Veuillez reessayer.');
+		}
 	}
 </script>
 
