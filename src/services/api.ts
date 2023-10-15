@@ -14,7 +14,7 @@ axiosAPI.interceptors.response.use(
 
 	  // Remove token and redirect
 	  if (status === 403) {
-		Cookie.remove("acess_token");
+		Cookie.remove("access_token");
 		window.location.reload();
 	  }
 	  return Promise.reject(error.response);
@@ -23,7 +23,7 @@ axiosAPI.interceptors.response.use(
 
 const apiRequest = async (method: string, url: any, request: any) => {
 	const headers = {
-		authorization: `Bearer ${Cookie.get("acess_token")}`
+		authorization: `Bearer ${Cookie.get("access_token")}`
 	}
 	try {
 		const res = await axiosAPI({
