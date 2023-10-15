@@ -74,6 +74,7 @@
 			if (!enabled) {
 				const response = await API.post('/auth/enable-two-factor', {});
 				if (response && response.qrCodeUrl) {
+					console.log(response);
 					qrCodeUrl = response.qrCodeUrl;
 				} else {
 					console.error(`Erreur lors de l'obtention du QR code.`);
@@ -81,6 +82,7 @@
 				}
 			} else {
 				const response = await API.post('/auth/disable-two-factor', {});
+				console.log(response);
 				qrCodeUrl = null;
 			}
 		} catch (error) {
