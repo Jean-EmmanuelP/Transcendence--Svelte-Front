@@ -49,6 +49,27 @@ export const getFriends = async () => {
 	}
 };
 
+export const getPendingFriendRequests = async () => {
+	try {
+		const response = await client.query({
+			query: gql`
+				{
+					getPendingSentFriendRequests {
+						id
+						senderId
+						receiverId
+						status
+					}
+				}
+			`
+		});
+		return response.data.getPendingSentFriendRequests;
+	} catch (error) {
+		console.log(error);
+		throw new Error('Error fetching user information');
+	}
+};
+
 export const sendFriendRequest = async (pseudo: string) => {
 	try {
 		const response = await client.mutate({
