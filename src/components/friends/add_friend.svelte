@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { getFriends, getUsers } from "../../services/gqlFriends";
+	import { getFriends, getPendingFriendRequests, getUsers } from "../../services/gqlFriends";
 	import type { AuthenticationType } from "../../stores/authentication";
+	import { authentication } from "../../stores/authentication";
 	import UserComponent from "./user_component.svelte";
 
 	export let isOpen: boolean = false;
@@ -21,9 +22,13 @@
 		try {
 			const tempUsers = await getUsers();
 			const tempFriends = await getFriends();
+			const pendingRequests = await getPendingFriendRequests();
 			tempUsers.forEach((element: AuthenticationType) => {
 				if (!tempFriends.find((e: AuthenticationType) => e.pseudo === element.pseudo))
-					users.push(element);
+				{
+					if (!pendingRequests.find((e) => e.receiverId === element.id) && $authentication.id !== element.id)
+						users.push(element);
+				}
 			});
 		} catch (e) {
 
