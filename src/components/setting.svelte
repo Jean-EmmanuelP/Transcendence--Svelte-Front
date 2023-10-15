@@ -43,7 +43,7 @@
 			} else {
 				console.error('Error changing password');
 			}
-		} catch (error: ) {
+		} catch (error: any) {
 			console.error(error.message);
 		}
 	}
