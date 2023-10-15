@@ -2,6 +2,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
 	import { updateUserPseudo } from '../services/gqlUser';
+	import { changeUserPassword } from '../services/gqlUser';
 	import { writable } from 'svelte/store';
 
 	let pseudo = writable('');
