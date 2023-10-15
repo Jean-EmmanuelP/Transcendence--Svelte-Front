@@ -75,3 +75,23 @@ export const updateUserPseudo = async (newPseudo: string) => {
 		throw new Error('Error updating user pseudo');
 	}
 };
+
+export const changeUserPassword = async (currentPassword: string, newPassword: string) => {
+	try {
+		const response = await client.mutate({
+			mutation: gql`
+				mutation ChangePassword($currentPassword: String!, $newPassword: String!) {
+					changePassword(currentPassword: $currentPassword, newPassword: $newPassword)
+				}
+			`,
+			variables: {
+				currentPassword,
+				newPassword
+			}
+		});
+		return response.data.changePassword;
+	} catch (error) {
+		console.log(error);
+		throw new Error('Error changing user password');
+	}
+};

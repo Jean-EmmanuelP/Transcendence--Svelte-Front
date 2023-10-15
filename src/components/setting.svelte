@@ -28,6 +28,9 @@
 		}
 	}
 
+	async function handleChangePassword() {
+
+	} 
 </script>
 
 <div class="w-full h-full overflow-auto">
