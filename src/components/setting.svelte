@@ -7,17 +7,16 @@
 
 	let pseudo = writable('');
 	let user: AuthenticationType;
-	let currentPassword = ''
-	let newPassword = ''
-	let confirmPassword = ''
+	let currentPassword = '';
+	let newPassword = '';
+	let confirmPassword = '';
+
 	const onsubscribe = authentication.subscribe((value) => {
-		console.log("Subscribe", value);
+		console.log('Subscribe', value);
 		user = value;
-		pseudo.update(val => (user.pseudo));
+		pseudo.update((val) => user.pseudo);
 	});
 	onDestroy(onsubscribe);
-	// gqlInformation
-	// mutation
 
 	let enabled = true;
 	function handle2FAClick() {
@@ -26,15 +25,28 @@
 	async function handleMutationPseudo() {
 		try {
 			await updateUserPseudo($pseudo);
-			authentication.update(val => ({ ...val, pseudo: $pseudo }));
+			authentication.update((val) => ({ ...val, pseudo: $pseudo }));
 		} catch (error) {
 			console.log(`Error`, error);
 		}
 	}
 
 	async function handleChangePassword() {
-
-	} 
+		if (newPassword !== confirmPassword) {
+			console.error(`New password and confirm password do not match.`);
+			return;
+		}
+		try {
+			const result = await changeUserPassword(currentPassword, newPassword);
+			if (result) {
+				console.log(`Password changed successfully`);
+			} else {
+				console.error('Error changing password');
+			}
+		} catch (error: ) {
+			console.error(error.message);
+		}
+	}
 </script>
 
 <div class="w-full h-full overflow-auto">
