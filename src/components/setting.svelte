@@ -7,6 +7,9 @@
 
 	let pseudo = writable('');
 	let user: AuthenticationType;
+	let currentPassword = ''
+	let newPassword = ''
+	let confirmPassword = ''
 	const onsubscribe = authentication.subscribe((value) => {
 		console.log("Subscribe", value);
 		user = value;
