@@ -2,32 +2,51 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
 	import { updateUserPseudo } from '../services/gqlUser';
+	import { changeUserPassword } from '../services/gqlUser';
 	import { writable } from 'svelte/store';
 
 	let pseudo = writable('');
 	let user: AuthenticationType;
+	let currentPassword = '';
+	let newPassword = '';
+	let confirmPassword = '';
+
 	const onsubscribe = authentication.subscribe((value) => {
-		console.log("Subscribe", value);
+		console.log('Subscribe', value);
 		user = value;
-		pseudo.update(val => (user.pseudo));
+		pseudo.update((val) => user.pseudo);
 	});
 	onDestroy(onsubscribe);
-	// gqlInformation
-	// mutation
 
 	let enabled = true;
 	function handle2FAClick() {
 		enabled = !enabled;
 	}
-	async function handleMutation() {
+	async function handleMutationPseudo() {
 		try {
 			await updateUserPseudo($pseudo);
-			authentication.update(val => ({ ...val, pseudo: $pseudo }));
+			authentication.update((val) => ({ ...val, pseudo: $pseudo }));
 		} catch (error) {
 			console.log(`Error`, error);
 		}
 	}
 
+	async function handleChangePassword() {
+		if (newPassword !== confirmPassword) {
+			console.error(`New password and confirm password do not match.`);
+			return;
+		}
+		try {
+			const result = await changeUserPassword(currentPassword, newPassword);
+			if (result) {
+				console.log(`Password changed successfully`);
+			} else {
+				console.error('Error changing password');
+			}
+		} catch (error) {
+			console.error(error.message);
+		}
+	}
 </script>
 
 <div class="w-full h-full overflow-auto">
@@ -111,7 +130,7 @@
 				<button
 					type="button"
 					class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-					on:click={handleMutation}>Save</button
+					on:click={handleMutationPseudo}>Save</button
 				>
 			</div>
 		</form>
