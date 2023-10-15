@@ -2,9 +2,13 @@
 	import PrimaryButton from '$components/buttons/primary_button.svelte';
 	import ConversationInfo from '$components/chat/conversation.svelte';
 	import AddFriendModal from '$components/friends/add_friend.svelte';
+	import CreateGroupModal from '$components/chat/create_group.svelte';
 	import type { Message, Conversation } from '../interfaces/types.ts';
+	import { onMount } from 'svelte';
+	import { getGroups } from '../../services/gqlGroups.js';
 
 	let isOpenAddFriend: boolean = false;
+	let isOpenCreateGroup: boolean = false;
 	let messages: Message[] = [
 		{ sender: 'You', text: 'bonjour le monde' },
 		{ sender: 'Him', text: 'bonjour le monde' },
@@ -25,6 +29,24 @@
 		isOpenAddFriend = false;
 	}
 
+	function handleOpenCreateGroup() {
+		isOpenCreateGroup = true;
+	}
+
+	function handleCloseCreateGroup() {
+		isOpenCreateGroup = false;
+	}
+
+	async function handleGroupAdded() {
+		try {
+			groups = await getGroups();
+		} catch (e) {
+			
+		}
+		isOpenCreateGroup = false;
+		//Get all the groups
+	}
+
 	function handleClick(event: CustomEvent<Conversation>) {
 		selectedConversation = event.detail;
 		console.log(selectedConversation);
@@ -38,7 +60,6 @@
 		}
 	}
 
-
 	function handleKeyDown(event: KeyboardEvent) {
 		if(event.key === 'Enter' && !event.shiftKey) {
 			event.preventDefault();
@@ -46,16 +67,27 @@
 		}
 	}
 
+	let groups = [];
+	onMount(async () => {
+		try {
+			groups = await getGroups();
+			console.log(groups);
+		} catch (e) {
+
+		}
+	});
+
 </script>
 
 <AddFriendModal isOpen={isOpenAddFriend} onClose={handleCloseAddFriend}/>
+<CreateGroupModal isOpen={isOpenCreateGroup} onClose={handleCloseCreateGroup} onSuccess={handleGroupAdded}/>
 <div class="flex h-full w-full border border-gray-500/50">
 	<div class="flex flex-col h-full w-[27%]">
 		<div class="w-full h-[15%]">
 			<div class="flex w-full h-[65%] items-center justify-around">
 				<h1 class="font-bold text-[16px]">jean.emp</h1>
 				<div>
-					<PrimaryButton text="Create a group" />
+					<PrimaryButton text="Create a group" onClick={handleOpenCreateGroup}/>
 					<PrimaryButton text="Add a friend" onClick={handleOpenAddFriend}/>
 				</div>
 			</div>
@@ -66,7 +98,10 @@
 		</div>
 		<div class="w-full h-[85%]">
 			<div class="w-full h-[80px]">
-				<ConversationInfo on:select={handleClick} />
+				{#each groups as group}
+					<ConversationInfo group={group}/>
+				{/each}
+
 			</div>
 		</div>
 	</div>
