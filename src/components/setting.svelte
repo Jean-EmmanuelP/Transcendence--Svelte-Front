@@ -146,7 +146,7 @@
 			</p>
 		</div>
 
-		<form class="md:col-span-2">
+		<form class="md:col-span-2" on:submit|preventDefault={handleChangePassword}>
 			<div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
 				<div class="col-span-full">
 					<label for="current-password" class="block text-sm font-medium leading-6"
@@ -159,6 +159,7 @@
 							type="password"
 							autocomplete="current-password"
 							class="block w-full ring-0 border border-gray-500/5 rounded-md shadow-sm bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+							bind:value={currentPassword}
 						/>
 					</div>
 				</div>
@@ -172,6 +173,7 @@
 							type="password"
 							autocomplete="new-password"
 							class="block w-full ring-0 border border-gray-500/5 rounded-md shadow-sm bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+							bind:value={newPassword}
 						/>
 					</div>
 				</div>
@@ -187,6 +189,7 @@
 							type="password"
 							autocomplete="new-password"
 							class="block w-full ring-0 border border-gray-500/5 rounded-md shadow-sm bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+							bind:value={confirmPassword}
 						/>
 					</div>
 				</div>
