@@ -276,7 +276,7 @@
 							/>
 						</button>
 						<span class="ml-3 text-sm" id="annual-billing-label">
-							<span class="font-medium text-gray-900">Enable 2FA</span>
+							<span class="font-medium text-gray-900">{enabled ? `Disable 2FA` : `Enable 2FA`}</span>
 						</span>
 					</div>
 				</div>
