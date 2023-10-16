@@ -6,9 +6,6 @@
 
 	let user: AuthenticationType;
 	let isUserMenuOpen = false;
-	let btnElement: HTMLButtonElement | null = null;
-	let menuTop = 0;
-	let menuLeft = 0;
 
 	const unsubscribe = authentication.subscribe((value) => {
 		user = value;
@@ -24,17 +21,8 @@
 		if ($modalOpen) {
 			modalOpen.set(null);
 		} else {
-			if (isUserMenuOpen) {
-				setMenuPosition(btnElement as HTMLButtonElement);
-			}
 			modalOpen.set('userMenu');
 		}
-	}
-
-	function setMenuPosition(btnElement: HTMLButtonElement) {
-		const rect = btnElement.getBoundingClientRect();
-		menuTop = rect.bottom;
-		menuLeft = rect.left;
 	}
 </script>
 
@@ -155,7 +143,6 @@
 							id="user-menu-button"
 							aria-haspopup="true"
 							on:click={toggleModal}
-							bind:this={btnElement}
 						>
 							<span class="absolute -inset-1.5" />
 							<span class="sr-only">Open user menu</span>
