@@ -36,6 +36,6 @@
 	</li>
 	<li class="flex flex-row gap-2">
 		<p>this is the statistic component</p>
-		<a href="{component}/stats" class="underline">/statistics/stats</a>
+		<a href="{component}/stats" class="underline">/statistics/achievments_stats</a>
 	</li>
 </div>

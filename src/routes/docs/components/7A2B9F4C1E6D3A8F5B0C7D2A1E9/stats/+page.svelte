@@ -1,5 +1,5 @@
 <script>
-    import Stats from "$components/statistics/stats.svelte";
+    import Stats from "$components/statistics/achievments_stats.svelte";
 </script>
 
 <Stats />

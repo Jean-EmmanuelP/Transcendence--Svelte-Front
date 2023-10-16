@@ -1,7 +1,7 @@
 <script lang="ts">
-	export let total_games = '0',
-		win_ratio = '50%',
-		lose_ratio = '50%';
+	export let total_games: string = '0',
+		win_ratio: string = '50%',
+		lose_ratio: string = '50%';
 </script>
 
 <div>
