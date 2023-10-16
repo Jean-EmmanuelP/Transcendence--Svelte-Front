@@ -59,7 +59,6 @@
 	}
 
 	async function handleActivate2FA() {
-		enabled = !enabled;
 		// 		loginCredentials: async (email: string, password: string): Promise<any> => {
 		//     try {
 		//       const response = await API.post("/auth/loginCredentials", {
@@ -77,6 +76,7 @@
 				if (response && response.qrCodeUrl) {
 					console.log(response);
 					qrCodeUrl = response.qrCodeUrl;
+					enabled = true;
 				} else {
 					console.error(`Erreur lors de l'obtention du QR code.`);
 					enabled = false;
@@ -85,6 +85,7 @@
 				const response = await API.post('/auth/disable-two-factor', {});
 				console.log(response);
 				qrCodeUrl = null;
+				enabled = false;
 			}
 		} catch (error) {
 			console.log(error);
@@ -265,7 +266,7 @@
 						<button
 							type="submit"
 							class={`${
-								enabled ? 'bg-indigo-600' : 'bg=gray-200'
+								enabled ? 'bg-indigo-600' : 'bg-gray-200'
 							} relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2`}
 							role="switch"
 							aria-checked="false"
