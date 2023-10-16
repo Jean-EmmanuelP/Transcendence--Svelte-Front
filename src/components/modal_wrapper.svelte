@@ -4,7 +4,7 @@
 </script>
 
 {#if isOpen}
-	<div class="fixed top-0 left-0 w-screen h-screen" on:click={() => (isOpen = false)}>
+	<div class="fixed top-0 left-0 w-screen h-screen z-50" on:click={() => (isOpen = false)}>
 		<div transition:fly={{ y: 200, duration: 200 }} on:click={(e) => e.stopPropagation()}>
 			<slot />
 		</div>
