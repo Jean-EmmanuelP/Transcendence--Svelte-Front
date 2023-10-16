@@ -4,8 +4,8 @@
 </script>
 
 {#if isOpen}
-	<div class="" on:click={() => (isOpen = false)}>
-		<div transition:fly={{ y: 200, duration: 200 }}>
+	<div class="w-screen h-screen" on:click={() => (isOpen = false)}>
+		<div transition:fly={{ y: 200, duration: 200 }} on:click={(e) => e.stopPropagation()}>
 			<slot />
 		</div>
 	</div>
