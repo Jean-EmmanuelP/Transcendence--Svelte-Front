@@ -6,7 +6,7 @@
 
 	let user: AuthenticationType;
 	let isUserMenuOpen = false;
-	let btnElement;
+	let btnElement : HTMLButtonElement | null = null;
 	let menuTop = 0;
 	let menuLeft = 0;
 
