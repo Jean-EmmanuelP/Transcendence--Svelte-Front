@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { onDestroy } from "svelte";
-	import type { LayoutData } from "../routes/$types";
+	import { onMount } from "svelte";
 	import { authentication, type AuthenticationType } from "../stores/authentication";
 
+	let showModal = false;
 	let user: AuthenticationType;
 	const unsubscribe = authentication.subscribe((value) => {
 		user = value;
@@ -15,6 +16,7 @@
 		menuOpen = !menuOpen;
 		event.stopPropagation();
 	}
+	
 </script>
 
 <header class="bg-white shadow-sm lg:static lg:overflow-y-visible">
