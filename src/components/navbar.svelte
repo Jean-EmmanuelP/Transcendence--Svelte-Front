@@ -172,7 +172,7 @@
 								class="block px-4 py-2 text-sm text-gray-700"
 								role="menuitem"
 								tabindex="-1"
-								id="user-menu-item-0">Your Profile</a
+								id="user-menu-item-0">Profile</a
 							>
 							<a
 								href="/settings"
@@ -248,7 +248,7 @@
 				<a
 					href="#"
 					class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-					>Your Profile</a
+					>Profile</a
 				>
 				<a
 					href="#"
