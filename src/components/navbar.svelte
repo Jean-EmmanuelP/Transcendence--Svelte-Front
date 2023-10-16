@@ -6,7 +6,7 @@
 
 	let user: AuthenticationType;
 	let isUserMenuOpen = false;
-	let btnElement : HTMLButtonElement | null = null;
+	let btnElement: HTMLButtonElement | null = null;
 	let menuTop = 0;
 	let menuLeft = 0;
 
@@ -25,13 +25,13 @@
 			modalOpen.set(null);
 		} else {
 			if (isUserMenuOpen) {
-				setMenuPosition(btnElement);
+				setMenuPosition(btnElement as HTMLButtonElement);
 			}
 			modalOpen.set('userMenu');
 		}
 	}
 
-	function setMenuPosition(btnElement) {
+	function setMenuPosition(btnElement: HTMLButtonElement) {
 		const rect = btnElement.getBoundingClientRect();
 		menuTop = rect.bottom;
 		menuLeft = rect.left;
@@ -173,7 +173,7 @@
                 From: "transform opacity-100 scale-100"
                 To: "transform opacity-0 scale-95"
             -->
-					<ModalWrapper bind:isOpen={isUserMenuOpen} >
+					<ModalWrapper bind:isOpen={isUserMenuOpen}>
 						<div
 							class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
 							role="menu"
