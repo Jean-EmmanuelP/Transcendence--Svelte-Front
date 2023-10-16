@@ -90,7 +90,7 @@
 							}}
 							class={`${
 								$activePage === 'profile' ? `bg-indigo-700 text-white` : ''
-							} text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
+							} text-indigo-200 hover:text-white hover:bg-indigo-700 group gap-x-3 flex ${sidebaricon === 'icon' && 'items-center justify-center'} rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
 							<svg
 								class="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
@@ -111,7 +111,9 @@
 									d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z"
 								/>
 							</svg>
-							{sidebaricon === 'normal' ? `Profile` : ''}
+							{#if sidebaricon === 'normal'}
+								<p>Profile</p>
+							{/if}
 						</a>
 					</li>
 				</ul>
