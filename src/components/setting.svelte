@@ -83,7 +83,7 @@
 	}
 
 	async function handleDeleteAccount() {
-		
+
 	}
 </script>
 
@@ -293,7 +293,7 @@
 			</p>
 		</div>
 
-		<form class="flex items-start md:col-span-2">
+		<form class="flex items-start md:col-span-2" on:submit|preventDefault={handleDeleteAccount}>
 			<button
 				type="submit"
 				class="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-red-400 text-white"
