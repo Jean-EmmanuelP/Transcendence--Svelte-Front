@@ -6,7 +6,9 @@
 
 	let user: AuthenticationType;
 	let isUserMenuOpen = false;
-
+	let buttonEl: HTMLElement;
+	let top = 0;
+	let left = 0;
 	const unsubscribe = authentication.subscribe((value) => {
 		user = value;
 	});
@@ -142,6 +144,7 @@
 							class="relative flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 							id="user-menu-button"
 							aria-haspopup="true"
+							bind:this={buttonEl}
 							on:click={toggleModal}
 						>
 							<span class="absolute -inset-1.5" />
@@ -160,7 +163,7 @@
                 From: "transform opacity-100 scale-100"
                 To: "transform opacity-0 scale-95"
             -->
-					<ModalWrapper bind:isOpen={isUserMenuOpen}>
+					<ModalWrapper bind:isOpen={isUserMenuOpen} {top} {left}>
 						<div
 							class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
 							role="menu"
