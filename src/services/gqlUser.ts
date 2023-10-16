@@ -105,6 +105,7 @@ export const deleteAccount = async () => {
 				}
 			`
 		});
+		console.log(`this is the response of the deleteAccount: `, response.data.deleteAccount);
 		return response.data.deleteAccount;
 	} catch (error) {
 		console.log(error);

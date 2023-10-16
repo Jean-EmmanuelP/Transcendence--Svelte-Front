@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
-	import { updateUserPseudo } from '../services/gqlUser';
+	import { deleteAccount, updateUserPseudo } from '../services/gqlUser';
 	import { changeUserPassword } from '../services/gqlUser';
 	import { writable } from 'svelte/store';
 	import API from '../services/api';
@@ -58,6 +58,19 @@
 		}
 	}
 
+	async function handleDeleteAccount() {
+		try {
+			const response = await deleteAccount();
+			if (response) {
+				console.log(`Account has been deleted with success !`);
+			} else {
+				console.error("Error while deleting the user Account !");
+			}
+		} catch(error) {
+			console.error(error.message);
+		}
+	}
+
 	async function handleActivate2FA() {
 		try {
 			if (!enabled) {
@@ -82,9 +95,6 @@
 		}
 	}
 
-	async function handleDeleteAccount() {
-
-	}
 </script>
 
 <div class="w-full h-full overflow-auto">
