@@ -2,7 +2,6 @@
 	import { onDestroy } from 'svelte';
 	import { modalOpen } from '../stores/modal';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
-	import { fly } from 'svelte/transition';
 	import ModalWrapper from '$components/modal_wrapper.svelte';
 
 	let user: AuthenticationType;
