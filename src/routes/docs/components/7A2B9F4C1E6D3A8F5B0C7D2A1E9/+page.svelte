@@ -34,4 +34,8 @@
 		<p>this is the navbar</p>
 		<a href="{component}/navbar" class="underline">navbar</a>
 	</li>
+	<li class="flex flex-row gap-2">
+		<p>this is the statistic component</p>
+		<a href="{component}/stats" class="underline">/statistics/stats</a>
+	</li>
 </div>
