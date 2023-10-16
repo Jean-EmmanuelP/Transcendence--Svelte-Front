@@ -16,15 +16,15 @@
 </script>
 
 <div class="flex flex-col h-full w-full">
-	<div class="w-full h-[53%] flex items-center flex-col mt-2">
-		<img src={user.avatar} class="rounded-full w-48 h-48 mb-2 shadow-md" alt="avatar picture" />
+	<div class="w-full h-[40%] border border-black flex items-center flex-col mt-2">
+		<img src={user.avatar} class="rounded-full w-28 h-28 mb-2 shadow-md" alt="avatar picture" />
 		<h1 class="font-bold">{user.status}</h1>
 		<div class="flex w-full flex flex-col items-center justify-center mt-2">
 			<p class="font-medium">Level 7</p>
 			<Progress progress="30" />
 		</div>
 	</div>
-	<div class="w-full h-[47%] flex flex-row items-center justify-center gap-5">
+	<div class="w-full h-[60%] flex flex-row justify-center gap-5">
 		<GameStats />
 		<AchievmentsStats />
 	</div>
