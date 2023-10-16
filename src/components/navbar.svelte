@@ -1,22 +1,23 @@
 <script lang="ts">
-	import { onDestroy } from "svelte";
-	import { onMount } from "svelte";
-	import { authentication, type AuthenticationType } from "../stores/authentication";
+	import { onDestroy } from 'svelte';
+	import { modalOpen } from '../stores/modal';
+	import { authentication, type AuthenticationType } from '../stores/authentication';
+	import { fly } from 'svelte/transition';
+	import ModalWrapper from '$components/modal_wrapper.svelte';
 
-	let showModal = false;
 	let user: AuthenticationType;
 	const unsubscribe = authentication.subscribe((value) => {
 		user = value;
-	})
+	});
 	onDestroy(unsubscribe);
-	import { fly } from 'svelte/transition';
-	export let menuOpen = false;
 
-	function toggleMenu(event: MouseEvent) {
-		menuOpen = !menuOpen;
-		event.stopPropagation();
+	function toggleModal() {
+		if ($modalOpen) {
+			modalOpen.set(null);
+		} else {
+			modalOpen.set('userMenu')
+		}
 	}
-	
 </script>
 
 <header class="bg-white shadow-sm lg:static lg:overflow-y-visible">
@@ -134,17 +135,12 @@
 							type="button"
 							class="relative flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 							id="user-menu-button"
-							aria-expanded={menuOpen}
 							aria-haspopup="true"
-							on:click={toggleMenu}
+							on:click={toggleModal}
 						>
 							<span class="absolute -inset-1.5" />
 							<span class="sr-only">Open user menu</span>
-							<img
-								class="h-8 w-8 rounded-full"
-								src={user.avatar}
-								alt=""
-							/>
+							<img class="h-8 w-8 rounded-full" src={user.avatar} alt="" />
 						</button>
 					</div>
 
@@ -158,16 +154,13 @@
                 From: "transform opacity-100 scale-100"
                 To: "transform opacity-0 scale-95"
             -->
-					{#if menuOpen}
+					<ModalWrapper bind:isOpen={$modalOpen === 'userMenu'}>
 						<div
 							class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
 							role="menu"
 							aria-orientation="vertical"
 							aria-labelledby="user-menu-button"
 							tabindex="-1"
-							on:click={toggleMenu}
-							in:fly={{ y: 20, duration: 300 }}
-							out:fly={{ y: -20, duration: 300 }}
 						>
 							<a
 								href="/profile"
@@ -191,7 +184,7 @@
 								id="user-menu-item-2">Sign out</a
 							>
 						</div>
-					{/if}
+					</ModalWrapper>
 				</div>
 			</div>
 		</div>
