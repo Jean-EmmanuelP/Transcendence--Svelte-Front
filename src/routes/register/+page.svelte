@@ -35,7 +35,7 @@
 				const response = await AuthServices.register(values);
 				if (Cookies.get('access_token')) Cookies.remove('access_token');
 				Cookies.set('access_token', response.accessToken, { expires: 1 });
-				goto('/home');
+				goto('/');
 			} catch (error) {
 				serverError.set(error.statusText);
 				loading.set(false);
