@@ -59,17 +59,6 @@
 	}
 
 	async function handleActivate2FA() {
-		// 		loginCredentials: async (email: string, password: string): Promise<any> => {
-		//     try {
-		//       const response = await API.post("/auth/loginCredentials", {
-		//         email,
-		//         password
-		//       });
-		//       return response;
-		//     } catch (error) {
-		//       return Promise.reject(error);
-		//     }
-		//   },
 		try {
 			if (!enabled) {
 				const response = await API.post('/auth/enable-two-factor', {});
@@ -91,6 +80,10 @@
 			console.log(error);
 			alert('Une erreur est survenue. Veuillez reessayer.');
 		}
+	}
+
+	async function handleDeleteAccount() {
+		
 	}
 </script>
 
