@@ -11,13 +11,14 @@
 	let currentPassword = '';
 	let newPassword = '';
 	let confirmPassword = '';
-	let enabled = true;
+	let enabled: boolean;
 	let qrCodeUrl = null;
 
 	const onsubscribe = authentication.subscribe((value) => {
 		console.log('Subscribe', value);
 		user = value;
 		pseudo.update((val) => user.pseudo);
+		enabled = user.isTwoFactorEnabled;
 	});
 	onDestroy(onsubscribe);
 
@@ -278,7 +279,8 @@
 							/>
 						</button>
 						<span class="ml-3 text-sm" id="annual-billing-label">
-							<span class="font-medium text-gray-900">{enabled ? `Disable 2FA` : `Enable 2FA`}</span>
+							<span class="font-medium text-gray-900">{enabled ? `Disable 2FA` : `Enable 2FA`}</span
+							>
 						</span>
 					</div>
 				</div>
