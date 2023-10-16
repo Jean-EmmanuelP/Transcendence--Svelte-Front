@@ -21,7 +21,7 @@
 		<h1 class="font-bold">{user.status}</h1>
 		<div class="flex w-full flex flex-col items-center justify-center mt-2">
 			<p class="font-medium">Level 7</p>
-			<Progress progress="30" />
+			<Progress progress={30} />
 		</div>
 	</div>
 	<div class="w-full h-[60%] flex flex-row justify-center items-center gap-5">
