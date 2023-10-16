@@ -13,7 +13,7 @@
 </script>
 
 <div>
-	<h3 class="text-base font-semibold leading-6 text-gray-900">Achievments</h3>
+	<!-- <h3 class="text-base font-semibold leading-6 text-gray-900">Achievments</h3> -->
 	<dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
 		{#each achievments as achievment}
 			<div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">

@@ -15,8 +15,8 @@
 	// mutation
 </script>
 
-<div class="flex flex-col h-full w-full">
-	<div class="w-full h-[40%] border border-black flex items-center flex-col mt-2">
+<div class="flex flex-col h-full w-full gap-5">
+	<div class="w-full h-[40%] flex items-center flex-col mt-2">
 		<img src={user.avatar} class="rounded-full w-28 h-28 mb-2 shadow-md" alt="avatar picture" />
 		<h1 class="font-bold">{user.status}</h1>
 		<div class="flex w-full flex flex-col items-center justify-center mt-2">
@@ -24,7 +24,7 @@
 			<Progress progress="30" />
 		</div>
 	</div>
-	<div class="w-full h-[60%] flex flex-row justify-center gap-5">
+	<div class="w-full h-[60%] flex flex-row justify-center items-center gap-5">
 		<GameStats />
 		<AchievmentsStats />
 	</div>
