@@ -95,3 +95,19 @@ export const changeUserPassword = async (currentPassword: string, newPassword: s
 		throw new Error('Error changing user password');
 	}
 };
+
+export const deleteAccount = async () => {
+	try {
+		const response = await client.mutate({
+			mutation: gql`
+				mutation {
+					deleteAccount
+				}
+			`
+		});
+		return response.data.deleteAccount;
+	} catch (error) {
+		console.log(error);
+		throw new Error('Error deleting user account');
+	}
+};
