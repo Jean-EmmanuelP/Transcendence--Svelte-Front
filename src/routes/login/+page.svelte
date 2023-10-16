@@ -30,7 +30,7 @@
 					Cookies.remove("access_token");
 				Cookies.set("access_token", response.token, { expires: 1 });
 				authentication.setUser(response);
-				goto('/home')
+				goto('/')
 			} catch (error) {
 				serverError.set(error.statusText);
 				loading.set(false);

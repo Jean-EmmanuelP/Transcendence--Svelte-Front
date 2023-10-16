@@ -5,6 +5,7 @@
 	import { changeUserPassword } from '../services/gqlUser';
 	import { writable } from 'svelte/store';
 	import API from '../services/api';
+	import { goto } from '$app/navigation';
 
 	let pseudo = writable('');
 	let user: AuthenticationType;
@@ -61,6 +62,7 @@
 	async function handleDeleteAccount() {
 		try {
 			const response = await deleteAccount();
+			goto('/signout');
 			if (response) {
 				console.log(`Account has been deleted with success !`);
 			} else {
