@@ -4,6 +4,7 @@
 	import GameStats from '$components/statistics/game_stats.svelte';
 
 	import AchievmentsStats from '$components/statistics/achievments_stats.svelte';
+	import Progress from '$components/action_components/progress.svelte'
 
 	let user: AuthenticationType;
 	const onsubscribe = authentication.subscribe((value) => {
@@ -20,7 +21,7 @@
 		<h1 class="font-bold">{user.status}</h1>
 		<div class="flex w-full flex flex-col items-center justify-center mt-2">
 			<p class="font-medium">Level 7</p>
-			<div class="mt-2 rounded-md h-3 w-[60%] border border-gray-500/15 shadow-sm" />
+			<Progress progress=30 />
 		</div>
 	</div>
 	<div class="w-full h-[40%] flex flex-row">
