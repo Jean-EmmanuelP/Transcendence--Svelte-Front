@@ -91,12 +91,12 @@
 							<input
 								id="search"
 								name="search"
-								class="block w-full bg-[#F4F4F4] rounded-full pr-16 border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-500 focus:duration-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500/40 sm:text-sm sm:leading-6"
+								class="block w-full bg-[#F4F4F4] rounded-full pr-16 border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500/40 sm:text-sm sm:leading-6"
 								placeholder="Search"
 								type="search"
 							/>
 							<kbd
-								class="absolute inset-y-0 right-3 top-1/2 transform -translate-y-1/2 rounded border border-gray-200 px-1 font-sans text-[10px] text-gray-400"
+								class="absolute bg-white inset-y-0 right-3 top-1/2 transform -translate-y-1/2 rounded border border-gray-200 px-1 font-sans text-[10px] text-gray-400"
 								>⌘K</kbd
 							>
 						</div>
