@@ -5,7 +5,6 @@
 	import ModalWrapper from '$components/modal_wrapper.svelte';
 
 	let user: AuthenticationType;
-	let isUserMenuOpen = false;
 	let isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications';
 
 	const unsubscribe = authentication.subscribe((value) => {
