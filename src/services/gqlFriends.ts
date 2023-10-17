@@ -61,6 +61,7 @@ export const getPendingFriendRequests = async () => {
 						status
 						sender {
 							avatar
+							name
 						}
 					}
 				}

@@ -18,5 +18,6 @@ export interface Request {
 	status: string;
 	sender: {
 		avatar: string;
+        name: string;
 	};
 }
