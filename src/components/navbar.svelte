@@ -261,12 +261,22 @@
 			class="pl-4 overflow-y-auto absolute right-0 h-48 w-[250px] bg-white origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
 		>
 			<header class="pt-2 text-left">
-					<h1 class="font-medium text-[15px]">Notifications</h1>
-					<p class="text-gray-500 text-[13px]">Here are your friend requests</p>
+				<h1 class="font-medium text-[15px]">Notifications</h1>
+				<p class="text-gray-500 text-[13px]">Here are your friend requests</p>
 			</header>
 			<ul class="pt-2">
-				{#each {length: 30} as _, i}
-				<li class="border border-black mb-[2px] rounded-md p-2">{i + 1}</li>
+				{#each { length: 30 } as _, i}
+					<li class="flex w-full h-full border border-black mb-[2px] rounded-md p-2">
+						<p class="h-full w-2/3 border border-black">
+							{i + 1}
+						</p>
+						<div class="w-1/3 h-full border border-black gap-2 flex flex-row">
+							<button class="truncate w-1/2 p-1 bg-green-500 rounded-md text-[10px]">
+								Accept
+							</button>
+							<button class="truncate w-1/2 p-1 bg-red-500 rounded-md text-[10px]">Refuse</button>
+						</div>
+					</li>
 				{/each}
 			</ul>
 		</div>
