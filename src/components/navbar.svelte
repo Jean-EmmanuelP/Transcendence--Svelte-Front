@@ -5,9 +5,10 @@
 	import ModalWrapper from '$components/modal_wrapper.svelte';
 	import { getPendingFriendRequests } from '../services/gqlFriends';
 	import { onMount } from 'svelte';
+	import type Request from './notifications/request.svelte';
 
 	let user: AuthenticationType;
-	let pendingRequests = [];
+	let pendingRequests: Request[] = [];
 	let isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications';
 
 	const unsubscribe = authentication.subscribe((value) => {
@@ -31,6 +32,7 @@
 	async function loadPendingRequests() {
 		try {
 			pendingRequests = await getPendingFriendRequests();
+			console.log(`This is the pending Request : `, pendingRequests);
 		} catch (error) {
 			console.error(`Erreur lors du chargement des demandes d'amis`);
 		}
@@ -275,19 +277,25 @@
 				<p class="text-gray-500 text-[13px]">Here are your friend requests</p>
 			</header>
 			<ul class="overflow-y-auto h-[70%] w-full">
-				{#each { length: 30 } as _, i}
-					<li class="flex w-full h-1/3 mb-[5px] rounded-md p-2 border border-gray-600/70 shadow-sm">
-						<p class="h-full w-2/3">
-							{i + 1}
-						</p>
-						<div class="w-1/3 h-full gap-2 flex flex-row">
-							<button class="truncate w-1/2 p-1 bg-green-500 rounded-md text-[10px]">
-								Accept
-							</button>
-							<button class="truncate w-1/2 p-1 bg-red-500 rounded-md text-[10px]">Refuse</button>
-						</div>
-					</li>
-				{/each}
+				{#if pendingRequests.length > 1}
+					{#each pendingRequests as request}
+						<li
+							class="flex w-full h-1/3 mb-[5px] rounded-md p-2 border border-gray-600/70 shadow-sm"
+						>
+							<p class="h-full w-2/3">
+								{request}
+							</p>
+							<div class="w-1/3 h-full gap-2 flex flex-row">
+								<button class="truncate w-1/2 p-1 bg-green-500 rounded-md text-[10px]">
+									Accept
+								</button>
+								<button class="truncate w-1/2 p-1 bg-red-500 rounded-md text-[10px]">Refuse</button>
+							</div>
+						</li>
+					{/each}
+				{:else}
+					<p>Aucune demande d'ami</p>
+				{/if}
 			</ul>
 		</div>
 	{/if}
