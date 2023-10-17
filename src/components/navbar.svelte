@@ -3,8 +3,10 @@
 	import { modalOpen } from '../stores/modal';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
 	import ModalWrapper from '$components/modal_wrapper.svelte';
+	import { getPendingFriendRequests } from '../services/gqlFriends';
 
 	let user: AuthenticationType;
+	let pendingRequests = [];
 	let isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications';
 
 	const unsubscribe = authentication.subscribe((value) => {
@@ -22,6 +24,14 @@
 			modalOpen.set(null);
 		} else {
 			modalOpen.set(modalType);
+		}
+	}
+
+	async function loadPendingRequests() {
+		try {
+			pendingRequests = await getPendingFriendRequests();
+		} catch (error) {
+			console.error(`Erreur lors du chargement des demandes d'amis`);
 		}
 	}
 </script>
