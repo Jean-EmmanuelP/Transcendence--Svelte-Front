@@ -280,13 +280,13 @@
 				{#if pendingRequests.length > 1}
 					{#each pendingRequests as request}
 						<li
-							class="flex w-full h-1/3 mb-[5px] rounded-md p-2 border border-gray-600/70 shadow-sm"
+							class="flex w-full h-1/3 mb-[5px] rounded-md p-2 border-1 border-gray-400/90 shadow-sm"
 						>
-						<div class="h-full w-[20%]">
-								<img src={request.sender.avatar} class="w-7 h-7 rounded-md" alt="avatar">
+							<div class="h-full w-[20%]">
+								<img src={request.sender.avatar} class="w-7 h-7 rounded-md" alt="avatar" />
 							</div>
 							<p class="h-full w-[40%] truncate">
-								{(request.sender.name).split(" ")[0]}
+								{request.sender.name.split(' ')[0]}
 							</p>
 							<div class="w-[50%] h-full gap-2 flex flex-row">
 								<button class="truncate w-1/2 p-1 bg-green-500 rounded-md text-[10px]">
