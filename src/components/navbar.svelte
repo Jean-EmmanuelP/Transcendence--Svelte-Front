@@ -4,6 +4,7 @@
 	import { authentication, type AuthenticationType } from '../stores/authentication';
 	import ModalWrapper from '$components/modal_wrapper.svelte';
 	import { getPendingFriendRequests } from '../services/gqlFriends';
+	import { onMount } from 'svelte';
 
 	let user: AuthenticationType;
 	let pendingRequests = [];
@@ -26,7 +27,7 @@
 			modalOpen.set(modalType);
 		}
 	}
-
+	onMount(loadPendingRequests);
 	async function loadPendingRequests() {
 		try {
 			pendingRequests = await getPendingFriendRequests();
