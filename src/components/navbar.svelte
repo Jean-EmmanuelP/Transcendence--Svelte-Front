@@ -257,8 +257,11 @@
 			>
 		</div>
 		{:else if $modalOpen === 'notifications'}
-			<div class="absolute right-0 h-48 w-48 bg-white origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50">
-
+			<div class="absolute right-0 h-48 w-[250px] bg-white origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50">
+				<header class="pt-2 pl-4 text-left">
+					<h1 class="font-medium text-[15px]">Notifications</h1>
+					<p class="text-gray-500 text-[13px]">Here are your friend requests</p>
+				</header>
 			</div>
 	{/if}
 </ModalWrapper>
