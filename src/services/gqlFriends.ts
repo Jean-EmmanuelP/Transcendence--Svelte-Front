@@ -62,6 +62,7 @@ export const getPendingFriendRequests = async () => {
 						sender {
 							avatar
 							name
+							pseudo
 						}
 					}
 				}

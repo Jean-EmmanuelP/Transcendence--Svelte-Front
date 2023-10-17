@@ -19,5 +19,6 @@ export interface Request {
 	sender: {
 		avatar: string;
         name: string;
+		pseudo: string;
 	};
 }
