@@ -16,4 +16,7 @@ export interface Request {
 	senderId: string;
 	receiverId: string;
 	status: string;
+	sender: {
+		avatar: string;
+	};
 }
