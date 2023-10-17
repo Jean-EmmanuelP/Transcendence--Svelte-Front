@@ -59,6 +59,9 @@ export const getPendingFriendRequests = async () => {
 						senderId
 						receiverId
 						status
+						sender {
+							avatar
+						}
 					}
 				}
 			`
