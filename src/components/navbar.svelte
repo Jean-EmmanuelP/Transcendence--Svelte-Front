@@ -289,10 +289,10 @@
 								{request.sender.name.split(' ')[0]}
 							</p>
 							<div class="w-[50%] h-full gap-2 flex flex-row">
-								<button class="truncate w-1/2 p-1 bg-green-500 rounded-md text-[10px]">
+								<button class="truncate w-1/2 p-1 bg-green-500 hover:bg-green-600 rounded-md text-[10px]">
 									Accept
 								</button>
-								<button class="truncate w-1/2 p-1 bg-red-500 rounded-md text-[10px]">Refuse</button>
+								<button class="truncate w-1/2 p-1 bg-red-500 hover:bg-red-600 rounded-md text-[10px]">Refuse</button>
 							</div>
 						</li>
 					{/each}
