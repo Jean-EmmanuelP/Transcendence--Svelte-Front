@@ -6,22 +6,23 @@
 
 	let user: AuthenticationType;
 	let isUserMenuOpen = false;
-	
+	let isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications';
+
 	const unsubscribe = authentication.subscribe((value) => {
 		user = value;
 	});
 	onDestroy(unsubscribe);
 
-	$: isUserMenuOpen = $modalOpen === 'userMenu';
-	$: if (!isUserMenuOpen && $modalOpen === 'userMenu') {
+	$: isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications'
+	$: if (!isModalOpen && $modalOpen !== null) {
 		modalOpen.set(null);
 	}
 
-	function toggleModal() {
+	function toggleModal(modalType: string) {
 		if ($modalOpen) {
 			modalOpen.set(null);
 		} else {
-			modalOpen.set('userMenu');
+			modalOpen.set(modalType);
 		}
 	}
 </script>
@@ -115,6 +116,7 @@
 				<button
 					type="button"
 					class="relative ml-5 flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+					on:click={() => toggleModal('notifications')}
 				>
 					<span class="absolute -inset-1.5" />
 					<span class="sr-only">View notifications</span>
@@ -142,45 +144,13 @@
 							class="relative flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 							id="user-menu-button"
 							aria-haspopup="true"
-							on:click={toggleModal}
+							on:click={() => toggleModal('userMenu')}
 						>
 							<span class="absolute -inset-1.5" />
 							<span class="sr-only">Open user menu</span>
 							<img class="h-8 w-8 rounded-full" src={user.avatar} alt="" />
 						</button>
 					</div>
-
-					<ModalWrapper bind:isOpen={isUserMenuOpen}>
-						<div
-							class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-							role="menu"
-							aria-orientation="vertical"
-							aria-labelledby="user-menu-button"
-							tabindex="-1"
-						>
-							<a
-								href="/profile"
-								class="block px-4 py-2 text-sm text-gray-700"
-								role="menuitem"
-								tabindex="-1"
-								id="user-menu-item-0">Profile</a
-							>
-							<a
-								href="/settings"
-								class="block px-4 py-2 text-sm text-gray-700"
-								role="menuitem"
-								tabindex="-1"
-								id="user-menu-item-1">Settings</a
-							>
-							<a
-								href="/signout"
-								class="block px-4 py-2 text-sm text-gray-700"
-								role="menuitem"
-								tabindex="-1"
-								id="user-menu-item-2">Sign out</a
-							>
-						</div>
-					</ModalWrapper>
 				</div>
 			</div>
 		</div>
@@ -255,3 +225,34 @@
 		</div>
 	</nav>
 </header>
+<ModalWrapper bind:isOpen={isUserMenuOpen}>
+	<div
+		class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+		role="menu"
+		aria-orientation="vertical"
+		aria-labelledby="user-menu-button"
+		tabindex="-1"
+	>
+		<a
+			href="/profile"
+			class="block px-4 py-2 text-sm text-gray-700"
+			role="menuitem"
+			tabindex="-1"
+			id="user-menu-item-0">Profile</a
+		>
+		<a
+			href="/settings"
+			class="block px-4 py-2 text-sm text-gray-700"
+			role="menuitem"
+			tabindex="-1"
+			id="user-menu-item-1">Settings</a
+		>
+		<a
+			href="/signout"
+			class="block px-4 py-2 text-sm text-gray-700"
+			role="menuitem"
+			tabindex="-1"
+			id="user-menu-item-2">Sign out</a
+		>
+	</div>
+</ModalWrapper>
