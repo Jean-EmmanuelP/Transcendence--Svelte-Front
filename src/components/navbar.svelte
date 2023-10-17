@@ -95,10 +95,6 @@
 								placeholder="Search"
 								type="search"
 							/>
-							<kbd
-								class="absolute bg-white inset-y-0 right-3 top-1/2 transform -translate-y-1/2 rounded border border-gray-200 px-1 font-sans text-[10px] text-gray-400"
-								>⌘K</kbd
-							>
 						</div>
 					</div>
 				</div>
