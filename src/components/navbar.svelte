@@ -3,7 +3,11 @@
 	import { modalOpen } from '../stores/modal';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
 	import ModalWrapper from '$components/modal_wrapper.svelte';
-	import { getPendingFriendRequests, rejectFriendRequest, acceptFriendRequest } from '../services/gqlFriends';
+	import {
+		getPendingFriendRequests,
+		rejectFriendRequest,
+		acceptFriendRequest
+	} from '../services/gqlFriends';
 	import { onMount } from 'svelte';
 	import type Request from './notifications/request.svelte';
 
@@ -48,7 +52,7 @@
 
 	async function handleRefuseFriendRequest(pseudo: string) {
 		try {
-			await rejectFriendRequest(pseudo);			
+			await rejectFriendRequest(pseudo);
 		} catch (error) {
 			console.error(`Error during the mutation reject friend request`);
 		}
@@ -305,10 +309,17 @@
 								{request.sender.name.split(' ')[0]}
 							</p>
 							<div class="w-[50%] h-full gap-2 flex flex-row">
-								<button on:click={() => handleAcceptFriendRequest(request.sender.pseudo)}  class="truncate w-1/2 p-1 bg-green-500 hover:bg-green-600 rounded-md text-[10px]">
+								<button
+									on:click={() => handleAcceptFriendRequest(request.sender.pseudo)}
+									class="truncate w-1/2 p-1 bg-green-500 hover:bg-green-600 rounded-md text-[10px]"
+								>
 									Accept
 								</button>
-								<button  on:click={() => handleRefuseFriendRequest(request.sender.pseudo)} class="truncate w-1/2 p-1 bg-red-500 hover:bg-red-600 rounded-md text-[10px]">Refuse</button>
+								<button
+									on:click={() => handleRefuseFriendRequest(request.sender.pseudo)}
+									class="truncate w-1/2 p-1 bg-red-500 hover:bg-red-600 rounded-md text-[10px]"
+									>Refuse</button
+								>
 							</div>
 						</li>
 					{/each}
