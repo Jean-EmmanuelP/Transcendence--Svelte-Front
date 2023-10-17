@@ -69,7 +69,7 @@ export const getPendingFriendRequests = async () => {
 		});
 		return response.data.getPendingSentFriendRequests;
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 		throw new Error('Error fetching user information');
 	}
 };
@@ -88,7 +88,7 @@ export const acceptFriendRequest = async (pseudo: string) => {
 		});
 		return response.data.acceptFriendRequest;
 	} catch (error) {
-		console.log(error);
+		console.error(error.message);
 		throw new Error('Error during the acceptFriendRequest');
 	}
 };
@@ -107,7 +107,7 @@ export const rejectFriendRequest = async (pseudo: string) => {
 		});
 		return response.data.rejectFriendRequest;
 	} catch (error) {
-		console.log(error);
+		console.log(error.message);
 		throw new Error('Error during the rejectFriendRequest');
 	}
 };

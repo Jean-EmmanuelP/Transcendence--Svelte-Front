@@ -44,7 +44,9 @@
 
 	async function handleAcceptFriendRequest(pseudo: string) {
 		try {
-			await acceptFriendRequest(pseudo);
+			console.log(`It went here`, pseudo);
+			const methodAcceptFriendRequest = await acceptFriendRequest(pseudo);
+			console.log(methodAcceptFriendRequest);
 		} catch (error) {
 			console.error(`Error during the mutation accept friend request`);
 		}
@@ -52,7 +54,9 @@
 
 	async function handleRefuseFriendRequest(pseudo: string) {
 		try {
-			await rejectFriendRequest(pseudo);
+			console.log(`It went here`, pseudo);
+			const methodRejectFriendRequest = await rejectFriendRequest(pseudo);
+			console.log(methodRejectFriendRequest);
 		} catch (error) {
 			console.error(`Error during the mutation reject friend request`);
 		}
@@ -87,12 +91,12 @@
 							<input
 								id="search"
 								name="search"
-								class="block w-full rounded-md pr-16 border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+								class="block w-full rounded-full pr-16 border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
 								placeholder="Search"
 								type="search"
 							/>
 							<kbd
-								class="absolute inset-y-0 right-3 top-1/2 transform -translate-y-1/2 rounded border border-gray-200 px-1 font-sans text-xs text-gray-400"
+								class="absolute inset-y-0 right-3 top-1/2 transform -translate-y-1/2 rounded border border-gray-200 px-1 font-sans text-[10px] text-gray-400"
 								>⌘K</kbd
 							>
 						</div>
