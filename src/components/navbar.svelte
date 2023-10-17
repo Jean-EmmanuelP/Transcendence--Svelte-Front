@@ -258,15 +258,15 @@
 		</div>
 	{:else if $modalOpen === 'notifications'}
 		<div
-			class="pl-4 overflow-y-auto absolute right-0 h-48 w-[250px] bg-white origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
+			class="pl-4 absolute overflow-hidden right-0 h-48 w-[250px] bg-white origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
 		>
-			<header class="pt-2 text-left">
+			<header class="pt-2 text-left h-[30%] w-full">
 				<h1 class="font-medium text-[15px]">Notifications</h1>
 				<p class="text-gray-500 text-[13px]">Here are your friend requests</p>
 			</header>
-			<ul class="pt-2">
+			<ul class="pt-2 overflow-y-auto h-[70%] w-full">
 				{#each { length: 30 } as _, i}
-					<li class="flex w-full h-full border border-black mb-[2px] rounded-md p-2">
+					<li class="flex w-full h-1/3 border border-black mb-[2px] rounded-md p-2">
 						<p class="h-full w-2/3 border border-black">
 							{i + 1}
 						</p>
