@@ -42,15 +42,15 @@
 		try {
 			await acceptFriendRequest(pseudo);
 		} catch (error) {
-
+			console.error(`Error during the mutation accept friend request`);
 		}
 	}
 
 	async function handleRefuseFriendRequest(pseudo: string) {
 		try {
-			
+			await rejectFriendRequest(pseudo);			
 		} catch (error) {
-
+			console.error(`Error during the mutation reject friend request`);
 		}
 	}
 </script>
@@ -305,10 +305,10 @@
 								{request.sender.name.split(' ')[0]}
 							</p>
 							<div class="w-[50%] h-full gap-2 flex flex-row">
-								<button on:click={() => acceptFriendRequest(request.sender.pseudo)}  class="truncate w-1/2 p-1 bg-green-500 hover:bg-green-600 rounded-md text-[10px]">
+								<button on:click={() => handleAcceptFriendRequest(request.sender.pseudo)}  class="truncate w-1/2 p-1 bg-green-500 hover:bg-green-600 rounded-md text-[10px]">
 									Accept
 								</button>
-								<button  on:click={() => refuseFriendRequest(request.sender.pseudo)} class="truncate w-1/2 p-1 bg-red-500 hover:bg-red-600 rounded-md text-[10px]">Refuse</button>
+								<button  on:click={() => handleRefuseFriendRequest(request.sender.pseudo)} class="truncate w-1/2 p-1 bg-red-500 hover:bg-red-600 rounded-md text-[10px]">Refuse</button>
 							</div>
 						</li>
 					{/each}
