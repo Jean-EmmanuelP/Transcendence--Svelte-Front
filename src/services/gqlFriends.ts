@@ -1,7 +1,6 @@
 import client from './apolloClient';
 import { gql } from '@apollo/client/core/index.js';
 
-
 export const getUsers = async () => {
 	try {
 		const response = await client.query({
@@ -72,6 +71,44 @@ export const getPendingFriendRequests = async () => {
 	} catch (error) {
 		console.log(error);
 		throw new Error('Error fetching user information');
+	}
+};
+
+export const acceptFriendRequest = async (pseudo: string) => {
+	try {
+		const response = await client.mutate({
+			mutation: gql`
+				mutation acceptFriendRequest($pseudo: String!) {
+					acceptFriendRequest(senderPseudo: $pseudo)
+				}
+			`,
+			variables: {
+				pseudo: pseudo
+			}
+		});
+		return response.data.acceptFriendRequest;
+	} catch (error) {
+		console.log(error);
+		throw new Error('Error during the acceptFriendRequest');
+	}
+};
+
+export const rejectFriendRequest = async (pseudo: string) => {
+	try {
+		const response = await client.mutate({
+			mutation: gql`
+				mutation rejectFriendRequest($pseudo: String!) {
+					rejectFriendRequest(senderPseudo: $pseudo)
+				}
+			`,
+			variables: {
+				pseudo: pseudo
+			}
+		});
+		return response.data.rejectFriendRequest;
+	} catch (error) {
+		console.log(error);
+		throw new Error('Error during the rejectFriendRequest');
 	}
 };
 

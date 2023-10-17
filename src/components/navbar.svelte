@@ -3,7 +3,7 @@
 	import { modalOpen } from '../stores/modal';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
 	import ModalWrapper from '$components/modal_wrapper.svelte';
-	import { getPendingFriendRequests } from '../services/gqlFriends';
+	import { getPendingFriendRequests, rejectFriendRequest, acceptFriendRequest } from '../services/gqlFriends';
 	import { onMount } from 'svelte';
 	import type Request from './notifications/request.svelte';
 
@@ -35,6 +35,22 @@
 			console.log(`This is the pending Request : `, pendingRequests);
 		} catch (error) {
 			console.error(`Erreur lors du chargement des demandes d'amis`);
+		}
+	}
+
+	async function handleAcceptFriendRequest(pseudo: string) {
+		try {
+			await acceptFriendRequest(pseudo);
+		} catch (error) {
+
+		}
+	}
+
+	async function handleRefuseFriendRequest(pseudo: string) {
+		try {
+			
+		} catch (error) {
+
 		}
 	}
 </script>
@@ -289,10 +305,10 @@
 								{request.sender.name.split(' ')[0]}
 							</p>
 							<div class="w-[50%] h-full gap-2 flex flex-row">
-								<button class="truncate w-1/2 p-1 bg-green-500 hover:bg-green-600 rounded-md text-[10px]">
+								<button on:click={() => acceptFriendRequest(request.sender.pseudo)}  class="truncate w-1/2 p-1 bg-green-500 hover:bg-green-600 rounded-md text-[10px]">
 									Accept
 								</button>
-								<button class="truncate w-1/2 p-1 bg-red-500 hover:bg-red-600 rounded-md text-[10px]">Refuse</button>
+								<button  on:click={() => refuseFriendRequest(request.sender.pseudo)} class="truncate w-1/2 p-1 bg-red-500 hover:bg-red-600 rounded-md text-[10px]">Refuse</button>
 							</div>
 						</li>
 					{/each}
