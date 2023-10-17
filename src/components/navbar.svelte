@@ -264,13 +264,13 @@
 				<h1 class="font-medium text-[15px]">Notifications</h1>
 				<p class="text-gray-500 text-[13px]">Here are your friend requests</p>
 			</header>
-			<ul class="pt-2 overflow-y-auto h-[70%] w-full">
+			<ul class="overflow-y-auto h-[70%] w-full">
 				{#each { length: 30 } as _, i}
-					<li class="flex w-full h-1/3 border border-black mb-[2px] rounded-md p-2">
-						<p class="h-full w-2/3 border border-black">
+					<li class="flex w-full h-1/3 mb-[5px] rounded-md p-2 border border-gray-600/70 shadow-sm">
+						<p class="h-full w-2/3">
 							{i + 1}
 						</p>
-						<div class="w-1/3 h-full border border-black gap-2 flex flex-row">
+						<div class="w-1/3 h-full gap-2 flex flex-row">
 							<button class="truncate w-1/2 p-1 bg-green-500 rounded-md text-[10px]">
 								Accept
 							</button>
