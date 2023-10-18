@@ -5,11 +5,22 @@
 	import Progress from '$components/action_components/progress.svelte';
 	import type { searchUser } from '../interfaces/types';
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
+	import { authentication, type AuthenticationType } from '../stores/authentication';
 
 	let isLoading = true;
 	let isError = false;
 	let userPseudo = $page.params.pseudo;
+	let isCurrentUserProfile: boolean = false;
+	let userStore: AuthenticationType;
+	const unsubscribe = authentication.subscribe((value) => {
+		userStore = value;
+	})
+	onDestroy(unsubscribe);
+
+	$: {
+		isCurrentUserProfile = $userPseudoStore === userPseudo;
+	}
 	$: {
 		userPseudo = $page.params.pseudo;
 		getUserInformation(userPseudo);
@@ -48,7 +59,6 @@
 		</div>
 	</div>
 {/if}
-
 
 <!--
 	1. dire que si le store pseudo === a le fetch de ton userinformation alors ca veut dire
