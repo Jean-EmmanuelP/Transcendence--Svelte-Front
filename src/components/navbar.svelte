@@ -131,6 +131,7 @@
 								class="block w-full bg-[#F4F4F4] rounded-full pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500/40 sm:text-sm sm:leading-6"
 								placeholder="Search users"
 								type="search"
+								autocomplete="off"
 								bind:value={term}
 								on:focus={handleInputFocus}
 								on:input={handleSearch}
