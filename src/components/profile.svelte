@@ -48,3 +48,11 @@
 		</div>
 	</div>
 {/if}
+
+
+<!--
+	1. dire que si le store pseudo === a le fetch de ton userinformation alors ca veut dire
+	que tu es sur ton profile et donc que tu ne veux pas afficher le fait que tu vas tenvoyer un message
+
+	2. sinon, envoyer le sendfriendrequest via appolo client et 
+-->
