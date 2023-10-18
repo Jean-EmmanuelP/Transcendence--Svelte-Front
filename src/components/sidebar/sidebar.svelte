@@ -166,7 +166,7 @@
 						>
 							<img
 								src={user.avatar}
-								class="rounded-full shadow-sm h-6 w-6 shrink-0 text-black group-hover:text-black"
+								class={`rounded-full ${$activePage === 'profile' && `border-[2.8px] border-black`} shadow-sm h-6 w-6 shrink-0 text-black group-hover:text-black`}
 								alt={user.name}
 							/>
 
