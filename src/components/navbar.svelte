@@ -145,7 +145,10 @@
 									{#each users as user (user.id)}
 										<div
 											class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10"
-											on:click={() => goto(`/profile/${user.pseudo}`)}
+											on:click={() => {
+												goto(`/profile/${user.pseudo}`);
+												isDropdownOpen = false;
+											}}
 										>
 											<div class="h-full w-[30%]">
 												<OnlineUserImg avatar={user.avatar} status={user.status} />
