@@ -62,7 +62,7 @@
 				<p class="font-medium">Level 7</p>
 				<Progress progress={30} />
 				{#if !isCurrentUserProfile}
-					<button on:click={handleSendFriendRequest}>Send Friend Request</button>
+					<button on:click={handleSendFriendRequest} class="p-2 mt-4 rounded-md bg-red-400 text-white font-medium shadow-md hover:bg-red-500 transition duration-150 ease-linear" >Send Friend Request</button>
 				{/if}
 			</div>
 		</div>

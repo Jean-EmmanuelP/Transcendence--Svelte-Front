@@ -126,7 +126,6 @@ export const sendFriendRequest = async (pseudo: string) => {
 		});
 		return response.data.sendFriendRequest;
 	} catch (error) {
-		console.log(error);
 		throw new Error('Error updating user pseudo');
 	}
 };
