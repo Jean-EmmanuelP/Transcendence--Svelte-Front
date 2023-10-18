@@ -10,6 +10,7 @@
 	let isLoading = true;
 	let isError = false;
 	const userPseudo = $page.params.pseudo;
+	$: console.log(userPseudo)
 	let user: searchUser;
 	onMount(() => getUserInformation(userPseudo));
 	async function getUserInformation(userPseudo: string) {
