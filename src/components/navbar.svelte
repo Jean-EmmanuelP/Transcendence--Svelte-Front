@@ -119,7 +119,7 @@
 									class="bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 z-20 p-2 flex flex-col gap-2"
 								>
 									{#each users as user (user.id)}
-										<div class="flex ring-1 ring-gray-500/5 shadow-sm rounded-md p-2 w-full h-full gap-2">
+										<div class="flex p-2 w-full h-full gap-2 rounded-md hover:bg-gray-400/10">
 											<div class="h-full w-[30%]">
 												<img src={user.avatar}  class="h-11 w-11 rounded-md" alt="user avatar" />
 											</div>
