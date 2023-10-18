@@ -67,7 +67,7 @@
 								/></svg
 							>
 							{#if sidebaricon === 'normal'}
-								<p>Dashboard</p>
+								<p class="text-[16px] font-normal">Dashboard</p>
 							{/if}
 						</a>
 					</li>
@@ -110,7 +110,7 @@
 								/></svg
 							>
 							{#if sidebaricon === 'normal'}
-								<p>Messages</p>
+								<p class="text-[16px] font-normal">Messages</p>
 							{/if}
 						</a>
 					</li>
@@ -133,7 +133,7 @@
 							/>
 
 							{#if sidebaricon === 'normal'}
-								<p>Profile</p>
+								<p class="text-[16px] font-normal">Profile</p>
 							{/if}
 						</a>
 					</li>
