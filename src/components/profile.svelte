@@ -11,7 +11,10 @@
 	let isError = false;
 	let userPseudo = $page.params.pseudo;
 	$: userPseudo = $page.params.pseudo;
-	$: console.log(userPseudo);
+	$: {
+		console.log(userPseudo);
+		getUserInformation(userPseudo);
+	}
 	let user: searchUser;
 	onMount(() => getUserInformation(userPseudo));
 	async function getUserInformation(userPseudo: string) {
