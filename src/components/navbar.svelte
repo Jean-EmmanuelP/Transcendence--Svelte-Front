@@ -18,6 +18,7 @@
 	let isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications';
 	let term = '';
 	let users: searchUser[] = [];
+	let isDropdownOpen: boolean = false;
 
 	const unsubscribe = authentication.subscribe((value) => {
 		user = value;
@@ -47,6 +48,7 @@
 			modalOpen.set(null);
 		} else {
 			modalOpen.set(modalType);
+			console.log(`modalOpen === `, $modalOpen);
 		}
 	}
 	onMount(loadPendingRequests);
@@ -78,6 +80,24 @@
 			console.error(`Error during the mutation reject friend request`);
 		}
 	}
+
+	function handleInputFocus() {
+		isDropdownOpen = true;
+	}
+
+	function handleClickOutside(event: Event) {
+		const target = event.target as HTMLElement;
+		if (target.closest('#search') && !target.closest('.dropdown-menu')) {
+			isDropdownOpen = false;
+		}
+	}
+
+	onMount(() => {
+		document.addEventListener('click', handleClickOutside);
+		return () => {
+			document.removeEventListener('click', handleClickOutside);
+		};
+	});
 </script>
 
 <header class="bg-white shadow-sm ring-1 ring-gray-200/20 lg:static lg:overflow-y-visible">
@@ -111,7 +131,6 @@
 								class="block w-full bg-[#F4F4F4] rounded-full pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500/40 sm:text-sm sm:leading-6"
 								placeholder="Search users"
 								type="search"
-								on:click={() => toggleModal('searchbar')}
 								bind:value={term}
 								on:input={handleSearch}
 							/>
