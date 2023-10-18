@@ -115,9 +115,9 @@
 								on:input={handleSearch}
 							/>
 							{#if users.length}
-								<div class="bg-white">
+								<div class="bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 z-20 p-2 flex flex-col gap-2">
 									{#each users as user (user.id)}
-										<div>
+										<div class="ring-1 ring-gray-500/5 shadow-sm rounded-md p-2">
 											{user.name} ({user.pseudo})
 										</div>
 									{/each}
