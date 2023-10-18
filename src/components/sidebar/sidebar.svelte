@@ -2,9 +2,16 @@
 	import { goto } from '$app/navigation';
 	import { userInformation } from '../../services/gqlUser';
 	import { activePage } from '../../stores/currentNavigation';
-
+	import { authentication, type AuthenticationType } from '../../stores/authentication';
+	import { onDestroy } from 'svelte';
 	export let sidebaricon: 'normal' | 'icon' = 'normal';
 
+	let user: AuthenticationType;
+	const unsubscribe = authentication.subscribe((value) => {
+		user = value;
+	});
+	onDestroy(unsubscribe);
+	
 	function setActivePage(page: string) {
 		activePage.set(page);
 	}
@@ -37,7 +44,9 @@
 							}}
 							class={`${
 								$activePage === 'dashboard' ? `bg-indigo-700 text-white` : ''
-							} text-indigo-200 hover:text-white hover:bg-indigo-700 group flex ${sidebaricon === 'icon' && 'items-center justify-center'} gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
+							} text-indigo-200 hover:text-white hover:bg-indigo-700 group flex ${
+								sidebaricon === 'icon' && 'items-center justify-center'
+							} gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
 							<svg
 								class="h-6 w-6 shrink-0 text-white"
@@ -66,7 +75,9 @@
 							}}
 							class={`${
 								$activePage === 'messages' ? `bg-indigo-700 text-white` : ''
-							} text-indigo-200 hover:text-white hover:bg-indigo-700 group flex ${sidebaricon === 'icon' && 'items-center justify-center'} gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
+							} text-indigo-200 hover:text-white hover:bg-indigo-700 group flex ${
+								sidebaricon === 'icon' && 'items-center justify-center'
+							} gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
 							<svg
 								class="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
@@ -95,7 +106,9 @@
 							}}
 							class={`${
 								$activePage === 'profile' ? `bg-indigo-700 text-white` : ''
-							} text-indigo-200 hover:text-white hover:bg-indigo-700 group gap-x-3 flex ${sidebaricon === 'icon' && 'items-center justify-center'} rounded-md p-2 text-sm leading-6 font-semibold`}
+							} text-indigo-200 hover:text-white hover:bg-indigo-700 group gap-x-3 flex ${
+								sidebaricon === 'icon' && 'items-center justify-center'
+							} rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
 							<svg
 								class="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
