@@ -128,7 +128,7 @@
 						>
 							<img
 								src={user.avatar}
-								class="rounded-full h-6 w-6 shrink-0 text-black group-hover:text-black"
+								class="rounded-full shadow-sm h-6 w-6 shrink-0 text-black group-hover:text-black"
 								alt={user.name}
 							/>
 
