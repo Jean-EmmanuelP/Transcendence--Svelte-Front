@@ -45,8 +45,8 @@
 		}
 	}
 
-	function navigateToUserProfile(userId: string) {
-		goto(`/profile/${userId}`);
+	function navigateToUserProfile(user: searchUser) {
+		
 	}
 
 	function toggleModal(modalType: string) {
@@ -149,7 +149,7 @@
 									{#each users as user (user.id)}
 										<div
 											class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10"
-											on:click={() => navigateToUserProfile(user.id)}
+											on:click={() => navigateToUserProfile(user)}
 										>
 											<div class="h-full w-[30%]">
 												<OnlineUserImg avatar={user.avatar} status={user.status} />
@@ -333,7 +333,7 @@
 			tabindex="-1"
 		>
 			<a
-				href="/profile"
+				href={`/profile/${user.pseudo}`}
 				class="block px-4 py-2 text-sm text-gray-700"
 				role="menuitem"
 				tabindex="-1"
