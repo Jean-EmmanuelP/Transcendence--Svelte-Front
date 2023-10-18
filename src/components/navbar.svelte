@@ -115,10 +115,15 @@
 								on:input={handleSearch}
 							/>
 							{#if users.length}
-								<div class="bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 z-20 p-2 flex flex-col gap-2">
+								<div
+									class="bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 z-20 p-2 flex flex-col gap-2"
+								>
 									{#each users as user (user.id)}
-										<div class="ring-1 ring-gray-500/5 shadow-sm rounded-md p-2">
-											{user.name} ({user.pseudo})
+										<div class="flex ring-1 ring-gray-500/5 shadow-sm rounded-md p-2 w-full h-full gap-2">
+											<div class="h-full w-[30%]">
+												<img src={user.avatar}  class="h-11 w-11 rounded-md" alt="user avatar" />
+											</div>
+											<p class="w-[70%] h-full">{user.name.split(' ')[0]}</p>
 										</div>
 									{/each}
 								</div>
