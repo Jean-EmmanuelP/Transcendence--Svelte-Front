@@ -266,14 +266,14 @@
 					<div>
 						<button
 							type="button"
-							class="relative flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+							class="relative flex rounded-full bg-white focus:ring-offset-2"
 							id="user-menu-button"
 							aria-haspopup="true"
 							on:click={() => toggleModal('userMenu')}
 						>
 							<span class="absolute -inset-1.5" />
 							<span class="sr-only">Open user menu</span>
-							<img class="h-8 w-8 rounded-full" src={user.avatar} alt="" />
+							<img class={`h-8 w-8 rounded-full ${$modalOpen === 'userMenu' && `border-[2.3px] border-black`}`} src={user.avatar} alt="" />
 						</button>
 					</div>
 				</div>
