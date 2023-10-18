@@ -4,6 +4,7 @@
 	import { authentication, type AuthenticationType } from '../stores/authentication';
 	import ModalWrapper from '$components/modal_wrapper.svelte';
 	import OnlineUserImg from './action_components/online-user.svelte';
+	import { goto } from '$app/navigation';
 	import {
 		getPendingFriendRequests,
 		rejectFriendRequest,
@@ -42,6 +43,10 @@
 		} catch (error) {
 			console.error('Error fetchnig the user', error);
 		}
+	}
+
+	function navigateToUserProfile(userId: string) {
+		goto(`/profile/${userId}`);
 	}
 
 	function toggleModal(modalType: string) {
