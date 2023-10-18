@@ -16,7 +16,9 @@
 		activePage.set(page);
 	}
 </script>
-
+<!--
+	bg-white-s : must remove this one after the UI/UX is done
+-->
 <div class="flex flex-grow flex-col gap-y-5 overflow-y-auto bg-white-600 px-6 h-full w-full">
 	<div class="flex h-16 shrink-0 items-center">
 		<button
@@ -36,15 +38,15 @@
 			<li>
 				<ul role="list" class="-mx-2 space-y-1">
 					<li>
-						<!-- Current: "bg-blue-500 text-black", Default: "text-black hover:text-black hover:bg-blue-500" -->
+						<!-- Current: "bg-white-s text-black", Default: "text-black hover:text-black hover:bg-white-s" -->
 						<a
 							on:click={() => {
 								setActivePage('dashboard');
 								goto('/');
 							}}
 							class={`${
-								$activePage === 'dashboard' ? `bg-blue-500 text-black` : ''
-							} text-black hover:text-black hover:bg-blue-500 group flex ${
+								$activePage === 'dashboard' ? `bg-white-s text-black` : ''
+							} text-black hover:text-black hover:bg-white-s group flex ${
 								sidebaricon === 'icon' && 'items-center justify-center'
 							} gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
@@ -74,8 +76,8 @@
 								goto('/messages');
 							}}
 							class={`${
-								$activePage === 'messages' ? `bg-blue-500 text-black` : ''
-							} text-black hover:text-black hover:bg-blue-500 group flex ${
+								$activePage === 'messages' ? `bg-white-s text-black` : ''
+							} text-black hover:text-black hover:bg-white-s group flex ${
 								sidebaricon === 'icon' && 'items-center justify-center'
 							} gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
@@ -105,8 +107,8 @@
 								goto(`/profile/${user.pseudo}`);
 							}}
 							class={`${
-								$activePage === 'profile' ? `bg-blue-500 text-black` : ''
-							} text-black hover:text-black hover:bg-blue-500 group gap-x-3 flex ${
+								$activePage === 'profile' ? `bg-white-s text-black` : ''
+							} text-black hover:text-black hover:bg-white-s group gap-x-3 flex ${
 								sidebaricon === 'icon' && 'items-center justify-center'
 							} rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
