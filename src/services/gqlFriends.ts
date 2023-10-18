@@ -1,5 +1,6 @@
 import client from './apolloClient';
 import { gql } from '@apollo/client/core/index.js';
+import { INIT_CWD } from './../../.svelte-kit/ambient.d';
 
 export const getUsers = async () => {
 	try {
@@ -135,10 +136,24 @@ export const searchUsersByNameOrPseudo = async (term: string) => {
 	try {
 		const response = await client.query({
 			query: gql`
-			`
-		})
+				query SearchUsers($term: String!) {
+					searchUsers(term: $term) {
+						id
+						email
+						name
+						pseudo
+						avatar
+						status
+					}
+				}
+			`,
+			variables: {
+				term: term
+			}
+		});
+		return response.data.searchUsers;
 	} catch (error) {
 		console.log(error);
-		throw new Error("Error fetching user search results")
+		throw new Error('Error fetching user search results');
 	}
-}
+};
