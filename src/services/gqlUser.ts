@@ -32,12 +32,12 @@ export const userInformation = async (access_token: string) => {
 	}
 };
 
-export const getUserInformationPerPseudo = async(pseudo: string) => {
+export const getUserInformationPerPseudo = async (pseudo: string) => {
 	try {
 		const response = await client.query({
 			query: gql`
-				{
-					getUserInformationWithPseudo($pseudo: String!) {
+					query GetUserInformation($pseudo: String!) {
+					getUserInformationWithPseudo(pseudo: $pseudo) {
 						id
 						email
 						name
@@ -51,12 +51,12 @@ export const getUserInformationPerPseudo = async(pseudo: string) => {
 			variables: {
 				pseudo: pseudo
 			}
-		})
-	} catch(error) {
-		console.error(error);
-		throw new Error(`Error to get information via Pseudo`)
+		});
+		return response.data.getUserInformationWithPseudo;
+	} catch (error) {
+		throw new Error(`Error to get information via Pseudo, ${error.message}`);
 	}
-}
+};
 
 export const userInformationNoToken = async () => {
 	try {
@@ -82,7 +82,6 @@ export const userInformationNoToken = async () => {
 		throw new Error('Error fetching user information');
 	}
 };
-
 
 export const updateUserPseudo = async (newPseudo: string) => {
 	try {
@@ -139,4 +138,3 @@ export const deleteAccount = async () => {
 		throw new Error('Error deleting user account');
 	}
 };
-
