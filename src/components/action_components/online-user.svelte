@@ -1,11 +1,12 @@
 <script lang="ts">
 	export let status: "ONLINE": "OFFLINE" = "OFFLINE";
+	export let avatar: string;
 </script>
 
 <span class="relative inline-block">
 	<img
 		class="h-16 w-16 rounded-full"
-		src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+		src={avatar}
 		alt=""
 	/>
 	<span
