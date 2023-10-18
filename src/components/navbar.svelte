@@ -4,7 +4,6 @@
 	import { authentication, type AuthenticationType } from '../stores/authentication';
 	import ModalWrapper from '$components/modal_wrapper.svelte';
 	import OnlineUserImg from './action_components/online-user.svelte';
-	import { goto } from '$app/navigation';
 	import {
 		getPendingFriendRequests,
 		rejectFriendRequest,
@@ -14,6 +13,7 @@
 	import { onMount } from 'svelte';
 	import type Request from './notifications/request.svelte';
 	import type { searchUser } from '../interfaces/types';
+	import { goto } from '$app/navigation';
 
 	let user: AuthenticationType;
 	let pendingRequests: Request[] = [];
@@ -43,10 +43,6 @@
 		} catch (error) {
 			console.error('Error fetchnig the user', error);
 		}
-	}
-
-	function navigateToUserProfile(user: searchUser) {
-		
 	}
 
 	function toggleModal(modalType: string) {
@@ -149,7 +145,7 @@
 									{#each users as user (user.id)}
 										<div
 											class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10"
-											on:click={() => navigateToUserProfile(user)}
+											on:click={() => goto(`/profile/${user.pseudo}`)}
 										>
 											<div class="h-full w-[30%]">
 												<OnlineUserImg avatar={user.avatar} status={user.status} />

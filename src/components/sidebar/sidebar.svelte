@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { userInformation } from '../../services/gqlUser';
 	import { activePage } from '../../stores/currentNavigation';
 
 	export let sidebaricon: 'normal' | 'icon' = 'normal';
@@ -90,7 +91,7 @@
 						<a
 							on:click={() => {
 								setActivePage('profile');
-								goto('profile');
+								goto(`/profile/${user.pseudo}`);
 							}}
 							class={`${
 								$activePage === 'profile' ? `bg-indigo-700 text-white` : ''
