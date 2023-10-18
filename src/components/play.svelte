@@ -1,3 +1,6 @@
 <script>
-	// Votre logique de script ici, si nécessaire
 </script>
+
+<div class="w-full h-full ">
+	
+</div>

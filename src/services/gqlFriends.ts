@@ -130,3 +130,15 @@ export const sendFriendRequest = async (pseudo: string) => {
 		throw new Error('Error updating user pseudo');
 	}
 };
+
+export const searchUsersByNameOrPseudo = async (term: string) => {
+	try {
+		const response = await client.query({
+			query: gql`
+			`
+		})
+	} catch (error) {
+		console.log(error);
+		throw new Error("Error fetching user search results")
+	}
+}
