@@ -18,7 +18,16 @@ export interface Request {
 	status: string;
 	sender: {
 		avatar: string;
-        name: string;
+		name: string;
 		pseudo: string;
 	};
+}
+
+export interface searchUser {
+	id: string;
+	email: string;
+	name: string;
+	pseudo: string;
+	avatar: string;
+	status: string;
 }

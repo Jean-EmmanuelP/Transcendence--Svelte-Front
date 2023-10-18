@@ -1,6 +1,5 @@
 import client from './apolloClient';
 import { gql } from '@apollo/client/core/index.js';
-import { INIT_CWD } from './../../.svelte-kit/ambient.d';
 
 export const getUsers = async () => {
 	try {

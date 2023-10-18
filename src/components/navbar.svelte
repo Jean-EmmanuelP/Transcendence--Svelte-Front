@@ -14,6 +14,8 @@
 	let user: AuthenticationType;
 	let pendingRequests: Request[] = [];
 	let isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications';
+	let term = '';
+	let users: = [];
 
 	const unsubscribe = authentication.subscribe((value) => {
 		user = value;
@@ -92,9 +94,20 @@
 								id="search"
 								name="search"
 								class="block w-full bg-[#F4F4F4] rounded-full pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500/40 sm:text-sm sm:leading-6"
-								placeholder="Search"
+								placeholder="Search users"
 								type="search"
+								bind:value={term}
+								on:input={handleSearch}
 							/>
+							{#if users.length}
+								<div class="bg-white">
+									{#each users as user (user.id)}
+										<div>
+											{user.name} ({user.pseudo})
+										</div>
+									{/each}
+								</div>
+							{/if}
 						</div>
 					</div>
 				</div>
