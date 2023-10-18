@@ -11,15 +11,18 @@
 		user = value;
 	});
 	onDestroy(unsubscribe);
-	
+
 	function setActivePage(page: string) {
 		activePage.set(page);
 	}
 </script>
+
 <!--
 	bg-white-s : must remove this one after the UI/UX is done
 -->
-<div class="flex flex-grow flex-col gap-y-5 overflow-y-auto bg-white-600 px-6 h-full w-full">
+<div
+	class="flex flex-grow flex-col gap-y-5 overflow-y-auto bg-white-600 px-6 h-full w-full border border-l-black/5"
+>
 	<div class="flex h-16 shrink-0 items-center">
 		<button
 			on:click={() => {
@@ -51,19 +54,18 @@
 							} gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
 							<svg
-								class="h-6 w-6 shrink-0 text-black"
-								fill="none"
+								aria-label="Accueil"
+								class="h-6 w-6 shrink-0"
+								color="rgb(0, 0, 0)"
+								fill="rgb(0, 0, 0)"
+								height="24"
+								role="img"
 								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="currentColor"
-								aria-hidden="true"
+								width="24"
+								><title>Accueil</title><path
+									d="M22 23h-6.001a1 1 0 0 1-1-1v-5.455a2.997 2.997 0 1 0-5.993 0V22a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V11.543a1.002 1.002 0 0 1 .31-.724l10-9.543a1.001 1.001 0 0 1 1.38 0l10 9.543a1.002 1.002 0 0 1 .31.724V22a1 1 0 0 1-1 1Z"
+								/></svg
 							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-								/>
-							</svg>
 							{#if sidebaricon === 'normal'}
 								<p>Dashboard</p>
 							{/if}
