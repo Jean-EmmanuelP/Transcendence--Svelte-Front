@@ -10,9 +10,8 @@
 	let isLoading = true;
 	let isError = false;
 	let userPseudo = $page.params.pseudo;
-	$: userPseudo = $page.params.pseudo;
 	$: {
-		console.log(userPseudo);
+		userPseudo = $page.params.pseudo;
 		getUserInformation(userPseudo);
 	}
 	let user: searchUser;
