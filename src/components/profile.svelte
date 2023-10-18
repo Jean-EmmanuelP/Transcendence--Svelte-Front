@@ -7,19 +7,21 @@
 	import { page } from '$app/stores';
 	import { onDestroy, onMount } from 'svelte';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
+	import { sendFriendRequest } from '../services/gqlFriends';
 
 	let isLoading = true;
 	let isError = false;
 	let userPseudo = $page.params.pseudo;
 	let isCurrentUserProfile: boolean = false;
+
 	let userStore: AuthenticationType;
 	const unsubscribe = authentication.subscribe((value) => {
 		userStore = value;
-	})
+	});
 	onDestroy(unsubscribe);
 
 	$: {
-		isCurrentUserProfile = $userPseudoStore === userPseudo;
+		isCurrentUserProfile = userStore.pseudo === userPseudo;
 	}
 	$: {
 		userPseudo = $page.params.pseudo;
@@ -37,6 +39,14 @@
 			isError = true;
 		}
 	}
+	async function handleSendFriendRequest() {
+		try {
+			const result = await sendFriendRequest(userPseudo);
+			console.log(result);
+		} catch (error) {
+			console.error('Error sending friend request:', error);
+		}
+	}
 </script>
 
 {#if isLoading}
@@ -51,6 +61,9 @@
 			<div class="flex w-full flex flex-col items-center justify-center mt-2">
 				<p class="font-medium">Level 7</p>
 				<Progress progress={30} />
+				{#if !isCurrentUserProfile}
+					<button on:click={handleSendFriendRequest}>Send Friend Request</button>
+				{/if}
 			</div>
 		</div>
 		<div class="w-full h-[60%] flex flex-row justify-center items-center gap-5">
