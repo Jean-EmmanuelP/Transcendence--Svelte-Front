@@ -4,9 +4,16 @@
 	import Progress from '$components/action_components/progress.svelte';
 	import type { searchUser } from '../interfaces/types';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 	
 	const userPseudo = $page.params.pseudo;
-	console.log(userPseudo);
+	async function getUserInformation(userPseudo) {
+		try {
+			await getUserInformationPerPseudo(userPseudo);
+		} catch(error) {
+			console.error(error);
+		}
+	}
 </script>
 
 <div class="flex flex-col h-full w-full gap-5">

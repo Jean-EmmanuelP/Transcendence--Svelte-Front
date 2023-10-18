@@ -32,6 +32,32 @@ export const userInformation = async (access_token: string) => {
 	}
 };
 
+export const getUserInformationPerPseudo = async(pseudo: string) => {
+	try {
+		const response = await client.query({
+			query: gql`
+				{
+					getUserInformationWithPseudo($pseudo: String!) {
+						id
+						email
+						name
+						pseudo
+						avatar
+						isTwoFactorEnabled
+						status
+					}
+				}
+			`,
+			variables: {
+				pseudo: pseudo
+			}
+		})
+	} catch(error) {
+		console.error(error);
+		throw new Error(`Error to get information via Pseudo`)
+	}
+}
+
 export const userInformationNoToken = async () => {
 	try {
 		const response = await client.query({
@@ -56,6 +82,7 @@ export const userInformationNoToken = async () => {
 		throw new Error('Error fetching user information');
 	}
 };
+
 
 export const updateUserPseudo = async (newPseudo: string) => {
 	try {
@@ -112,3 +139,4 @@ export const deleteAccount = async () => {
 		throw new Error('Error deleting user account');
 	}
 };
+
