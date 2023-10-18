@@ -6,7 +6,8 @@
 	import {
 		getPendingFriendRequests,
 		rejectFriendRequest,
-		acceptFriendRequest
+		acceptFriendRequest,
+		searchUsersByNameOrPseudo
 	} from '../services/gqlFriends';
 	import { onMount } from 'svelte';
 	import type Request from './notifications/request.svelte';
@@ -26,6 +27,19 @@
 	$: isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications';
 	$: if (!isModalOpen && $modalOpen !== null) {
 		modalOpen.set(null);
+	}
+
+	async function handleSearch() {
+		if (term.trim() === '') {
+			users = [];
+			return;
+		}
+
+		try {
+			users = await searchUsersByNameOrPseudo(term);
+		} catch (error) {
+			console.error('Error fetchnig the user', error);
+		}
 	}
 
 	function toggleModal(modalType: string) {
