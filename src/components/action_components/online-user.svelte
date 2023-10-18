@@ -4,9 +4,9 @@
 </script>
 
 <span class="relative inline-block">
-	<img class="h-16 w-16 rounded-full" src={avatar} alt="" />
+	<img class="h-14 w-14 rounded-full" src={avatar} alt="" />
 	<span
-		class={`absolute bottom-0 right-0 block h-4 w-4 rounded-full ${
+		class={`absolute bottom-0 right-0 block h-3 w-3 rounded-full ${
 			status === 'ONLINE' ? 'bg-green-400' : 'bg-red-400'
 		} ring-2 ring-white`}
 	/>
