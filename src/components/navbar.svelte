@@ -150,7 +150,7 @@
 										<div
 											class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10"
 											on:click={() => navigateToUserProfile(user.id)}
-											>
+										>
 											<div class="h-full w-[30%]">
 												<OnlineUserImg avatar={user.avatar} status={user.status} />
 											</div>

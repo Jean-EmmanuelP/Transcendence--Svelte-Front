@@ -5,14 +5,18 @@
 
 	import AchievmentsStats from '$components/statistics/achievments_stats.svelte';
 	import Progress from '$components/action_components/progress.svelte';
+	import type { searchUser } from '../interfaces/types';
 
-	let user: AuthenticationType;
+	let user: AuthenticationType | searchUser;
 	const onsubscribe = authentication.subscribe((value) => {
 		user = value;
 	});
 	onDestroy(onsubscribe);
-	// gqlInformation
-	// mutation
+
+	export let data: searchUser | null = null;
+	if (data !== null) {
+		user = data;
+	}
 </script>
 
 <div class="flex flex-col h-full w-full gap-5">
