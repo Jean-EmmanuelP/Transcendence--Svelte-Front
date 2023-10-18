@@ -17,7 +17,7 @@
 	}
 </script>
 
-<div class="flex flex-grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 h-full w-full">
+<div class="flex flex-grow flex-col gap-y-5 overflow-y-auto bg-white-600 px-6 h-full w-full">
 	<div class="flex h-16 shrink-0 items-center">
 		<button
 			on:click={() => {
@@ -36,20 +36,20 @@
 			<li>
 				<ul role="list" class="-mx-2 space-y-1">
 					<li>
-						<!-- Current: "bg-indigo-700 text-white", Default: "text-indigo-200 hover:text-white hover:bg-indigo-700" -->
+						<!-- Current: "bg-blue-500 text-black", Default: "text-black hover:text-black hover:bg-blue-500" -->
 						<a
 							on:click={() => {
 								setActivePage('dashboard');
 								goto('/');
 							}}
 							class={`${
-								$activePage === 'dashboard' ? `bg-indigo-700 text-white` : ''
-							} text-indigo-200 hover:text-white hover:bg-indigo-700 group flex ${
+								$activePage === 'dashboard' ? `bg-blue-500 text-black` : ''
+							} text-black hover:text-black hover:bg-blue-500 group flex ${
 								sidebaricon === 'icon' && 'items-center justify-center'
 							} gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
 							<svg
-								class="h-6 w-6 shrink-0 text-white"
+								class="h-6 w-6 shrink-0 text-black"
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
@@ -74,13 +74,13 @@
 								goto('/messages');
 							}}
 							class={`${
-								$activePage === 'messages' ? `bg-indigo-700 text-white` : ''
-							} text-indigo-200 hover:text-white hover:bg-indigo-700 group flex ${
+								$activePage === 'messages' ? `bg-blue-500 text-black` : ''
+							} text-black hover:text-black hover:bg-blue-500 group flex ${
 								sidebaricon === 'icon' && 'items-center justify-center'
 							} gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
 							<svg
-								class="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
+								class="h-6 w-6 shrink-0 text-black group-hover:text-black"
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
@@ -105,13 +105,13 @@
 								goto(`/profile/${user.pseudo}`);
 							}}
 							class={`${
-								$activePage === 'profile' ? `bg-indigo-700 text-white` : ''
-							} text-indigo-200 hover:text-white hover:bg-indigo-700 group gap-x-3 flex ${
+								$activePage === 'profile' ? `bg-blue-500 text-black` : ''
+							} text-black hover:text-black hover:bg-blue-500 group gap-x-3 flex ${
 								sidebaricon === 'icon' && 'items-center justify-center'
 							} rounded-md p-2 text-sm leading-6 font-semibold`}
 						>
 							<svg
-								class="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
+								class="h-6 w-6 shrink-0 text-black group-hover:text-black"
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
