@@ -111,6 +111,7 @@
 								class="block w-full bg-[#F4F4F4] rounded-full pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500/40 sm:text-sm sm:leading-6"
 								placeholder="Search users"
 								type="search"
+								on:click={() => toggleModal('searchbar')}
 								bind:value={term}
 								on:input={handleSearch}
 							/>
@@ -121,7 +122,7 @@
 									{#each users as user (user.id)}
 										<div class="flex p-2 w-full h-full gap-2 rounded-md hover:bg-gray-400/10">
 											<div class="h-full w-[30%]">
-												<img src={user.avatar}  class="h-11 w-11 rounded-md" alt="user avatar" />
+												<img src={user.avatar} class="h-11 w-11 rounded-md" alt="user avatar" />
 											</div>
 											<p class="w-[70%] h-full">{user.name.split(' ')[0]}</p>
 										</div>
