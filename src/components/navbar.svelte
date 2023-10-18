@@ -132,6 +132,7 @@
 								placeholder="Search users"
 								type="search"
 								bind:value={term}
+								on:focus={handleInputFocus}
 								on:input={handleSearch}
 							/>
 							{#if users.length}
