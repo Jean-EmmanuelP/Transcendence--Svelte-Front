@@ -44,7 +44,8 @@
 			const result = await sendFriendRequest(userPseudo);
 			console.log(result);
 		} catch (error) {
-			console.error('Error sending friend request:', error);
+			console.error('Error sending friend request:', error.message);
+			alert(error.message)
 		}
 	}
 </script>
