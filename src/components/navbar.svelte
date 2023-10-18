@@ -10,12 +10,13 @@
 	} from '../services/gqlFriends';
 	import { onMount } from 'svelte';
 	import type Request from './notifications/request.svelte';
+	import type { searchUser } from '../interfaces/types';
 
 	let user: AuthenticationType;
 	let pendingRequests: Request[] = [];
 	let isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications';
 	let term = '';
-	let users: = [];
+	let users: searchUser[] = [];
 
 	const unsubscribe = authentication.subscribe((value) => {
 		user = value;
