@@ -142,7 +142,9 @@
 									class="dropdown-menu bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 z-20 p-2 flex flex-col gap-2 max-h-80 w-80 overflow-hidden"
 								>
 									{#each users as user (user.id)}
-										<div class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10">
+										<div
+											class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10"
+										>
 											<div class="h-full w-[30%]">
 												<OnlineUserImg avatar={user.avatar} status={user.status} />
 											</div>
