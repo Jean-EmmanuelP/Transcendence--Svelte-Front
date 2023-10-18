@@ -112,10 +112,10 @@
 				>
 					<div class="w-full relative">
 						<label for="search" class="sr-only">Search</label>
-						<div class="relative">
+						<div class="relative group">
 							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
 								<svg
-									class="h-5 w-5 text-gray-400"
+									class="h-5 w-5 text-[#808080] group-focus-within:text-black"
 									viewBox="0 0 20 20"
 									fill="currentColor"
 									aria-hidden="true"
@@ -130,7 +130,7 @@
 							<input
 								id="search"
 								name="search"
-								class="block w-1/2 bg-[#F4F4F4] rounded-full pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500/40 sm:text-sm sm:leading-6"
+								class="block w-1/2 bg-[#F4F4F4] group/icon_search rounded-full pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500/40 sm:text-sm sm:leading-6"
 								placeholder="Search"
 								type="search"
 								autocomplete="off"
