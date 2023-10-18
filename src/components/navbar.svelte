@@ -3,6 +3,7 @@
 	import { modalOpen } from '../stores/modal';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
 	import ModalWrapper from '$components/modal_wrapper.svelte';
+	import OnlineUserImg from './action_components/online-user.svelte';
 	import {
 		getPendingFriendRequests,
 		rejectFriendRequest,
@@ -143,7 +144,7 @@
 									{#each users as user (user.id)}
 										<div class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10">
 											<div class="h-full w-[30%]">
-												<img src={user.avatar} class="h-11 w-11 rounded-md" alt="user avatar" />
+												<OnlineUserImg avatar={user.avatar} status={user.status} />
 											</div>
 											<div class="w-[70%] h-full flex items-center">
 												<p>{user.name.split(' ')[0]}</p>
