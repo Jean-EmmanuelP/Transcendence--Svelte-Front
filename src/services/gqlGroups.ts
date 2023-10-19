@@ -44,6 +44,32 @@ export const getGroups = async () => {
 	}
 };
 
+export const getMessages = async (groupId: string) => {
+	try {
+		const response = await client.query({
+			query: gql`
+				query getMessages($channelId: String!) {
+					getMessages(input: {
+						channelId: $channelId
+					}) {
+						id
+						content
+						userId
+						createdAt
+					}
+				}
+			`,
+			variables: {
+				channelId: groupId
+			}
+		});
+		return response.data.getMessages;
+	} catch (error) {
+		console.log(error);
+		throw new Error('Error fetching user search results');
+	}
+};
+
 export const createGroup = async (name: string, isPrivate: boolean,
 	password: string) => {
 	try {
