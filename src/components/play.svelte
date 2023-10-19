@@ -2,9 +2,13 @@
 </script>
 
 <div class="w-full h-full flex items-center justify-center bg-black">
-	<div class="relative">
-		<div class="absolute -inset-0.5 bg-pink-600 rounded-lg blur" />
-		<button class="relative px-7 py-4 bg-black rounded-lg leading-none divide-x divide-gray-600 flex">
+	<div class="relative group">
+		<div
+			class="absolute -inset-0.5 bg-pink-600 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
+		/>
+		<button
+			class="relative px-7 py-4 bg-black rounded-lg leading-none divide-x divide-gray-600 flex"
+		>
 			<span class="flex items-center space-x-5">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +26,9 @@
 				</svg>
 				<span class="pr-6 text-gray-100">Labs Release 2021.09</span>
 			</span>
-			<span class="pl-6 text-indigo-400">See what's new &rarr;</span>
+			<span class="pl-6 text-indigo-400 group-hover:text-gray-100 transition duration-200"
+				>See what's new &rarr;</span
+			>
 		</button>
 	</div>
 </div>
