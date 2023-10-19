@@ -13,10 +13,10 @@
 	>
 		<div class="w-full h-full flex items-center justify-center transparent">
 			<div class="relative group">
-				<div
-					class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
-				/>
 				{#if !clickedPlay}
+					<div
+						class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+					/>
 					<button
 						on:click={clickedPlayButton}
 						in:fade={{ delay: 100, duration: 500 }}
@@ -31,7 +31,7 @@
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
 								stroke="currentColor"
-								class="w-6 h-6 -rotate-6 text-black group-hover:text-black transition transform duration-1000 group-hover:duration-500"
+								class="w-6 h-6 -rotate-6 group-hover:rotate-0 text-black group-hover:text-black transition transform duration-1000 group-hover:duration-500"
 							>
 								<path
 									stroke-linecap="round"
@@ -46,12 +46,22 @@
 					</button>
 				{:else}
 					<div
-						class={`flex flex-col items-center justify-center gap-2 h-full w-full transition duration-500 transform ease-in-out ${
+						class={`flex flex-col items-center justify-center h-full w-full transition duration-500 transform ease-in-out gap-7 ${
 							clickedPlay ? 'opacity-100' : `opacity-0`
 						}`}
 					>
-						<button class="rounded-md bg-white z-10 text-black p-4">boutton 1</button>
-						<button class="rounded-md bg-white z-10 text-black p-4">boutton 2</button>
+						<div class="relative group">
+							<div
+								class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+							/>
+                            <button class="relative rounded-md bg-white z-10 text-black p-4">Matchmaking</button>
+						</div>
+						<div class="relative group">
+							<div
+								class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+							/>
+							<button class="relative rounded-md bg-white z-10 text-black p-4">Play with a friend</button>
+						</div>
 					</div>
 				{/if}
 			</div>
