@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	let clickedPlay: boolean = false;
+	function clickedPlayButton() {
+		clickedPlay = !clickedPlay;
+		console.log('clickedPlay', clickedPlay);
+	}
 </script>
 
 <div class="paddle h-full w-full flex items-center justify-center">
@@ -13,8 +17,11 @@
 					class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
 				/>
 				<button
-					on:click={() => clickedPlay === !clickedPlay}
-					class="group relative px-7 py-4 bg-white rounded-lg leading-none flex transition duration-1000 transform ease-linear"
+					on:click={clickedPlayButton}
+					in:fade={{ delay: 100, duration: 500 }}
+					class={`group relative px-7 py-4 bg-white rounded-lg leading-none flex transition duration-1000 transform ease-linear ${
+						clickedPlay === true && 'hidden'
+					}`}
 				>
 					<span class="flex items-center space-x-5">
 						<svg
@@ -36,7 +43,7 @@
 						>
 					</span>
 				</button>
-				<div class="bg-red-500 h-full w-full">
+				<div class={`bg-red-500 h-full w-full ${clickedPlay === true ? 'block' : `hidden`}`}>
 					<button class="rounded-md bg-white text-black">boutton 1</button>
 					<button class="rounded-md bg-white text-black">boutton 2</button>
 				</div>
