@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .circle {
+        @apply relative flex justify-center items-center
+    }
+    .circle::before {
+        @apply content-[''] absolute bg-red-600 h-[200px] w-[200px] rounded-full transform translate-x-[-120px] translate-y-[-70px]
+    }
+    .circle::after {
+        @apply content-[''] absolute bg-yellow-500 h-[200px] w-[200px] rounded-full transform translate-x-[120px] translate-y-[70px]
+    }
+    .card {
+        @apply relative h-[180px] w-[330px] bg-white/10 z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl
+    }
+}
+
+@layer
