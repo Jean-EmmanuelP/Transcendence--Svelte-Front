@@ -273,7 +273,13 @@
 						>
 							<span class="absolute -inset-1.5" />
 							<span class="sr-only">Open user menu</span>
-							<img class={`h-8 w-8 rounded-full ${$modalOpen === 'userMenu' && `border-[2.3px] border-black`}`} src={user.avatar} alt="" />
+							<img
+								class={`h-8 w-8 rounded-full ${
+									$modalOpen === 'userMenu' && `border-[2.3px] border-black`
+								}`}
+								src={user.avatar}
+								alt=""
+							/>
 						</button>
 					</div>
 				</div>

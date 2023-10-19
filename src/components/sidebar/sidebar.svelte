@@ -23,17 +23,13 @@
 <div
 	class="flex flex-grow flex-col gap-y-5 overflow-y-auto bg-white-600 px-6 h-full w-full border border-l-black/5"
 >
-	<div class="flex h-16 shrink-0 items-center">
+	<div class="flex h-16 pl-2 shrink-0 items-center">
 		<button
 			on:click={() => {
 				goto('/');
 			}}
 		>
-			<img
-				class="h-8 w-auto"
-				src="https://tailwindui.com/img/logos/mark.svg?color=white"
-				alt="Your Company"
-			/>
+			<h1 class="font-medium "><span class="">42</span> PONG</h1>
 		</button>
 	</div>
 	<nav class="flex flex-1 flex-col">
