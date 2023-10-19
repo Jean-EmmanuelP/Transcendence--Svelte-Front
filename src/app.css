@@ -1,15 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer components {
-    .paddle {
-        @apply relative flex justify-center items-center 
-    }
-    .paddle::before {
-        @apply content-[''] absolute bg-black h-[150px] w-[30px] rounded-full transform translate-x-[-50%] translate-y-[-50%] left-[180px] top-[50%];
-    }
-    .paddle::after {
-        @apply content-[''] absolute bg-black h-[150px] w-[30px] rounded-full transform translate-x-[-50%] translate-y-[-50%] right-[150px] top-[50%];
-    }
-}

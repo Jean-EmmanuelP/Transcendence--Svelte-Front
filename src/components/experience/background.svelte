@@ -7,7 +7,7 @@
 	}
 </script>
 
-<div class="paddle h-full w-full flex items-center justify-center">
+<div class="h-full w-full flex items-center justify-center">
 	<div
 		class="h-[80%] w-[80%] bg-white/10 z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl"
 	>
