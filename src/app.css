@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 @layer components {
-    .circle {
+    .paddle {
         @apply relative flex justify-center items-center 
     }
-    .circle::before {
+    .paddle::before {
         @apply content-[''] absolute bg-black h-[150px] w-[30px] rounded-full transform translate-x-[-50%] translate-y-[-50%] left-[180px] top-[50%];
     }
-    .circle::after {
+    .paddle::after {
         @apply content-[''] absolute bg-black h-[150px] w-[30px] rounded-full transform translate-x-[-50%] translate-y-[-50%] right-[150px] top-[50%];
     }
     .card {
