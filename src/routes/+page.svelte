@@ -1,6 +1,7 @@
 <script>
 	import Play from '$components/play.svelte';
 	import { onMount } from 'svelte';
+	import Glassmorphism from '$components/glassmorphism.svelte'
 
 	export let data;
 
@@ -9,4 +10,5 @@
 	});
 </script>
 
-<Play />
+<Glassmorphism />
+<!-- <Play /> -->
