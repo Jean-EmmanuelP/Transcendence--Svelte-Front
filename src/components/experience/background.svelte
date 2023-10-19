@@ -15,7 +15,7 @@
 							viewBox="0 0 24 24"
 							stroke-width="1.5"
 							stroke="currentColor"
-							class="w-6 h-6 -rotate-6 group-hover:rotate-0 transition transform duration-300 group-hover:duration-150"
+							class="w-6 h-6 -rotate-6 text-red-500 group-hover:rotate-0 transition transform duration-300 group-hover:duration-150"
 						>
 							<path
 								stroke-linecap="round"
@@ -24,11 +24,8 @@
 							/>
 						</svg>
 
-						<span class="pr-6 text-gray-100">Labs Release 2021.09</span>
+						<span class="pr-6 text-black">Play</span>
 					</span>
-					<span class="pl-6 text-indigo-400 group-hover:text-gray-100 transition duration-200"
-						>See what's new &rarr;</span
-					>
 				</button>
 			</div>
 		</div>
