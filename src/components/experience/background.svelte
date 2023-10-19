@@ -19,8 +19,8 @@
 				<button
 					on:click={clickedPlayButton}
 					in:fade={{ delay: 100, duration: 500 }}
-					class={`group relative px-7 py-4 bg-white rounded-lg leading-none flex transition duration-1000 transform ease-linear ${
-						clickedPlay === true && 'hidden'
+					class={`group relative px-7 py-4 bg-white rounded-lg leading-none flex transition duration-500 transform ease-in-out ${
+						clickedPlay ? 'opacity-0' : 'opacity-100'
 					}`}
 				>
 					<span class="flex items-center space-x-5">
@@ -43,7 +43,11 @@
 						>
 					</span>
 				</button>
-				<div class={`flex flex-col items-center justify-center gap-2 h-full w-full ${clickedPlay === true ? 'block' : `hidden`}`}>
+				<div
+					class={`flex flex-col items-center justify-center gap-2 h-full w-full transition duration-500 transform ease-in-out ${
+						clickedPlay ? 'opacity-100' : `opacity-0`
+					}`}
+				>
 					<button class="rounded-md bg-white z-10 text-black p-4">boutton 1</button>
 					<button class="rounded-md bg-white z-10 text-black p-4">boutton 2</button>
 				</div>
