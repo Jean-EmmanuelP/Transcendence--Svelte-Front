@@ -4,7 +4,7 @@
 <div class="w-full h-full flex items-center justify-center bg-black">
 	<div class="relative group">
 		<div
-			class="absolute -inset-0.5 bg-pink-600 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
+			class="absolute -inset-0.5 bg-pink-600 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"
 		/>
 		<button
 			class="relative px-7 py-4 bg-black rounded-lg leading-none divide-x divide-gray-600 flex"
