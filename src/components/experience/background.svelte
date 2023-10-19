@@ -9,7 +9,7 @@
 
 <div class="h-full w-full flex items-center justify-center">
 	<div
-		class="h-[80%] w-[80%] bg-white/10 z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl"
+		class="h-[80%] w-[80%] bg-black/80 z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl"
 	>
 		<div class="w-full h-full flex items-center justify-center transparent">
 			<div class="relative group">
