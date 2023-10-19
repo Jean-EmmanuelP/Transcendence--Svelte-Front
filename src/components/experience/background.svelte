@@ -5,7 +5,7 @@
 		<div class="w-full h-full flex items-center justify-center transparent">
 			<div class="relative group">
 				<div
-					class="absolute -inset-0.5 bg-blue-600 bg-gradient-to-r from-blue-600 to-red-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"
+					class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"
 				/>
 				<button class="group relative px-7 py-4 bg-white rounded-lg leading-none flex transition duration-1000 transform ease-linear">
 					<span class="flex items-center space-x-5">
@@ -15,7 +15,7 @@
 							viewBox="0 0 24 24"
 							stroke-width="2"
 							stroke="currentColor"
-							class="w-6 h-6 -rotate-6 text-blue-500 group-hover:text-red-600 transition transform duration-1000 group-hover:duration-500"
+							class="w-6 h-6 -rotate-6 text-black group-hover:text-black transition transform duration-1000 group-hover:duration-500"
 						>
 							<path
 								stroke-linecap="round"
