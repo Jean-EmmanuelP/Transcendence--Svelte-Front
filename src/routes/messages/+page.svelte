@@ -3,9 +3,11 @@
 	import ConversationInfo from '$components/chat/conversation.svelte';
 	import AddFriendModal from '$components/friends/add_friend.svelte';
 	import CreateGroupModal from '$components/chat/create_group.svelte';
+	import Chat from '$components/chat/chat.svelte';
 	import type { Message, Conversation } from '../interfaces/types.ts';
 	import { onMount } from 'svelte';
 	import { getGroups } from '../../services/gqlGroups.js';
+	import type { GroupInterface } from '../../interfaces/types.js';
 
 	let isOpenAddFriend: boolean = false;
 	let isOpenCreateGroup: boolean = false;
@@ -19,7 +21,7 @@
 		{ sender: 'Him', text: 'bonjour le monde' },
 		{ sender: 'Him', text: 'bonjour le monde' }
 	];
-	let selectedConversation: Conversation | null = null;
+	let selectedConversation: GroupInterface | null = null;
 
 	function handleOpenAddFriend() {
 		isOpenAddFriend = true;
@@ -40,16 +42,13 @@
 	async function handleGroupAdded() {
 		try {
 			groups = await getGroups();
-		} catch (e) {
-			
-		}
+		} catch (e) {}
 		isOpenCreateGroup = false;
 		//Get all the groups
 	}
 
-	function handleClick(event: CustomEvent<Conversation>) {
-		selectedConversation = event.detail;
-		console.log(selectedConversation);
+	function handleClick(group: GroupInterface) {
+		selectedConversation = group;
 	}
 
 	let newMessage = '';
@@ -61,110 +60,89 @@
 	}
 
 	function handleKeyDown(event: KeyboardEvent) {
-		if(event.key === 'Enter' && !event.shiftKey) {
+		if (event.key === 'Enter' && !event.shiftKey) {
 			event.preventDefault();
 			sendMessage();
 		}
 	}
 
-	let groups = [];
+	let headerHeight = 0;
+	let groups: GroupInterface[] = [];
 	onMount(async () => {
+		const header = document.querySelector('header'); // Replace 'header' with your actual header element selector
+		if (header) {
+			headerHeight = header.offsetHeight;
+		}
 		try {
 			groups = await getGroups();
 			console.log(groups);
-		} catch (e) {
-
-		}
+		} catch (e) {}
 	});
-
 </script>
 
-<AddFriendModal isOpen={isOpenAddFriend} onClose={handleCloseAddFriend}/>
-<CreateGroupModal isOpen={isOpenCreateGroup} onClose={handleCloseCreateGroup} onSuccess={handleGroupAdded}/>
-<div class="flex h-full w-full border border-gray-500/50">
-	<div class="flex flex-col h-full w-[27%]">
-		<div class="w-full h-[15%]">
-			<div class="flex w-full h-[65%] items-center justify-around">
-				<h1 class="font-bold text-[16px]">jean.emp</h1>
-				<div>
-					<PrimaryButton text="Create a group" onClick={handleOpenCreateGroup}/>
-					<PrimaryButton text="Add a friend" onClick={handleOpenAddFriend}/>
-				</div>
-			</div>
-			<div class="flex justify-between px-2 h-[35%] items-center justify-content w-full flex">
-				<h1 class="font-bold text-[18px]">Messages</h1>
-				<h1 class="text-gray-500 text-[15px]">Demands</h1>
-			</div>
-		</div>
-		<div class="w-full h-[85%]">
-			<div class="w-full h-[80px]">
-				{#each groups as group}
-					<ConversationInfo group={group}/>
-				{/each}
-
-			</div>
-		</div>
-	</div>
-	<div class="flex flex-col border-l border-gray-500/50 h-full w-[73%]">
-		{#if selectedConversation}
-			<div class="px-2 flex items-center justify-between h-[10%] w-full border-b border-gray-500/50">
-				<div class="h-full w-[30%] flex items-center gap-2">
-					<div class="h-16 w-16">
-						<img
-							src={selectedConversation.avatar}
-							class="rounded-full w-full h-full object-cover"
-							alt="avatar"
-						/>
-					</div>
-					<h1 class="font-bold">{selectedConversation.name}</h1>
-				</div>
-				<div class="h-full w-[30%]" />
-			</div>
-			<div class="h-[83%] w-full px-2">
-				{#each messages as message}
-					<div class={`${message.sender === 'You' ? 'text-right' : ''} mb-2.5`}>
-						<div
-							class={`${
-								message.sender === 'You' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-black'
-							}
-							inline-block px-4 py-2.5 rounded-xl max-w-4/5`}
+<AddFriendModal isOpen={isOpenAddFriend} onClose={handleCloseAddFriend} />
+<CreateGroupModal
+	isOpen={isOpenCreateGroup}
+	onClose={handleCloseCreateGroup}
+	onSuccess={handleGroupAdded}
+/>
+<div class="flex-1 bg-gray-100 w-full h-full" style="height: calc(100vh - {headerHeight}px);">
+	<div class="m-auto w-11/12 h-full flex flex-col">
+		<div class="py-4 flex-2 flex flex-row">
+			<div class="flex-1">
+				<span class="xl:hidden inline-block text-gray-700 hover:text-gray-900 align-bottom">
+					<span class="block h-6 w-6 p-1 rounded-full hover:bg-gray-400">
+						<svg
+							class="w-4 h-4"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							stroke="currentColor"
+							viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg
 						>
-							<p>{message.text}</p>
+					</span>
+				</span>
+				<span class="lg:hidden inline-block ml-8 text-gray-700 hover:text-gray-900 align-bottom">
+					<span class="block h-6 w-6 p-1 rounded-full hover:bg-gray-400">
+						<svg
+							class="h-4 w-4"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							><path
+								d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+							/></svg
+						>
+					</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="h-full flex-1 flex flex-col">
+			<div class="flex-1 flex h-full">
+				<div class="sidebar hidden lg:flex w-1/3 flex-2 flex-col pr-6">
+					<div class="flex w-full items-center justify-between pb-3 px-2">
+						<h1 class="text-3xl text-gray-700">Chat</h1>
+						<div>
+							<PrimaryButton text="Create a group" onClick={handleOpenCreateGroup} />
+							<PrimaryButton text="Add a friend" onClick={handleOpenAddFriend} />
 						</div>
 					</div>
-				{/each}
-			</div>
-			<div class="h-[5%] border border-gray-500/ rounded-full mx-[2px] p-2 flex w-full justify-between m-2">
-				<input
-					bind:value={newMessage}
-					on:keydown={handleKeyDown}
-					class="border-none w-[90%] focus:border-none focus:ring-0 outline-none"
-					placeholder="Your message..."
-				/>
-				<button
-					on:click={sendMessage}
-					class="flex h-full items-center rounded-full bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-					>Send</button
-				>
-			</div>
-		{:else}
-			<div
-				class=" flex flex-col items-center justify-center h-full w-full gap-2"
-			>
-				<img
-					src="https://i.postimg.cc/6p8Hp6fr/Screenshot-2023-10-12-004957.png"
-					width="100px"
-					height="100px"
-					alt=""
-				/>
-				<div class="flex items-center justify-center flex-col">
-					<h1>Your Messages</h1>
-					<p class="text-[#737373] text-[15px]">
-						Send photos and private messages to a friend or group
-					</p>
+
+					<div class="flex-1 h-full max-h-full overflow-y-auto px-2 pb-3">
+						{#each groups as group}
+							<ConversationInfo {group} isSelected={group.id === selectedConversation?.id} onClick={handleClick}/>
+						{/each}
+					</div>
 				</div>
-				<PrimaryButton text="Send a message" />
+				{#if selectedConversation !== null}
+					<Chat group={selectedConversation}/>
+				{/if}
 			</div>
-		{/if}
+		</div>
 	</div>
 </div>
