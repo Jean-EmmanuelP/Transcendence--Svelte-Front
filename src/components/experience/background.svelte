@@ -43,9 +43,9 @@
 						>
 					</span>
 				</button>
-				<div class={`bg-red-500 h-full w-full ${clickedPlay === true ? 'block' : `hidden`}`}>
-					<button class="rounded-md bg-white text-black">boutton 1</button>
-					<button class="rounded-md bg-white text-black">boutton 2</button>
+				<div class={`flex flex-col items-center justify-center gap-2 h-full w-full ${clickedPlay === true ? 'block' : `hidden`}`}>
+					<button class="rounded-md bg-white z-10 text-black p-4">boutton 1</button>
+					<button class="rounded-md bg-white z-10 text-black p-4">boutton 2</button>
 				</div>
 			</div>
 		</div>
