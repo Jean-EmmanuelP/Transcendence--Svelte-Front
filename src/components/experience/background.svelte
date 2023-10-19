@@ -7,15 +7,15 @@
 				<div
 					class="absolute -inset-0.5 bg-blue-600 bg-gradient-to-r from-blue-600 to-red-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"
 				/>
-				<button class="relative px-7 py-4 bg-white rounded-lg leading-none flex transition duration-1000 transform ease-linear">
+				<button class="group relative px-7 py-4 bg-white rounded-lg leading-none flex transition duration-1000 transform ease-linear">
 					<span class="flex items-center space-x-5">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
 							viewBox="0 0 24 24"
-							stroke-width="1.5"
+							stroke-width="2"
 							stroke="currentColor"
-							class="w-6 h-6 -rotate-6 group-hover:scale-110 group-hover:text-2xl group-hover:-rotate-0 text-blue-500 group-hover:text-red-600 transition transform duration-1000 group-hover:duration-500"
+							class="w-6 h-6 -rotate-6 text-blue-500 group-hover:text-red-600 transition transform duration-1000 group-hover:duration-500"
 						>
 							<path
 								stroke-linecap="round"
@@ -23,7 +23,6 @@
 								d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
 							/>
 						</svg>
-
 						<span class="pr-6 tracking-wide text-black font-poppins group-hover:font-bold">Play</span>
 					</span>
 				</button>
