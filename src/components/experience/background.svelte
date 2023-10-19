@@ -1,5 +1,5 @@
 <div class="paddle h-full w-full flex items-center justify-center">
-	<div class="card">
+	<div class="relative h-[80%] w-[80%] bg-white/10 z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl">
 		<div class="relative h-full w-full">
 			<div
 				class="absolute -inset-0.5 bg-pink-600 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg opacity-75 group-hover: opacity-100 transition duration-1000 grouyp-hover:duration-200 animate-tilt"

@@ -12,7 +12,4 @@
     .paddle::after {
         @apply content-[''] absolute bg-black h-[150px] w-[30px] rounded-full transform translate-x-[-50%] translate-y-[-50%] right-[150px] top-[50%];
     }
-    .card {
-        @apply relative h-[80%] w-[80%] bg-white/10 z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl
-    }
 }
