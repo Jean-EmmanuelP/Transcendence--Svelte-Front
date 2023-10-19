@@ -6,9 +6,11 @@ export interface Conversation {
 	lastmessage_hour: string;
 }
 
-export interface Message {
-	sender: string;
-	text: string;
+export interface MessageInterface {
+	id: string,
+	content: string,
+	userId: string,
+	createdAt: Date
 }
 
 export interface Request {
@@ -30,4 +32,21 @@ export interface searchUser {
 	pseudo: string;
 	avatar: string;
 	status: string;
+}
+
+export interface GroupMemberInterface {
+    name: string;
+    avatar: string;
+    status: string;
+}
+
+export interface GroupInterface {
+    id: string;
+    name: string;
+    isPrivate: boolean;
+    isDirectMessage: boolean;
+    ownerId: string;
+    owner: GroupMemberInterface[];
+    members: GroupMemberInterface[];
+    admins: GroupMemberInterface[];
 }
