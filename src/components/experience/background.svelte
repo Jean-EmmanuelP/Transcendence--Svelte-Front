@@ -57,7 +57,7 @@
 							<button
 								class="relative rounded-md bg-white text-black p-4 hover:font-medium transition transform duration-500 hover:duration-300"
 							>
-								<span />
+								<span></span>
 								<p>Matchmaking</p>
 							</button>
 						</div>
@@ -68,7 +68,7 @@
 							<button
 								class="relative rounded-md bg-white text-black p-4 hover:font-medium transition transform duration-500 hover:duration-300"
 							>
-								<span />
+								<span></span>
 								<p>Play with a friend</p>
 							</button>
 						</div>

@@ -26,6 +26,7 @@
 	<div class="flex h-16 pl-2 shrink-0 items-center">
 		<button
 			on:click={() => {
+				setActivePage('dashboard');
 				goto('/');
 			}}
 		>
