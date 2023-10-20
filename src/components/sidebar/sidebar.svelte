@@ -21,7 +21,7 @@
 	bg-white-s : must remove this one after the UI/UX is done
 -->
 <div
-	class="flex flex-grow flex-col gap-y-5 overflow-y-auto bg-white-600 px-6 h-full w-full border-r border-black"
+	class="flex flex-grow flex-col gap-y-5 overflow-y-auto bg-white-600 px-6 h-full w-full"
 >
 	<div class="flex h-16 pl-2 shrink-0 items-center">
 		<button
