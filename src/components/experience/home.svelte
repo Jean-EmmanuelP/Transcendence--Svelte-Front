@@ -7,10 +7,21 @@
 	}
 </script>
 
-<div class="h-full w-full flex items-center justify-center">
-	<div
-		class="h-[80%] w-[80%] bg-black/80 z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl"
-	>
+<div class="relative h-full w-full flex items-center justify-center">
+	<div class="flex justify-center px-16">
+		<div class="relative w-full mt-48 max-w-lg">
+			<div
+				class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 animate-blob rounded-full mix-blend-multiply filter blur-xl opacity-70"
+			/>
+			<div
+				class="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 animate-blob animation-delay-2000 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+			/>
+			<div
+				class="absolute top-10 left-24 w-72 h-72 bg-pink-300 animate-blob animation-delay-4000 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+			/>
+		</div>
+	</div>
+	<div class="h-[80%] w-[80%] z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl">
 		<div class="w-full h-full flex items-center justify-center transparent">
 			<div class="relative group">
 				{#if !clickedPlay}
@@ -57,7 +68,7 @@
 							<button
 								class="relative rounded-md bg-white text-black p-4 hover:font-medium transition transform duration-500 hover:duration-300"
 							>
-								<span></span>
+								<span />
 								<p>Matchmaking</p>
 							</button>
 						</div>
@@ -68,7 +79,7 @@
 							<button
 								class="relative rounded-md bg-white text-black p-4 hover:font-medium transition transform duration-500 hover:duration-300"
 							>
-								<span></span>
+								<span />
 								<p>Play with a friend</p>
 							</button>
 						</div>
