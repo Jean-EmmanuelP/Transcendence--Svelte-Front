@@ -11,23 +11,32 @@
 	let mouseY = 0;
 	let tiltStrength = 15;
 	let blobElement: HTMLElement;
+	let laserSpeed = 2;
 
 	function handleMouseMove(event: any) {
 		const rect = event.currentTarget.getBoundingClientRect();
 		mouseX = event.clientX - rect.left;
 		mouseY = event.clientY - rect.top;
-		const angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
 
-		
+		const dx = mouseX - rect.width / 2;
+		const dy = mouseX - rect.height / 2;
+		const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
+
+		const maxDistance = Math.sqrt((rect.width / 2) ** 2 + (rect.height / 2) ** 2);
+		const normalizedDistance = Math.min(distanceFromCenter / maxDistance, 1);
+
+		const minSpeed = 2;
+		const maxSpeed = 20;
+
+		laserSpeed = maxSpeed - normalizedDistance * (maxSpeed - minSpeed); 
 		const percentX = (mouseX / rect.width) * 2 - 1;
 		const percentY = (mouseY / rect.height) * 2 - 1;
-		
+
 		const tiltX = tiltStrength * percentY;
 		const tiltY = tiltStrength * percentX;
-		
+
 		event.currentTarget.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
 		blobElement.style.transform = `translate(-50%, -50%) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-
 	}
 
 	function handleMouseLeave(event: any) {
@@ -36,7 +45,7 @@
 		event.currentTarget.style.transform = `rotateX(0deg) rotateY(0deg)`;
 		blobElement.style.transform = 'translate(-50%, -50%) rotateX(0deg) rotateY(0deg)';
 	}
-	let laserDirection = 'right'; // ['right', 'down', 'left', 'up']
+	let laserDirection = 'right';
 
 	onMount(() => {
 		const laserElement = document.querySelector('.laser-effect') as HTMLElement;
@@ -45,7 +54,7 @@
 
 		let posX = 0;
 		let posY = 0;
-		const laserSpeed = 2;
+		
 
 		function updateLaserPosition() {
 			if (laserElement) {
