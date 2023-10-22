@@ -23,17 +23,18 @@
 		const percentY = (mouseY / rect.height) * 2 - 1;
 		
 		const tiltX = tiltStrength * percentY;
-		const tiltY = -tiltStrength * percentX;
+		const tiltY = tiltStrength * percentX;
 		
 		event.currentTarget.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-		blobElement.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+		blobElement.style.transform = `translate(-50%, -50%) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+
 	}
 
 	function handleMouseLeave(event: any) {
 		const transitionDuration = 1000;
 		event.currentTarget.style.transition = `transform ${transitionDuration}ms ease`;
 		event.currentTarget.style.transform = `rotateX(0deg) rotateY(0deg)`;
-		blobElement.style.transform = 'translate(-50%, -50%)';
+		blobElement.style.transform = 'translate(-50%, -50%) rotateX(0deg) rotateY(0deg)';
 	}
 	let laserDirection = 'right'; // ['right', 'down', 'left', 'up']
 
@@ -103,7 +104,7 @@
 
 <div class="relative h-full w-full flex items-center justify-center">
 	<div
-		class="blob-bg absolute top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl opacity-70"
+		class="blob-bg absolute top-1/2 left-1/2 transform transition duration-100 -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl opacity-70"
 	/>
 	<div
 		on:mouseleave={handleMouseLeave}
