@@ -42,55 +42,53 @@
 
 		function updateLaserPosition() {
 			if (laserElement) {
+				switch (laserDirection) {
+					case 'right':
+						posX += laserSpeed;
+						if (posX >= laserElement.clientWidth) {
+							laserDirection = 'down';
+							laserElement.style.setProperty('--laser-width', '2px');
+							laserElement.style.setProperty('--laser-height', '100px');
+							posX = laserElement.clientWidth - 2;
+							posY = 0;
+						}
+						break;
+					case 'down':
+						posY += laserSpeed;
+						if (posY >= laserElement.clientHeight) {
+							laserDirection = 'left';
+							laserElement.style.setProperty('--laser-width', '100px');
+							laserElement.style.setProperty('--laser-height', '2px');
+							posX = laserElement.clientWidth;
+							posY = laserElement.clientHeight - 2;
+						}
+						break;
+					case 'left':
+						posX -= laserSpeed;
+						if (posX <= 0) {
+							laserDirection = 'up';
+							laserElement.style.setProperty('--laser-width', '2px');
+							laserElement.style.setProperty('--laser-height', '100px');
+							posX = 2;
+							posY = laserElement.clientHeight;
+						}
+						break;
+					case 'up':
+						posY -= laserSpeed;
+						if (posY <= 0) {
+							laserDirection = 'right';
+							laserElement.style.setProperty('--laser-width', '100px');
+							laserElement.style.setProperty('--laser-height', '2px');
+							posX = 0;
+							posY = 2;
+						}
+						break;
+				}
 
-			switch (laserDirection) {
-				case 'right':
-					posX += laserSpeed;
-					if (posX >= laserElement.clientWidth) {
-						laserDirection = 'down';
-						laserElement.style.setProperty('--laser-width', '2px');
-						laserElement.style.setProperty('--laser-height', '100px');
-						posX = laserElement.clientWidth - 2;
-						posY = 0;
-					}
-					break;
-				case 'down':
-					posY += laserSpeed;
-					if (posY >= laserElement.clientHeight) {
-						laserDirection = 'left';
-						laserElement.style.setProperty('--laser-width', '100px');
-						laserElement.style.setProperty('--laser-height', '2px');
-						posX = laserElement.clientWidth;
-						posY = laserElement.clientHeight - 2;
-					}
-					break;
-				case 'left':
-					posX -= laserSpeed;
-					if (posX <= 0) {
-						laserDirection = 'up';
-						laserElement.style.setProperty('--laser-width', '2px');
-						laserElement.style.setProperty('--laser-height', '100px');
-						posX = 2;
-						posY = laserElement.clientHeight;
-					}
-					break;
-				case 'up':
-					posY -= laserSpeed;
-					if (posY <= 0) {
-						laserDirection = 'right';
-						laserElement.style.setProperty('--laser-width', '100px');
-						laserElement.style.setProperty('--laser-height', '2px');
-						posX = 0;
-						posY = 2;
-					}
-					break;
+				laserElement.style.setProperty('--laser-pos-x', posX + 'px');
+				laserElement.style.setProperty('--laser-pos-y', posY + 'px');
+				requestAnimationFrame(updateLaserPosition);
 			}
-
-			laserElement.style.setProperty('--laser-pos-x', posX + 'px');
-			laserElement.style.setProperty('--laser-pos-y', posY + 'px');
-			requestAnimationFrame(updateLaserPosition);
-		}
-
 		}
 
 		updateLaserPosition();
@@ -103,6 +101,19 @@
 		on:mousemove={handleMouseMove}
 		class="h-[80%] w-[80%] z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-[#181C2A] laser-effect"
 	>
+		<div
+			class="absolute top-50% left-50% transform -translate-x-50% -translate-y-50% w-[110%] h-[110%]"
+		>
+			<div
+				class="absolute top-0 left-0 w-72 h-72 bg-[#26619c] animate-blob rounded-full mix-blend-multiply filter blur-xl opacity-70"
+			/>
+			<div
+				class="absolute top-0 right-0 w-72 h-72 bg-[#649fd9] animate-blob animation-delay-2000 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+			/>
+			<div
+				class="absolute top-1/2 left-1/2 transform -translate-x-50% -translate-y-50% w-72 h-72 bg-[#660011] animate-blob animation-delay-4000 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+			/>
+		</div>
 		<div class="w-full h-full flex items-center justify-center transparent">
 			<div class="relative group">
 				{#if !clickedPlay}
