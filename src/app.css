@@ -37,6 +37,10 @@
 		animation: blobAnimation 5s infinite;
 	}
 
+	.blob-bg {
+		transition: transform 0.3s ease-out;
+	}
+
 	/* @keyframes laserTravel {
 		0%,
 		100% {

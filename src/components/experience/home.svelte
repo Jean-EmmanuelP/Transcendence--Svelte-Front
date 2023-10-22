@@ -10,30 +10,36 @@
 	let mouseX = 0;
 	let mouseY = 0;
 	let tiltStrength = 15;
+	let blobElement: HTMLElement;
 
 	function handleMouseMove(event: any) {
 		const rect = event.currentTarget.getBoundingClientRect();
 		mouseX = event.clientX - rect.left;
 		mouseY = event.clientY - rect.top;
+		const angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
 
+		
 		const percentX = (mouseX / rect.width) * 2 - 1;
 		const percentY = (mouseY / rect.height) * 2 - 1;
-
+		
 		const tiltX = tiltStrength * percentY;
 		const tiltY = -tiltStrength * percentX;
-
+		
 		event.currentTarget.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+		blobElement.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
 	}
 
 	function handleMouseLeave(event: any) {
 		const transitionDuration = 1000;
 		event.currentTarget.style.transition = `transform ${transitionDuration}ms ease`;
 		event.currentTarget.style.transform = `rotateX(0deg) rotateY(0deg)`;
+		blobElement.style.transform = 'translate(-50%, -50%)';
 	}
 	let laserDirection = 'right'; // ['right', 'down', 'left', 'up']
 
 	onMount(() => {
 		const laserElement = document.querySelector('.laser-effect') as HTMLElement;
+		blobElement = document.querySelector('.blob-bg') as HTMLElement;
 		if (!laserElement) return;
 
 		let posX = 0;
@@ -96,11 +102,13 @@
 </script>
 
 <div class="relative h-full w-full flex items-center justify-center">
-	<div class="absolute top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl opacity-70"></div>
+	<div
+		class="blob-bg absolute top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl opacity-70"
+	/>
 	<div
 		on:mouseleave={handleMouseLeave}
 		on:mousemove={handleMouseMove}
-		class="h-[80%] w-[80%] z-10 backdrop-filter opacity-100 backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-[#181C2A] laser-effect"
+		class="h-[80%] w-[80%] z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-[#181C2A] laser-effect"
 	>
 		<div
 			class="absolute top-50% left-50% transform -translate-x-50% -translate-y-50% w-[130%] h-[130%]"
