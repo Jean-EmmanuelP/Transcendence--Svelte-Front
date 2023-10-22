@@ -3,16 +3,43 @@
 @tailwind utilities;
 
 @layer utilities {
-    .animation-delay-2000 {
-        animation-delay: 2s;
+	@layer utilities {
+        .laser-effect::before {
+            left: var(--laser-pos-x, 0);
+            top: var(--laser-pos-y, 0);
+            width: var(--laser-width, 100px);
+            height: var(--laser-height, 2px);
+            content: '';
+            position: absolute;
+            background-color: #6a79f0;
+        }
+
+        .laser-effect {
+            position: relative;
+            overflow: hidden;
+        }
     }
 
-    .animation-delay-4000 {
-        animation-delay: 4s;
-    }
-
-    .titlable {
-        transform: rotateX(0deg) rotateY(0deg);
-    }
+	/* @keyframes laserTravel {
+		0%,
+		100% {
+			top: 0;
+			left: 0;
+		}
+		25% {
+			top: 0;
+			left: 100%;
+			transform: translateX(-100%);
+		}
+		50% {
+			top: 100%;
+			left: 100%;
+			transform: translateY(-100%) translateX(-100%);
+		}
+		75% {
+			top: 100%;
+			left: 0;
+			transform: translateY(-100%);
+		}
+	} */
 }
-

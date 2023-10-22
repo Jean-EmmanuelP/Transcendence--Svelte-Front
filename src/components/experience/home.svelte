@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	let clickedPlay: boolean = false;
 	function clickedPlayButton() {
@@ -26,16 +27,81 @@
 
 	function handleMouseLeave(event: any) {
 		const transitionDuration = 1000;
-		event.currentTarget.style.transition = `transform ${transitionDuration}ms ease`
+		event.currentTarget.style.transition = `transform ${transitionDuration}ms ease`;
 		event.currentTarget.style.transform = `rotateX(0deg) rotateY(0deg)`;
 	}
+	let laserDirection = 'right'; // ['right', 'down', 'left', 'up']
+
+	onMount(() => {
+		const laserElement = document.querySelector('.laser-effect') as HTMLElement;
+		if (!laserElement) return;
+
+		let posX = 0;
+		let posY = 0;
+		const laserSpeed = 2;
+
+		function updateLaserPosition() {
+			if (laserElement) {
+
+			switch (laserDirection) {
+				case 'right':
+					posX += laserSpeed;
+					if (posX >= laserElement.clientWidth) {
+						laserDirection = 'down';
+						laserElement.style.setProperty('--laser-width', '2px');
+						laserElement.style.setProperty('--laser-height', '100px');
+						posX = laserElement.clientWidth - 2;
+						posY = 0;
+					}
+					break;
+				case 'down':
+					posY += laserSpeed;
+					if (posY >= laserElement.clientHeight) {
+						laserDirection = 'left';
+						laserElement.style.setProperty('--laser-width', '100px');
+						laserElement.style.setProperty('--laser-height', '2px');
+						posX = laserElement.clientWidth;
+						posY = laserElement.clientHeight - 2;
+					}
+					break;
+				case 'left':
+					posX -= laserSpeed;
+					if (posX <= 0) {
+						laserDirection = 'up';
+						laserElement.style.setProperty('--laser-width', '2px');
+						laserElement.style.setProperty('--laser-height', '100px');
+						posX = 2;
+						posY = laserElement.clientHeight;
+					}
+					break;
+				case 'up':
+					posY -= laserSpeed;
+					if (posY <= 0) {
+						laserDirection = 'right';
+						laserElement.style.setProperty('--laser-width', '100px');
+						laserElement.style.setProperty('--laser-height', '2px');
+						posX = 0;
+						posY = 2;
+					}
+					break;
+			}
+
+			laserElement.style.setProperty('--laser-pos-x', posX + 'px');
+			laserElement.style.setProperty('--laser-pos-y', posY + 'px');
+			requestAnimationFrame(updateLaserPosition);
+		}
+
+		}
+
+		updateLaserPosition();
+	});
 </script>
 
 <div class="relative h-full w-full flex items-center justify-center">
 	<div
 		on:mouseleave={handleMouseLeave}
 		on:mousemove={handleMouseMove}
-		class="h-[80%] w-[80%] z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100"
+		class="h-[80%] w-[80%] z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-[#181C2A] laser-effect"
 	>
 		<div class="w-full h-full flex items-center justify-center transparent">
 			<div class="relative group">
