@@ -96,10 +96,11 @@
 </script>
 
 <div class="relative h-full w-full flex items-center justify-center">
+	<div class="absolute top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl opacity-70"></div>
 	<div
 		on:mouseleave={handleMouseLeave}
 		on:mousemove={handleMouseMove}
-		class="h-[80%] w-[80%] z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-[#181C2A] laser-effect"
+		class="h-[80%] w-[80%] z-10 backdrop-filter opacity-100 backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-[#181C2A] laser-effect"
 	>
 		<div
 			class="absolute top-50% left-50% transform -translate-x-50% -translate-y-50% w-[130%] h-[130%]"
