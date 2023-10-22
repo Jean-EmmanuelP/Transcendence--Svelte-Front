@@ -5,12 +5,38 @@
 		clickedPlay = !clickedPlay;
 		console.log('clickedPlay', clickedPlay);
 	}
+
+	let mouseX = 0;
+	let mouseY = 0;
+	let tiltStrength = 15;
+
+	function handleMouseMove(event: any) {
+		const rect = event.currentTarget.getBoundingClientRect();
+		mouseX = event.clientX - rect.left;
+		mouseY = event.clientY - rect.top;
+
+		const percentX = (mouseX / rect.width) * 2 - 1;
+		const percentY = (mouseY / rect.height) * 2 - 1;
+
+		const tiltX = tiltStrength * percentY;
+		const tiltY = -tiltStrength * percentX;
+
+		event.currentTarget.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+	}
+
+	function handleMouseLeave(event: any) {
+		const transitionDuration = 1000;
+		event.currentTarget.style.transition = `transform ${transitionDuration}ms ease`
+		event.currentTarget.style.transform = `rotateX(0deg) rotateY(0deg)`;
+	}
 </script>
 
 <div class="relative h-full w-full flex items-center justify-center">
-
-	<div class="h-[80%] w-[80%]  z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl">
-		
+	<div
+		on:mouseleave={handleMouseLeave}
+		on:mousemove={handleMouseMove}
+		class="h-[80%] w-[80%] z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100"
+	>
 		<div class="w-full h-full flex items-center justify-center transparent">
 			<div class="relative group">
 				{#if !clickedPlay}

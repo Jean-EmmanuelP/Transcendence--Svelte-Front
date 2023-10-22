@@ -10,4 +10,9 @@
     .animation-delay-4000 {
         animation-delay: 4s;
     }
+
+    .titlable {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
 }
+
