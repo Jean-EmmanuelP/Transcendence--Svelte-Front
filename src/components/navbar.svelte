@@ -103,12 +103,14 @@
 </script>
 
 <header class="lg:static lg:overflow-y-visible text-white border-b border-b-white">
-	<div class="px-4 sm:px-6 lg:px-8">
-		<div class="bg-red-500 relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
-			<div class="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2" />
-			<div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
+	<div class="border border-green-950">
+		<div class="bg-red-500 relative flex flex-row lg:gap-2 xl:grid xl:grid-cols-12">
+			<div class="flex items-center justify-center border border-black md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-4">
+				<button class="">Pong</button>
+			</div>
+			<div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-4">
 				<div
-					class="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0"
+					class="flex items-center border border-black px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0"
 				>
 					<div class="w-full relative">
 						<label for="search" class="sr-only">Search</label>
@@ -210,7 +212,7 @@
 				</button>
 			</div>
 			<div
-				class="hidden border border-black lg:flex lg:items-center lg:justify-around xl:col-span-4"
+				class="xl:col-span-4 hidden border border-black lg:flex lg:items-center lg:justify-around"
 			>
 				<button
 					on:click={() => {
