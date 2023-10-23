@@ -417,7 +417,7 @@
 <ModalWrapper bind:isOpen={isModalOpen}>
 	{#if $modalOpen === 'userMenu'}
 		<div
-			class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+			class="absolute right-12 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
 			role="menu"
 			aria-orientation="vertical"
 			aria-labelledby="user-menu-button"
@@ -447,7 +447,7 @@
 		</div>
 	{:else if $modalOpen === 'notifications'}
 		<div
-			class="pl-4 absolute overflow-hidden right-0 h-48 w-[250px] bg-white origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
+			class="pl-4 absolute overflow-hidden right-16 h-48 w-[250px] bg-white origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
 		>
 			<header class="pt-2 text-left h-[30%] w-full">
 				<h1 class="font-medium text-[15px]">Notifications</h1>
