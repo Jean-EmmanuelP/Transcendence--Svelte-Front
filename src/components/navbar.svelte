@@ -104,66 +104,66 @@
 
 <header class="lg:static lg:overflow-y-visible text-white border-b border-b-white">
 	<div class="border border-green-950">
-		<div class="bg-red-500 relative flex flex-row lg:gap-2 xl:grid xl:grid-cols-12">
-			<div class="flex items-center justify-center border border-black md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-4">
-				<button class="">Pong</button>
+		<div class="transparent relative flex flex-row lg:gap-2 xl:grid xl:grid-cols-12">
+			<div class="flex items-center border border-black md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-4">
+				<div class="w-full relative">
+					<label for="search" class="sr-only">Search</label>
+					<div class="relative group">
+						<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+							<svg
+								class="h-5 w-5 text-[#808080] group-focus-within:text-black"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+								aria-hidden="true"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</div>
+						<input
+							id="search"
+							name="search"
+							class="block w-1/2 bg-[#F4F4F4] group/icon_search rounded-full pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500/40 sm:text-sm sm:leading-6"
+							placeholder="Search"
+							type="search"
+							autocomplete="off"
+							bind:value={term}
+							on:focus={handleInputFocus}
+							on:input={handleSearch}
+						/>
+						{#if isDropdownOpen && users.length}
+							<div
+								class="dropdown-menu bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 z-20 p-2 flex flex-col gap-2 max-h-80 w-80 overflow-hidden"
+							>
+								{#each users as user (user.id)}
+									<div
+										class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10"
+										on:click={() => {
+											goto(`/profile/${user.pseudo}`);
+											isDropdownOpen = false;
+										}}
+									>
+										<div class="h-full w-[30%]">
+											<OnlineUserImg avatar={user.avatar} status={user.status} />
+										</div>
+										<div class="w-[70%] h-full flex items-center">
+											<p>{user.name.split(' ')[0]}</p>
+										</div>
+									</div>
+								{/each}
+							</div>
+						{/if}
+					</div>
+				</div>
 			</div>
 			<div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-4">
 				<div
-					class="flex items-center border border-black px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0"
+					class="flex items-center justify-center border border-black px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0"
 				>
-					<div class="w-full relative">
-						<label for="search" class="sr-only">Search</label>
-						<div class="relative group">
-							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-								<svg
-									class="h-5 w-5 text-[#808080] group-focus-within:text-black"
-									viewBox="0 0 20 20"
-									fill="currentColor"
-									aria-hidden="true"
-								>
-									<path
-										fill-rule="evenodd"
-										d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-										clip-rule="evenodd"
-									/>
-								</svg>
-							</div>
-							<input
-								id="search"
-								name="search"
-								class="block w-1/2 bg-[#F4F4F4] group/icon_search rounded-full pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500/40 sm:text-sm sm:leading-6"
-								placeholder="Search"
-								type="search"
-								autocomplete="off"
-								bind:value={term}
-								on:focus={handleInputFocus}
-								on:input={handleSearch}
-							/>
-							{#if isDropdownOpen && users.length}
-								<div
-									class="dropdown-menu bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 z-20 p-2 flex flex-col gap-2 max-h-80 w-80 overflow-hidden"
-								>
-									{#each users as user (user.id)}
-										<div
-											class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10"
-											on:click={() => {
-												goto(`/profile/${user.pseudo}`);
-												isDropdownOpen = false;
-											}}
-										>
-											<div class="h-full w-[30%]">
-												<OnlineUserImg avatar={user.avatar} status={user.status} />
-											</div>
-											<div class="w-[70%] h-full flex items-center">
-												<p>{user.name.split(' ')[0]}</p>
-											</div>
-										</div>
-									{/each}
-								</div>
-							{/if}
-						</div>
-					</div>
+					<button>Pong</button>
 				</div>
 			</div>
 			<div class="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
