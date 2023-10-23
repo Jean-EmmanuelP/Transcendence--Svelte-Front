@@ -129,8 +129,6 @@
 							xmlns:xlink="http://www.w3.org/1999/xlink"
 							version="1.1"
 							id="Calque_1"
-							sodipodi:docname="42_logo.svg"
-							inkscape:version="0.48.2 r9819"
 							x="0px"
 							y="0px"
 							viewBox="0 -200 960 960"
