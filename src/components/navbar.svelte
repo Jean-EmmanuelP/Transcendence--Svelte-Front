@@ -103,25 +103,56 @@
 </script>
 
 <header class="lg:static lg:overflow-y-visible text-white border-b border-b-white">
-	<div class="border border-green-950 flex items-center justify-center">
-		<div class="transparent relative w-[80%] flex flex-row items-center lg:gap-2 xl:grid xl:grid-cols-12">
-			<div class="flex items-center border border-red-500 md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-4">
+	<div class="flex items-center justify-center">
+		<div
+			class="transparent relative w-[80%] flex flex-row items-center lg:gap-2 xl:grid xl:grid-cols-12"
+		>
+			<div
+				class="flex pl-2 items-center md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-4"
+			>
 				<button class="flex flex-row gap-2 items-center justify-center">
-					<div class="relative w-[50px] h-[50px]">
-						<svg xmlns="http://www.w3.org/2000/svg" class="text-white absolute top-0 left-0 w-full h-full" width="50" height="50" viewBox="0 0 100 100"><path fill="#ffffff" d="M1.22541 61.5228c-.2225-.9485.90748-1.5459 1.59638-.857L39.3342 97.1782c.6889.6889.0915 1.8189-.857 1.5964C20.0515 94.4522 5.54779 79.9485 1.22541 61.5228ZM.00189135 46.8891c-.01764375.2833.08887215.5599.28957165.7606L52.3503 99.7085c.2007.2007.4773.3075.7606.2896 2.3692-.1476 4.6938-.46 6.9624-.9259.7645-.157 1.0301-1.0963.4782-1.6481L2.57595 39.4485c-.55186-.5519-1.49117-.2863-1.648174.4782-.465915 2.2686-.77832 4.5932-.92588465 6.9624ZM4.21093 29.7054c-.16649.3738-.08169.8106.20765 1.1l64.77602 64.776c.2894.2894.7262.3742 1.1.2077 1.7861-.7956 3.5171-1.6927 5.1855-2.684.5521-.328.6373-1.0867.1832-1.5407L8.43566 24.3367c-.45409-.4541-1.21271-.3689-1.54074.1832-.99132 1.6684-1.88843 3.3994-2.68399 5.1855ZM12.6587 18.074c-.3701-.3701-.393-.9637-.0443-1.3541C21.7795 6.45931 35.1114 0 49.9519 0 77.5927 0 100 22.4073 100 50.0481c0 14.8405-6.4593 28.1724-16.7199 37.3375-.3903.3487-.984.3258-1.3542-.0443L12.6587 18.074Z"/></svg>
-						<svg class="absolute top-0 left-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Calque_1" sodipodi:docname="42_logo.svg" inkscape:version="0.48.2 r9819" x="0px" y="0px" viewBox="0 -200 960 960" enable-background="new 0 -200 960 960" xml:space="preserve">
-							<polygon id="polygon5" points="32,412.6 362.1,412.6 362.1,578 526.8,578 526.8,279.1 197.3,279.1 526.8,-51.1 362.1,-51.1   32,279.1 "/>
-							<polygon id="polygon7" points="597.9,114.2 762.7,-51.1 597.9,-51.1 "/>
-							<polygon id="polygon9" points="762.7,114.2 597.9,279.1 597.9,443.9 762.7,443.9 762.7,279.1 928,114.2 928,-51.1 762.7,-51.1 "/>
-							<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 "/>
-							</svg>
+					<div class="relative w-[50px] h-[40px]">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="text-white absolute top-0 left-0 w-full h-full"
+							width="50"
+							height="50"
+							viewBox="0 0 100 100"
+							><path
+								fill="#ffffff"
+								d="M1.22541 61.5228c-.2225-.9485.90748-1.5459 1.59638-.857L39.3342 97.1782c.6889.6889.0915 1.8189-.857 1.5964C20.0515 94.4522 5.54779 79.9485 1.22541 61.5228ZM.00189135 46.8891c-.01764375.2833.08887215.5599.28957165.7606L52.3503 99.7085c.2007.2007.4773.3075.7606.2896 2.3692-.1476 4.6938-.46 6.9624-.9259.7645-.157 1.0301-1.0963.4782-1.6481L2.57595 39.4485c-.55186-.5519-1.49117-.2863-1.648174.4782-.465915 2.2686-.77832 4.5932-.92588465 6.9624ZM4.21093 29.7054c-.16649.3738-.08169.8106.20765 1.1l64.77602 64.776c.2894.2894.7262.3742 1.1.2077 1.7861-.7956 3.5171-1.6927 5.1855-2.684.5521-.328.6373-1.0867.1832-1.5407L8.43566 24.3367c-.45409-.4541-1.21271-.3689-1.54074.1832-.99132 1.6684-1.88843 3.3994-2.68399 5.1855ZM12.6587 18.074c-.3701-.3701-.393-.9637-.0443-1.3541C21.7795 6.45931 35.1114 0 49.9519 0 77.5927 0 100 22.4073 100 50.0481c0 14.8405-6.4593 28.1724-16.7199 37.3375-.3903.3487-.984.3258-1.3542-.0443L12.6587 18.074Z"
+							/></svg
+						>
+						<svg
+							class="absolute top-0 left-0 w-full h-full"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+							version="1.1"
+							id="Calque_1"
+							sodipodi:docname="42_logo.svg"
+							inkscape:version="0.48.2 r9819"
+							x="0px"
+							y="0px"
+							viewBox="0 -200 960 960"
+							enable-background="new 0 -200 960 960"
+							xml:space="preserve"
+						>
+							<polygon
+								id="polygon5"
+								points="32,412.6 362.1,412.6 362.1,578 526.8,578 526.8,279.1 197.3,279.1 526.8,-51.1 362.1,-51.1   32,279.1 "
+							/>
+							<polygon id="polygon7" points="597.9,114.2 762.7,-51.1 597.9,-51.1 " />
+							<polygon
+								id="polygon9"
+								points="762.7,114.2 597.9,279.1 597.9,443.9 762.7,443.9 762.7,279.1 928,114.2 928,-51.1 762.7,-51.1 "
+							/>
+							<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
+						</svg>
 					</div>
 				</button>
 			</div>
 			<div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-4">
-				<div
-					class="flex border border-green-500 px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0"
-				>
+				<div class="flex px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
 					<div class="w-full relative h-full flex items-center justify-center">
 						<label for="search" class="sr-only">Search</label>
 						<div class="relative group w-full h-full">
@@ -221,9 +252,7 @@
 					</svg>
 				</button>
 			</div>
-			<div
-				class="xl:col-span-4 hidden border border-red-500 lg:flex lg:items-center lg:justify-around"
-			>
+			<div class="xl:col-span-4 hidden px-8 lg:flex lg:items-center lg:justify-around">
 				<button
 					on:click={() => {
 						goto('/messages');
@@ -231,13 +260,11 @@
 				>
 					<svg
 						aria-label="Direct"
-						class="h-6 w-6 shrink-0 text-white group-hover:text-white"
+						class="h-5 w-5 shrink-0 text-white group-hover:text-white"
 						color="rgb(0, 0, 0)"
 						fill="rgb(0, 0, 0)"
-						height="24"
 						role="img"
 						viewBox="0 0 24 24"
-						width="24"
 						><title>Direct</title><line
 							fill="none"
 							stroke="currentColor"
@@ -266,12 +293,12 @@
 					{#if $modalOpen !== 'notifications'}
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
-							height="24"
 							viewBox="0 0 24 24"
 							stroke="currentColor"
-							class="w-7 h-7 text-white"
+							class="h-6 w-6 text-white"
 						>
 							<path
+								stroke-width="2"
 								stroke-linecap="round"
 								stroke-linejoin="round"
 								d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
@@ -283,7 +310,7 @@
 							viewBox="0 0 24 24"
 							stroke-width="1.5"
 							stroke="currentColor"
-							class="w-7 h-7"
+							class="h-7 w-7"
 						>
 							<path
 								stroke-linecap="round"
