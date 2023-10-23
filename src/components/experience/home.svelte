@@ -9,12 +9,12 @@
 
 	let mouseX = 0;
 	let mouseY = 0;
-	let tiltStrength = 15;
+	let tiltStrength = 4;
 	let blobElement: HTMLElement;
 	let laserSpeed = 2;
 	let currentTiltX = 0;
 	let currentTiltY = 0;
-	const lerpFactor = 0.1;
+	const lerpFactor = 0.2;
 
 	function lerp(start: number, end: number, factor: number) {
 		return start + (end - start) * factor;
@@ -26,7 +26,7 @@
 		mouseY = event.clientY - rect.top;
 
 		const dx = mouseX - rect.width / 2;
-		const dy = mouseX - rect.height / 2;
+		const dy = mouseY - rect.height / 2;
 		const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
 
 		const maxDistance = Math.sqrt((rect.width / 2) ** 2 + (rect.height / 2) ** 2);
@@ -43,20 +43,25 @@
 		const tiltY = tiltStrength * percentX;
 
 		currentTiltX = lerp(currentTiltX, tiltX, lerpFactor);
-        currentTiltY = lerp(currentTiltY, tiltY, lerpFactor);
+		currentTiltY = lerp(currentTiltY, tiltY, lerpFactor);
 
-		event.currentTarget.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-		blobElement.style.transform = `translate(-50%, -50%) rotateX(${currentTiltX - 10}deg) rotateY(${currentTiltY - 10}deg)`;
+		event.currentTarget.style.transform = `rotateX(${currentTiltX}deg) rotateY(${currentTiltY}deg)`;
+		blobElement.style.width = '70%';
+		blobElement.style.height = '70%';
+		blobElement.style.transform = `translate(-50%, -50%) rotateX(${currentTiltX - 10}deg) rotateY(${
+			currentTiltY - 10
+		}deg)`;
 	}
 
 	function handleMouseLeave(event: any) {
 		const transitionDuration = 1000;
 		event.currentTarget.style.transition = `transform ${transitionDuration}ms ease`;
 		event.currentTarget.style.transform = `rotateX(0deg) rotateY(0deg)`;
+		blobElement.style.width = '80%';
+		blobElement.style.height = '80%';
 		blobElement.style.transform = 'translate(-50%, -50%) rotateX(0deg) rotateY(0deg)';
 	}
 	let laserDirection = 'right';
-
 	onMount(() => {
 		const laserElement = document.querySelector('.laser-effect') as HTMLElement;
 		const playElement = document.querySelector('.play-button') as HTMLElement;
@@ -126,17 +131,18 @@
 		}
 
 		updateLaserPosition();
+		updateLaserPosition();
 	});
 </script>
 
 <div class="parent-enter-effect relative h-full w-full flex items-center justify-center">
 	<div
-		class="blob-bg opacity-0 absolute top-1/2 left-1/2 transform transition duration-100 -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl"
+		class="blob-bg opacity-0 absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl"
 	/>
 	<div
 		on:mouseleave={handleMouseLeave}
 		on:mousemove={handleMouseMove}
-		class="h-[80%] w-[80%] z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-[#181C2A] laser-effect"
+		class="h-[80%] w-[80%] z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-black laser-effect"
 	>
 		<div
 			class="absolute top-50% left-50% transform -translate-x-50% -translate-y-50% w-[130%] h-[130%]"
