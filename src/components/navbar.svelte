@@ -103,67 +103,77 @@
 </script>
 
 <header class="lg:static lg:overflow-y-visible text-white border-b border-b-white">
-	<div class="border border-green-950">
-		<div class="transparent relative flex flex-row lg:gap-2 xl:grid xl:grid-cols-12">
-			<div class="flex items-center border border-black md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-4">
-				<div class="w-full relative">
-					<label for="search" class="sr-only">Search</label>
-					<div class="relative group">
-						<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-							<svg
-								class="h-5 w-5 text-[#808080] group-focus-within:text-black"
-								viewBox="0 0 20 20"
-								fill="currentColor"
-								aria-hidden="true"
-							>
-								<path
-									fill-rule="evenodd"
-									d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-									clip-rule="evenodd"
-								/>
+	<div class="border border-green-950 flex items-center justify-center">
+		<div class="transparent relative w-[80%] flex flex-row items-center lg:gap-2 xl:grid xl:grid-cols-12">
+			<div class="flex items-center border border-red-500 md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-4">
+				<button class="flex flex-row gap-2 items-center justify-center">
+					<div class="relative w-[50px] h-[50px]">
+						<svg xmlns="http://www.w3.org/2000/svg" class="text-white absolute top-0 left-0 w-full h-full" width="50" height="50" viewBox="0 0 100 100"><path fill="#ffffff" d="M1.22541 61.5228c-.2225-.9485.90748-1.5459 1.59638-.857L39.3342 97.1782c.6889.6889.0915 1.8189-.857 1.5964C20.0515 94.4522 5.54779 79.9485 1.22541 61.5228ZM.00189135 46.8891c-.01764375.2833.08887215.5599.28957165.7606L52.3503 99.7085c.2007.2007.4773.3075.7606.2896 2.3692-.1476 4.6938-.46 6.9624-.9259.7645-.157 1.0301-1.0963.4782-1.6481L2.57595 39.4485c-.55186-.5519-1.49117-.2863-1.648174.4782-.465915 2.2686-.77832 4.5932-.92588465 6.9624ZM4.21093 29.7054c-.16649.3738-.08169.8106.20765 1.1l64.77602 64.776c.2894.2894.7262.3742 1.1.2077 1.7861-.7956 3.5171-1.6927 5.1855-2.684.5521-.328.6373-1.0867.1832-1.5407L8.43566 24.3367c-.45409-.4541-1.21271-.3689-1.54074.1832-.99132 1.6684-1.88843 3.3994-2.68399 5.1855ZM12.6587 18.074c-.3701-.3701-.393-.9637-.0443-1.3541C21.7795 6.45931 35.1114 0 49.9519 0 77.5927 0 100 22.4073 100 50.0481c0 14.8405-6.4593 28.1724-16.7199 37.3375-.3903.3487-.984.3258-1.3542-.0443L12.6587 18.074Z"/></svg>
+						<svg class="absolute top-0 left-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Calque_1" sodipodi:docname="42_logo.svg" inkscape:version="0.48.2 r9819" x="0px" y="0px" viewBox="0 -200 960 960" enable-background="new 0 -200 960 960" xml:space="preserve">
+							<polygon id="polygon5" points="32,412.6 362.1,412.6 362.1,578 526.8,578 526.8,279.1 197.3,279.1 526.8,-51.1 362.1,-51.1   32,279.1 "/>
+							<polygon id="polygon7" points="597.9,114.2 762.7,-51.1 597.9,-51.1 "/>
+							<polygon id="polygon9" points="762.7,114.2 597.9,279.1 597.9,443.9 762.7,443.9 762.7,279.1 928,114.2 928,-51.1 762.7,-51.1 "/>
+							<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 "/>
 							</svg>
-						</div>
-						<input
-							id="search"
-							name="search"
-							class="block w-1/2 bg-[#F4F4F4] group/icon_search rounded-full pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500/40 sm:text-sm sm:leading-6"
-							placeholder="Search"
-							type="search"
-							autocomplete="off"
-							bind:value={term}
-							on:focus={handleInputFocus}
-							on:input={handleSearch}
-						/>
-						{#if isDropdownOpen && users.length}
-							<div
-								class="dropdown-menu bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 z-20 p-2 flex flex-col gap-2 max-h-80 w-80 overflow-hidden"
-							>
-								{#each users as user (user.id)}
-									<div
-										class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10"
-										on:click={() => {
-											goto(`/profile/${user.pseudo}`);
-											isDropdownOpen = false;
-										}}
-									>
-										<div class="h-full w-[30%]">
-											<OnlineUserImg avatar={user.avatar} status={user.status} />
-										</div>
-										<div class="w-[70%] h-full flex items-center">
-											<p>{user.name.split(' ')[0]}</p>
-										</div>
-									</div>
-								{/each}
-							</div>
-						{/if}
 					</div>
-				</div>
+				</button>
 			</div>
 			<div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-4">
 				<div
-					class="flex items-center justify-center border border-black px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0"
+					class="flex items-center border border-green-500 px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0"
 				>
-					<button>Pong</button>
+					<div class="w-full relative flex justify-center">
+						<label for="search" class="sr-only">Search</label>
+						<div class="relative group">
+							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+								<svg
+									class="h-3 w-3 text-[#808080] group-focus-within:text-black"
+									viewBox="0 0 20 20"
+									fill="currentColor"
+									aria-hidden="true"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+							</div>
+							<input
+								id="search"
+								name="search"
+								class="block w-full bg-[#F4F4F4] group/icon_search rounded-md pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-blue-500/40 sm:text-[12px] sm:leading-6"
+								placeholder="Search players"
+								type="search"
+								autocomplete="off"
+								bind:value={term}
+								on:focus={handleInputFocus}
+								on:input={handleSearch}
+							/>
+							{#if isDropdownOpen && users.length}
+								<div
+									class="dropdown-menu bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 z-20 p-2 flex flex-col gap-2 max-h-80 w-80 overflow-hidden"
+								>
+									{#each users as user (user.id)}
+										<div
+											class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10"
+											on:click={() => {
+												goto(`/profile/${user.pseudo}`);
+												isDropdownOpen = false;
+											}}
+										>
+											<div class="h-full w-[30%]">
+												<OnlineUserImg avatar={user.avatar} status={user.status} />
+											</div>
+											<div class="w-[70%] h-full flex items-center">
+												<p>{user.name.split(' ')[0]}</p>
+											</div>
+										</div>
+									{/each}
+								</div>
+							{/if}
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
@@ -212,7 +222,7 @@
 				</button>
 			</div>
 			<div
-				class="xl:col-span-4 hidden border border-black lg:flex lg:items-center lg:justify-around"
+				class="xl:col-span-4 hidden border border-red-500 lg:flex lg:items-center lg:justify-around"
 			>
 				<button
 					on:click={() => {
