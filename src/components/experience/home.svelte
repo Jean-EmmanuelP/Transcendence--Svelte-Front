@@ -51,6 +51,7 @@
 		blobElement.style.transform = `translate(-50%, -50%) rotateX(${currentTiltX - 10}deg) rotateY(${
 			currentTiltY - 10
 		}deg)`;
+		blobElement.style.backgroundColor = 'red';
 	}
 
 	function handleMouseLeave(event: any) {
@@ -60,6 +61,7 @@
 		blobElement.style.width = '80%';
 		blobElement.style.height = '80%';
 		blobElement.style.transform = 'translate(-50%, -50%) rotateX(0deg) rotateY(0deg)';
+		blobElement.style.backgroundColor = '#26619c';
 	}
 	let laserDirection = 'right';
 	onMount(() => {
