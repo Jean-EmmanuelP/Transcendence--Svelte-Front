@@ -11,6 +11,8 @@
 	let mouseY = 0;
 	let tiltStrength = 4;
 	let blobElement: HTMLElement;
+	let laserElement: HTMLElement;
+	let playElement: HTMLElement;
 	let laserSpeed = 2;
 	let currentTiltX = 0;
 	let currentTiltY = 0;
@@ -21,17 +23,10 @@
 	}
 
 	function handleMouseMove(event: any) {
+		if (!event.currentTarget || !blobElement) return;
 		const rect = event.currentTarget.getBoundingClientRect();
-		const laserElement = document.querySelector('.laser-effect') as HTMLElement;
 		mouseX = event.clientX - rect.left;
 		mouseY = event.clientY - rect.top;
-
-		const dx = mouseX - rect.width / 2;
-		const dy = mouseY - rect.height / 2;
-		const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
-
-		const maxDistance = Math.sqrt((rect.width / 2) ** 2 + (rect.height / 2) ** 2);
-		const normalizedDistance = Math.min(distanceFromCenter / maxDistance, 1);
 
 		const percentX = (mouseX / rect.width) * 2 - 1;
 		const percentY = (mouseY / rect.height) * 2 - 1;
@@ -52,6 +47,7 @@
 	}
 
 	function handleMouseLeave(event: any) {
+		if (!event.currentTarget || !blobElement) return;
 		const transitionDuration = 1000;
 		event.currentTarget.style.transition = `transform ${transitionDuration}ms ease`;
 		event.currentTarget.style.transform = `rotateX(0deg) rotateY(0deg)`;
@@ -62,13 +58,11 @@
 	}
 	let laserDirection = 'right';
 	onMount(() => {
-		const laserElement = document.querySelector('.laser-effect') as HTMLElement;
-		const playElement = document.querySelector('.play-button') as HTMLElement;
-		blobElement = document.querySelector('.blob-bg') as HTMLElement;
-		if (!laserElement) return;
+		if (!laserElement || !playElement || !blobElement) return;
 
 		let posX = 0;
 		let posY = 0;
+		
 		if (laserElement && playElement && blobElement) {
 			setTimeout(() => {
 				blobElement.style.opacity = '1';
@@ -78,6 +72,9 @@
 				laserElement.style.opacity = '1';
 			}, 250);
 		}
+
+		let animationFrameId: number;
+
 		function updateLaserPosition() {
 			if (laserElement) {
 				switch (laserDirection) {
@@ -125,22 +122,27 @@
 
 				laserElement.style.setProperty('--laser-pos-x', posX + 'px');
 				laserElement.style.setProperty('--laser-pos-y', posY + 'px');
-				requestAnimationFrame(updateLaserPosition);
+				animationFrameId = requestAnimationFrame(updateLaserPosition);
 			}
 		}
 
 		updateLaserPosition();
+		return () => {
+			cancelAnimationFrame(animationFrameId)
+		}
 	});
 </script>
 
 <div class="parent-enter-effect relative h-full w-full flex items-center justify-center">
 	<div
 		class="blob-bg opacity-0 absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl"
+		bind:this={blobElement}
 	/>
 	<div
 		on:mouseleave={handleMouseLeave}
 		on:mousemove={handleMouseMove}
 		class="h-[80%] w-[80%] z-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-black laser-effect"
+		bind:this={laserElement}
 	>
 		<div
 			class="absolute top-50% left-50% transform -translate-x-50% -translate-y-50% w-[130%] h-[130%]"
@@ -168,6 +170,7 @@
 						class={`play-button group relative px-7 py-4 transparent rounded-lg leading-none flex transition duration-500 ease-in-out ${
 							clickedPlay ? 'opacity-0' : 'opacity-100'
 						}`}
+						bind:this={playElement}
 					>
 						<span class="flex items-center space-x-5">
 							<svg
