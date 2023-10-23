@@ -102,9 +102,9 @@
 	});
 </script>
 
-<header class="lg:static lg:overflow-y-visible text-white">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
+<header class="lg:static lg:overflow-y-visible text-white border-b border-b-white">
+	<div class="px-4 sm:px-6 lg:px-8">
+		<div class="bg-red-500 relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
 			<div class="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2" />
 			<div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
 				<div
@@ -209,7 +209,41 @@
 					</svg>
 				</button>
 			</div>
-			<div class="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
+			<div
+				class="hidden border border-black lg:flex lg:items-center lg:justify-around xl:col-span-4"
+			>
+				<button
+					on:click={() => {
+						goto('/messages');
+					}}
+				>
+					<svg
+						aria-label="Direct"
+						class="h-6 w-6 shrink-0 text-white group-hover:text-white"
+						color="rgb(0, 0, 0)"
+						fill="rgb(0, 0, 0)"
+						height="24"
+						role="img"
+						viewBox="0 0 24 24"
+						width="24"
+						><title>Direct</title><line
+							fill="none"
+							stroke="currentColor"
+							stroke-linejoin="round"
+							stroke-width="2"
+							x1="22"
+							x2="9.218"
+							y1="3"
+							y2="10.083"
+						/><polygon
+							fill="none"
+							points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
+							stroke="currentColor"
+							stroke-linejoin="round"
+							stroke-width="2"
+						/></svg
+					>
+				</button>
 				<button
 					type="button"
 					class="relative ml-5 flex-shrink-0 rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -220,11 +254,10 @@
 					{#if $modalOpen !== 'notifications'}
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
+							height="24"
 							viewBox="0 0 24 24"
-							stroke-width="1.5"
 							stroke="currentColor"
-							class="w-7 h-7"
+							class="w-7 h-7 text-white"
 						>
 							<path
 								stroke-linecap="round"
