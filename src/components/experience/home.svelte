@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { activeColor } from '../../stores/currentNavigation';
 	let clickedPlay: boolean = false;
 	function clickedPlayButton() {
 		clickedPlay = !clickedPlay;
@@ -17,6 +18,7 @@
 	let currentTiltX = 0;
 	let currentTiltY = 0;
 	const lerpFactor = 0.2;
+	
 
 	function lerp(start: number, end: number, factor: number) {
 		return start + (end - start) * factor;
@@ -43,6 +45,7 @@
 		blobElement.style.transform = `translate(-50%, -50%) rotateX(${currentTiltX - 10}deg) rotateY(${
 			currentTiltY - 10
 		}deg)`;
+		activeColor.set('');
 		blobElement.style.backgroundColor = 'red';
 	}
 
@@ -55,6 +58,7 @@
 		blobElement.style.height = '80%';
 		blobElement.style.transform = 'translate(-50%, -50%) rotateX(0deg) rotateY(0deg)';
 		blobElement.style.backgroundColor = '#26619c';
+		activeColor.set('#26619c');
 	}
 	let laserDirection = 'right';
 	onMount(() => {
