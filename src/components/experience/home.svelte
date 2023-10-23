@@ -12,6 +12,13 @@
 	let tiltStrength = 15;
 	let blobElement: HTMLElement;
 	let laserSpeed = 2;
+	let currentTiltX = 0;
+	let currentTiltY = 0;
+	const lerpFactor = 0.1;
+
+	function lerp(start: number, end: number, factor: number) {
+		return start + (end - start) * factor;
+	}
 
 	function handleMouseMove(event: any) {
 		const rect = event.currentTarget.getBoundingClientRect();
@@ -28,15 +35,18 @@
 		const minSpeed = 2;
 		const maxSpeed = 20;
 
-		laserSpeed = maxSpeed - normalizedDistance * (maxSpeed - minSpeed); 
+		laserSpeed = maxSpeed - normalizedDistance * (maxSpeed - minSpeed);
 		const percentX = (mouseX / rect.width) * 2 - 1;
 		const percentY = (mouseY / rect.height) * 2 - 1;
 
 		const tiltX = tiltStrength * percentY;
 		const tiltY = tiltStrength * percentX;
 
+		currentTiltX = lerp(currentTiltX, tiltX, lerpFactor);
+        currentTiltY = lerp(currentTiltY, tiltY, lerpFactor);
+
 		event.currentTarget.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-		blobElement.style.transform = `translate(-50%, -50%) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+		blobElement.style.transform = `translate(-50%, -50%) rotateX(${currentTiltX - 10}deg) rotateY(${currentTiltY - 10}deg)`;
 	}
 
 	function handleMouseLeave(event: any) {
@@ -49,13 +59,21 @@
 
 	onMount(() => {
 		const laserElement = document.querySelector('.laser-effect') as HTMLElement;
+		const playElement = document.querySelector('.play-button') as HTMLElement;
 		blobElement = document.querySelector('.blob-bg') as HTMLElement;
 		if (!laserElement) return;
 
 		let posX = 0;
 		let posY = 0;
-		
-
+		if (laserElement && playElement && blobElement) {
+			setTimeout(() => {
+				blobElement.style.opacity = '1';
+				playElement.style.opacity = '1';
+				playElement.style.backgroundColor = 'white';
+				laserElement.style.transform = `scale(1) rotateX(0deg) rotateY(0deg)`;
+				laserElement.style.opacity = '1';
+			}, 250);
+		}
 		function updateLaserPosition() {
 			if (laserElement) {
 				switch (laserDirection) {
@@ -111,9 +129,9 @@
 	});
 </script>
 
-<div class="relative h-full w-full flex items-center justify-center">
+<div class="parent-enter-effect relative h-full w-full flex items-center justify-center">
 	<div
-		class="blob-bg absolute top-1/2 left-1/2 transform transition duration-100 -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl opacity-70"
+		class="blob-bg opacity-0 absolute top-1/2 left-1/2 transform transition duration-100 -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl"
 	/>
 	<div
 		on:mouseleave={handleMouseLeave}
@@ -143,7 +161,7 @@
 					<button
 						on:click={clickedPlayButton}
 						in:fade={{ delay: 100, duration: 500 }}
-						class={`group relative px-7 py-4 bg-white rounded-lg leading-none flex transition duration-500 transform ease-in-out ${
+						class={`play-button group relative px-7 py-4 transparent rounded-lg leading-none flex transition duration-500 ease-in-out ${
 							clickedPlay ? 'opacity-0' : 'opacity-100'
 						}`}
 					>
