@@ -20,6 +20,7 @@
 
 		.laser-effect {
 			position: relative;
+			filter: brightness(1.5);
 			opacity: 0.3;
 			transition: transform 1s ease-out, width 0.2s, height 0.2s, opacity 1s ease-out;
 			transform: scale(0.8) rotateX(20deg);

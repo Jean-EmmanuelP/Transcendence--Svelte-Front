@@ -22,6 +22,7 @@
 
 	function handleMouseMove(event: any) {
 		const rect = event.currentTarget.getBoundingClientRect();
+		const laserElement = document.querySelector('.laser-effect') as HTMLElement;
 		mouseX = event.clientX - rect.left;
 		mouseY = event.clientY - rect.top;
 
@@ -32,10 +33,6 @@
 		const maxDistance = Math.sqrt((rect.width / 2) ** 2 + (rect.height / 2) ** 2);
 		const normalizedDistance = Math.min(distanceFromCenter / maxDistance, 1);
 
-		const minSpeed = 2;
-		const maxSpeed = 20;
-
-		laserSpeed = maxSpeed - normalizedDistance * (maxSpeed - minSpeed);
 		const percentX = (mouseX / rect.width) * 2 - 1;
 		const percentY = (mouseY / rect.height) * 2 - 1;
 
@@ -132,7 +129,6 @@
 			}
 		}
 
-		updateLaserPosition();
 		updateLaserPosition();
 	});
 </script>
