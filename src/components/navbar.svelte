@@ -102,7 +102,8 @@
 	});
 </script>
 
-<header class="lg:static lg:overflow-y-visible text-white border-b border-b-white">
+<header class="backdrop-blur-md lg:static lg:overflow-y-visible text-white border-b border-b-white/10 shadow-sm">
+	<div class="radial-effect"></div>
 	<div class="flex items-center justify-center">
 		<div
 			class="transparent relative w-[80%] flex flex-row items-center lg:gap-2 xl:grid xl:grid-cols-12"
