@@ -186,10 +186,10 @@
 								class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
 							/>
 							<button
-								class="relative rounded-md bg-white text-black p-4 hover:font-medium transition transform duration-500 hover:duration-300"
+								class="uppercase relative rounded-md bg-white text-black font-medium p-4 hover:font-bold transition transform duration-500 hover:duration-300"
 							>
 								<span />
-								<p>Matchmaking</p>
+								<p class="tracking-wider">Matchmaking</p>
 							</button>
 						</div>
 						<div class="relative group">
@@ -197,10 +197,10 @@
 								class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
 							/>
 							<button
-								class="relative rounded-md bg-white text-black p-4 hover:font-medium transition transform duration-500 hover:duration-300"
+								class="uppercase relative rounded-md bg-white text-black p-4 font-medium hover:font-bold transition transform duration-500 hover:duration-300"
 							>
 								<span />
-								<p>Play with a friend</p>
+								<p class="tracking-wider">Play with a friend</p>
 							</button>
 						</div>
 					</div>
