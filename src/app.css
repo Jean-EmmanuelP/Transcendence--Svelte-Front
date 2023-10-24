@@ -34,14 +34,6 @@
 			transition: background 1s ease-in-out;
 		}
 
-		.wave-text span {
-			display:inline-block;
-			animation: wave 0.6s infinite;
-		}
-
-		.wave-text span:nth-child(odd) { animation-direction: alternate; }
-		.wave-text span:nth-child(even) { animation-direction: alternate-reverse; }
-
 		.playButton {
 			width: 70px;
 			height: 70px;
@@ -68,10 +60,27 @@
 			transition: width 0.5s ease-out, height 0.5s ease-out, 2s ease-out, opacity 1.8s ease-out,
 				background-color 1s ease-out;
 		}
+
+		.wave-text span {
+			display: inline-block;
+			animation: wave 0.6s infinite;
+		}
+
+		.wave-text span:nth-child(odd) {
+			animation-direction: alternate;
+		}
+		.wave-text span:nth-child(even) {
+			animation-direction: alternate-reverse;
+		}
 	}
-	
+
 	@keyframes wave {
-		0%, 100% { transform: translateY(0); }
-		50% { transform: translateY(-10px); }
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
 	}
 }
