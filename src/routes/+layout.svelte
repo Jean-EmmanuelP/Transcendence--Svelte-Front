@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '../app.css';
 	import Navbar from '$components/navbar.svelte';
-	import Sidebar from '$components/sidebar/sidebar.svelte';
 	import type { LayoutData } from './$types';
 	import { page } from '$app/stores';
 	import { authentication } from '../stores/authentication';
@@ -22,7 +21,6 @@
 		currentpage = value.url.pathname;
 	});
 	onDestroy(unsubscribe);
-	import { activePage } from '../stores/currentNavigation';
 </script>
 
 <!-- <div id="toast-success" class="fixed top-20 right-5 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-green-100 rounded-lg shadow " role="alert">

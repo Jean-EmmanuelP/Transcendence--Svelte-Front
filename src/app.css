@@ -34,6 +34,19 @@
 			transition: background 1s ease-in-out;
 		}
 
+		.playButton {
+			width: 70px;
+			height: 70px;
+			background-color: #ff0000;
+			clip-path: polygon(30% 0%, 100% 50%, 30% 100%);
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		.playButton:hover {
+			background-color: #d90000;
+		}
+
 		.laser-effect {
 			position: relative;
 			filter: brightness(1.5);

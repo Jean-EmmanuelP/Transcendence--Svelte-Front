@@ -18,7 +18,6 @@
 	let currentTiltX = 0;
 	let currentTiltY = 0;
 	const lerpFactor = 0.2;
-	
 
 	function lerp(start: number, end: number, factor: number) {
 		return start + (end - start) * factor;
@@ -66,7 +65,7 @@
 
 		let posX = 0;
 		let posY = 0;
-		
+
 		if (laserElement && playElement && blobElement) {
 			setTimeout(() => {
 				blobElement.style.opacity = '1';
@@ -132,8 +131,8 @@
 
 		updateLaserPosition();
 		return () => {
-			cancelAnimationFrame(animationFrameId)
-		}
+			cancelAnimationFrame(animationFrameId);
+		};
 	});
 </script>
 
@@ -171,31 +170,11 @@
 					<button
 						on:click={clickedPlayButton}
 						in:fade={{ delay: 100, duration: 500 }}
-						class={`play-button group relative px-7 py-4 transparent rounded-lg leading-none flex transition duration-500 ease-in-out ${
+						class={`playButton play-button group relative px-7 py-4 rounded-lg leading-none flex transition duration-500 ease-in-out ${
 							clickedPlay ? 'opacity-0' : 'opacity-100'
 						}`}
 						bind:this={playElement}
-					>
-						<span class="flex items-center space-x-5">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="currentColor"
-								class="w-6 h-6 -rotate-6 group-hover:rotate-0 text-black group-hover:text-black transition transform duration-1000 group-hover:duration-500"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
-								/>
-							</svg>
-							<span class="pr-6 tracking-wide text-black font-poppins group-hover:font-bold"
-								>Play</span
-							>
-						</span>
-					</button>
+					/>
 				{:else}
 					<div
 						class={`flex flex-col items-center justify-center h-full w-full transition duration-500 transform ease-in-out gap-7 ${
