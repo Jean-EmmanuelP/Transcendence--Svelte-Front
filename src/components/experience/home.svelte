@@ -18,6 +18,8 @@
 	let currentTiltX = 0;
 	let currentTiltY = 0;
 	const lerpFactor = 0.2;
+	let hoveredMatchmaking = false;
+	let hoveredFriend = false;
 
 	function lerp(start: number, end: number, factor: number) {
 		return start + (end - start) * factor;
@@ -162,15 +164,15 @@
 			/>
 		</div>
 		<div class="w-full h-full flex items-center justify-center transparent">
-			<div class="relative group">
+			<div class="relative">
 				{#if !clickedPlay}
 					<div
-						class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+						class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-50 group-hover/3:opacity-75 transition duration-1000 group-hover/3:duration-200 animate-tilt"
 					/>
 					<button
 						on:click={clickedPlayButton}
 						in:fade={{ delay: 100, duration: 500 }}
-						class={`playButton hover:w-[80px] hover:h-[80px] play-button group relative px-7 py-4 rounded-lg leading-none flex transition duration-500 ease-in-out ${
+						class={`playButton hover:w-[80px] hover:h-[80px] play-button relative px-7 py-4 rounded-lg leading-none flex transition duration-500 ease-in-out ${
 							clickedPlay ? 'opacity-0' : 'opacity-100'
 						}`}
 						bind:this={playElement}
@@ -181,26 +183,40 @@
 							clickedPlay ? 'opacity-100' : `opacity-0`
 						}`}
 					>
-						<div class="relative rounded-md ring-1 ring-gray-500/20 group/matchmaking">
+						<div
+							class="relative flex w-full rounded-md ring-1 ring-gray-500/20 group/1"
+							on:mouseenter={() => (hoveredMatchmaking = true)}
+							on:mouseleave={() => (hoveredMatchmaking = false)}
+						>
 							<div
-								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/matchmaking:opacity-75 transition duration-1000 group-hover/matchmaking:duration-200 animate-tilt"
+								class={`absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur transition duration-1000 ${
+									hoveredMatchmaking ? 'opacity-75' : 'opacity-50'
+								} animate-tilt`}
 							/>
 							<button
-								class="uppercase relative w-full rounded-md bg-black text-white font-medium p-4  transition transform duration-500 hover:duration-300"
+								class="uppercase relative w-full rounded-md bg-black text-white font-medium p-4 transition transform duration-500 hover:duration-300"
 							>
 								<span />
-								<p class="tracking-wider font-bold group-hover/matchmaking:font-extrabold">Matchmaking</p>
+								<p class={`tracking-wider ${hoveredMatchmaking ? 'font-extrabold' : 'font-bold'}`}>
+									Matchmaking
+								</p>
 							</button>
 						</div>
-						<div class="relative rounded-md ring-1 ring-gray-500/20 group/friends">
+						<div
+							class="relative flex w-full rounded-md ring-1 ring-gray-500/20"
+							on:mouseenter={() => (hoveredFriend = true)}
+							on:mouseleave={() => (hoveredFriend = false)}
+						>
 							<div
-								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/friends:opacity-75 transition duration-1000 group-hover/friends:duration-200 animate-tilt"
+								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/2:opacity-75 transition duration-1000 group-hover/2:duration-200 animate-tilt"
 							/>
 							<button
 								class="uppercase relative rounded-md bg-black text-white p-4 font-medium hover:font-bold transition transform duration-500 hover:duration-300"
 							>
 								<span />
-								<p class="tracking-wider font-bold group-hover/friends:font-extrabold">Play with a friend</p>
+								<p class="tracking-wider font-bold group-hover/2:font-extrabold">
+									Play with a friend
+								</p>
 							</button>
 						</div>
 					</div>
