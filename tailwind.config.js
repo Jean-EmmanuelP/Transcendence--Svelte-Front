@@ -6,8 +6,20 @@ export default {
 			poppins: ['Poppins', 'sans-serif']
 		},
 		extend: {
+			fontFamily: {
+				apercu: ['Apercu Pro', 'sans']
+			},
+			fontWeight: {
+				'extra-light': 200,
+				thin: 100,
+				light: 300,
+				medium: 500,
+				bold: 'bold',
+				black: 900
+			},
 			backgroundImage: {
-				'rainbow-gradient': 'linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet)'
+				'rainbow-gradient':
+					'linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet)'
 			},
 			animation: {
 				tilt: 'tilt 10s infinite linear',
@@ -26,17 +38,17 @@ export default {
 					}
 				},
 				blob: {
-					"0%": {
-						transform: "translate(0px, 0px) scale(1)",
+					'0%': {
+						transform: 'translate(0px, 0px) scale(1)'
 					},
-					"33%": {
-						transform: "translate(30px, -50px) scale(1.1)",
+					'33%': {
+						transform: 'translate(30px, -50px) scale(1.1)'
 					},
-					"66%": {
-						transform: "translate(-20px, 20px) scale(0.9)",
+					'66%': {
+						transform: 'translate(-20px, 20px) scale(0.9)'
 					},
-					"100%": {
-						transform: "translate(0px, 0px) scale(1)",
+					'100%': {
+						transform: 'translate(0px, 0px) scale(1)'
 					}
 				}
 			}
