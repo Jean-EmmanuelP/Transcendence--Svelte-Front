@@ -2,18 +2,13 @@
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { activeColor } from '../../stores/currentNavigation';
-	let clickedPlay: boolean = false;
-	function clickedButton(button: string) {
-		if (button == 'play') clickedPlay = !clickedPlay;
-		if (button == 'matchmaking') clickedMatchmaking = !clickedMatchmaking;
-		if (button == 'friends') clickedPlayWithFriends = !clickedPlayWithFriends;
-	}
 
+	let clickedPlay: boolean = false;
 	let mouseX = 0;
 	let mouseY = 0;
 	let clickedMatchmaking: boolean = false;
 	let clickedPlayWithFriends: boolean = false;
-	let text = clickedMatchmaking ? 'Searching a player' : 'Waiting for your friend';
+	let text: string = '';
 	let tiltStrength = 4;
 	let blobElement: HTMLElement;
 	let laserElement: HTMLElement;
@@ -24,6 +19,18 @@
 	const lerpFactor = 0.2;
 
 	$: letters = text.split('');
+
+	function clickedButton(button: string) {
+		if (button == 'play') clickedPlay = !clickedPlay;
+		if (button == 'matchmaking') {
+			clickedMatchmaking = !clickedMatchmaking;
+			text = 'Searching a player';
+		}
+		if (button == 'friends') {
+			clickedPlayWithFriends = !clickedPlayWithFriends;
+			text = 'Waiting for your friend';
+		}
+	}
 
 	function lerp(start: number, end: number, factor: number) {
 		return start + (end - start) * factor;
