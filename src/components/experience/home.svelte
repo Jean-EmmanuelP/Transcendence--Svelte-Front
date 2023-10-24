@@ -216,7 +216,7 @@
 						</div>
 					</div>
 				{:else if clickedPlay && (clickedPlayWithFriends || clickedMatchmaking)}
-					<div class="text-white flex items-center justify-center w-[200px] h-[200px]">
+					<div class="text-white flex flex-col gap-6 items-center justify-center w-[200px] h-[200px]">
 						<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 24 24"
 							><style>
 								.spinner_EUy1 {
@@ -313,6 +313,7 @@
 								/></g
 							></svg
 						>
+						<p>{clickedMatchmaking ? 'Searching a player' : 'Waiting for your friend'}</p>
 					</div>
 				{/if}
 			</div>

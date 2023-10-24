@@ -6,17 +6,6 @@ export default {
 			poppins: ['Poppins', 'sans-serif']
 		},
 		extend: {
-			fontFamily: {
-				apercu: ['Apercu Pro', 'sans']
-			},
-			fontWeight: {
-				'extra-light': 200,
-				thin: 100,
-				light: 300,
-				medium: 500,
-				bold: 'bold',
-				black: 900
-			},
 			backgroundImage: {
 				'rainbow-gradient':
 					'linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet)'
