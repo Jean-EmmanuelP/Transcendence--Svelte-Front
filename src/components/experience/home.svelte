@@ -221,7 +221,7 @@
 							><style>
 								.spinner_EUy1 {
 									animation: spinner_grm3 1.2s infinite;
-									fill:#ffffff;
+									fill: #ffffff;
 								}
 								.spinner_f6oS {
 									animation-delay: 0.1s;
