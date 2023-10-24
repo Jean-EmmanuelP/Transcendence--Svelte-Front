@@ -178,10 +178,10 @@
 				{:else}
 					<div
 						class={`flex flex-col items-center justify-center h-full w-full transition duration-500 transform ease-in-out gap-7 ${
-							clickedPlay ? 'opacity-100' : `opacity-0`
+							clickedPlay ? 'opacity-100' : `opacity-100`
 						}`}
 					>
-						<div class="relative flex w-full rounded-md ring-1 ring-gray-500/20 group/1">
+						<div class="relative flex w-full max-w-[200px] rounded-md ring-1 ring-gray-500/20 group/1">
 							<div
 								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
 							/>
@@ -192,7 +192,7 @@
 								<p class="tracking-wider font-bold group-hover/1:font-extrabold">Matchmaking</p>
 							</button>
 						</div>
-						<div class="relative flex w-full rounded-md ring-1 ring-gray-500/20 group/2">
+						<div class="relative flex w-full max-w-[200px] rounded-md ring-1 ring-gray-500/20 group/2">
 							<div
 								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/2:opacity-75 transition duration-1000 group-hover/2:duration-200 animate-tilt"
 							/>
