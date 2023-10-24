@@ -156,10 +156,10 @@
 				<div class="flex px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
 					<div class="w-full relative h-full flex items-center justify-center">
 						<label for="search" class="sr-only">Search</label>
-						<div class="relative group w-full h-full">
+						<div class="relative group w-full h-full shadow-gray-50">
 							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
 								<svg
-									class="h-3 w-3 text-[#808080] group-focus-within:text-black"
+									class="h-3 w-3 text-black/50 group-focus-within:text-black group-hover:text-black transition duration-200"
 									viewBox="0 0 20 20"
 									fill="currentColor"
 									aria-hidden="true"
@@ -174,7 +174,7 @@
 							<input
 								id="search"
 								name="search"
-								class="block w-full h-full bg-[#F4F4F4]/20 placeholder:text-white/55 group/icon_search rounded-md pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-blue-500/40 sm:text-[12px] sm:leading-6"
+								class="block w-full h-full caret-black bg-white shadow-black placeholder:text-white/55 group/icon_search rounded-md pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-blue-500/40 sm:text-[12px] sm:leading-6"
 								placeholder="Search players"
 								type="search"
 								autocomplete="off"

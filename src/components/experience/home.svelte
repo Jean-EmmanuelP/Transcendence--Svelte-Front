@@ -3,13 +3,16 @@
 	import { fade } from 'svelte/transition';
 	import { activeColor } from '../../stores/currentNavigation';
 	let clickedPlay: boolean = false;
-	function clickedPlayButton() {
-		clickedPlay = !clickedPlay;
-		console.log('clickedPlay', clickedPlay);
+	function clickedButton(button: string) {
+		if (button == 'play') clickedPlay = !clickedPlay;
+		if (button == 'matchmaking') clickedMatchmaking = !clickedMatchmaking;
+		if (button == 'friends') clickedPlayWithFriends = !clickedPlayWithFriends;
 	}
 
 	let mouseX = 0;
 	let mouseY = 0;
+	let clickedMatchmaking: boolean = false;
+	let clickedPlayWithFriends: boolean = false;
 	let tiltStrength = 4;
 	let blobElement: HTMLElement;
 	let laserElement: HTMLElement;
@@ -163,19 +166,19 @@
 		</div>
 		<div class="w-full h-full flex items-center justify-center transparent">
 			<div class="relative">
-				{#if !clickedPlay}
+				{#if !clickedPlay && !clickedPlayWithFriends && !clickedMatchmaking}
 					<div
 						class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-50 group-hover/3:opacity-75 transition duration-1000 group-hover/3:duration-200 animate-tilt"
 					/>
 					<button
-						on:click={clickedPlayButton}
+						on:click={() => clickedButton('play')}
 						in:fade={{ delay: 100, duration: 500 }}
 						class={`playButton hover:w-[80px] hover:h-[80px] play-button relative px-7 py-4 rounded-lg leading-none flex transition duration-500 ease-in-out ${
 							clickedPlay ? 'opacity-0' : 'opacity-100'
 						}`}
 						bind:this={playElement}
 					/>
-				{:else}
+				{:else if clickedPlay && !clickedPlayWithFriends && !clickedMatchmaking}
 					<div
 						class={`flex flex-col items-center justify-center h-full w-full transition duration-500 transform ease-in-out gap-7 ${
 							clickedPlay ? 'opacity-100' : `opacity-100`
@@ -203,6 +206,10 @@
 								<p class="tracking-wider font-bold group-hover/2:font-extrabold">Play with a friend</p>
 							</button>
 						</div>
+					</div>
+				{:else if clickedPlay && (clickedPlayWithFriends || clickedMatchmaking)}
+					<div class="text-white">
+						loading spin
 					</div>
 				{/if}
 			</div>
