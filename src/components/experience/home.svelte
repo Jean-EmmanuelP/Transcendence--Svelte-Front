@@ -13,6 +13,7 @@
 	let mouseY = 0;
 	let clickedMatchmaking: boolean = false;
 	let clickedPlayWithFriends: boolean = false;
+	let text = clickedMatchmaking ? 'Searching a player' : 'Waiting for your friend';
 	let tiltStrength = 4;
 	let blobElement: HTMLElement;
 	let laserElement: HTMLElement;
@@ -21,6 +22,8 @@
 	let currentTiltX = 0;
 	let currentTiltY = 0;
 	const lerpFactor = 0.2;
+
+	$: letters = text.split('');
 
 	function lerp(start: number, end: number, factor: number) {
 		return start + (end - start) * factor;
@@ -313,7 +316,11 @@
 								/></g
 							></svg
 						>
-						<p>{clickedMatchmaking ? 'Searching a player' : 'Waiting for your friend'}</p>
+						<p class="wave-text text-white">
+							{#each letters as letter, index (index)}
+								<span style="animation-delay: {index * 0.05}s">{letter}</span>
+							{/each}
+						</p>
 					</div>
 				{/if}
 			</div>
