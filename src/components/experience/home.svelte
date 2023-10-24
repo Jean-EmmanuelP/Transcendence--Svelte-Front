@@ -170,7 +170,7 @@
 					<button
 						on:click={clickedPlayButton}
 						in:fade={{ delay: 100, duration: 500 }}
-						class={`playButton play-button group relative px-7 py-4 rounded-lg leading-none flex transition duration-500 ease-in-out ${
+						class={`playButton hover:w-[80px] hover:h-[80px] play-button group relative px-7 py-4 rounded-lg leading-none flex transition duration-500 ease-in-out ${
 							clickedPlay ? 'opacity-0' : 'opacity-100'
 						}`}
 						bind:this={playElement}
