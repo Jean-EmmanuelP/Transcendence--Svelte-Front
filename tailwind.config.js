@@ -34,7 +34,7 @@ export default {
 						transform: 'rotate(1deg)'
 					},
 					'75%': {
-						transform: 'rotate(-1deg)'
+						transform: 'rotate(1.1deg)'
 					}
 				},
 				blob: {

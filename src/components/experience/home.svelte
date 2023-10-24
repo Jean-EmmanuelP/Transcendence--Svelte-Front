@@ -138,7 +138,7 @@
 
 <div class="parent-enter-effect relative h-full w-full flex items-center justify-center">
 	<div
-		class="blob-bg opacity-0 absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl"
+		class=" blob-bg opacity-0 absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl"
 		bind:this={blobElement}
 	/>
 	<div
@@ -183,24 +183,24 @@
 					>
 						<div class="relative group">
 							<div
-								class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-purple-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
 							/>
 							<button
-								class="uppercase relative rounded-md bg-white text-black font-medium p-4 hover:font-bold transition transform duration-500 hover:duration-300"
+								class="uppercase relative rounded-md bg-black text-white font-medium p-4 hover:font-bold transition transform duration-500 hover:duration-300"
 							>
 								<span />
-								<p class="tracking-wider">Matchmaking</p>
+								<p class="tracking-wider font-bold hover:font-extrabold">Matchmaking</p>
 							</button>
 						</div>
 						<div class="relative group">
 							<div
-								class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-purple-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
 							/>
 							<button
-								class="uppercase relative rounded-md bg-white text-black p-4 font-medium hover:font-bold transition transform duration-500 hover:duration-300"
+								class="uppercase relative rounded-md bg-black text-white p-4 font-medium hover:font-bold transition transform duration-500 hover:duration-300"
 							>
 								<span />
-								<p class="tracking-wider">Play with a friend</p>
+								<p class="tracking-wider font-bold hover:font-extrabold">Matchmaking</p>
 							</button>
 						</div>
 					</div>
