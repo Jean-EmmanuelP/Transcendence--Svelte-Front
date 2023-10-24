@@ -181,26 +181,26 @@
 							clickedPlay ? 'opacity-100' : `opacity-0`
 						}`}
 					>
-						<div class="relative group">
+						<div class="relative group/matchmaking">
 							<div
-								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-purple-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/matchmaking:opacity-75 transition duration-1000 group-hover/matchmaking:duration-200 animate-tilt"
 							/>
 							<button
-								class="uppercase relative rounded-md bg-black text-white font-medium p-4 hover:font-bold transition transform duration-500 hover:duration-300"
+								class="uppercase relative rounded-md bg-black text-white font-medium p-4  transition transform duration-500 hover:duration-300"
 							>
 								<span />
-								<p class="tracking-wider font-bold hover:font-extrabold">Matchmaking</p>
+								<p class="tracking-wider font-bold group-hover/matchmaking:font-extrabold">Matchmaking</p>
 							</button>
 						</div>
-						<div class="relative group">
+						<div class="relative group/friends">
 							<div
-								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-purple-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/friends:opacity-75 transition duration-1000 group-hover/friends:duration-200 animate-tilt"
 							/>
 							<button
 								class="uppercase relative rounded-md bg-black text-white p-4 font-medium hover:font-bold transition transform duration-500 hover:duration-300"
 							>
 								<span />
-								<p class="tracking-wider font-bold hover:font-extrabold">Matchmaking</p>
+								<p class="tracking-wider font-bold group-hover/friends:font-extrabold">Play with a friend</p>
 							</button>
 						</div>
 					</div>
