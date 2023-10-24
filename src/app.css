@@ -56,10 +56,9 @@
 			transform-origin: center top;
 			overflow: hidden;
 		}
-
-	}
-	.blob-bg {
-		transition: width 0.5s ease-out, height 0.5s ease-out, 2s ease-out, opacity 1.8s ease-out,
-			background-color 1s ease-out;
+		.blob-bg {
+			transition: width 0.5s ease-out, height 0.5s ease-out, 2s ease-out, opacity 1.8s ease-out,
+				background-color 1s ease-out;
+		}
 	}
 }
