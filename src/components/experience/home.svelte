@@ -318,7 +318,12 @@
 						>
 						<p class="wave-text text-white">
 							{#each letters as letter, index (index)}
-								<span style="animation-delay: {index * 0.05}s">{letter}</span>
+								{#if letter !== ' '}
+									<span style="animation-delay: {index * 0.05}s">{letter}</span>
+								{:else}
+									&nbsp;
+									&nbsp;
+								{/if}
 							{/each}
 						</p>
 					</div>
