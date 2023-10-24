@@ -190,6 +190,7 @@
 							/>
 							<button
 								class="uppercase relative w-full rounded-md bg-black text-white font-medium p-4  transition transform duration-500 hover:duration-300"
+								on:click={() => clickedButton('matchmaking')}
 							>
 								<span />
 								<p class="tracking-wider font-bold group-hover/1:font-extrabold">Matchmaking</p>
@@ -201,7 +202,8 @@
 							/>
 							<button
 								class="uppercase relative rounded-md bg-black text-white p-4 font-medium hover:font-bold transition transform duration-500 hover:duration-300"
-							>
+								on:click={() => clickedButton('friends')}
+								>
 								<span />
 								<p class="tracking-wider font-bold group-hover/2:font-extrabold">Play with a friend</p>
 							</button>
