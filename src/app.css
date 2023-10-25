@@ -37,13 +37,13 @@
 		.playButton {
 			width: 70px;
 			height: 70px;
-			background-color: #ff0000;
+			background-color: white;
 			clip-path: polygon(30% 0%, 100% 50%, 30% 100%);
 			transition: background-color 0.3s;
 		}
 
 		.playButton:hover {
-			background-color: #d90000;
+			background-color: white;
 		}
 
 		.laser-effect {

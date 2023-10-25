@@ -16,19 +16,25 @@
 	let laserSpeed = 2;
 	let currentTiltX = 0;
 	let currentTiltY = 0;
+	let showDiv = false;
 	const lerpFactor = 0.2;
 
 	$: letters = text.split('');
 
-	function clickedButton(button: string) {
+	function clickedButton(button: string, bool?: boolean) {
 		if (button == 'play') clickedPlay = !clickedPlay;
 		if (button == 'matchmaking') {
+			showDiv = false;
 			clickedMatchmaking = !clickedMatchmaking;
 			text = 'Searching a player';
 		}
 		if (button == 'friends') {
-			clickedPlayWithFriends = !clickedPlayWithFriends;
-			text = 'Waiting for your friend';
+			showDiv = !showDiv;
+			if (bool) {
+				clickedPlayWithFriends = !clickedPlayWithFriends;
+				text = 'Waiting for your friend';
+				showDiv = false;
+			}
 		}
 	}
 
@@ -186,7 +192,7 @@
 				class="absolute top-1/2 left-1/2 transform -translate-x-50% -translate-y-50% w-72 h-72 bg-[#660011] animate-blob animation-delay-4000 rounded-full mix-blend-multiply filter blur-xl opacity-70"
 			/>
 		</div>
-		<div class="w-full h-full flex items-center justify-center transparent">
+		<div class="w-full h-full ring-2 ring-gray-400 flex items-center justify-center transparent">
 			<div class="relative">
 				{#if !clickedPlay && !clickedPlayWithFriends && !clickedMatchmaking}
 					<div
@@ -230,6 +236,28 @@
 							<div
 								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
 							/>
+							{#if showDiv}
+								<div class="absolute top-[-50px] right-[-280px] w-[200px] max-h-[250px] overflow-auto">
+									<p
+										class="text-white p-2 rounded-md bg-red-500 z-20"
+										on:click={() => clickedButton('friends', true)}
+									>
+										Bonjour comment allez vous !
+										Bonjour comment allez vous !
+										Bonjour comment allez vous !
+										Bonjour comment allez vous !
+										Bonjour comment allez vous !
+										Bonjour comment allez vous !
+										Bonjour comment allez vous !
+										Bonjour comment allez vous !
+										Bonjour comment allez vous !
+										Bonjour comment allez vous !
+										Bonjour comment allez vous !
+										Bonjour comment allez vous !
+										Bonjour comment allez vous !
+									</p>
+								</div>
+							{/if}
 							<button
 								class="uppercase relative w-full rounded-md bg-black text-white font-medium p-4 transition transform duration-500 hover:duration-300"
 								on:click={() => clickedButton('matchmaking')}
@@ -280,8 +308,8 @@
 						<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 24 24"
 							><style>
 								.spinner_EUy1 {
-									animation: spinner_grm3 1.2s infinite;
-									fill: #ffffff;
+									animation: spinner_grm3 1.2s infinite, colorChange 3s infinite;
+									fill: #f56565;
 								}
 								.spinner_f6oS {
 									animation-delay: 0.1s;
@@ -337,6 +365,17 @@
 									}
 									100% {
 										transform: rotate(0deg);
+									}
+								}
+								@keyframes colorChange {
+									0% {
+										fill: #f56565;
+									}
+									50% {
+										fill: #4299e1;
+									}
+									100% {
+										fill: #f56565;
 									}
 								}
 							</style><g class="spinner_auJJ"
