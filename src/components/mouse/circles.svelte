@@ -4,8 +4,8 @@
 	onMount(() => {
 		const coords = { x: 0, y: 0 };
 		const circles: NodeListOf<HTMLDivElement> = document.querySelectorAll('.circle');
-		let isHovering: boolean = false;
 		let isVisible: boolean = true;
+		let animationFrameId: number;
 
 		const colors: string[] = [
 			'#ffb56b',
@@ -31,41 +31,35 @@
 			'#48005f',
 			'#3d005e'
 		];
-		document.addEventListener('mouseout', () => {
+
+		function handleMouseOut() {
 			isVisible = false;
 			circles.forEach((circle) => {
 				circle.style.visibility = 'hidden';
 			});
-		});
+		}
 
-		document.addEventListener('mouseover', () => {
+		function handleMouseOver() {
 			isVisible = true;
 			circles.forEach((circle) => {
 				circle.style.visibility = 'visible';
 			});
-		});
-		circles.forEach(function (circle, index) {
-			circle.x = 0;
-			circle.y = 0;
-			circle.style.backgroundColor = colors[index % colors.length];
-		});
+		}
 
-		window.addEventListener('mousemove', function (e) {
+		function handleMouseMove(e: MouseEvent) {
 			coords.x = e.clientX;
 			coords.y = e.clientY;
+		}
+
+		document.addEventListener('mouseout', handleMouseOut);
+		document.addEventListener('mouseover', handleMouseOver);
+		document.addEventListener('mousemove', handleMouseMove);
+
+		circles.forEach(function (circle, index) {
+			circle.dataset.x = '0';
+			circle.dataset.y = '0';
+			circle.style.backgroundColor = colors[index % colors.length];
 		});
-
-		const buttons: NodeListOf<HTMLButtonElement> = document.querySelectorAll('button');
-
-		buttons.forEach((button) => {
-			button.addEventListener('mouseover', () => {
-				isHovering = true;
-			});
-			button.addEventListener('mouseout', () => {
-				isHovering = false;
-			});
-		});
-
 		function animateCircles() {
 			if (!isVisible) {
 				circles.forEach((circle) => {
@@ -77,19 +71,24 @@
 			circles.forEach(function (circle, index) {
 				circle.style.left = x - 12 + 'px';
 				circle.style.top = y - 12 + 'px';
-				circle.style.transform = isHovering
-					? 'scale(2)'
-					: `scale(${(circles.length - index) / circles.length})`;
-				circle.x = x;
-				circle.y = y;
+				circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+				circle.dataset.x = x.toString();
+				circle.dataset.y = y.toString();
 				const nextCircle = circles[index + 1] || circles[0];
-				x += (nextCircle.x - x) * 0.3;
-				y += (nextCircle.y - y) * 0.3;
+				x += (parseFloat(nextCircle.dataset.x || '0') - x) * 0.3;
+				y += (parseFloat(nextCircle.dataset.y || '0') - y) * 0.3;
 			});
-			requestAnimationFrame(animateCircles);
+			animationFrameId = requestAnimationFrame(animateCircles);
 		}
 
 		animateCircles();
+
+		return () => {
+			cancelAnimationFrame(animationFrameId);
+			document.removeEventListener('mouseout', handleMouseOut);
+			document.removeEventListener('mouseover', handleMouseOver);
+			document.removeEventListener('mousemove', handleMouseMove);
+		};
 	});
 </script>
 
