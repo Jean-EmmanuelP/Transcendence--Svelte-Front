@@ -230,73 +230,27 @@
 								/>
 							</svg>
 						</button>
+						{#if showDiv}
+							<div
+								class="no-scrollbar transparent bg-black rounded-md text-white ring-1 ring-gray-600/20 backdrop-blur-2xl p-2 gap-4 flex flex-col shadow-md absolute top-[-50px] right-[-280px] w-[200px] h-[250px] max-h-[250px] overflow-auto"
+							>
+								{#each Array(5) as _, index (index) }
+								<button
+									class="border border-gray-600/10 shadow-lg hover:bg-gray-500/50 ring-1 ring-gray-600/20 rounded-md h-1/2 flex items-center gap-2"
+									><img
+										src="https://avatars.githubusercontent.com/u/59157371?v=4"
+										class="rounded-full h-11 w-11"
+										alt=""
+									/>
+									<p>Akadil</p></button
+								>
+								
+								{/each}
+							</div>
+						{/if}
 						<div
 							class="relative flex w-full max-w-[200px] rounded-md ring-1 ring-gray-500/20 group/1"
 						>
-							{#if showDiv}
-								<div
-									class="no-scrollbar transparent text-white backdrop-blur-2xl p-2 gap-2 flex flex-col rounded-md shadow-md absolute top-[-50px] right-[-280px] w-[200px] h-[250px] max-h-[250px] overflow-auto"
-									on:mouseover|stopPropagation
-									on:mouseout|stopPropagation
-								>
-									<!-- {#each users as user (user.id)} -->
-									<button
-										class="border border-white hover:bg-gray-500 shadow-sm rounded-md h-1/3 flex items-center gap-2"
-										><img
-											src="https://avatars.githubusercontent.com/u/59157371?v=4"
-											class="rounded-full h-12 w-12"
-											alt=""
-										/>
-										<p>Akadil</p></button
-									>
-									<button
-										class="border border-white hover:bg-gray-500 shadow-sm rounded-md h-1/3 flex items-center gap-2"
-										><img
-											src="https://avatars.githubusercontent.com/u/59157371?v=4"
-											class="rounded-full h-12 w-12"
-											alt=""
-										/>
-										<p>Akadil</p></button
-									>
-									<button
-										class="border border-white hover:bg-gray-500 shadow-sm rounded-md h-1/3 flex items-center gap-2"
-										><img
-											src="https://avatars.githubusercontent.com/u/59157371?v=4"
-											class="rounded-full h-12 w-12"
-											alt=""
-										/>
-										<p>Akadil</p></button
-									>
-									<button
-										class="border border-white hover:bg-gray-500 shadow-sm rounded-md h-1/3 flex items-center gap-2"
-										><img
-											src="https://avatars.githubusercontent.com/u/59157371?v=4"
-											class="rounded-full h-12 w-12"
-											alt=""
-										/>
-										<p>Akadil</p></button
-									>
-									<button
-										class="border border-white hover:bg-gray-500 shadow-sm rounded-md h-1/3 flex items-center gap-2"
-										><img
-											src="https://avatars.githubusercontent.com/u/59157371?v=4"
-											class="rounded-full h-12 w-12"
-											alt=""
-										/>
-										<p>Akadil</p></button
-									>
-									<button
-										class="border border-white hover:bg-gray-500 shadow-sm rounded-md h-1/3 flex items-center gap-2"
-										><img
-											src="https://avatars.githubusercontent.com/u/59157371?v=4"
-											class="rounded-full h-12 w-12"
-											alt=""
-										/>
-										<p>Akadil</p></button
-									>
-									<!-- {/each} -->
-								</div>
-							{/if}
 							<div
 								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
 							/>
