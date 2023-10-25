@@ -104,7 +104,7 @@
 	});
 </script>
 
-<header class="backdrop-blur-md lg:static lg:overflow-y-visible text-white border-b border-b-white/10 shadow-sm">
+<header class="backdrop-blur-md p-1 lg:static lg:overflow-y-visible text-white border-b border-b-white/10 shadow-sm">
 	<div class="radial-effect" style="--radial-color: {radialColor}"></div>
 	<div class="flex items-center justify-center">
 		<div
