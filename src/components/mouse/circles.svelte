@@ -4,6 +4,8 @@
 	onMount(() => {
 		const coords = { x: 0, y: 0 };
 		const circles: NodeListOf<HTMLDivElement> = document.querySelectorAll('.circle');
+		let isHovering: boolean = false;
+		let isVisible: boolean = true;
 
 		const colors: string[] = [
 			'#ffb56b',
@@ -29,7 +31,19 @@
 			'#48005f',
 			'#3d005e'
 		];
+		document.addEventListener('mouseout', () => {
+			isVisible = false;
+			circles.forEach((circle) => {
+				circle.style.visibility = 'hidden';
+			});
+		});
 
+		document.addEventListener('mouseover', () => {
+			isVisible = true;
+			circles.forEach((circle) => {
+				circle.style.visibility = 'visible';
+			});
+		});
 		circles.forEach(function (circle, index) {
 			circle.x = 0;
 			circle.y = 0;
@@ -41,13 +55,31 @@
 			coords.y = e.clientY;
 		});
 
+		const buttons: NodeListOf<HTMLButtonElement> = document.querySelectorAll('button');
+
+		buttons.forEach((button) => {
+			button.addEventListener('mouseover', () => {
+				isHovering = true;
+			});
+			button.addEventListener('mouseout', () => {
+				isHovering = false;
+			});
+		});
+
 		function animateCircles() {
+			if (!isVisible) {
+				circles.forEach((circle) => {
+					circle.style.visibility = 'hidden';
+				});
+			}
 			let x = coords.x;
 			let y = coords.y;
 			circles.forEach(function (circle, index) {
 				circle.style.left = x - 12 + 'px';
 				circle.style.top = y - 12 + 'px';
-				circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+				circle.style.transform = isHovering
+					? 'scale(2)'
+					: `scale(${(circles.length - index) / circles.length})`;
 				circle.x = x;
 				circle.y = y;
 				const nextCircle = circles[index + 1] || circles[0];
@@ -77,8 +109,5 @@
 		left: 0;
 		pointer-events: none;
 		z-index: 99999999; /* so that it stays on top of all other elements */
-	}
-	button:hover .circle {
-		transform: scale(2);
 	}
 </style>
