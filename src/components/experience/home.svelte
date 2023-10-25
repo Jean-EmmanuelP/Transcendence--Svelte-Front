@@ -16,7 +16,7 @@
 	let laserSpeed = 2;
 	let currentTiltX = 0;
 	let currentTiltY = 0;
-	let showDiv = true;
+	let showDiv = false;
 	const lerpFactor = 0.2;
 
 	$: letters = text.split('');
