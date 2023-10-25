@@ -7,6 +7,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import Cookies from 'js-cookie';
 	import { userInformationNoToken } from '../services/gqlUser';
+	import Circles from '$components/mouse/circles.svelte';
 
 	export let data: LayoutData;
 	if (data.user) authentication.setUser(data.user);
@@ -38,7 +39,7 @@
         </svg>
     </button>
 </div> -->
-
+<Circles />
 {#if currentpage !== '/register' && currentpage !== '/login'}
 	<div class="h-screen w-screen flex overflow-hidden bg-black bg-cover bg-no-repeat">
 		<!-- <div class={`${$activePage === 'dashboard' ? `w-[15%]` : `w-[5%]`} h-screen`}>
