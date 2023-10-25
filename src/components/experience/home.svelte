@@ -245,14 +245,15 @@
 								<div class="z-50 no-scrollbar overflow-x-auto flex flex-col gap-4 h-full mt-8">
 									{#each Array(5) as _, index (index)}
 										<button
-											class="border w-full border-gray-600/10 shadow-lg hover:bg-gray-500/50 ring-1 ring-gray-600/20 rounded-md rounded-l-full h-1/2 flex items-center gap-2"
+											class="border w-full group border-gray-600/10 shadow-lg hover:bg-gray-500/50 ring-1 ring-gray-600/20 rounded-md rounded-l-full h-1/2 flex items-center gap-2"
 										>
 											<img
 												src="https://avatars.githubusercontent.com/u/59157371?v=4"
-												class="rounded-full h-11 w-11"
+												class="rounded-full h-11 w-11 group-hover:border group-hover:border-white"
 												alt=""
 											/>
 											<p class="truncate">Akadil</p>
+											<div class="truncate hidden group-hover:block text-white/30 font-extrabold">Invite</div>
 										</button>
 									{/each}
 								</div>
