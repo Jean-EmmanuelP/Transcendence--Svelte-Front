@@ -32,6 +32,17 @@
 		}
 	}
 
+	// integrer dans cette fonction le fait de pouvoir partir de la queue de matchmaking et de la queue de play with friend
+	function back() {
+		console.log(`Entered here in back method`)
+		if (clickedPlay && (clickedPlayWithFriends || clickedMatchmaking)) {
+			clickedPlayWithFriends = false;
+			clickedMatchmaking = false;
+		} else if (clickedPlay && !clickedPlayWithFriends && !clickedMatchmaking) {
+			clickedPlay = false;
+		}
+	}
+
 	function lerp(start: number, end: number, factor: number) {
 		return start + (end - start) * factor;
 	}
@@ -224,6 +235,8 @@
 								</p>
 							</button>
 						</div>
+					<button class="bg-white text-black" on:click={back}>Reculer</button>
+
 					</div>
 				{:else if clickedPlay && (clickedPlayWithFriends || clickedMatchmaking)}
 					<div class="text-white flex flex-col gap-6 items-center justify-center w-[200px] h-[200px]">
@@ -334,6 +347,7 @@
 							{/each}
 						</p>
 					</div>
+					<button class="bg-white text-black" on:click={back}>Reculer</button>
 				{/if}
 			</div>
 		</div>

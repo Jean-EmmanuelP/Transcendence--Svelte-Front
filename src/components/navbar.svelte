@@ -113,7 +113,10 @@
 			<div
 				class="flex pl-2 items-center md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-4"
 			>
-				<button class="flex flex-row gap-2 items-center justify-center" on:click={() => goto('/')}>
+				<button class="flex flex-row gap-2 items-center justify-center" on:click={() => {
+					
+					goto('/');
+					}}>
 					<div class="relative w-[50px] h-[40px]">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
