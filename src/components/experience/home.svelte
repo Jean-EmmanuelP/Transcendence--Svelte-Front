@@ -16,7 +16,7 @@
 	let laserSpeed = 2;
 	let currentTiltX = 0;
 	let currentTiltY = 0;
-	let showDiv = false;
+	let showDiv = true;
 	const lerpFactor = 0.2;
 
 	$: letters = text.split('');
@@ -47,7 +47,7 @@
 			clickedMatchmaking = false;
 			return;
 		}
-			
+
 		if (clickedPlay && (clickedPlayWithFriends || clickedMatchmaking)) {
 			clickedPlayWithFriends = false;
 			clickedMatchmaking = false;
@@ -269,10 +269,13 @@
 						</div>
 					</div>
 				{:else if showDiv}
+				<div class="relative flex items-center justify-center h-full w-full">
+					<!-- Bouton de retour -->
 					<button
 						class="absolute top-[-50px] left-[-10px] text-white/40 shadow-sm hover:scale-110 rounded-full"
 						on:click={back}
-						><svg
+					>
+						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
 							viewBox="0 0 24 24"
@@ -287,12 +290,13 @@
 							/>
 						</svg>
 					</button>
+				
+					<!-- Contenu centré -->
 					<div
-						class="rounded-md text-white ring-1 ring-gray-600/20 backdrop-blur-2xl p-2 gap-4 flex flex-col shadow-md absolute top-0 right-0 w-[200px] h-[250px] max-h-[250px]"
+						class="relative rounded-md bg-black z-1 text-white ring-1 ring-gray-600/20 backdrop-blur-2xl p-2 gap-4 flex flex-col shadow-md group/1 w-[200px] h-[250px] max-h-[250px]"
 					>
-						<div
-							class="absolute -inset-0.5 bg-gradient-to-r from-red-500/10 to-blue-500/10 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
-						/>
+					<div class="absolute inset-0 bg-black rounded-md" />
+
 						<header
 							class="z-50 w-full h-[15px] text-white font-bold flex items-center justify-center fixed uppercase"
 						>
@@ -316,7 +320,12 @@
 								</button>
 							{/each}
 						</div>
+							<div
+								class="absolute -inset-0.5 z-[-10] bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
+							/>
 					</div>
+				</div>
+				
 				{:else if clickedPlay && (clickedPlayWithFriends || clickedMatchmaking)}
 					<div
 						class="relative text-white flex flex-col gap-6 items-center justify-center w-[200px] h-[200px]"
