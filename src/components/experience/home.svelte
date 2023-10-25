@@ -246,6 +246,7 @@
 									{#each Array(5) as _, index (index)}
 										<button
 											class="border w-full group border-gray-600/10 shadow-lg hover:bg-gray-500/50 ring-1 ring-gray-600/20 rounded-md rounded-l-full h-1/2 flex items-center gap-2"
+											on:click={() => clickedButton('friends', true)}
 										>
 											<img
 												src="https://avatars.githubusercontent.com/u/59157371?v=4"
@@ -253,7 +254,9 @@
 												alt=""
 											/>
 											<p class="truncate">Akadil</p>
-											<div class="truncate hidden group-hover:block text-white/30 font-extrabold">Invite</div>
+											<div class="truncate hidden group-hover:block text-white/30 font-extrabold">
+												Invite
+											</div>
 										</button>
 									{/each}
 								</div>
