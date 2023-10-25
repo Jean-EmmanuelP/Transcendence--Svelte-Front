@@ -232,20 +232,30 @@
 						</button>
 						{#if showDiv}
 							<div
-								class="no-scrollbar transparent bg-black rounded-md text-white ring-1 ring-gray-600/20 backdrop-blur-2xl p-2 gap-4 flex flex-col shadow-md absolute top-[-50px] right-[-280px] w-[200px] h-[250px] max-h-[250px] overflow-auto"
+								class="bg-black rounded-md text-white ring-1 ring-gray-600/20 backdrop-blur-2xl p-2 gap-4 flex flex-col shadow-md absolute top-[-50px] right-[-280px] w-[200px] h-[250px] max-h-[250px]"
 							>
-								{#each Array(5) as _, index (index) }
-								<button
-									class="border border-gray-600/10 shadow-lg hover:bg-gray-500/50 ring-1 ring-gray-600/20 rounded-md h-1/2 flex items-center gap-2"
-									><img
-										src="https://avatars.githubusercontent.com/u/59157371?v=4"
-										class="rounded-full h-11 w-11"
-										alt=""
-									/>
-									<p>Akadil</p></button
+								<div
+									class="absolute -inset-0.5 bg-gradient-to-r from-red-500/30 to-blue-500/30 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
+								/>
+								<header
+									class="z-50 w-full h-[15px] text-white font-bold flex items-center justify-center fixed uppercase"
 								>
-								
-								{/each}
+									Friends
+								</header>
+								<div class="z-50 no-scrollbar overflow-x-auto flex flex-col gap-4 h-full mt-8">
+									{#each Array(5) as _, index (index)}
+										<button
+											class="border w-full border-gray-600/10 shadow-lg hover:bg-gray-500/50 ring-1 ring-gray-600/20 rounded-md rounded-l-full h-1/2 flex items-center gap-2"
+										>
+											<img
+												src="https://avatars.githubusercontent.com/u/59157371?v=4"
+												class="rounded-full h-11 w-11"
+												alt=""
+											/>
+											<p class="truncate">Akadil</p>
+										</button>
+									{/each}
+								</div>
 							</div>
 						{/if}
 						<div
