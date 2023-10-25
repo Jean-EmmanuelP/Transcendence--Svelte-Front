@@ -177,7 +177,7 @@
 							<input
 								id="search"
 								name="search"
-								class="block w-full h-full caret-black bg-white shadow-black placeholder:text-white/55 group/icon_search rounded-md pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-blue-500/40 sm:text-[12px] sm:leading-6"
+								class="block w-full h-full cursor-none caret-black bg-white shadow-black placeholder:text-white/55 group/icon_search rounded-md pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-blue-500/40 sm:text-[12px] sm:leading-6"
 								placeholder="Search players"
 								type="search"
 								autocomplete="off"
