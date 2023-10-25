@@ -34,7 +34,7 @@
 
 	// integrer dans cette fonction le fait de pouvoir partir de la queue de matchmaking et de la queue de play with friend
 	function back() {
-		console.log(`Entered here in back method`)
+		console.log(`Entered here in back method`);
 		if (clickedPlay && (clickedPlayWithFriends || clickedMatchmaking)) {
 			clickedPlayWithFriends = false;
 			clickedMatchmaking = false;
@@ -235,11 +235,27 @@
 								</p>
 							</button>
 						</div>
-					<button class="bg-white text-black" on:click={back}>Reculer</button>
-
+						<button class="bg-white text-black rounded-full" on:click={back}
+							><svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="#ffffff"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="w-6 h-6"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
+							</svg>
+						</button>
 					</div>
 				{:else if clickedPlay && (clickedPlayWithFriends || clickedMatchmaking)}
-					<div class="text-white flex flex-col gap-6 items-center justify-center w-[200px] h-[200px]">
+					<div
+						class="text-white flex flex-col gap-6 items-center justify-center w-[200px] h-[200px]"
+					>
 						<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 24 24"
 							><style>
 								.spinner_EUy1 {
@@ -341,13 +357,27 @@
 								{#if letter !== ' '}
 									<span style="animation-delay: {index * 0.05}s">{letter}</span>
 								{:else}
-									&nbsp;
-									&nbsp;
+									&nbsp; &nbsp;
 								{/if}
 							{/each}
 						</p>
 					</div>
-					<button class="bg-white text-black" on:click={back}>Reculer</button>
+					<button class="bg-white text-black rounded-full" on:click={back}
+						><svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="#ffffff"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+							/>
+						</svg>
+					</button>
 				{/if}
 			</div>
 		</div>
