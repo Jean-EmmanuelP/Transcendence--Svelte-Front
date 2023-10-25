@@ -237,25 +237,15 @@
 								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
 							/>
 							{#if showDiv}
-								<div class="absolute top-[-50px] right-[-280px] w-[200px] max-h-[250px] overflow-auto">
-									<p
-										class="text-white p-2 rounded-md bg-red-500 z-20"
-										on:click={() => clickedButton('friends', true)}
-									>
-										Bonjour comment allez vous !
-										Bonjour comment allez vous !
-										Bonjour comment allez vous !
-										Bonjour comment allez vous !
-										Bonjour comment allez vous !
-										Bonjour comment allez vous !
-										Bonjour comment allez vous !
-										Bonjour comment allez vous !
-										Bonjour comment allez vous !
-										Bonjour comment allez vous !
-										Bonjour comment allez vous !
-										Bonjour comment allez vous !
-										Bonjour comment allez vous !
-									</p>
+								<div class="no-scrollbar transparent text-white backdrop-blur-2xl p-2 gap-2 flex flex-col rounded-md shadow-md absolute top-[-50px] right-[-280px] w-[200px] h-[250px] max-h-[250px] overflow-auto">
+									<!-- {#each users as user (user.id)} -->
+									<button class="border border-white hover:bg-gray-500 shadow-sm rounded-md h-1/3 flex items-center gap-2"><img src="https://avatars.githubusercontent.com/u/59157371?v=4" class="rounded-full h-12 w-12" alt=""><p>Akadil</p></button>
+									<button class="border border-white hover:bg-gray-500 shadow-sm rounded-md h-1/3 flex items-center gap-2"><img src="https://avatars.githubusercontent.com/u/59157371?v=4" class="rounded-full h-12 w-12" alt=""><p>Akadil</p></button>
+									<button class="border border-white hover:bg-gray-500 shadow-sm rounded-md h-1/3 flex items-center gap-2"><img src="https://avatars.githubusercontent.com/u/59157371?v=4" class="rounded-full h-12 w-12" alt=""><p>Akadil</p></button>
+									<button class="border border-white hover:bg-gray-500 shadow-sm rounded-md h-1/3 flex items-center gap-2"><img src="https://avatars.githubusercontent.com/u/59157371?v=4" class="rounded-full h-12 w-12" alt=""><p>Akadil</p></button>
+									<button class="border border-white hover:bg-gray-500 shadow-sm rounded-md h-1/3 flex items-center gap-2"><img src="https://avatars.githubusercontent.com/u/59157371?v=4" class="rounded-full h-12 w-12" alt=""><p>Akadil</p></button>
+									<button class="border border-white hover:bg-gray-500 shadow-sm rounded-md h-1/3 flex items-center gap-2"><img src="https://avatars.githubusercontent.com/u/59157371?v=4" class="rounded-full h-12 w-12" alt=""><p>Akadil</p></button>
+									<!-- {/each} -->
 								</div>
 							{/if}
 							<button

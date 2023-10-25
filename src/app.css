@@ -46,6 +46,15 @@
 			background-color: white;
 		}
 
+		.no-scrollbar::-webkit-scrollbar {
+			display: none;
+		}
+
+		.no-scrollbar {
+			-ms-overflow-style: none;
+			scrollbar-width: none;
+		}
+
 		.laser-effect {
 			position: relative;
 			filter: brightness(1.15);
