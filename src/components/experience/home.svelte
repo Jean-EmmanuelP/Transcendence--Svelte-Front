@@ -69,6 +69,7 @@
 			currentTiltY - 10
 		}deg)`;
 		activeColor.set('');
+
 		blobElement.style.backgroundColor = 'red';
 	}
 

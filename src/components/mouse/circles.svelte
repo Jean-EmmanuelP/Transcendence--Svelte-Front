@@ -113,6 +113,6 @@
 		left: 0;
 		pointer-events: none;
 		filter: blur(2px);
-		z-index: 99999999; /* so that it stays on top of all other elements */
+		z-index: 99999999;
 	}
 </style>
