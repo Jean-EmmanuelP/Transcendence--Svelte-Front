@@ -249,7 +249,7 @@
 										>
 											<img
 												src="https://avatars.githubusercontent.com/u/59157371?v=4"
-												class="rounded-full h-11 w-11 group-hover:border group-hover:border-white"
+												class="rounded-full h-11 w-11 group-hover:border group-hover:border-white/20 group-hover:scale-110"
 												alt=""
 											/>
 											<p class="truncate">Akadil</p>
