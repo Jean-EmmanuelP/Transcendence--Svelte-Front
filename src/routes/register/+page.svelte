@@ -25,8 +25,8 @@
 					'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character'
 				)
 				.required('Password is required'),
-			firstName: yup.string().required("First name is required"),
-			lastName: yup.string().required("Last name is required"),
+			firstName: yup.string().required('First name is required'),
+			lastName: yup.string().required('Last name is required'),
 			email: yup.string().email().required()
 		}),
 		onSubmit: async (values) => {
@@ -44,20 +44,50 @@
 	});
 </script>
 
-<div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
-	<div class="sm:mx-auto sm:w-full sm:max-w-md">
-		<img
-			class="mx-auto h-10 w-auto"
-			src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-			alt="Your Company"
-		/>
-		<h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-			Sign up 
-		</h2>
+<div
+	class="relative flex h-full w-full bg-black flex-col items-center p-4 justify-center sm:px-6 lg:px-8"
+>
+	<div class="absolute inset-0 text-white h-[50px] w-[40px]">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="text-white absolute top-0 left-0 w-full h-full"
+			width="50"
+			height="50"
+			viewBox="0 0 100 100"
+			><path
+				fill="#ffffff"
+				d="M1.22541 61.5228c-.2225-.9485.90748-1.5459 1.59638-.857L39.3342 97.1782c.6889.6889.0915 1.8189-.857 1.5964C20.0515 94.4522 5.54779 79.9485 1.22541 61.5228ZM.00189135 46.8891c-.01764375.2833.08887215.5599.28957165.7606L52.3503 99.7085c.2007.2007.4773.3075.7606.2896 2.3692-.1476 4.6938-.46 6.9624-.9259.7645-.157 1.0301-1.0963.4782-1.6481L2.57595 39.4485c-.55186-.5519-1.49117-.2863-1.648174.4782-.465915 2.2686-.77832 4.5932-.92588465 6.9624ZM4.21093 29.7054c-.16649.3738-.08169.8106.20765 1.1l64.77602 64.776c.2894.2894.7262.3742 1.1.2077 1.7861-.7956 3.5171-1.6927 5.1855-2.684.5521-.328.6373-1.0867.1832-1.5407L8.43566 24.3367c-.45409-.4541-1.21271-.3689-1.54074.1832-.99132 1.6684-1.88843 3.3994-2.68399 5.1855ZM12.6587 18.074c-.3701-.3701-.393-.9637-.0443-1.3541C21.7795 6.45931 35.1114 0 49.9519 0 77.5927 0 100 22.4073 100 50.0481c0 14.8405-6.4593 28.1724-16.7199 37.3375-.3903.3487-.984.3258-1.3542-.0443L12.6587 18.074Z"
+			/></svg
+		>
+		<svg
+			class="absolute top-0 left-0 w-full h-full"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink"
+			version="1.1"
+			id="Calque_1"
+			x="0px"
+			y="0px"
+			viewBox="0 -200 960 960"
+			enable-background="new 0 -200 960 960"
+			xml:space="preserve"
+		>
+			<polygon
+				id="polygon5"
+				points="32,412.6 362.1,412.6 362.1,578 526.8,578 526.8,279.1 197.3,279.1 526.8,-51.1 362.1,-51.1   32,279.1 "
+			/>
+			<polygon id="polygon7" points="597.9,114.2 762.7,-51.1 597.9,-51.1 " />
+			<polygon
+				id="polygon9"
+				points="762.7,114.2 597.9,279.1 597.9,443.9 762.7,443.9 762.7,279.1 928,114.2 928,-51.1 762.7,-51.1 "
+			/>
+			<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
+		</svg>
 	</div>
-
-	<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
-		<div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+	<header class="mb-2">
+		<h2 class="text-center text-2xl font-bold leading-9 tracking-tight text-white">Sign up</h2>
+	</header>
+	<div class="max-w-[480px] w-full border border-white rounded-md shadow-lg">
+		<div class="bg-white p-6 px-12 shadow rounded-md">
 			<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
 				<div>
 					<label for="firstName" class="block text-sm font-medium leading-6 text-gray-900"
@@ -94,7 +124,6 @@
 					{#if $errors.lastName}
 						<small>{$errors.lastName}</small>
 					{/if}
-
 				</div>
 				<div>
 					<label for="email" class="block text-sm font-medium leading-6 text-gray-900"
@@ -114,7 +143,6 @@
 					{#if $errors.email}
 						<small>{$errors.email}</small>
 					{/if}
-
 				</div>
 
 				<div>
@@ -211,10 +239,11 @@
 				</div>
 			</div>
 		</div>
-
-		<p class="mt-10 text-center text-sm text-gray-500">
-			Already a member?
-			<a href="/login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign in</a>
+		<p class="mt-4 text-center text-sm text-white/40 hover:text-white font-medium">
+			Already a member?{' '}
+			<a href="/login" class="font-bold tracking-wide leading-6 text-blue-600 hover:text-blue-500"
+				>Sign in</a
+			>
 		</p>
 	</div>
 </div>
