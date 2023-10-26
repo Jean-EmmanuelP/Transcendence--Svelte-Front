@@ -339,19 +339,17 @@
 
 	<!-- Mobile menu, show/hide based on menu state. -->
 	<nav class={`${MobileMenuOpen ? 'block' : 'hidden'}`} aria-label="Global">
-		<div class="flex flex-col border-t border-gray-600 pt-2">
-			<header class="flex flex-row justify-around pl-2 pb-2">
+		<div class="flex flex-col border-y border-gray-600 pt-2 pb-4">
+			<header class="flex flex-row justify-start pl-2 pb-4">
 				<div class="flex flex-row gap-2">
 					<img class="h-6 w-6 rounded-full" src={user.avatar} alt="" />
 					<p class="text-base font-medium text-white">{user.name.split(' ', 1)}</p>
 				</div>
-
-				<a href="/signout" class="underline">Sign out</a>
 			</header>
 			<div class="flex justify-around">
-				<a href={`/profile/${user.pseudo}`} class="rounded-md bg-slate-600/40 p-2">Notifications</a>
-				<a href={`/profile/${user.pseudo}`} class="rounded-md bg-slate-600/40 p-2">Profile</a>
-				<a href="/settings" class="rounded-md bg-slate-600/40 p-2">Settings</a>
+				<a href={`/profile/${user.pseudo}`} class="rounded-md bg-slate-600/40 shadow-md ring-1 ring-slate-500 p-2">Notifications</a>
+				<a href={`/profile/${user.pseudo}`} class="rounded-md bg-slate-600/40 shadow-md ring-1 ring-slate-500 p-2">Profile</a>
+				<a href="/settings" class="rounded-md bg-slate-600/40 shadow-md ring-1 ring-slate-500 p-2">Settings</a>
 			</div>
 		</div>
 	</nav>
