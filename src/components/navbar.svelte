@@ -162,7 +162,7 @@
 						/>
 						<label for="search" class="sr-only">Search</label>
 						<div class="relative group w-full h-full shadow-gray-50">
-							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+							<div class="pointer-events-none absolute inset-y-1/2 left-1 flex items-center pl-3">
 								<svg
 									class="h-3 w-3 rotate-90 text-white/50 group-focus-within:text-white group-hover:text-white transition duration-200"
 									viewBox="0 0 20 20"
@@ -179,7 +179,7 @@
 							<input
 								id="search"
 								name="search"
-								class="block w-full h-full cursor-none caret-white bg-black shadow-black placeholder:text-white/50 ring-1 ring-gray-500/30 group/icon_search rounded-full shadow-lg border-0 py-1.5 pl-10 pr-3 text-white placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-1 focus:ring-inset focus:ring-blue-500/40 sm:text-[12px] sm:leading-6"
+								class="block w-full h-full cursor-none caret-white bg-black shadow-black placeholder:text-white/50 group-hover:placeholder:text-white/80 transition ring-1 ring-gray-500/30 group/icon_search rounded-full shadow-lg border-0 py-2 pl-10 text-white placeholder:text-gray-400 focus:transition duration-200 focus:duration-300 focus:ring-1 focus:ring-inset focus:ring-blue-500/40 sm:text-[12px] sm:leading-6"
 								placeholder="Search players"
 								type="search"
 								autocomplete="off"
