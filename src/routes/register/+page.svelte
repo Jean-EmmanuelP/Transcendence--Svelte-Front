@@ -174,7 +174,7 @@
 						<div class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 hover:opacity-75 transition duration-1000 hover:duration-200 animate-tilt"></div>
 						<button
 							type="submit"
-							class="flex w-full justify-center relative rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							class="flex w-full justify-center relative rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 							>Sign up</button
 						>
 					</div>
@@ -186,8 +186,8 @@
 					<div class="absolute inset-0 flex items-center" aria-hidden="true">
 						<div class="w-full border-t border-gray-200" />
 					</div>
-					<div class="relative flex justify-center text-sm font-medium leading-6">
-						<span class="bg-white px-6 text-black">Or continue with</span>
+					<div class="relative flex justify-center text-sm rounded-md font-medium leading-6">
+						<span class="bg-white px-6 text-black rounded-md">Or continue with</span>
 					</div>
 				</div>
 
