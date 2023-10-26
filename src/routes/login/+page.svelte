@@ -91,7 +91,7 @@
 							autocomplete="email"
 							on:change={handleChange}
 							bind:value={$form.email}
-							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600/40 sm:text-sm sm:leading-6"
 						/>
 					</div>
 					{#if $errors.email}
@@ -111,7 +111,7 @@
 							on:change={handleChange}
 							bind:value={$form.password}
 							autocomplete="current-password"
-							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600/40 sm:text-sm sm:leading-6"
 						/>
 					</div>
 					{#if $errors.password}
@@ -171,14 +171,14 @@
 						<div class="w-full border-t border-gray-200" />
 					</div>
 					<div class="relative flex justify-center text-sm font-medium leading-6">
-						<span class="bg-white px-6 text-gray-900">Or continue with</span>
+						<span class="bg-white px-6 text-gray-900 rounded-md">Or continue with</span>
 					</div>
 				</div>
 
 				<div class="mt-6 grid grid-cols-2 gap-4">
 					<a
 						href="http://42pong.com:3000/auth/42"
-						class="flex w-full items-center justify-center gap-3 rounded-md bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
+						class="flex w-full items-center justify-center gap-3 rounded-md bg-[#1D9BF0]/40 hover:bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
 					>
 						<svg
 							version="1.1"
@@ -202,12 +202,12 @@
 							/>
 							<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
 						</svg>
-						<span class="text-sm font-semibold leading-6">42</span>
+						<span class="text-sm font-semibold leading-6">School</span>
 					</a>
 
 					<a
 						href="http://42pong.com:3000/auth/google"
-						class="flex w-full items-center justify-center gap-3 rounded-md bg-[#24292F] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
+						class="flex w-full items-center justify-center gap-3 rounded-md bg-red-500/40 hover:bg-red-500 px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
 					>
 						<svg viewBox="0 0 48 48" class="h-5 w-5">
 							<title>Google Logo</title>
