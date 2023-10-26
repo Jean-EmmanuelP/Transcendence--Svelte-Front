@@ -35,7 +35,7 @@
 	});
 </script>
 
-<div class="flex min-h-full flex-col bg-black justify-center py-12 sm:px-6 lg:px-8">
+<div class="flex h-screen w-screen flex-col bg-black items-center border border-white justify-center py-12 sm:px-6 lg:px-8">
 	<div class="sm:mx-auto flex flex-col items-center justify-center sm:w-full sm:max-w-md">
 		<div class="relative w-[50px] h-[40px]">
 			<svg
@@ -78,7 +78,7 @@
 		</h2>
 	</div>
 
-	<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
+	<div class="w-full sm:max-w-[480px] h-full border border-white">
 		<div class="bg-black px-6 py-12 shadow sm:rounded-lg sm:px-12">
 			<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
 				<div>
@@ -229,9 +229,9 @@
 			</div>
 		</div>
 
-		<p class="mt-10 text-center text-sm text-gray-500">
-			Not a member?
-			<a href="/register" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+		<p class="mt-4 tracking-wide text-center text-sm text-white/50 font-semibold">
+			Not a member?{" "}
+			<a href="/register" class="font-bold leading-6 text-blue-600 tracking-wide hover:text-blue-500">
 				Register an account
 			</a>
 		</p>
