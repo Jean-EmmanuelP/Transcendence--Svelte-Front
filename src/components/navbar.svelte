@@ -230,7 +230,6 @@
 					on:click={() => {
 						MobileMenuOpen = !MobileMenuOpen;
 						console.log('you clicked here, this is the value of the mobile menu:', MobileMenuOpen);
-						
 					}}
 				>
 					<span class="absolute -inset-0.5" />
@@ -340,53 +339,19 @@
 
 	<!-- Mobile menu, show/hide based on menu state. -->
 	<nav class={`${MobileMenuOpen ? 'block' : 'hidden'}`} aria-label="Global">
-		<div class="border-t border-gray-200 pb-3 pt-4">
-			<div class="mx-auto flex max-w-3xl items-center px-4 sm:px-6">
-				<div class="flex-shrink-0">
+		<div class="flex flex-col border-t border-gray-600 pt-2">
+			<header class="flex flex-row justify-around pl-2 pb-2">
+				<div class="flex flex-row gap-2">
 					<img class="h-6 w-6 rounded-full" src={user.avatar} alt="" />
+					<p class="text-base font-medium text-white">{user.name.split(' ', 1)}</p>
 				</div>
-				<div class="ml-2">
-					<div class="text-base font-medium text-white">{(user.name).split(" ", 1)}</div>
-				</div>
-				<button
-					type="button"
-					class="relative ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-				>
-					<span class="absolute -inset-1.5" />
-					<span class="sr-only">View notifications</span>
 
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="w-5 h-5"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-						/>
-					</svg>
-				</button>
-			</div>
-			<div class="mx-auto mt-3 max-w-3xl space-y-1 px-2 sm:px-4">
-				<a
-					href={`/profile/${user.pseudo}`}
-					class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-					>Profile</a
-				>
-				<a
-					href="/settings"
-					class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-					>Settings</a
-				>
-				<a
-					href="/signout"
-					class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-					>Sign out</a
-				>
+				<a href="/signout" class="underline">Sign out</a>
+			</header>
+			<div class="flex justify-around">
+				<a href={`/profile/${user.pseudo}`} class="rounded-md bg-slate-600/40 p-2">Notifications</a>
+				<a href={`/profile/${user.pseudo}`} class="rounded-md bg-slate-600/40 p-2">Profile</a>
+				<a href="/settings" class="rounded-md bg-slate-600/40 p-2">Settings</a>
 			</div>
 		</div>
 	</nav>
