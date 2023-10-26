@@ -36,7 +36,7 @@
 </script>
 
 <div
-	class="flex h-screen w-screen flex-col bg-black items-center border border-white justify-center py-12 sm:px-6 lg:px-8"
+	class="flex h-screen w-screen flex-col bg-black items-center justify-center py-12 sm:px-6 lg:px-8"
 >
 	<div class="sm:mx-auto flex flex-col items-center justify-center sm:w-full sm:max-w-md">
 		<div class="relative w-[50px] h-[40px]">
