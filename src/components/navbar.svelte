@@ -20,7 +20,7 @@
 	$: isMobile = Device.isMobile;
 
 	let user: AuthenticationType;
-	let MobileMenuOpen = false;
+	let MobileMenuOpen = true;
 	let pendingRequests: Request[] = [];
 	let isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications';
 	let term = '';
@@ -343,10 +343,10 @@
 		<div class="border-t border-gray-200 pb-3 pt-4">
 			<div class="mx-auto flex max-w-3xl items-center px-4 sm:px-6">
 				<div class="flex-shrink-0">
-					<img class="h-10 w-10 rounded-full" src={user.avatar} alt="" />
+					<img class="h-6 w-6 rounded-full" src={user.avatar} alt="" />
 				</div>
-				<div class="ml-3">
-					<div class="text-base font-medium text-gray-800">{user.name}</div>
+				<div class="ml-2">
+					<div class="text-base font-medium text-white">{(user.name).split(" ", 1)}</div>
 				</div>
 				<button
 					type="button"
