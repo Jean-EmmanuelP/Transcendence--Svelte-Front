@@ -104,7 +104,9 @@
 	});
 </script>
 
-<header class="backdrop-blur-md p-1 lg:static lg:overflow-y-visible text-white border-b border-b-white/10 shadow-sm">
+<header
+	class="backdrop-blur-md p-1 lg:static lg:overflow-y-visible text-white border-b border-b-white/10 shadow-sm"
+>
 	<div class="flex items-center justify-center">
 		<div
 			class="transparent relative w-[80%] flex flex-row items-center lg:gap-2 xl:grid xl:grid-cols-12"
@@ -112,10 +114,12 @@
 			<div
 				class="flex pl-2 items-center md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-4"
 			>
-				<button class="flex flex-row gap-2 items-center justify-center" on:click={() => {
-					
-					goto('/');
-					}}>
+				<button
+					class="flex flex-row gap-2 items-center justify-center"
+					on:click={() => {
+						goto('/');
+					}}
+				>
 					<div class="relative w-[50px] h-[40px]">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -264,7 +268,19 @@
 						goto('/messages');
 					}}
 				>
-				<svg aria-label="Direct" class="h-5 w-5" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Direct</title><path d="M22.91 2.388a.69.69 0 0 0-.597-.347l-20.625.002a.687.687 0 0 0-.482 1.178L7.26 9.16a.686.686 0 0 0 .778.128l7.612-3.657a.723.723 0 0 1 .937.248.688.688 0 0 1-.225.932l-7.144 4.52a.69.69 0 0 0-.3.743l2.102 8.692a.687.687 0 0 0 .566.518.655.655 0 0 0 .103.008.686.686 0 0 0 .59-.337L22.903 3.08a.688.688 0 0 0 .007-.692" fill-rule="evenodd"></path></svg>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6 text-white"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
+						/>
+					</svg>
 				</button>
 				<button
 					type="button"
@@ -273,35 +289,19 @@
 				>
 					<span class="absolute -inset-1.5" />
 					<span class="sr-only">View notifications</span>
-					{#if $modalOpen !== 'notifications'}
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-							class="h-6 w-6 text-white"
-						>
-							<path
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-							/>
-						</svg>
-					{:else}
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="h-7 w-7"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-							/>
-						</svg>
-					{/if}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6 transition duration-200 text-white"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+						/>
+					</svg>
 				</button>
 				<!-- Profile dropdown -->
 				<div class="relative ml-5 flex-shrink-0">
@@ -364,12 +364,12 @@
 					<span class="sr-only">View notifications</span>
 
 					<svg
-						class="h-6 w-6"
+						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke-width="1.5"
 						stroke="currentColor"
-						aria-hidden="true"
+						class="w-5 h-5"
 					>
 						<path
 							stroke-linecap="round"
