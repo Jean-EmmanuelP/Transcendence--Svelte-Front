@@ -156,12 +156,15 @@
 			</div>
 			<div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-4">
 				<div class="flex px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
-					<div class="w-full relative h-full flex items-center justify-center">
+					<div class="w-full relative rounded-md h-full flex items-center justify-center">
+						<div
+							class="absolute -inset-[0.2px] bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
+						/>
 						<label for="search" class="sr-only">Search</label>
 						<div class="relative group w-full h-full shadow-gray-50">
 							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
 								<svg
-									class="h-3 w-3 rotate-90 text-black/50 group-focus-within:text-black group-hover:text-black transition duration-200"
+									class="h-3 w-3 rotate-90 text-white/50 group-focus-within:text-white group-hover:text-white transition duration-200"
 									viewBox="0 0 20 20"
 									fill="currentColor"
 									aria-hidden="true"
@@ -176,7 +179,7 @@
 							<input
 								id="search"
 								name="search"
-								class="block w-full h-full cursor-none caret-black bg-white shadow-black placeholder:text-white/55 group/icon_search rounded-full shadow-lg border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-blue-500/40 sm:text-[12px] sm:leading-6"
+								class="block w-full h-full cursor-none caret-white bg-black shadow-black placeholder:text-white/50 ring-1 ring-gray-500/30 group/icon_search rounded-full shadow-lg border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-blue-500/40 sm:text-[12px] sm:leading-6"
 								placeholder="Search players"
 								type="search"
 								autocomplete="off"
@@ -186,7 +189,7 @@
 							/>
 							{#if isDropdownOpen && users.length}
 								<div
-									class="dropdown-menu bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 z-20 p-2 flex flex-col gap-2 max-h-80 w-80 overflow-hidden"
+									class="dropdown-menu bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 p-2 flex flex-col gap-2 max-h-80 w-80 overflow-hidden"
 								>
 									{#each users as user (user.id)}
 										<div
