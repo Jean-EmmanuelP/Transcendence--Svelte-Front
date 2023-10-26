@@ -182,13 +182,12 @@
 	<div
 		on:mouseleave={handleMouseLeave}
 		on:mousemove={handleMouseMove}
-		class="h-[80%] w-[80%] z-10 ring-1 ring-white/10 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-black laser-effect"
+		class="h-[80%] w-[80%] z-10 ring-1 ring-gray-600/20 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-black laser-effect"
 		bind:this={laserElement}
 	>
 		<div
 			class="absolute top-50% left-50% transform -translate-x-50% -translate-y-50% w-[130%] h-[130%]"
 		>
-			<!-- Blobs -->
 			<div
 				class="absolute top-0 left-0 w-72 h-72 bg-[#26619c] animate-blob rounded-full mix-blend-multiply filter blur-xl opacity-70"
 			/>
@@ -199,7 +198,7 @@
 				class="absolute top-1/2 left-1/2 transform -translate-x-50% -translate-y-50% w-72 h-72 bg-[#660011] animate-blob animation-delay-4000 rounded-full mix-blend-multiply filter blur-xl opacity-70"
 			/>
 		</div>
-		<div class="w-full h-full ring-2 ring-gray-400 flex items-center justify-center transparent">
+		<div class="w-full h-full flex items-center justify-center transparent">
 			<div class="relative">
 				{#if !clickedPlay && !clickedPlayWithFriends && !clickedMatchmaking}
 					<button
