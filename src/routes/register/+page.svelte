@@ -86,11 +86,14 @@
 	<header class="mb-2">
 		<h2 class="text-center text-2xl font-bold leading-9 tracking-tight text-white">Sign up</h2>
 	</header>
-	<div class="max-w-[480px] w-full border border-white rounded-md shadow-lg">
-		<div class="bg-white p-6 px-12 shadow rounded-md">
+	<div class="relative max-w-[480px] w-full ring-1 ring-gray-600/40 rounded-md shadow-lg">
+		<div
+			class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
+		/>
+		<div class="relative bg-black p-6 px-12 shadow rounded-md">
 			<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
 				<div>
-					<label for="firstName" class="block text-sm font-medium leading-6 text-gray-900"
+					<label for="firstName" class="block text-sm font-medium leading-6 text-white"
 						>First name</label
 					>
 					<div class="mt-2">
@@ -100,7 +103,7 @@
 							type="firstName"
 							on:change={handleChange}
 							bind:value={$form.firstName}
-							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+							class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
 					{#if $errors.firstName}
@@ -108,7 +111,7 @@
 					{/if}
 				</div>
 				<div>
-					<label for="lastName" class="block text-sm font-medium leading-6 text-gray-900"
+					<label for="lastName" class="block text-sm font-medium leading-6 text-white"
 						>Last name</label
 					>
 					<div class="mt-2">
@@ -118,7 +121,7 @@
 							type="lastName"
 							on:change={handleChange}
 							bind:value={$form.lastName}
-							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+							class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
 					{#if $errors.lastName}
@@ -126,9 +129,7 @@
 					{/if}
 				</div>
 				<div>
-					<label for="email" class="block text-sm font-medium leading-6 text-gray-900"
-						>Email address</label
-					>
+					<label for="email" class="block text-sm font-medium leading-6 text-white">Email</label>
 					<div class="mt-2">
 						<input
 							id="email"
@@ -137,7 +138,7 @@
 							autocomplete="email"
 							on:change={handleChange}
 							bind:value={$form.email}
-							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+							class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
 					{#if $errors.email}
@@ -146,7 +147,7 @@
 				</div>
 
 				<div>
-					<label for="password" class="block text-sm font-medium leading-6 text-gray-900"
+					<label for="password" class="block text-sm font-medium leading-6 text-white"
 						>Password</label
 					>
 					<div class="mt-2">
@@ -157,7 +158,7 @@
 							on:change={handleChange}
 							bind:value={$form.password}
 							autocomplete="current-password"
-							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+							class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
 					{#if $errors.password}
@@ -182,7 +183,7 @@
 						<div class="w-full border-t border-gray-200" />
 					</div>
 					<div class="relative flex justify-center text-sm font-medium leading-6">
-						<span class="bg-white px-6 text-gray-900">Or continue with</span>
+						<span class="bg-white px-6 text-white">Or continue with</span>
 					</div>
 				</div>
 
