@@ -2,6 +2,10 @@
 	import { onMount } from 'svelte';
 
 	onMount(() => {
+		const isMobile = window.matchMedia('(max-width: 767px)').matches;
+		if (isMobile) {
+			return;
+		}
 		const coords = { x: 0, y: 0 };
 		const circles: NodeListOf<HTMLDivElement> = document.querySelectorAll('.circle');
 		let isVisible: boolean = true;
