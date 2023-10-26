@@ -52,7 +52,7 @@
 			alt="Your Company"
 		/>
 		<h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-			Sign up 
+			Sign up
 		</h2>
 	</div>
 
@@ -160,7 +160,7 @@
 
 				<div class="mt-6 grid grid-cols-2 gap-4">
 					<a
-						href="http://42pong.com:3000/auth/42"
+						href="http://68.183.79.168:3000/auth/42"
 						class="flex w-full items-center justify-center gap-3 rounded-md bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
 					>
 						<svg
@@ -189,7 +189,7 @@
 					</a>
 
 					<a
-						href="http://42pong.com:3000/auth/google"
+						href="http://68.183.79.168:3000/auth/google"
 						class="flex w-full items-center justify-center gap-3 rounded-md bg-[#24292F] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
 					>
 						<svg viewBox="0 0 48 48" class="h-5 w-5">

@@ -38,7 +38,7 @@
 
 		let posX = 0;
 		let posY = 0;
-		const laserSpeed = 2;
+		const laserSpeed = 20;
 
 		function updateLaserPosition() {
 			if (laserElement) {

@@ -1,17 +1,15 @@
 <script lang="ts">
-	import { sendFriendRequest } from '../../services/gqlFriends';
-	import type { AuthenticationType } from '../../stores/authentication';
-	export let user: AuthenticationType;
-	export let handleSent: (pseudo: string) => void;
+	import type { FriendRequestInterface } from '../../interfaces/types';
+	import { acceptFriendRequest, cancelFriendRequest, rejectFriendRequest } from '../../services/gqlFriends';
+	export let request: FriendRequestInterface;
+	export let handleReject: (req: FriendRequestInterface) => void;
 
 	let loading = false;
 	async function simulateAsyncAction() {
 		loading = true;
-		// Simulating an asynchronous action
 		try {
-			const result = await sendFriendRequest(user.pseudo);
-			console.log(result);
-			handleSent(user.pseudo);
+			await cancelFriendRequest(request.receiver.pseudo);
+			handleReject(request);
 			loading = false;
 		} catch (e) {
 			loading = false;
@@ -30,12 +28,12 @@
 	<div class="flex items-center space-x-4">
 		<img
 			class="w-10 h-10 rounded-full"
-			src="https://api.dicebear.com/7.x/bottts/svg?seed={user.pseudo}"
+			src="https://api.dicebear.com/7.x/bottts/svg?seed={request.receiver.pseudo}"
 			alt=""
 		/>
 		<div class="font-medium">
-			<div>{user.name}</div>
-			<div class="text-sm text-gray-500">{user.pseudo}</div>
+			<div>{request.receiver.name}</div>
+			<div class="text-sm text-gray-500">Sent request</div>
 		</div>
 	</div>
 	<button
@@ -60,17 +58,9 @@
 			</svg>
 			Loading
 		{:else}
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="w-6 h-6"
-			>
-				<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
-			</svg>
-			<span class="sr-only">Icon description</span>
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+		  	</svg>
 		{/if}
 	</button>
 </div>

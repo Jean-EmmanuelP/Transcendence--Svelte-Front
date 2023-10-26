@@ -3,7 +3,7 @@ import Cookie from "js-cookie";
 
 // Create a instance of axios to use the same base url.
 const axiosAPI = axios.create({
-	baseURL: "http://42pong.com:3000"
+	baseURL: "http://68.183.79.168:3000"
 });
 
 axiosAPI.interceptors.response.use(

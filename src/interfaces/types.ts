@@ -50,3 +50,30 @@ export interface GroupInterface {
     members: GroupMemberInterface[];
     admins: GroupMemberInterface[];
 }
+
+export interface RequestUserInterface {
+	id: string;
+	avatar: string;
+	name: string;
+	pseudo: string;
+}
+
+export interface FriendRequestInterface {
+	id: string;
+	senderId: string;
+	receiverId: string;
+	status: string;
+	receiver: RequestUserInterface;
+	sender: RequestUserInterface;
+}
+
+export enum GroupActions {
+	KICK = "KICK",
+	BAN = "BAN",
+	MUTE = "MUTE",
+	UNMUTE = "UNMUTE",
+	UNBAN = "UNBAN",
+	ADD = "ADD",
+	UPADMIN = "UPADMIN",
+	DOWNADMIN = "DOWNADMIN",
+  }
