@@ -246,7 +246,7 @@
 			<div class="group/member">
 				<p class="mt-4 text-center text-sm text-white/40 group-hover/member:text-white font-medium">
 					Already a member?{' '}
-					<a href="/login" class="font-bold tracking-wide leading-6 text-blue-400 group-hover/member:text-blue-600 brightness-100 group-hover/member:brightness-200"
+					<a href="/login" class="font-bold tracking-wide leading-6 text-blue-600 group-hover/member:text-blue-500 brightness-100 group-hover/member:brightness-200"
 						>Sign in</a
 					>
 				</p>
