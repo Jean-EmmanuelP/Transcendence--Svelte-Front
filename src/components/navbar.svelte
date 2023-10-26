@@ -15,18 +15,14 @@
 	import type { searchUser } from '../interfaces/types';
 	import { goto } from '$app/navigation';
 	import { activeColor } from '../stores/currentNavigation';
-	import Device from 'svelte-device-info';
-
-	$: isMobile = Device.isMobile;
 
 	let user: AuthenticationType;
-	let MobileMenuOpen = true;
+	let inputFocus: boolean = false;
 	let pendingRequests: Request[] = [];
 	let isModalOpen =
-		$modalOpen === 'userMenu' || $modalOpen === 'notifications' || $modalOpen === 'mobileMenu';
+		$modalOpen === 'userMenu' || $modalOpen === 'notifications' || $modalOpen === 'mobileMenu' || $modalOpen === 'searchSuggestion';
 	let term = '';
 	let users: searchUser[] = [];
-	let isDropdownOpen: boolean = false;
 
 	const unsubscribe = authentication.subscribe((value) => {
 		user = value;
@@ -34,7 +30,7 @@
 	onDestroy(unsubscribe);
 
 	$: isModalOpen =
-		$modalOpen === 'userMenu' || $modalOpen === 'notifications' || $modalOpen === 'mobileMenu';
+		$modalOpen === 'userMenu' || $modalOpen === 'notifications' || $modalOpen === 'mobileMenu' || $modalOpen === 'searchSuggestion';
 	$: if (!isModalOpen && $modalOpen !== null) {
 		modalOpen.set(null);
 	}
@@ -90,24 +86,11 @@
 			console.error(`Error during the mutation reject friend request`);
 		}
 	}
-
 	function handleInputFocus() {
-		isDropdownOpen = true;
+		inputFocus = true;
+		toggleModal('searchSuggestion');
 	}
 
-	function handleClickOutside(event: Event) {
-		const target = event.target as HTMLElement;
-		if (!target.closest('#search') && !target.closest('.dropdown-menu')) {
-			isDropdownOpen = false;
-		}
-	}
-
-	onMount(() => {
-		document.addEventListener('click', handleClickOutside);
-		return () => {
-			document.removeEventListener('click', handleClickOutside);
-		};
-	});
 </script>
 
 <header
@@ -197,28 +180,7 @@
 								on:focus={handleInputFocus}
 								on:input={handleSearch}
 							/>
-							{#if isDropdownOpen && users.length}
-								<div
-									class="dropdown-menu bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 p-2 flex flex-col gap-2 max-h-80 w-80 overflow-hidden"
-								>
-									{#each users as user (user.id)}
-										<div
-											class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10"
-											on:click={() => {
-												goto(`/profile/${user.pseudo}`);
-												isDropdownOpen = false;
-											}}
-										>
-											<div class="h-full w-[30%]">
-												<OnlineUserImg avatar={user.avatar} status={user.status} />
-											</div>
-											<div class="w-[70%] h-full flex items-center">
-												<p>{user.name.split(' ')[0]}</p>
-											</div>
-										</div>
-									{/each}
-								</div>
-							{/if}
+							
 						</div>
 					</div>
 				</div>
@@ -480,5 +442,26 @@
 				</a>
 			</div>
 		</nav>
+		{:else if inputFocus && users.length}
+		<div
+			class="dropdown-menu bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 p-2 flex flex-col gap-2 max-h-80 w-80 overflow-hidden"
+		>
+			{#each users as user (user.id)}
+				<div
+					class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10"
+					on:click={() => {
+						goto(`/profile/${user.pseudo}`);
+						inputFocus = false;
+					}}
+				>
+					<div class="h-full w-[30%]">
+						<OnlineUserImg avatar={user.avatar} status={user.status} />
+					</div>
+					<div class="w-[70%] h-full flex items-center">
+						<p>{user.name.split(' ')[0]}</p>
+					</div>
+				</div>
+			{/each}
+		</div>
 	{/if}
 </ModalWrapper>
