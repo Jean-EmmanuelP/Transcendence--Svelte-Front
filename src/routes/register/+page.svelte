@@ -86,11 +86,11 @@
 	<header class="mb-2">
 		<h2 class="text-center text-2xl font-bold leading-9 tracking-tight text-white">Sign up</h2>
 	</header>
-	<div class="relative max-w-[480px] w-full ring-1 ring-gray-600/40 rounded-md shadow-lg">
+	<div class="relative max-w-[480px] w-full ring-1 ring-gray-600/40 rounded-md shadow-lg bg-black">
 		<div
 			class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
 		/>
-		<div class="relative bg-black p-6 px-12 shadow rounded-md">
+		<div class="relative p-6 px-12 shadow rounded-md">
 			<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
 				<div>
 					<label for="firstName" class="block text-sm font-medium leading-6 text-white"
@@ -169,11 +169,14 @@
 					{#if $serverError}
 						<small>{$serverError}</small>
 					{/if}
-					<button
-						type="submit"
-						class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-						>Sign up</button
-					>
+					<div class="relative">
+						<div class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 hover:opacity-75 transition duration-1000 hover:duration-200 animate-tilt"></div>
+						<button
+							type="submit"
+							class="flex w-full justify-center relative rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							>Sign up</button
+						>
+					</div>
 				</div>
 			</form>
 
@@ -183,7 +186,7 @@
 						<div class="w-full border-t border-gray-200" />
 					</div>
 					<div class="relative flex justify-center text-sm font-medium leading-6">
-						<span class="bg-white px-6 text-white">Or continue with</span>
+						<span class="bg-white px-6 text-black">Or continue with</span>
 					</div>
 				</div>
 
@@ -205,7 +208,7 @@
 							<polygon
 								id="polygon5"
 								points="32,412.6 362.1,412.6 362.1,578 526.8,578 526.8,279.1 197.3,279.1 526.8,-51.1 362.1,-51.1
-	32,279.1 "
+			32,279.1 "
 							/>
 							<polygon id="polygon7" points="597.9,114.2 762.7,-51.1 597.9,-51.1 " />
 							<polygon
