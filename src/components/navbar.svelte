@@ -17,6 +17,7 @@
 	import { activeColor } from '../stores/currentNavigation';
 
 	let user: AuthenticationType;
+	let MobileMenuOpen = false;
 	let pendingRequests: Request[] = [];
 	let isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications';
 	let term = '';
@@ -223,6 +224,11 @@
 					type="button"
 					class="relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
 					aria-expanded="false"
+					on:click={() => {
+						MobileMenuOpen = !MobileMenuOpen;
+						console.log('you clicked here, this is the value of the mobile menu:', MobileMenuOpen);
+						
+					}}
 				>
 					<span class="absolute -inset-0.5" />
 					<span class="sr-only">Open menu</span>
@@ -330,31 +336,15 @@
 	</div>
 
 	<!-- Mobile menu, show/hide based on menu state. -->
-	<nav class="md:hidden" aria-label="Global">
-		<div class="mx-auto max-w-3xl space-y-1 px-2 pb-3 pt-2 sm:px-4">
-			<!-- Current: "bg-gray-100 text-gray-900", Default: "hover:bg-gray-50" -->
-			<a
-				href="#"
-				aria-current="page"
-				class="bg-gray-100 text-gray-900 block rounded-md py-2 px-3 text-base font-medium"
-				>Dashboard</a
-			>
-			<a href="#" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium"
-				>Friends</a
-			>
-		</div>
+	<nav class={`${MobileMenuOpen ? 'block' : 'hidden'}`} aria-label="Global">
 		<div class="border-t border-gray-200 pb-3 pt-4">
 			<div class="mx-auto flex max-w-3xl items-center px-4 sm:px-6">
 				<div class="flex-shrink-0">
-					<img
-						class="h-10 w-10 rounded-full"
-						src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-						alt=""
-					/>
+					<img class="h-10 w-10 rounded-full" src={user.avatar} alt="" />
 				</div>
 				<div class="ml-3">
-					<div class="text-base font-medium text-gray-800">Chelsea Hagon</div>
-					<div class="text-sm font-medium text-gray-500">chelsea.hagon@example.com</div>
+					<div class="text-base font-medium text-gray-800">{user.name}</div>
+					<div class="text-sm font-medium text-gray-500">{user.email}</div>
 				</div>
 				<button
 					type="button"
@@ -381,12 +371,12 @@
 			</div>
 			<div class="mx-auto mt-3 max-w-3xl space-y-1 px-2 sm:px-4">
 				<a
-					href="#"
+					href={`/profile/${user.pseudo}`}
 					class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
 					>Profile</a
 				>
 				<a
-					href="#"
+					href="/settings"
 					class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
 					>Settings</a
 				>
