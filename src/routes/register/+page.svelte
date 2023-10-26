@@ -198,7 +198,8 @@
 					>
 						<svg
 							version="1.1"
-							class="h-5 w-5"
+							class="h-5 w-5 text-white"
+							fill="#ffffff"
 							id="Calque_1"
 							x="0px"
 							y="0px"
@@ -218,7 +219,7 @@
 							/>
 							<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
 						</svg>
-						<span class="text-sm font-semibold leading-6">42</span>
+						<span class="text-sm font-semibold leading-6">School</span>
 					</a>
 
 					<a

@@ -194,6 +194,7 @@
 								<svg
 									version="1.1"
 									class="h-5 w-5"
+									fill="#ffffff"
 									id="Calque_1"
 									x="0px"
 									y="0px"
@@ -240,7 +241,9 @@
 					</div>
 				</div>
 				<div class="group/notmember">
-					<p class="relative mt-4 pb-2 group-hover/notmember:text-white tracking-wide text-center text-sm text-white/50 font-semibold">
+					<p
+						class="relative mt-4 pb-2 group-hover/notmember:text-white tracking-wide text-center text-sm text-white/50 font-semibold"
+					>
 						Not a member?{' '}
 						<a
 							href="/register"
