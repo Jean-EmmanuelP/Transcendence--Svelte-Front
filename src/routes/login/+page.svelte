@@ -1,8 +1,7 @@
 <script lang="ts">
-
 	import { writable } from 'svelte/store';
 	import { goto } from '$app/navigation';
-	import AuthServices from "../../services/auth";
+	import AuthServices from '../../services/auth';
 	import Cookies from 'js-cookie';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
@@ -17,37 +16,64 @@
 			email: ''
 		},
 		validationSchema: yup.object().shape({
-			password: yup
-				.string()
-				.required('Password is required'),
+			password: yup.string().required('Password is required'),
 			email: yup.string().email().required()
 		}),
 		onSubmit: async (values) => {
 			loading.set(true);
 			try {
 				const response = await AuthServices.loginCredentials(values.email, values.password);
-				if (Cookies.get("access_token"))
-					Cookies.remove("access_token");
-				Cookies.set("access_token", response.token, { expires: 1 });
+				if (Cookies.get('access_token')) Cookies.remove('access_token');
+				Cookies.set('access_token', response.token, { expires: 1 });
 				authentication.setUser(response);
-				goto('/')
+				goto('/');
 			} catch (error) {
 				serverError.set(error.statusText);
 				loading.set(false);
 			}
 		}
 	});
-
 </script>
 
-<div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
-	<div class="sm:mx-auto sm:w-full sm:max-w-md">
-		<img
-			class="mx-auto h-10 w-auto"
-			src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-			alt="Your Company"
-		/>
-		<h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+<div class="flex min-h-full flex-col bg-black justify-center py-12 sm:px-6 lg:px-8">
+	<div class="sm:mx-auto flex flex-col items-center justify-center sm:w-full sm:max-w-md">
+		<div class="relative w-[50px] h-[40px]">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="text-white absolute top-0 left-0 w-full h-full"
+				width="50"
+				height="50"
+				viewBox="0 0 100 100"
+				><path
+					fill="#ffffff"
+					d="M1.22541 61.5228c-.2225-.9485.90748-1.5459 1.59638-.857L39.3342 97.1782c.6889.6889.0915 1.8189-.857 1.5964C20.0515 94.4522 5.54779 79.9485 1.22541 61.5228ZM.00189135 46.8891c-.01764375.2833.08887215.5599.28957165.7606L52.3503 99.7085c.2007.2007.4773.3075.7606.2896 2.3692-.1476 4.6938-.46 6.9624-.9259.7645-.157 1.0301-1.0963.4782-1.6481L2.57595 39.4485c-.55186-.5519-1.49117-.2863-1.648174.4782-.465915 2.2686-.77832 4.5932-.92588465 6.9624ZM4.21093 29.7054c-.16649.3738-.08169.8106.20765 1.1l64.77602 64.776c.2894.2894.7262.3742 1.1.2077 1.7861-.7956 3.5171-1.6927 5.1855-2.684.5521-.328.6373-1.0867.1832-1.5407L8.43566 24.3367c-.45409-.4541-1.21271-.3689-1.54074.1832-.99132 1.6684-1.88843 3.3994-2.68399 5.1855ZM12.6587 18.074c-.3701-.3701-.393-.9637-.0443-1.3541C21.7795 6.45931 35.1114 0 49.9519 0 77.5927 0 100 22.4073 100 50.0481c0 14.8405-6.4593 28.1724-16.7199 37.3375-.3903.3487-.984.3258-1.3542-.0443L12.6587 18.074Z"
+				/></svg
+			>
+			<svg
+				class="absolute top-0 left-0 w-full h-full"
+				xmlns="http://www.w3.org/2000/svg"
+				xmlns:xlink="http://www.w3.org/1999/xlink"
+				version="1.1"
+				id="Calque_1"
+				x="0px"
+				y="0px"
+				viewBox="0 -200 960 960"
+				enable-background="new 0 -200 960 960"
+				xml:space="preserve"
+			>
+				<polygon
+					id="polygon5"
+					points="32,412.6 362.1,412.6 362.1,578 526.8,578 526.8,279.1 197.3,279.1 526.8,-51.1 362.1,-51.1   32,279.1 "
+				/>
+				<polygon id="polygon7" points="597.9,114.2 762.7,-51.1 597.9,-51.1 " />
+				<polygon
+					id="polygon9"
+					points="762.7,114.2 597.9,279.1 597.9,443.9 762.7,443.9 762.7,279.1 928,114.2 928,-51.1 762.7,-51.1 "
+				/>
+				<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
+			</svg>
+		</div>
+		<h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-white">
 			Sign in to your account
 		</h2>
 	</div>
@@ -56,8 +82,9 @@
 		<div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
 			<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
 				<div>
-				<label for="email" class="block text-sm font-medium leading-6 text-gray-900"
-						>Email address</label>
+					<label for="email" class="block text-sm font-medium leading-6 text-gray-900"
+						>Email address</label
+					>
 					<div class="mt-2">
 						<input
 							id="email"
@@ -72,7 +99,6 @@
 					{#if $errors.email}
 						<small>{$errors.email}</small>
 					{/if}
-
 				</div>
 
 				<div>
@@ -96,8 +122,6 @@
 				</div>
 
 				<div class="flex items-center justify-between">
-
-
 					<div class="text-sm leading-6">
 						<a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500"
 							>Forgot password?</a
@@ -106,25 +130,37 @@
 				</div>
 
 				<div>
-
 					{#if $serverError}
 						<small>{$serverError}</small>
 					{/if}
 					{#if !loading}
-					<button
-						disabled
-						class="flex w-full justify-center rounded-md bg-indigo-300 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-						><svg aria-hidden="true" class="w-6 h-6 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-							<path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-						</svg></button>
+						<button
+							disabled
+							class="flex w-full justify-center rounded-md bg-indigo-300 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							><svg
+								aria-hidden="true"
+								class="w-6 h-6 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+								viewBox="0 0 100 101"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+									fill="currentFill"
+								/>
+							</svg></button
+						>
 					{:else}
-					<button
-						type="submit"
-						class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-						>Sign in</button>
+						<button
+							type="submit"
+							class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							>Sign in</button
+						>
 					{/if}
-
 				</div>
 			</form>
 
@@ -166,7 +202,6 @@
 							<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
 						</svg>
 						<span class="text-sm font-semibold leading-6">42</span>
-
 					</a>
 
 					<a
