@@ -84,7 +84,7 @@
 		</svg>
 	</div>
 	<header class="mb-2">
-		<h2 class="text-center text-2xl font-bold leading-9 tracking-tight text-white">Sign up</h2>
+		<h2 class="text-center text-xl sm:text-2xl font-bold leading-9 tracking-tight text-white">Sign up</h2>
 	</header>
 	<div class="relative max-w-[480px] w-full ring-1 ring-gray-600/40 rounded-md shadow-lg bg-black">
 		<div
