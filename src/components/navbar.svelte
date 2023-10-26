@@ -448,7 +448,7 @@
 		</nav>
 	{:else if inputFocus && users.length}
 		<div
-			class="dropdown-menu overflow-auto no-scrollbar bg-black fixed top-14 right-[25%] sm:right-[50%] rounded-md ring-1 ring-blue-500/10 ring-opacity-5 p-2 shadow-lg flex flex-col gap-2 max-h-32 sm:max-h-60 h-auto w-auto"
+			class="dropdown-menu overflow-auto no-scrollbar bg-black fixed top-14 right-[40%] sm:right-[50%] rounded-md ring-1 ring-blue-500/10 ring-opacity-5 p-2 shadow-lg flex flex-col gap-2 max-h-32 sm:max-h-60 h-auto w-auto"
 		>
 			{#each users as user (user.id)}
 				<div
