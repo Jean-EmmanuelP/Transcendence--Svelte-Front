@@ -158,7 +158,7 @@
 				<div class="flex px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
 					<div class="w-full relative rounded-md h-full flex items-center justify-center">
 						<div
-							class="absolute -inset-[0.2px] bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
+							class="absolute -inset-[0.0001px] bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-20 hover:opacity-50 transition duration-1000 hover:duration-200 animate-tilt"
 						/>
 						<label for="search" class="sr-only">Search</label>
 						<div class="relative group w-full h-full shadow-gray-50">
@@ -179,7 +179,7 @@
 							<input
 								id="search"
 								name="search"
-								class="block w-full h-full cursor-none caret-white bg-black shadow-black placeholder:text-white/50 ring-1 ring-gray-500/30 group/icon_search rounded-full shadow-lg border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-blue-500/40 sm:text-[12px] sm:leading-6"
+								class="block w-full h-full cursor-none caret-white bg-black shadow-black placeholder:text-white/50 ring-1 ring-gray-500/30 group/icon_search rounded-full shadow-lg border-0 py-1.5 pl-10 pr-3 text-white placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-1 focus:ring-inset focus:ring-blue-500/40 sm:text-[12px] sm:leading-6"
 								placeholder="Search players"
 								type="search"
 								autocomplete="off"
