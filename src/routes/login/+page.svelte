@@ -77,7 +77,7 @@
 				<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
 			</svg>
 		</div>
-		<h2 class="m-4 text-center text-2xl font-bold leading-9 tracking-tight text-white">
+		<h2 class="m-4 text-center text-medium sm:text-2xl font-bold leading-9 tracking-tight text-white">
 			Sign in to your account
 		</h2>
 	</div>
@@ -93,7 +93,7 @@
 				<div class="relative px-6 py-6 shadow sm:rounded-lg sm:px-12">
 					<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
 						<div>
-							<label for="email" class="block text-sm font-medium leading-6 text-white">Email</label
+							<label for="email" class="block text-[14px] sm:text-sm font-medium leading-6 text-white">Email</label
 							>
 							<div class="mt-2">
 								<input
@@ -103,7 +103,7 @@
 									autocomplete="email"
 									on:change={handleChange}
 									bind:value={$form.email}
-									class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600/40 sm:text-sm sm:leading-6"
+									class="block w-full rounded-md border-0 p-0 sm:py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600/40 sm:text-sm sm:leading-6"
 								/>
 							</div>
 							{#if $errors.email}
@@ -123,7 +123,7 @@
 									on:change={handleChange}
 									bind:value={$form.password}
 									autocomplete="current-password"
-									class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600/40 sm:text-sm sm:leading-6"
+									class="block w-full rounded-md border-0 p-0 sm:py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600/40 text-[14px] sm:text-sm sm:leading-6"
 								/>
 							</div>
 							{#if $errors.password}
@@ -133,7 +133,7 @@
 
 						<div class="flex items-center justify-between">
 							<div class="text-sm leading-6">
-								<a href="#" class="font-semibold text-white/70 hover:text-white">Forgot password?</a
+								<a href="#" class="font-semibold text-white/70 hover:text-white text-[14px] sm:text-sm">Forgot password?</a
 								>
 							</div>
 						</div>
