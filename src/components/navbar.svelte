@@ -15,6 +15,9 @@
 	import type { searchUser } from '../interfaces/types';
 	import { goto } from '$app/navigation';
 	import { activeColor } from '../stores/currentNavigation';
+	import Device from 'svelte-device-info';
+
+	$: isMobile = Device.isMobile;
 
 	let user: AuthenticationType;
 	let MobileMenuOpen = false;
@@ -222,7 +225,7 @@
 				<!-- Mobile menu button -->
 				<button
 					type="button"
-					class="relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+					class="relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
 					aria-expanded="false"
 					on:click={() => {
 						MobileMenuOpen = !MobileMenuOpen;
@@ -344,7 +347,6 @@
 				</div>
 				<div class="ml-3">
 					<div class="text-base font-medium text-gray-800">{user.name}</div>
-					<div class="text-sm font-medium text-gray-500">{user.email}</div>
 				</div>
 				<button
 					type="button"
