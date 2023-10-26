@@ -202,9 +202,9 @@
 		<div class="w-full h-full ring-2 ring-gray-400 flex items-center justify-center transparent">
 			<div class="relative">
 				{#if !clickedPlay && !clickedPlayWithFriends && !clickedMatchmaking}
-					<div
+					<!-- <div
 						class="absolute -inset-0.5 bg-gradient-to-r from-black to-black rounded-lg blur opacity-50 group-hover/3:opacity-75 transition duration-1000 group-hover/3:duration-200 animate-tilt"
-					/>
+					/> -->
 					<button
 						on:click={() => clickedButton('play')}
 						in:fade={{ delay: 100, duration: 500 }}
