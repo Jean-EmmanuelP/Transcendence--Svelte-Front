@@ -20,7 +20,10 @@
 	let inputFocus: boolean = false;
 	let pendingRequests: Request[] = [];
 	let isModalOpen =
-		$modalOpen === 'userMenu' || $modalOpen === 'notifications' || $modalOpen === 'mobileMenu' || $modalOpen === 'searchSuggestion';
+		$modalOpen === 'userMenu' ||
+		$modalOpen === 'notifications' ||
+		$modalOpen === 'mobileMenu' ||
+		$modalOpen === 'searchSuggestion';
 	let term = '';
 	let users: searchUser[] = [];
 
@@ -30,7 +33,10 @@
 	onDestroy(unsubscribe);
 
 	$: isModalOpen =
-		$modalOpen === 'userMenu' || $modalOpen === 'notifications' || $modalOpen === 'mobileMenu' || $modalOpen === 'searchSuggestion';
+		$modalOpen === 'userMenu' ||
+		$modalOpen === 'notifications' ||
+		$modalOpen === 'mobileMenu' ||
+		$modalOpen === 'searchSuggestion';
 	$: if (!isModalOpen && $modalOpen !== null) {
 		modalOpen.set(null);
 	}
@@ -90,7 +96,6 @@
 		inputFocus = true;
 		toggleModal('searchSuggestion');
 	}
-
 </script>
 
 <header
@@ -180,7 +185,6 @@
 								on:focus={handleInputFocus}
 								on:input={handleSearch}
 							/>
-							
 						</div>
 					</div>
 				</div>
@@ -442,13 +446,13 @@
 				</a>
 			</div>
 		</nav>
-		{:else if inputFocus && users.length}
+	{:else if inputFocus && users.length}
 		<div
-			class="dropdown-menu bg-white fixed top-14 right-[40%] rounded-md shadow-md ring-1 ring-slate-500/5 p-2 flex flex-col gap-2 max-h-80 w-80 overflow-hidden"
+			class="dropdown-menu overflow-auto no-scrollbar bg-black fixed top-14 right-[40%] rounded-md ring-1 ring-blue-500/10 ring-opacity-5 p-2 shadow-lg flex flex-col gap-2 max-h-80 w-80"
 		>
 			{#each users as user (user.id)}
 				<div
-					class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10"
+					class="flex items-center p-2 text-white w-full h-full gap-1 hover:bg-gray-400/10"
 					on:click={() => {
 						goto(`/profile/${user.pseudo}`);
 						inputFocus = false;
@@ -457,7 +461,7 @@
 					<div class="h-full w-[30%]">
 						<OnlineUserImg avatar={user.avatar} status={user.status} />
 					</div>
-					<div class="w-[70%] h-full flex items-center">
+					<div class="w-[70%] h-full text-white flex items-center">
 						<p>{user.name.split(' ')[0]}</p>
 					</div>
 				</div>
