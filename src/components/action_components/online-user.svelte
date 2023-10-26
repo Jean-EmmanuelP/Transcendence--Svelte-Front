@@ -7,7 +7,7 @@
 	<img class="h-6 w-6 sm:h-12 sm:w-12 rounded-full" src={avatar} alt="" />
 	<span
 		class={`absolute bottom-0 right-0 block h-3 w-3 rounded-full ${
-			status === 'ONLINE' ? 'bg-green-400' : 'bg-red-400'
-		} ring-2 ring-white`}
+			status === 'ONLINE' ? 'bg-green-800 brightness-150' : 'bg-red-800 brightness-150'
+		} ring-1 ring-white`}
 	/>
 </span>
