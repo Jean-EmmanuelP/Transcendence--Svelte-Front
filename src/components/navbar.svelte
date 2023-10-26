@@ -410,21 +410,21 @@
 		>
 			<a
 				href={`/profile/${user.pseudo}`}
-				class="block px-4 py-2 text-sm text-white"
+				class="block px-4 py-2 text-sm text-white hover:bg-gray-500/5 rounded-md"
 				role="menuitem"
 				tabindex="-1"
 				id="user-menu-item-0">Profile</a
 			>
 			<a
 				href="/settings"
-				class="block px-4 py-2 text-sm text-white"
+				class="block px-4 py-2 text-sm text-white hover:bg-gray-500/5 rounded-md"
 				role="menuitem"
 				tabindex="-1"
 				id="user-menu-item-1">Settings</a
 			>
 			<a
 				href="/signout"
-				class="block px-4 py-2 text-sm text-white"
+				class="block px-4 py-2 text-sm text-white hover:bg-gray-500/5 rounded-md"
 				role="menuitem"
 				tabindex="-1"
 				id="user-menu-item-2">Sign out</a
