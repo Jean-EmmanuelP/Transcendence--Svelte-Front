@@ -90,6 +90,7 @@
 		<div
 			class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
 		/>
+		<div class="absolute inset-0 bg-black rounded-md" />
 		<div class="relative p-6 px-12 shadow rounded-md">
 			<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
 				<div>
