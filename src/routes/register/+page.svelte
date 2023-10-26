@@ -47,7 +47,7 @@
 <div
 	class="relative flex h-full w-full bg-black flex-col items-center p-4 justify-center sm:px-6 lg:px-8"
 >
-	<div class="absolute inset-0 text-white h-[50px] w-[40px]">
+	<div class="absolute inset-0 left-4 top-4 text-white h-[50px] w-[40px]">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			class="text-white absolute top-0 left-0 w-full h-full"
