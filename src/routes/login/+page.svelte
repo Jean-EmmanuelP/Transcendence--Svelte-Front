@@ -244,7 +244,7 @@
 						Not a member?{' '}
 						<a
 							href="/register"
-							class="font-bold leading-6 text-blue-600 tracking-wide hover:text-blue-500"
+							class="font-bold leading-6 text-blue-600 tracking-wide hover:text-blue-500 brightness:100 group-hover/notmember:brightness-200"
 						>
 							Register an account
 						</a>

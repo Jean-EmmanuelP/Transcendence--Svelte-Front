@@ -194,7 +194,7 @@
 				<div class="mt-6 grid grid-cols-2 gap-4">
 					<a
 						href="http://42pong.com:3000/auth/42"
-						class="flex w-full items-center justify-center gap-3 rounded-md bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
+						class="flex w-full items-center justify-center gap-3 rounded-md bg-[#1D9BF0]/40 hover:bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
 					>
 						<svg
 							version="1.1"
@@ -223,7 +223,7 @@
 
 					<a
 						href="http://42pong.com:3000/auth/google"
-						class="flex w-full items-center justify-center gap-3 rounded-md bg-[#24292F] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
+						class="flex w-full items-center justify-center gap-3 rounded-md bg-red-500/40 hover:bg-red-500 px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
 					>
 						<svg viewBox="0 0 48 48" class="h-5 w-5">
 							<title>Google Logo</title>
@@ -243,12 +243,14 @@
 					</a>
 				</div>
 			</div>
-			<p class="mt-4 text-center text-sm text-white/40 hover:text-white font-medium">
-				Already a member?{' '}
-				<a href="/login" class="font-bold tracking-wide leading-6 text-blue-600 hover:text-blue-500"
-					>Sign in</a
-				>
-			</p>
+			<div class="group/member">
+				<p class="mt-4 text-center text-sm text-white/40 group-hover/member:text-white font-medium">
+					Already a member?{' '}
+					<a href="/login" class="font-bold tracking-wide leading-6 text-blue-400 group-hover/member:text-blue-600 brightness-100 group-hover/member:brightness-200"
+						>Sign in</a
+					>
+				</p>
+			</div>
 		</div>
 	</div>
 </div>
