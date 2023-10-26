@@ -8,8 +8,6 @@
 	import { authentication } from '../../stores/authentication';
 	import Device from 'svelte-device-info';
 
-	console.log('this device is ' + (Device.isMobile ? '' : 'not') + 'mobile');
-
 	const loading = writable(false);
 	const serverError = writable(undefined);
 
@@ -252,9 +250,9 @@
 				</div>
 				<div class="group/notmember">
 					<p
-						class="relative mt-4 pb-2 group-hover/notmember:text-white tracking-wide text-center text-sm text-white/50 font-semibold"
+						class="relative mt-4 pb-2 group-hover/notmember:text-white tracking-wide text-center text-[15px] sm:text-sm text-white/50 font-semibold"
 					>
-						Not a member?{' '}
+						Not a member?{' '}<br/>
 						<a
 							href="/register"
 							class="font-bold leading-6 text-blue-600 tracking-wide hover:text-blue-500 brightness:100 group-hover/notmember:brightness-200"
