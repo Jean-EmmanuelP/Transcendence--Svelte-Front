@@ -243,12 +243,12 @@
 					</a>
 				</div>
 			</div>
+			<p class="mt-4 text-center text-sm text-white/40 hover:text-white font-medium">
+				Already a member?{' '}
+				<a href="/login" class="font-bold tracking-wide leading-6 text-blue-600 hover:text-blue-500"
+					>Sign in</a
+				>
+			</p>
 		</div>
-		<p class="mt-4 text-center text-sm text-white/40 hover:text-white font-medium">
-			Already a member?{' '}
-			<a href="/login" class="font-bold tracking-wide leading-6 text-blue-600 hover:text-blue-500"
-				>Sign in</a
-			>
-		</p>
 	</div>
 </div>
