@@ -432,10 +432,10 @@
 		</div>
 	{:else if $modalOpen === 'notifications'}
 		<div
-			class="pl-4 absolute overflow-hidden right-16 h-48 w-[250px] bg-white origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
+			class="pl-4 absolute overflow-hidden right-16 h-48 w-[250px] text-white bg-black origin-top-right rounded-md shadow-2xl ring-1 ring-blue-500/10 ring-opacity-5 z-50"
 		>
 			<header class="pt-2 text-left h-[30%] w-full">
-				<h1 class="font-medium text-[15px]">Notifications</h1>
+				<h1 class="font-medium text-[15px] tracking-wide">Notifications</h1>
 				<p class="text-gray-500 text-[13px]">Here are your friend requests</p>
 			</header>
 			<ul class="overflow-y-auto h-[70%] w-full">
