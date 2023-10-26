@@ -239,15 +239,17 @@
 						</div>
 					</div>
 				</div>
-				<p class="relative mt-4 pb-2 tracking-wide text-center text-sm text-white/50 font-semibold">
-					Not a member?{' '}
-					<a
-						href="/register"
-						class="font-bold leading-6 text-blue-600 tracking-wide hover:text-blue-500"
-					>
-						Register an account
-					</a>
-				</p>
+				<div class="group/notmember">
+					<p class="relative mt-4 pb-2 group-hover/notmember:text-white tracking-wide text-center text-sm text-white/50 font-semibold">
+						Not a member?{' '}
+						<a
+							href="/register"
+							class="font-bold leading-6 text-blue-600 tracking-wide hover:text-blue-500"
+						>
+							Register an account
+						</a>
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>
