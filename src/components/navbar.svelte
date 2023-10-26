@@ -20,7 +20,7 @@
 	$: isMobile = Device.isMobile;
 
 	let user: AuthenticationType;
-	let MobileMenuOpen = true;
+	let MobileMenuOpen = false;
 	let pendingRequests: Request[] = [];
 	let isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications';
 	let term = '';
