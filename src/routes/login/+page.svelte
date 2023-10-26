@@ -83,7 +83,7 @@
 	</div>
 
 	<div class="relative bg-black h-full w-full flex items-center justify-center">
-		<div class="relative sm:max-w-[480px] w-1/2 shadow-lg">
+		<div class="relative sm:max-w-[480px] w-[75%] sm:w-1/2 shadow-lg">
 			<div
 				class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
 			/>
