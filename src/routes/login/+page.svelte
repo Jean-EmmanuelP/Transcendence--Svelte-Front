@@ -79,12 +79,10 @@
 	</div>
 
 	<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
-		<div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+		<div class="bg-black px-6 py-12 shadow sm:rounded-lg sm:px-12">
 			<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
 				<div>
-					<label for="email" class="block text-sm font-medium leading-6 text-gray-900"
-						>Email address</label
-					>
+					<label for="email" class="block text-sm font-medium leading-6 text-white">Email</label>
 					<div class="mt-2">
 						<input
 							id="email"
@@ -102,7 +100,7 @@
 				</div>
 
 				<div>
-					<label for="password" class="block text-sm font-medium leading-6 text-gray-900"
+					<label for="password" class="block text-sm font-medium leading-6 text-white"
 						>Password</label
 					>
 					<div class="mt-2">
@@ -123,9 +121,7 @@
 
 				<div class="flex items-center justify-between">
 					<div class="text-sm leading-6">
-						<a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500"
-							>Forgot password?</a
-						>
+						<a href="#" class="font-semibold text-white/70 hover:text-white">Forgot password?</a>
 					</div>
 				</div>
 
@@ -155,11 +151,16 @@
 							</svg></button
 						>
 					{:else}
-						<button
-							type="submit"
-							class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-							>Sign in</button
-						>
+						<div class="relative">
+							<button
+								type="submit"
+								class="relative bg-black flex w-full z-50 justify-center rounded-md px-3 py-1.5 text-sm leading-6 tracking-wide text-white shadow-sm  font-semibold hover:font-extrabold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+								>Sign in</button
+							>
+							<div
+								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
+							/>
+						</div>
 					{/if}
 				</div>
 			</form>
