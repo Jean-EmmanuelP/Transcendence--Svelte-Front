@@ -411,13 +411,17 @@
 		</div>
 	{:else if $modalOpen === 'mobileMenu'}
 		<nav
-			class="fixed bg-white p-2 rounded-md top-16 right-2 flex origin-top-right w-1/4"
+			class="fixed p-2 rounded-md bg-white top-16 right-2 flex origin-top-right w-1/4"
 			aria-label="Global"
 		>
-			<div class="flex flex-col w-full pt-2 pb-4 gap-4">
+			<div
+				class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
+			/>
+			<div class="absolute inset-0 bg-black z-1 rounded-md" />
+			<div class="relative h-full flex flex-col z-2 w-full pt-2 pb-4 gap-4">
 				<a
 					href={`/notifications`}
-					class="rounded-md bg-slate-600/10 shadow-md text-[15px] ring-1 ring-slate-500/20 p-2 flex items-center justify-center"
+					class="rounded-md bg-white/95 shadow-md text-[15px] ring-1 ring-slate-500/20 p-2 flex items-center justify-center"
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -435,7 +439,7 @@
 				</a>
 				<a
 					href={`/profile/${user.pseudo}`}
-					class="rounded-md bg-slate-600/10 shadow-md text-[15px] ring-1 ring-slate-500/20 p-2 flex items-center justify-center"
+					class="rounded-md bg-white/95 shadow-md text-[15px] ring-1 ring-slate-500/20 p-2 flex items-center justify-center"
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -453,7 +457,7 @@
 				</a>
 				<a
 					href="/settings"
-					class="rounded-md bg-slate-600/10 shadow-md text-[15px] ring-1 ring-slate-500/20 p-2 flex items-center justify-center"
+					class="rounded-md bg-white/95 shadow-md text-[15px] ring-1 ring-slate-500/20 p-2 flex items-center justify-center"
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
