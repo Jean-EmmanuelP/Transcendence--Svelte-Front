@@ -6,10 +6,14 @@
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
 	import { authentication } from '../../stores/authentication';
+	import Device from 'svelte-device-info';
+
+	console.log('this device is ' + (Device.isMobile ? '' : 'not') + 'mobile');
 
 	const loading = writable(false);
 	const serverError = writable(undefined);
 
+	$: isMobile = Device.isMobile;
 	const { form, handleChange, errors, state, handleSubmit } = createForm({
 		initialValues: {
 			password: '',
@@ -88,7 +92,7 @@
 			<div
 				class="relative bg-black w-full sm:max-w-[480px] h-full ring-1 ring-gray-500/20 rounded-md shadow-lg backdrop-blur-md"
 			>
-				<div class="relativepx-6 py-6 shadow sm:rounded-lg sm:px-12">
+				<div class="relative px-6 py-6 shadow sm:rounded-lg sm:px-12">
 					<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
 						<div>
 							<label for="email" class="block text-sm font-medium leading-6 text-white">Email</label
@@ -181,7 +185,9 @@
 							<div class="absolute inset-0 flex items-center" aria-hidden="true">
 								<div class="w-full border-t border-gray-200" />
 							</div>
-							<div class="relative flex justify-center text-[15px] sm:text-sm font-medium leading-6">
+							<div
+								class="relative flex justify-center text-[15px] sm:text-sm font-medium leading-6"
+							>
 								<span class="bg-white px-2 sm:px-6 text-gray-900 rounded-md">Or continue with</span>
 							</div>
 						</div>
@@ -214,7 +220,9 @@
 									/>
 									<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
 								</svg>
-								<span class="text-sm font-semibold leading-6">School</span>
+								{#if !isMobile}
+									<span class="text-sm font-semibold leading-6">School</span>
+								{/if}
 							</a>
 
 							<a
@@ -235,7 +243,9 @@
 										<path fill="#4285F4" d="M48 48L17 24l-4-3 35-10z" />
 									</g>
 								</svg>
-								<span class="text-sm font-semibold leading-6">Google</span>
+								{#if !isMobile}
+									<span class="text-sm font-semibold leading-6">Google</span>
+								{/if}
 							</a>
 						</div>
 					</div>
