@@ -448,7 +448,7 @@
 		</nav>
 	{:else if inputFocus && users.length}
 		<div
-			class="dropdown-menu overflow-auto no-scrollbar bg-black fixed top-14 right-[40%] rounded-md ring-1 ring-blue-500/10 ring-opacity-5 p-2 shadow-lg flex flex-col gap-2 max-h-80 w-80"
+			class="dropdown-menu overflow-auto no-scrollbar bg-black fixed top-14 right-[40%] rounded-md ring-1 ring-blue-500/10 ring-opacity-5 p-2 shadow-lg flex flex-col gap-2 max-h-60 h-auto w-auto"
 		>
 			{#each users as user (user.id)}
 				<div
@@ -461,7 +461,7 @@
 					<div class="h-full w-[30%]">
 						<OnlineUserImg avatar={user.avatar} status={user.status} />
 					</div>
-					<div class="w-[70%] h-full text-white flex items-center">
+					<div class="w-[70%] h-full text-white sm:text-medium flex items-center">
 						<p>{user.name.split(' ')[0]}</p>
 					</div>
 				</div>
