@@ -347,7 +347,7 @@
 				</div>
 			</header>
 			<div class="flex justify-around">
-				<a href={`/profile/${user.pseudo}`} class="rounded-md bg-slate-600/40 shadow-md ring-1 ring-slate-500 p-2">Notifications</a>
+				<a href={`/notifications`} class="rounded-md bg-slate-600/40 shadow-md ring-1 ring-slate-500 p-2">Notifications</a>
 				<a href={`/profile/${user.pseudo}`} class="rounded-md bg-slate-600/40 shadow-md ring-1 ring-slate-500 p-2">Profile</a>
 				<a href="/settings" class="rounded-md bg-slate-600/40 shadow-md ring-1 ring-slate-500 p-2">Settings</a>
 			</div>
