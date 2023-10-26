@@ -189,7 +189,7 @@
 							<input
 								id="search"
 								name="search"
-								class="block w-full h-full cursor-none caret-white bg-black shadow-black placeholder:text-white/50 group-hover:placeholder:text-white/80 transition ring-1 ring-gray-500/30 group/icon_search rounded-full shadow-lg border-0 py-2 pl-10 text-white placeholder:text-gray-400 focus:transition duration-200 focus:duration-300 focus:ring-1 focus:ring-inset focus:ring-blue-500/40 sm:text-[12px] sm:leading-6"
+								class="block w-full h-full cursor-none caret-white bg-black shadow-black placeholder:text-white/50 group-hover:placeholder:text-white/80 transition ring-1 ring-gray-500/30 group/icon_search rounded-full shadow-lg border-0 py-2 pl-10 text-white placeholder:text-gray-400 focus:transition duration-200 focus:duration-300 focus:ring-1 focus:ring-inset focus:ring-blue-500/40 text-[11.5px] sm:text-[12px] sm:leading-6"
 								placeholder="Search players"
 								type="search"
 								autocomplete="off"
