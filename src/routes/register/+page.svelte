@@ -5,10 +5,12 @@
 	import Cookies from 'js-cookie';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
+	import Device from 'svelte-device-info';
 
 	const loading = writable(false);
 	const serverError = writable(undefined);
 
+	$: isMobile = Device.isMobile;
 	const { form, handleChange, errors, state, handleSubmit } = createForm({
 		initialValues: {
 			password: '',
@@ -84,7 +86,9 @@
 		</svg>
 	</div>
 	<header class="mb-2">
-		<h2 class="text-center text-xl sm:text-2xl font-bold leading-9 tracking-tight text-white">Sign up</h2>
+		<h2 class="text-center text-xl sm:text-2xl font-bold leading-9 tracking-tight text-white">
+			Sign up
+		</h2>
 	</header>
 	<div class="relative max-w-[480px] w-full ring-1 ring-gray-600/40 rounded-md shadow-lg bg-black">
 		<div
@@ -94,8 +98,9 @@
 		<div class="relative p-6 px-12 shadow rounded-md">
 			<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
 				<div>
-					<label for="firstName" class="block text-[13px] sm:text-sm font-medium leading-6 text-white"
-						>First name</label
+					<label
+						for="firstName"
+						class="block text-[13px] sm:text-sm font-medium leading-6 text-white">First name</label
 					>
 					<div class="mt-2">
 						<input
@@ -112,8 +117,9 @@
 					{/if}
 				</div>
 				<div>
-					<label for="lastName" class="block text-[13px] sm:text-sm font-medium leading-6 text-white"
-						>Last name</label
+					<label
+						for="lastName"
+						class="block text-[13px] sm:text-sm font-medium leading-6 text-white">Last name</label
 					>
 					<div class="mt-2">
 						<input
@@ -130,7 +136,9 @@
 					{/if}
 				</div>
 				<div>
-					<label for="email" class="block text-[13px] sm:text-sm font-medium leading-6 text-white">Email</label>
+					<label for="email" class="block text-[13px] sm:text-sm font-medium leading-6 text-white"
+						>Email</label
+					>
 					<div class="mt-2">
 						<input
 							id="email"
@@ -148,8 +156,9 @@
 				</div>
 
 				<div>
-					<label for="password" class="block text-[13px] sm:text-sm font-medium leading-6 text-white"
-						>Password</label
+					<label
+						for="password"
+						class="block text-[13px] sm:text-sm font-medium leading-6 text-white">Password</label
 					>
 					<div class="mt-2">
 						<input
@@ -171,7 +180,9 @@
 						<small>{$serverError}</small>
 					{/if}
 					<div class="relative">
-						<div class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 hover:opacity-75 transition duration-1000 hover:duration-200 animate-tilt"></div>
+						<div
+							class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 hover:opacity-75 transition duration-1000 hover:duration-200 animate-tilt"
+						/>
 						<button
 							type="submit"
 							class="flex w-full justify-center relative rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -219,7 +230,9 @@
 							/>
 							<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
 						</svg>
-						<span class="text-sm font-semibold leading-6">School</span>
+						{#if !isMobile}
+							<span class="text-sm font-semibold leading-6">School</span>
+						{/if}
 					</a>
 
 					<a
@@ -240,14 +253,18 @@
 								<path fill="#4285F4" d="M48 48L17 24l-4-3 35-10z" />
 							</g>
 						</svg>
-						<span class="text-sm font-semibold leading-6">Google</span>
+						{#if !isMobile}
+							<span class="text-sm font-semibold leading-6">Google</span>
+						{/if}
 					</a>
 				</div>
 			</div>
 			<div class="group/member">
 				<p class="mt-4 text-center text-sm text-white/40 group-hover/member:text-white font-medium">
 					Already a member?{' '}
-					<a href="/login" class="font-bold tracking-wide leading-6 text-blue-600 group-hover/member:text-blue-500 brightness-100 group-hover/member:brightness-200"
+					<a
+						href="/login"
+						class="font-bold tracking-wide leading-6 text-blue-600 group-hover/member:text-blue-500 brightness-100 group-hover/member:brightness-200"
 						>Sign in</a
 					>
 				</p>
