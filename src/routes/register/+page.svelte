@@ -94,7 +94,7 @@
 		<div class="relative p-6 px-12 shadow rounded-md">
 			<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
 				<div>
-					<label for="firstName" class="block text-sm font-medium leading-6 text-white"
+					<label for="firstName" class="block text-[13px] sm:text-sm font-medium leading-6 text-white"
 						>First name</label
 					>
 					<div class="mt-2">
@@ -104,7 +104,7 @@
 							type="firstName"
 							on:change={handleChange}
 							bind:value={$form.firstName}
-							class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-blue-600 sm:text-sm sm:leading-6"
+							class="block w-full rounded-md border-0 p-0 sm:py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-blue-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
 					{#if $errors.firstName}
@@ -112,7 +112,7 @@
 					{/if}
 				</div>
 				<div>
-					<label for="lastName" class="block text-sm font-medium leading-6 text-white"
+					<label for="lastName" class="block text-[13px] sm:text-sm font-medium leading-6 text-white"
 						>Last name</label
 					>
 					<div class="mt-2">
@@ -122,7 +122,7 @@
 							type="lastName"
 							on:change={handleChange}
 							bind:value={$form.lastName}
-							class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-blue-600 sm:text-sm sm:leading-6"
+							class="block w-full rounded-md border-0 p-0 sm:py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-blue-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
 					{#if $errors.lastName}
@@ -130,7 +130,7 @@
 					{/if}
 				</div>
 				<div>
-					<label for="email" class="block text-sm font-medium leading-6 text-white">Email</label>
+					<label for="email" class="block text-[13px] sm:text-sm font-medium leading-6 text-white">Email</label>
 					<div class="mt-2">
 						<input
 							id="email"
@@ -139,7 +139,7 @@
 							autocomplete="email"
 							on:change={handleChange}
 							bind:value={$form.email}
-							class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+							class="block w-full rounded-md border-0 p-0 sm:py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
 					{#if $errors.email}
@@ -148,7 +148,7 @@
 				</div>
 
 				<div>
-					<label for="password" class="block text-sm font-medium leading-6 text-white"
+					<label for="password" class="block text-[13px] sm:text-sm font-medium leading-6 text-white"
 						>Password</label
 					>
 					<div class="mt-2">
@@ -159,7 +159,7 @@
 							on:change={handleChange}
 							bind:value={$form.password}
 							autocomplete="current-password"
-							class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+							class="block w-full rounded-md border-0 p-0 sm:py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
 						/>
 					</div>
 					{#if $errors.password}
