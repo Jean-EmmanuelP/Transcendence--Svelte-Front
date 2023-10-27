@@ -116,13 +116,13 @@
 						class="h-24 w-24 flex-none rounded-lg bg-gray-800 object-cover"
 					/>
 					<div>
-						<div class="relative rounded-md max-w-[120px]">
+						<div class="relative rounded-md max-w-[120px] group">
 							<div
-								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+								class="absolute -inset-0.5 bg-gradient-to-r from-red-500/80 to-blue-500/80 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
 							/>
 							<button
 								type="button"
-								class="relative rounded-md bg-black px-3 py-2 text-white text-sm font-semibold shadow-sm"
+								class="relative rounded-md bg-white px-3 py-2 text-black text-sm font-semibold shadow-sm transition duration-300 group-hover:font-bold"
 								>Change avatar</button
 							>
 						</div>
