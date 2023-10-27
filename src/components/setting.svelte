@@ -180,7 +180,7 @@
 				</div>
 			</div>
 
-			<div class="relative max-w-[60px] mt-8 flex">
+			<div class="group relative max-w-[60px] mt-8 flex">
 				<div
 					class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
 				/>
