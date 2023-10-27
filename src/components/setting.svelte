@@ -105,7 +105,7 @@
 		<div>
 			<h2 class="text-base font-semibold leading-7">Personal Information</h2>
 			<p class="mt-1 sm:text-sm leading-6 text-gray-300">
-				Here is where you can change your information
+				Modify the profile
 			</p>
 		</div>
 
