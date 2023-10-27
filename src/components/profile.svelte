@@ -68,7 +68,7 @@
 						/>
 						<img
 							src={user.avatar}
-							class="relative rounded-md w-auto h-full object-contain ring-1 ring-slate-600 shadow-lg"
+							class="relative rounded-md w-auto h-full object-cover ring-1 ring-slate-600 shadow-lg"
 							alt=""
 						/>
 					</div>
