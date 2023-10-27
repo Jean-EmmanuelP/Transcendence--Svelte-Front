@@ -66,9 +66,9 @@
 			if (response) {
 				console.log(`Account has been deleted with success !`);
 			} else {
-				console.error("Error while deleting the user Account !");
+				console.error('Error while deleting the user Account !');
 			}
-		} catch(error) {
+		} catch (error) {
 			console.error(error.message);
 		}
 	}
@@ -96,7 +96,6 @@
 			alert('Une erreur est survenue. Veuillez reessayer.');
 		}
 	}
-
 </script>
 
 <div class="w-full h-full overflow-auto">
@@ -105,7 +104,7 @@
 	>
 		<div>
 			<h2 class="text-base font-semibold leading-7">Personal Information</h2>
-			<p class="mt-1 text-sm leading-6 text-gray-400">
+			<p class="mt-1 sm:text-sm leading-6 text-gray-300">
 				Here is where you can change your information
 			</p>
 		</div>
@@ -121,21 +120,21 @@
 					<div>
 						<button
 							type="button"
-							class="rounded-md bg-white/10 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-white/20"
+							class="relative rounded-md bg-white/50 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-white/70"
 							>Change avatar</button
 						>
-						<p class="mt-2 text-xs leading-5 text-gray-400">JPG, GIF or PNG. 1MB max.</p>
+						<p class="mt-2 text-xs leading-5 text-gray-300">JPG, GIF or PNG. 1MB max.</p>
 					</div>
 				</div>
 				<div class="col-span-full">
-					<label for="email" class="block text-sm font-medium leading-6">Email</label>
+					<label for="email" class="block text-sm font-medium text-white leading-6">Email</label>
 					<div class="mt-2">
 						<div
-							class="flex rounded-md bg-gray-500/5 border border-black/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
+							class="flex rounded-md bg-white/20 border border-gray-900/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
 						>
 							<div class="flex items-center pl-2">
 								<svg
-									class="h-5 w-5 text-gray-400"
+									class="h-5 w-5 text-gray-300"
 									viewBox="0 0 20 20"
 									fill="currentColor"
 									aria-hidden="true"
@@ -158,16 +157,16 @@
 							/>
 						</div>
 					</div>
-					<label for="pseudo" class="block text-sm font-medium leading-6">Pseudo</label>
+					<label for="pseudo" class="block text-sm font-medium leading-6 text-white">Pseudo</label>
 					<div class="mt-2">
 						<div
-							class="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
+							class="flex rounded-md bg-white ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
 						>
 							<input
 								type="text"
 								name="pseudo"
 								id="pseudo"
-								class="flex-1 ring-0 border border-gray-500/5 rounded-md shadow-sm bg-transparent py-1.5 pl-1 focus:ring-0 sm:text-sm sm:leading-6"
+								class="flex-1 ring-0 border border-white rounded-md shadow-sm bg-transparent py-1.5 pl-1 focus:ring-0 sm:text-sm sm:leading-6"
 								placeholder={user.pseudo}
 								bind:value={$pseudo}
 							/>
@@ -179,7 +178,7 @@
 			<div class="mt-8 flex">
 				<button
 					type="button"
-					class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+					class="rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					on:click={handleMutationPseudo}>Save</button
 				>
 			</div>
@@ -191,7 +190,7 @@
 	>
 		<div>
 			<h2 class="text-base font-semibold leading-7">Change password</h2>
-			<p class="mt-1 text-sm leading-6 text-gray-400">
+			<p class="mt-1 text-sm leading-6 text-gray-300">
 				Update your password associated with your account.
 			</p>
 		</div>
@@ -199,7 +198,7 @@
 		<form class="md:col-span-2" on:submit|preventDefault={handleChangePassword}>
 			<div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
 				<div class="col-span-full">
-					<label for="current-password" class="block text-sm font-medium leading-6"
+					<label for="current-password" class="block text-sm font-medium leading-6 text-white"
 						>Current password</label
 					>
 					<div class="mt-2">
@@ -208,28 +207,30 @@
 							name="current_password"
 							type="password"
 							autocomplete="current-password"
-							class="block w-full ring-0 border border-gray-500/5 rounded-md shadow-sm bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+							class="block w-full ring-0 border border-white rounded-md shadow-sm bg-white py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
 							bind:value={currentPassword}
 						/>
 					</div>
 				</div>
 
 				<div class="col-span-full">
-					<label for="new-password" class="block text-sm font-medium leading-6">New password</label>
+					<label for="new-password" class="block text-sm font-medium leading-6 text-white"
+						>New password</label
+					>
 					<div class="mt-2">
 						<input
 							id="new-password"
 							name="new_password"
 							type="password"
 							autocomplete="new-password"
-							class="block w-full ring-0 border border-gray-500/5 rounded-md shadow-sm bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+							class="block w-full ring-0 border border-white rounded-md shadow-sm bg-white py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
 							bind:value={newPassword}
 						/>
 					</div>
 				</div>
 
 				<div class="col-span-full">
-					<label for="confirm-password" class="block text-sm font-medium leading-6"
+					<label for="confirm-password" class="block text-sm font-medium leading-6 text-white"
 						>Confirm password</label
 					>
 					<div class="mt-2">
@@ -238,17 +239,20 @@
 							name="confirm_password"
 							type="password"
 							autocomplete="new-password"
-							class="block w-full ring-0 border border-gray-500/5 rounded-md shadow-sm bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+							class="block w-full ring-0 border border-white rounded-md shadow-sm bg-white py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
 							bind:value={confirmPassword}
 						/>
 					</div>
 				</div>
 			</div>
 
-			<div class="mt-8 flex">
+			<div class="group max-w-[60px] relative mt-8 flex">
+				<div
+					class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+				/>
 				<button
 					type="submit"
-					class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+					class="relative rounded-md w-[60px] bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					>Save</button
 				>
 			</div>
@@ -259,7 +263,7 @@
 	>
 		<div>
 			<h2 class="text-base font-semibold leading-7">Activate Two Factor Authentication</h2>
-			<p class="mt-1 text-sm leading-6 text-gray-400">
+			<p class="mt-1 text-sm leading-6 text-gray-300">
 				Make your account more safe by activating 2FA
 			</p>
 		</div>
@@ -291,7 +295,6 @@
 					</div>
 				</div>
 			</div>
-
 		</form>
 	</div>
 	<div
@@ -299,7 +302,7 @@
 	>
 		<div>
 			<h2 class="text-base font-semibold leading-7">Delete account</h2>
-			<p class="mt-1 text-sm leading-6 text-gray-400">
+			<p class="mt-1 text-sm leading-6 text-gray-300">
 				No longer want to use our service? You can delete your account here. This action is not
 				reversible. All information related to this account will be deleted permanently.
 			</p>
