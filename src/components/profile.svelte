@@ -66,7 +66,7 @@
 				>
 					<div class="relative w-full h-full">
 						<div
-							class="absolute -inset-0.5 bg-gradient-to-r from-yellow-500 to-green-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+							class="absolute -inset-0.5 bg-gradient-to-r from-red-800 to-blue-800 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
 						/>
 						<img
 							src={user.avatar}
@@ -78,7 +78,7 @@
 				<!-- Information div to the right -->
 				<div class="pl-2 pb-2 h-full w-[35%] border border-red-500">
 					<div
-						class="flex gap-2 border border-white flex-col items-center justify-center mb-2 h-2/3 w-full rounded-md"
+						class="flex gap-2 ring-1 ring-slate-800 shadow-md bg-blue-950/30 flex-col items-center justify-center mb-2 h-2/3 w-full rounded-md"
 					>
 						<h1 class="sm:font-extrabold sm:text-xl sm:tracking-wider">{user.name}</h1>
 						<p class="font-medium">Pseudo: {user.pseudo}</p>
@@ -120,7 +120,7 @@
 						</div>
 					</div>
 					<div
-						class="flex flex-row h-1/3 w-full ring-1 ring-slate-800 shadow-md rounded-md bg-white/10"
+						class="flex flex-row h-1/3 w-full ring-1 ring-slate-800 shadow-md rounded-md bg-blue-950/30"
 					>
 						{#if !isCurrentUserProfile}
 							<div class="p-5 w-1/2 h-full flex items-center justify-center">
@@ -184,21 +184,21 @@
 			<div class="w-full h-1/2 flex flex-row">
 				<div class="w-[50%] h-full flex justify-center p-2">
 					<div
-						class="ring-1 ring-slate-800 shadow-md bg-slate-900 rounded-md w-full h-full flex flex-col"
+						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 bg-slate-900 rounded-md w-full h-full flex flex-col"
 					>
 						<p class="text-center pt-2">Rank</p>
 					</div>
 				</div>
 				<div class="w-[30%] h-full flex justify-center p-2">
 					<div
-						class="ring-1 ring-slate-800 shadow-md rounded-md bg-slate-900 w-full h-full flex flex-col"
+						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 rounded-md bg-slate-900 w-full h-full flex flex-col"
 					>
 						<p class="text-center pt-2">Recent games</p>
 					</div>
 				</div>
 				<div class="w-[20%] h-full flex justify-center p-2">
 					<div
-						class="ring-1 ring-slate-800 shadow-md rounded-md bg-slate-900 w-full h-full flex flex-col"
+						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 rounded-md bg-slate-900 w-full h-full flex flex-col"
 					>
 						<p class="text-center pt-2">Achievments</p>
 					</div>
