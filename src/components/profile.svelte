@@ -55,12 +55,14 @@
 	<p>Somethign went wrong. Please try again.0</p>
 {:else}
 	<div
-		class="w-full h-full border border-white flex text-white items-center justify-center px-20 py-4"
+		class="w-full h-full flex text-white items-center justify-center px-20 py-4"
 	>
-		<div class="border h-full w-full flex flex-col border-white">
-			<div class="flex flex-row h-1/2 w-full gap-2">
-				<div class="relative h-full w-[40%] flex items-center justify-center border border-red-500">
-					<div class="relative w-[55%] h-full">
+		<div class="h-full w-full flex flex-col">
+			<!-- le haut de ma page -->
+			<div class="flex flex-row px-6 py-2 border border-white h-1/2 w-full gap-2 bg-slate-900/20 backdrop-blur-lg ring-1 ring-slate-500 rounded-md ">
+			<!-- Image div to the left -->
+				<div class="relative h-full w-[21%] flex border border-white items-center justify-start rounded-md">
+					<div class="relative w-full h-full">
 						<div
 							class="absolute -inset-0.5 bg-gradient-to-r from-yellow-500 to-green-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
 						/>
@@ -71,14 +73,15 @@
 						/>
 					</div>
 				</div>
-				<div class="h-full w-[60%] border border-red-500">
-					<div class="border border-green-500 flex items-center justify-center h-1/3 w-full">
+			<!-- Information div to the right -->
+				<div class="h-full w-[60%]">
+					<div class="flex items-center justify-center h-1/3 w-full">
 						<h1 class="sm:font-extrabold sm:text-xl sm:tracking-wider">{user.name}</h1>
 					</div>
-					<div class="border border-green-500 flex items-center justify-center h-1/3 w-full">
+					<div class="flex items-center justify-center h-1/3 w-full">
 						<h1 class="sm:font-bold sm:text-lg">{user.pseudo}</h1>
 					</div>
-					<div class="border border-green-500 flex flex-row h-1/3 w-full">
+					<div class="flex flex-row h-1/3 w-full">
 						<div class="w-1/3 h-full flex items-center justify-center">
 							{#if user.status !== 'ONLINE'}
 								<svg
@@ -115,7 +118,7 @@
 							{/if}
 						</div>
 						{#if !isCurrentUserProfile}
-							<div class="p-5 border border-white w-1/3 h-full flex items-center justify-center">
+							<div class="p-5 w-1/3 h-full flex items-center justify-center">
 								<div class="relative group">
 									<div
 										class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
@@ -174,18 +177,18 @@
 			</div>
 			<!-- le bas de ma page -->
 			<div class="w-full h-1/2 flex flex-row">
-				<div class="w-[50%] h-full border border-blue-800 flex justify-center p-2">
-					<div class="border border-white rounded-md w-full h-full flex flex-col">
+				<div class="w-[50%] h-full flex justify-center p-2">
+					<div class="border border-white bg-slate-900 rounded-md w-full h-full flex flex-col">
 						<p class="text-center pt-2">Rank</p>
 					</div>
 				</div>
-				<div class="w-[30%] h-full border border-blue-800 flex justify-center p-2">
-					<div class="border border-white rounded-md w-full h-full flex flex-col">
+				<div class="w-[30%] h-full flex justify-center p-2">
+					<div class="border border-white rounded-md bg-slate-900 w-full h-full flex flex-col">
 						<p class="text-center pt-2">Recent games</p>
 					</div>
 				</div>
-				<div class="w-[20%] h-full border border-blue-800 flex justify-center p-2">
-					<div class="border border-white rounded-md w-full h-full flex flex-col">
+				<div class="w-[20%] h-full flex justify-center p-2">
+					<div class="border border-white rounded-md bg-slate-900 w-full h-full flex flex-col">
 						<p class="text-center pt-2">Achievments</p>
 					</div>
 				</div>
