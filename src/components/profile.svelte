@@ -58,12 +58,10 @@
 		<div class="h-full w-full flex flex-col">
 			<!-- le haut de ma page -->
 			<div
-				class="flex flex-row px-6 py-2 border border-white h-1/2 w-full gap-2 bg-slate-900/20 backdrop-blur-lg ring-1 ring-slate-500 rounded-md"
+				class="flex flex-row px-2 py-2 h-1/2 w-full gap-2 bg-slate-900/20 backdrop-blur-lg rounded-md"
 			>
 				<!-- Image div to the left -->
-				<div
-					class="relative h-full w-[21%] flex border items-center justify-start rounded-md"
-				>
+				<div class="relative h-full w-[21%] flex border items-center justify-start rounded-md">
 					<div class="relative w-full h-full">
 						<div
 							class="absolute -inset-0.5 bg-gradient-to-r from-red-800 to-blue-800 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
@@ -179,28 +177,28 @@
 						{/if}
 					</div>
 				</div>
+				<div class="w-[44%] h-full flex justify-center">
+					<div
+						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 rounded-md bg-slate-900 w-full h-full flex flex-col"
+					>
+						<p class="text-center pt-2">Achievments</p>
+					</div>
+				</div>
 			</div>
 			<!-- le bas de ma page -->
 			<div class="w-full h-1/2 flex flex-row">
-				<div class="w-[50%] h-full flex justify-center p-2">
+				<div class="w-1/2 h-full flex justify-center p-2">
 					<div
 						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 bg-slate-900 rounded-md w-full h-full flex flex-col"
 					>
 						<p class="text-center pt-2">Rank</p>
 					</div>
 				</div>
-				<div class="w-[30%] h-full flex justify-center p-2">
+				<div class="w-1/2 h-full flex justify-center p-2">
 					<div
 						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 rounded-md bg-slate-900 w-full h-full flex flex-col"
 					>
 						<p class="text-center pt-2">Recent games</p>
-					</div>
-				</div>
-				<div class="w-[20%] h-full flex justify-center p-2">
-					<div
-						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 rounded-md bg-slate-900 w-full h-full flex flex-col"
-					>
-						<p class="text-center pt-2">Achievments</p>
 					</div>
 				</div>
 			</div>
