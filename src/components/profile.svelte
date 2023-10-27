@@ -62,10 +62,10 @@
 				</div>
 				<div class="h-full w-[60%] border border-red-500">
 					<div class="border border-green-500 flex items-center justify-center h-1/3 w-full">
-						<h1 class="sm:font-bold sm:text-lg sm:tracking-wider">{user.name}</h1>
+						<h1 class="sm:font-extrabold sm:text-xl sm:tracking-wider">{user.name}</h1>
 					</div>
-					<div class="border border-green-500 h-1/3 w-full">
-						<h1>{user.pseudo}</h1>
+					<div class="border border-green-500 flex items-center justify-center h-1/3 w-full">
+						<h1 class="sm:font-bold sm:text-lg">{user.pseudo}</h1>
 					</div>
 					<div class="border border-green-500 flex flex-row h-1/3 w-full">
 						<div class="w-1/3 h-full">{user.status}</div>
