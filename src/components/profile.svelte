@@ -107,8 +107,9 @@
 						</div>
 						{#if !isCurrentUserProfile}
 							<div class="p-5 border border-white w-1/3 h-full flex items-center justify-center">
-								<div class="border rounded-md bg-slate-900 border-white w-full h-full flex flex-row items-center justify-center">
-
+								<div
+									class="border rounded-md bg-slate-900 border-white w-full h-full flex flex-row items-center justify-center"
+								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										fill="none"
@@ -117,21 +118,46 @@
 										stroke="currentColor"
 										class="w-6 h-6"
 									>
-										<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											d="M12 4.5v15m7.5-7.5h-15"
+										/>
 									</svg>
-	
+
 									<p>Message</p>
 								</div>
 							</div>
-							<div class="w-1/3 h-full flex items-center justify-center">A</div>
+							<div class="w-1/3 h-full flex items-center justify-center">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke-width="1.5"
+									stroke="currentColor"
+									class="w-6 h-6"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"
+									/>
+								</svg>
+							</div>
 						{/if}
 					</div>
 				</div>
 			</div>
-			<div class="w-full h-1/2 border border-blue-500 flex gap-2 flex-row">
-				<div class="w-[50%] h-full border border-blue-800">Rank</div>
-				<div class="w-[30%] h-full border border-blue-800">Rank</div>
-				<div class="w-[20%] h-full border border-blue-800">Rank</div>
+			<div class="w-full h-1/2 border border-blue-500 flex flex-row">
+				<div class="w-[50%] h-full border border-blue-800 flex justify-center p-2">
+					<div class="border border-white rounded-md w-full h-full">Rank</div>
+				</div>
+				<div class="w-[30%] h-full border border-blue-800 flex justify-center p-2">
+					<div class="border border-white rounded-md w-full h-full">Recent games</div>
+				</div>
+				<div class="w-[20%] h-full border border-blue-800 flex justify-center p-2">
+					<div class="border border-white rounded-md w-full h-full">Achievments</div>
+				</div>
 			</div>
 		</div>
 	</div>
