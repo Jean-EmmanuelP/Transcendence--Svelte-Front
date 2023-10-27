@@ -116,12 +116,12 @@
 						</div>
 						{#if !isCurrentUserProfile}
 							<div class="p-5 border border-white w-1/3 h-full flex items-center justify-center">
-								<div class="relative">
+								<div class="relative group">
 									<div
 										class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
 									/>
 									<div
-										class="relative px-5 py-2.5 border rounded-md bg-slate-900 border-white w-full h-full flex flex-row items-center justify-center"
+										class="relative px-5 py-2.5 ring-1 ring-slate-700 shadow-md hover:font-bold rounded-md bg-slate-900 w-full h-full flex flex-row items-center justify-center"
 									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
