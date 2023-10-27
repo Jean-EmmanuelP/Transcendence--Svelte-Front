@@ -279,7 +279,7 @@
 		<form class="md:col-span-2" on:submit|preventDefault={handleActivate2FA}>
 			<div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
 				<div class="col-span-full">
-					<div class="flex items-center">
+					<div class="flex items-center sm:mt-8">
 						<button
 							type="submit"
 							class={`${
