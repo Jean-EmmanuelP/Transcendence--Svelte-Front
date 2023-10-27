@@ -61,8 +61,8 @@
 					<img src={user.avatar} class="rounded-md h-full w-full object-contain" alt="">
 				</div>
 				<div class="h-full w-[60%] border border-red-500">
-					<div class="border border-green-500 h-1/3 w-full">
-						<h1>{user.name}</h1>
+					<div class="border border-green-500 flex items-center justify-center h-1/3 w-full">
+						<h1 class="sm:font-bold sm:text-lg sm:tracking-wider">{user.name}</h1>
 					</div>
 					<div class="border border-green-500 h-1/3 w-full">
 						<h1>{user.pseudo}</h1>
