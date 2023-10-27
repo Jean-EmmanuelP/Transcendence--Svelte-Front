@@ -150,13 +150,19 @@
 			</div>
 			<div class="w-full h-1/2 border border-blue-500 flex flex-row">
 				<div class="w-[50%] h-full border border-blue-800 flex justify-center p-2">
-					<div class="border border-white rounded-md w-full h-full">Rank</div>
+					<div class="border border-white rounded-md w-full h-full flex flex-col">
+						<p class="text-center pt-2">Rank</p>
+					</div>
 				</div>
 				<div class="w-[30%] h-full border border-blue-800 flex justify-center p-2">
-					<div class="border border-white rounded-md w-full h-full">Recent games</div>
+					<div class="border border-white rounded-md w-full h-full flex flex-col">
+						<p class="text-center pt-2">Recent games</p>
+					</div>
 				</div>
 				<div class="w-[20%] h-full border border-blue-800 flex justify-center p-2">
-					<div class="border border-white rounded-md w-full h-full">Achievments</div>
+					<div class="border border-white rounded-md w-full h-full flex flex-col">
+						<p class="text-center pt-2">Achievments</p>
+					</div>
 				</div>
 			</div>
 		</div>
