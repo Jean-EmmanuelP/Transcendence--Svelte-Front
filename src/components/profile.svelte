@@ -59,8 +59,17 @@
 	>
 		<div class="border h-full w-full flex flex-col border-white">
 			<div class="flex flex-row h-1/2 w-full gap-2">
-				<div class="h-full w-[40%] flex items-center justify-center border border-red-500">
-					<img src={user.avatar} class="rounded-md h-full w-full object-contain" alt="" />
+				<div class="relative h-full w-[40%] flex items-center justify-center border border-red-500">
+					<div class="relative w-[55%] h-full">
+						<div
+							class="absolute -inset-0.5 bg-gradient-to-r from-yellow-500 to-green-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+						/>
+						<img
+							src={user.avatar}
+							class="relative rounded-md w-auto h-full object-contain ring-1 ring-slate-600 shadow-lg"
+							alt=""
+						/>
+					</div>
 				</div>
 				<div class="h-full w-[60%] border border-red-500">
 					<div class="border border-green-500 flex items-center justify-center h-1/3 w-full">
