@@ -106,7 +106,23 @@
 							{/if}
 						</div>
 						{#if !isCurrentUserProfile}
-							<div class="w-1/3 h-full flex items-center justify-center">message</div>
+							<div class="p-5 border border-white w-1/3 h-full flex items-center justify-center">
+								<div class="border rounded-md bg-slate-900 border-white w-full h-full flex flex-row items-center justify-center">
+
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke-width="1.5"
+										stroke="currentColor"
+										class="w-6 h-6"
+									>
+										<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+									</svg>
+	
+									<p>Message</p>
+								</div>
+							</div>
 							<div class="w-1/3 h-full flex items-center justify-center">A</div>
 						{/if}
 					</div>
