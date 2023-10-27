@@ -104,9 +104,7 @@
 	>
 		<div>
 			<h2 class="text-base font-semibold leading-7">Personal Information</h2>
-			<p class="mt-1 sm:text-sm leading-6 text-gray-300">
-				Modify the profile
-			</p>
+			<p class="mt-1 sm:text-sm leading-6 text-gray-300">Modify the profile</p>
 		</div>
 
 		<form class="md:col-span-2">
@@ -118,11 +116,16 @@
 						class="h-24 w-24 flex-none rounded-lg bg-gray-800 object-cover"
 					/>
 					<div>
-						<button
-							type="button"
-							class="relative rounded-md bg-white/50 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-white/70"
-							>Change avatar</button
-						>
+						<div class="relative rounded-md max-w-[120px]">
+							<div
+								class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+							/>
+							<button
+								type="button"
+								class="relative rounded-md bg-black px-3 py-2 text-white text-sm font-semibold shadow-sm"
+								>Change avatar</button
+							>
+						</div>
 						<p class="mt-2 text-xs leading-5 text-gray-300">JPG, GIF or PNG. 1MB max.</p>
 					</div>
 				</div>
@@ -157,7 +160,9 @@
 							/>
 						</div>
 					</div>
-					<label for="pseudo" class="mt-2 block text-sm font-medium leading-6 text-white">Pseudo</label>
+					<label for="pseudo" class="mt-2 block text-sm font-medium leading-6 text-white"
+						>Pseudo</label
+					>
 					<div class="mt-2">
 						<div
 							class="flex rounded-md bg-white ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600"
@@ -292,8 +297,7 @@
 							/>
 						</button>
 						<span class="ml-3 text-sm" id="annual-billing-label">
-							<span class="font-medium text-white">{enabled ? `Disable 2FA` : `Enable 2FA`}</span
-							>
+							<span class="font-medium text-white">{enabled ? `Disable 2FA` : `Enable 2FA`}</span>
 						</span>
 					</div>
 				</div>
