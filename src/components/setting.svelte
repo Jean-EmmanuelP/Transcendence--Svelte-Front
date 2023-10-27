@@ -278,8 +278,8 @@
 						<button
 							type="submit"
 							class={`${
-								enabled ? 'bg-indigo-600' : 'bg-gray-200'
-							} relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2`}
+								enabled ? 'bg-blue-800' : 'bg-gray-200'
+							} relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2`}
 							role="switch"
 							aria-checked="false"
 							aria-labelledby="annual-billing-label"
@@ -292,7 +292,7 @@
 							/>
 						</button>
 						<span class="ml-3 text-sm" id="annual-billing-label">
-							<span class="font-medium text-gray-900">{enabled ? `Disable 2FA` : `Enable 2FA`}</span
+							<span class="font-medium text-white">{enabled ? `Disable 2FA` : `Enable 2FA`}</span
 							>
 						</span>
 					</div>
