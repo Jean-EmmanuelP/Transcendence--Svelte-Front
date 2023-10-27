@@ -175,10 +175,13 @@
 				</div>
 			</div>
 
-			<div class="mt-8 flex">
+			<div class="relative max-w-[60px] mt-8 flex">
+				<div
+					class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
+				/>
 				<button
 					type="button"
-					class="rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+					class="relative rounded-md w-[60px] bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					on:click={handleMutationPseudo}>Save</button
 				>
 			</div>
