@@ -54,41 +54,45 @@
 {:else if isError}
 	<p>Somethign went wrong. Please try again.0</p>
 {:else}
-	<div class="flex flex-col h-full text-white w-full border border-white">
-		<div class="flex flex-row w-full h-[40%]">
-			<div class="w-1/2 h-full border border-white flex p-2 flex-row justify-around">
-				<div class="flex flex-col h-full items-center justify-center w-1/2 border border-white">
-					<img src={user.avatar} class="rounded-full h-40 w-40" alt="user picture" />
-					<p class="pt-2">{user.status === 'ONLINE' ? 'Online' : 'Offline'}</p>
+	<div class="w-full h-full border border-white flex text-white items-center justify-center px-20 py-4">
+		<div class="border h-full w-full flex flex-col border-white">
+			<div class="flex flex-row h-1/2 w-full gap-2">
+				<div class="h-full w-[40%] flex items-center justify-center border border-red-500">
+					<img src={user.avatar} class="rounded-md h-full w-full object-contain" alt="">
 				</div>
-				<div class="border border-white flex flex-col gap-2 h-full w-1/2">
-					<div class="flex flex-row gap-2">
-						<p class="font-bold">Name:</p>
+				<div class="h-full w-[60%] border border-red-500">
+					<div class="border border-green-500 h-1/3 w-full">
 						<h1>{user.name}</h1>
 					</div>
-					<div class="flex flex-row gap-2">
-						<p class="font-bold">Email:</p>
-						<p>{user.email}</p>
+					<div class="border border-green-500 h-1/3 w-full">
+						<h1>{user.pseudo}</h1>
 					</div>
-					<div class="flex flex-row gap-2">
-						<p class="font-bold">Pseudo:</p>
-						<p>{user.pseudo}</p>
+					<div class="border border-green-500 flex flex-row h-1/3 w-full">
+						<div class="w-1/3 h-full">{user.status}</div>
+						{#if !isCurrentUserProfile}
+						<div class="w-1/3 h-full">message</div>
+						<div class="w-1/3 h-full">A</div>
+						{/if}
 					</div>
 				</div>
 			</div>
-			<div class="w-1/2 h-full border border-white" />
+			<div class="w-full h-1/2 border border-blue-500 flex gap-2 flex-row">
+				<div class="w-[50%] h-full border border-blue-800">Rank</div>
+				<div class="w-[30%] h-full border border-blue-800">Rank</div>
+				<div class="w-[20%] h-full border border-blue-800">Rank</div>
+			</div>
 		</div>
-		<div class="w-full h-[10%] border border-white" />
-		<div class="w-full h-[50%]" />
-		<!-- <Progress progress={30} /> -->
-		<!-- {#if !isCurrentUserProfile}
-					<button on:click={handleSendFriendRequest} class="p-2 mt-4 rounded-md bg-red-400 text-white font-medium shadow-md hover:bg-red-500 transition duration-150 ease-linear" >Send Friend Request</button>
-				{/if} -->
 	</div>
-{/if}
+
+	{/if}
+
+<!-- <Progress progress={30} /> -->
+<!-- {#if !isCurrentUserProfile}
+					<button on:click={handleSendFriendRequest} class="p-2 mt-4 rounded-md bg-red-400 text-white font-medium shadow-md hover:bg-red-500 transition duration-150 ease-linear" >Send Friend Request</button>
+			{/if} -->
 
 <!--
-	1. dire que si le store pseudo === a le fetch de ton userinformation alors ca veut dire
+		1. dire que si le store pseudo === a le fetch de ton userinformation alors ca veut dire
 	que tu es sur ton profile et donc que tu ne veux pas afficher le fait que tu vas tenvoyer un message
 
 	2. sinon, envoyer le sendfriendrequest via appolo client sur le boutton afficher
