@@ -62,7 +62,7 @@
 			>
 				<!-- Image div to the left -->
 				<div
-					class="relative h-full w-[21%] flex border border-white items-center justify-start rounded-md"
+					class="relative h-full w-[21%] flex border items-center justify-start rounded-md"
 				>
 					<div class="relative w-full h-full">
 						<div
@@ -76,7 +76,7 @@
 					</div>
 				</div>
 				<!-- Information div to the right -->
-				<div class="pl-2 pb-2 h-full w-[35%] border border-red-500">
+				<div class="pl-2 pb-2 h-full w-[35%]">
 					<div
 						class="flex gap-2 ring-1 ring-slate-800 shadow-md bg-blue-950/30 flex-col items-center justify-center mb-2 h-2/3 w-full rounded-md"
 					>
