@@ -130,7 +130,7 @@
 					<label for="email" class="block text-sm font-medium text-white leading-6">Email</label>
 					<div class="mt-2">
 						<div
-							class="flex rounded-md bg-white/20 border border-gray-900/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
+							class="flex rounded-md bg-white/20 border border-gray-900/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600"
 						>
 							<div class="flex items-center pl-2">
 								<svg
@@ -160,7 +160,7 @@
 					<label for="pseudo" class="block text-sm font-medium leading-6 text-white">Pseudo</label>
 					<div class="mt-2">
 						<div
-							class="flex rounded-md bg-white ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
+							class="flex rounded-md bg-white ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600"
 						>
 							<input
 								type="text"
