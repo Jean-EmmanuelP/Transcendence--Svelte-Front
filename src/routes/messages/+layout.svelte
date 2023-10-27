@@ -4,50 +4,17 @@
 	import { getGroups } from '../../services/gqlGroups.js';
 	import type { GroupInterface } from '../../interfaces/types.js';
 	import { page } from '$app/stores';
-	let isOpenAddFriend: boolean = false;
-	let isOpenCreateGroup: boolean = false;
 
-
-	let selectedConversation: GroupInterface | null = null;
-
-	function handleOpenAddFriend() {
-		isOpenAddFriend = true;
-	}
-
-	function handleCloseAddFriend() {
-		isOpenAddFriend = false;
-	}
-
-	function handleOpenCreateGroup() {
-		isOpenCreateGroup = true;
-	}
-
-	function handleCloseCreateGroup() {
-		isOpenCreateGroup = false;
-	}
-
-	async function handleGroupAdded() {
-		try {
-			groups = await getGroups();
-		} catch (e) {}
-		isOpenCreateGroup = false;
-		//Get all the groups
-	}
-
-	function handleClick(group: GroupInterface) {
-		selectedConversation = group;
-	}
-
-	let headerHeight = 0;
 	let groups: GroupInterface[] = [];
+	let currentPage : string;
+
+	page.subscribe(value => {
+		currentPage = value.url.pathname;
+	});
+
 	onMount(async () => {
-		const header = document.querySelector('header'); // Replace 'header' with your actual header element selector
-		if (header) {
-			headerHeight = header.offsetHeight;
-		}
 		try {
 			groups = await getGroups();
-			console.log(groups);
 		} catch (e) {}
 	});
 </script>
@@ -71,7 +38,7 @@
 			<div>
 				<div class="mt-[5px] space-y-0.5">
 					<a
-						class="bg-gray-550/[0.32] text-gray-400 {$page.url.pathname.includes("friends") && "bg-gray-600 text-white"} hover:bg-gray-600 hover:text-white flex items-center px-2 mx-2 py-2 rounded group relative"
+						class="bg-gray-550/[0.32] text-gray-400 {currentPage.includes("friends") && "bg-gray-600 text-white"} hover:bg-gray-600 hover:text-white flex items-center px-2 mx-2 py-2 rounded group relative"
 						href="/messages/friends"
 					>
 						<svg
@@ -91,7 +58,7 @@
 						Friends
 					</a>
 					<a
-						class="bg-gray-550/[0.32] hover:bg-gray-600 text-gray-400 {$page.url.pathname.includes("channels") && "bg-gray-600 text-white"} hover:text-white flex items-center px-2 mx-2 py-2 rounded group relative"
+						class="bg-gray-550/[0.32] hover:bg-gray-600 text-gray-400 {currentPage.includes("channels") && "bg-gray-600 text-white"} hover:text-white flex items-center px-2 mx-2 py-2 rounded group relative"
 						href="/messages/channels"
 					>
 						<svg
@@ -123,8 +90,6 @@
 					{#each groups as group}
 						<DiscordConversation
 							{group}
-							isSelected={group.id === selectedConversation?.id}
-							onClick={handleClick}
 						/>
 					{/each}
 				</div>
