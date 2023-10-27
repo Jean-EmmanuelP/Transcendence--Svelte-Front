@@ -186,7 +186,7 @@
 				/>
 				<button
 					type="button"
-					class="relative rounded-md w-[60px] bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+					class="relative rounded-md w-[60px] group-hover:font-bold bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					on:click={handleMutationPseudo}>Save</button
 				>
 			</div>
@@ -260,7 +260,7 @@
 				/>
 				<button
 					type="submit"
-					class="relative rounded-md w-[60px] bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+					class="relative rounded-md w-[60px] group-hover:font-bold bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					>Save</button
 				>
 			</div>
