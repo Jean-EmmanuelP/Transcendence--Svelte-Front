@@ -318,7 +318,7 @@
 		<form class="flex items-start md:col-span-2" on:submit|preventDefault={handleDeleteAccount}>
 			<button
 				type="submit"
-				class="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-red-400 text-white"
+				class="rounded-md bg-red-500/20 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-red-500/30 text-white"
 				>Yes, delete my account</button
 			>
 		</form>
