@@ -57,7 +57,7 @@
 	<div class="flex flex-col h-full text-white w-full border border-white">
 		<div class="flex flex-row w-full h-[40%]">
 			<div class="w-1/2 h-full border border-white flex p-2 flex-row justify-around">
-				<div class="flex flex-col h-full items-center w-1/2 border border-white">
+				<div class="flex flex-col h-full items-center justify-center w-1/2 border border-white">
 					<img src={user.avatar} class="rounded-full h-40 w-40" alt="user picture" />
 					<p class="pt-2">{user.status === 'ONLINE' ? 'Online' : 'Offline'}</p>
 				</div>
