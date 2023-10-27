@@ -82,7 +82,7 @@
 						<p class="font-medium">Pseudo: {user.pseudo}</p>
 						<p class="font-medium">Email: {user.email}</p>
 						<div class="flex flex-row pt-2">
-							{#if user.status !== 'ONLINE'}
+							{#if user.status === 'ONLINE'}
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
@@ -98,7 +98,7 @@
 									/>
 								</svg>
 								<p class="pl-2 font-medium">Offline</p>
-							{:else}
+							{:else if user.status === 'OFFLINE'}
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
