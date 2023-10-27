@@ -130,7 +130,7 @@
 					<label for="email" class="block text-sm font-medium text-white leading-6">Email</label>
 					<div class="mt-2">
 						<div
-							class="flex rounded-md bg-white/20 border border-gray-900/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600"
+							class="flex rounded-md bg-white/20 border border-gray-900/5 ring-1 ring-inset ring-white/10 focus-within:ring-1 focus-within:ring-inset focus-within:ring-white"
 						>
 							<div class="flex items-center pl-2">
 								<svg
@@ -151,7 +151,7 @@
 								type="text"
 								name="email"
 								id="email"
-								class="flex-1 border-0 bg-transparent py-1.5 pl-1 focus:ring-0 sm:text-sm sm:leading-6"
+								class="flex-1 border-0 bg-transparent py-1.5 pl-2 placeholder:text-white/60 placeholder:tracking-wide focus:ring-0 sm:text-sm sm:leading-6"
 								placeholder={user.email}
 								readonly
 							/>
