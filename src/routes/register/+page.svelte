@@ -46,6 +46,7 @@
 	});
 </script>
 
+
 <div
 	class="relative flex h-screen w-screen bg-black flex-col items-center p-4 justify-center sm:px-6 lg:px-8"
 >
@@ -204,6 +205,7 @@
 
 				<div class="mt-6 grid grid-cols-2 gap-4">
 					<a
+
 						href="http://42pong.com:3000/auth/42"
 						class="flex w-full items-center justify-center gap-3 rounded-md bg-[#1D9BF0]/40 hover:bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
 					>
@@ -236,6 +238,7 @@
 					</a>
 
 					<a
+
 						href="http://42pong.com:3000/auth/google"
 						class="flex w-full items-center justify-center gap-3 rounded-md bg-red-500/40 hover:bg-red-500 px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
 					>
