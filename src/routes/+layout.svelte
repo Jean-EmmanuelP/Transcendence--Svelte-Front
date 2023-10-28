@@ -1,13 +1,13 @@
 <script lang="ts">
 	import '../app.css';
 	import Navbar from '$components/navbar.svelte';
-	import Sidebar from '$components/sidebar/sidebar.svelte';
 	import type { LayoutData } from './$types';
 	import { page } from '$app/stores';
 	import { authentication } from '../stores/authentication';
 	import { onDestroy, onMount } from 'svelte';
 	import Cookies from 'js-cookie';
 	import { userInformationNoToken } from '../services/gqlUser';
+	import Circles from '$components/mouse/circles.svelte';
 
 	export let data: LayoutData;
 	if (data.user) authentication.setUser(data.user);
@@ -22,7 +22,6 @@
 		currentpage = value.url.pathname;
 	});
 	onDestroy(unsubscribe);
-	import { activePage } from '../stores/currentNavigation';
 </script>
 
 <!-- <div id="toast-success" class="fixed top-20 right-5 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-green-100 rounded-lg shadow " role="alert">
@@ -41,11 +40,12 @@
     </button>
 </div> -->
 
+<Circles />
 {#if currentpage !== '/register' && currentpage !== '/login' && !currentpage.includes('/messages')}
-	<div class="h-screen w-screen flex overflow-hidden bg-[#FFFFFF] bg-cover bg-no-repeat">
-		<div class={`${$activePage === 'dashboard' ? `w-[15%]` : `w-[5%]`} h-screen`}>
+	<div class="h-screen w-screen flex overflow-hidden bg-black bg-cover bg-no-repeat">
+		<!-- <div class={`${$activePage === 'dashboard' ? `w-[15%]` : `w-[5%]`} h-screen`}>
 			<Sidebar sidebaricon={$activePage !== 'dashboard' ? 'icon' : 'normal'} />
-		</div>
+		</div> -->
 		<div class="w-full h-screen flex flex-col">
 			<Navbar />
 			<div class="flex rounded-md h-full">

@@ -12,7 +12,8 @@ export default {
 		},
 		extend: {
 			backgroundImage: {
-				'rainbow-gradient': 'linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet)'
+				'rainbow-gradient':
+					'linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet)'
 			},
 			animation: {
 				tilt: 'tilt 10s infinite linear',
@@ -27,21 +28,21 @@ export default {
 						transform: 'rotate(1deg)'
 					},
 					'75%': {
-						transform: 'rotate(-1deg)'
+						transform: 'rotate(1.1deg)'
 					}
 				},
 				blob: {
-					"0%": {
-						transform: "translate(0px, 0px) scale(1)",
+					'0%': {
+						transform: 'translate(0px, 0px) scale(1)'
 					},
-					"33%": {
-						transform: "translate(30px, -50px) scale(1.1)",
+					'33%': {
+						transform: 'translate(30px, -50px) scale(1.1)'
 					},
-					"66%": {
-						transform: "translate(-20px, 20px) scale(0.9)",
+					'66%': {
+						transform: 'translate(-20px, 20px) scale(0.9)'
 					},
-					"100%": {
-						transform: "translate(0px, 0px) scale(1)",
+					'100%': {
+						transform: 'translate(0px, 0px) scale(1)'
 					}
 				}
 			}

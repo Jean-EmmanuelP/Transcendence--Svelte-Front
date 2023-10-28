@@ -14,24 +14,34 @@
 	import type Request from './notifications/request.svelte';
 	import type { searchUser } from '../interfaces/types';
 	import { goto } from '$app/navigation';
+	import { activeColor } from '../stores/currentNavigation';
 
 	let user: AuthenticationType;
+	let inputFocus: boolean = false;
 	let pendingRequests: Request[] = [];
-	let isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications';
+	let isModalOpen =
+		$modalOpen === 'userMenu' ||
+		$modalOpen === 'notifications' ||
+		$modalOpen === 'mobileMenu' ||
+		$modalOpen === 'searchSuggestion';
 	let term = '';
 	let users: searchUser[] = [];
-	let isDropdownOpen: boolean = false;
 
 	const unsubscribe = authentication.subscribe((value) => {
 		user = value;
 	});
 	onDestroy(unsubscribe);
 
-	$: isModalOpen = $modalOpen === 'userMenu' || $modalOpen === 'notifications';
+	$: isModalOpen =
+		$modalOpen === 'userMenu' ||
+		$modalOpen === 'notifications' ||
+		$modalOpen === 'mobileMenu' ||
+		$modalOpen === 'searchSuggestion';
 	$: if (!isModalOpen && $modalOpen !== null) {
 		modalOpen.set(null);
 	}
-
+	let radialColor: string;
+	$: radialColor = $activeColor;
 	async function handleSearch() {
 		if (term.trim() === '') {
 			users = [];
@@ -82,40 +92,77 @@
 			console.error(`Error during the mutation reject friend request`);
 		}
 	}
-
 	function handleInputFocus() {
-		isDropdownOpen = true;
+		inputFocus = true;
+		toggleModal('searchSuggestion');
 	}
-
-	function handleClickOutside(event: Event) {
-		const target = event.target as HTMLElement;
-		if (!target.closest('#search') && !target.closest('.dropdown-menu')) {
-			isDropdownOpen = false;
-		}
-	}
-
-	onMount(() => {
-		document.addEventListener('click', handleClickOutside);
-		return () => {
-			document.removeEventListener('click', handleClickOutside);
-		};
-	});
 </script>
 
-<header class="lg:static lg:overflow-y-visible">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
-			<div class="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2" />
-			<div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
-				<div
-					class="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0"
+<header
+	class="relative backdrop-blur-md p-1 lg:static lg:overflow-y-visible text-white border-b border-b-white/10 shadow-sm"
+>
+	<div class="flex items-center justify-center">
+		<div
+			class="transparent relative w-[80%] flex flex-row items-center lg:gap-2 xl:grid xl:grid-cols-12"
+		>
+			<div
+				class="flex pl-2 items-center md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-4"
+			>
+				<button
+					class="flex flex-row gap-2 items-center justify-center"
+					on:click={() => {
+						goto('/');
+					}}
 				>
-					<div class="w-full relative">
+					<div class="relative w-[50px] h-[40px]">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="text-white absolute top-0 left-0 w-full h-full"
+							width="50"
+							height="50"
+							viewBox="0 0 100 100"
+							><path
+								fill="#ffffff"
+								d="M1.22541 61.5228c-.2225-.9485.90748-1.5459 1.59638-.857L39.3342 97.1782c.6889.6889.0915 1.8189-.857 1.5964C20.0515 94.4522 5.54779 79.9485 1.22541 61.5228ZM.00189135 46.8891c-.01764375.2833.08887215.5599.28957165.7606L52.3503 99.7085c.2007.2007.4773.3075.7606.2896 2.3692-.1476 4.6938-.46 6.9624-.9259.7645-.157 1.0301-1.0963.4782-1.6481L2.57595 39.4485c-.55186-.5519-1.49117-.2863-1.648174.4782-.465915 2.2686-.77832 4.5932-.92588465 6.9624ZM4.21093 29.7054c-.16649.3738-.08169.8106.20765 1.1l64.77602 64.776c.2894.2894.7262.3742 1.1.2077 1.7861-.7956 3.5171-1.6927 5.1855-2.684.5521-.328.6373-1.0867.1832-1.5407L8.43566 24.3367c-.45409-.4541-1.21271-.3689-1.54074.1832-.99132 1.6684-1.88843 3.3994-2.68399 5.1855ZM12.6587 18.074c-.3701-.3701-.393-.9637-.0443-1.3541C21.7795 6.45931 35.1114 0 49.9519 0 77.5927 0 100 22.4073 100 50.0481c0 14.8405-6.4593 28.1724-16.7199 37.3375-.3903.3487-.984.3258-1.3542-.0443L12.6587 18.074Z"
+							/></svg
+						>
+						<svg
+							class="absolute top-0 left-0 w-full h-full"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+							version="1.1"
+							id="Calque_1"
+							x="0px"
+							y="0px"
+							viewBox="0 -200 960 960"
+							enable-background="new 0 -200 960 960"
+							xml:space="preserve"
+						>
+							<polygon
+								id="polygon5"
+								points="32,412.6 362.1,412.6 362.1,578 526.8,578 526.8,279.1 197.3,279.1 526.8,-51.1 362.1,-51.1   32,279.1 "
+							/>
+							<polygon id="polygon7" points="597.9,114.2 762.7,-51.1 597.9,-51.1 " />
+							<polygon
+								id="polygon9"
+								points="762.7,114.2 597.9,279.1 597.9,443.9 762.7,443.9 762.7,279.1 928,114.2 928,-51.1 762.7,-51.1 "
+							/>
+							<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
+						</svg>
+					</div>
+				</button>
+			</div>
+			<div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-4">
+				<div class="flex px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
+					<div class="w-full relative rounded-md h-full flex items-center justify-center">
+						<div
+							class="absolute -inset-[0.0001px] bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-20 hover:opacity-50 transition duration-1000 hover:duration-200 animate-tilt"
+						/>
 						<label for="search" class="sr-only">Search</label>
-						<div class="relative group">
-							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+						<div class="relative group w-full h-full shadow-gray-50">
+							<div class="pointer-events-none absolute inset-y-1/2 left-1 flex items-center pl-3">
 								<svg
-									class="h-5 w-5 text-[#808080] group-focus-within:text-black"
+									class="h-3 w-3 rotate-90 text-white/50 group-focus-within:text-white group-hover:text-white transition duration-200"
 									viewBox="0 0 20 20"
 									fill="currentColor"
 									aria-hidden="true"
@@ -130,36 +177,14 @@
 							<input
 								id="search"
 								name="search"
-								class="block w-1/2 bg-[#F4F4F4] group/icon_search rounded-full pr-16 border-0 py-1.5 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:transition duration-300 focus:duration-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500/40 sm:text-sm sm:leading-6"
-								placeholder="Search"
+								class="block w-full h-full cursor-none caret-white bg-black shadow-black placeholder:text-white/50 group-hover:placeholder:text-white/80 transition ring-1 ring-gray-500/30 group/icon_search rounded-full shadow-lg border-0 py-2 pl-10 text-white placeholder:text-gray-400 focus:transition duration-200 focus:duration-300 focus:ring-1 focus:ring-inset focus:ring-blue-500/40 text-[11.5px] sm:text-[12px] sm:leading-6"
+								placeholder="Search players"
 								type="search"
 								autocomplete="off"
 								bind:value={term}
 								on:focus={handleInputFocus}
 								on:input={handleSearch}
 							/>
-							{#if isDropdownOpen && users.length}
-								<div
-									class="dropdown-menu bg-white fixed rounded-md shadow-md ring-1 ring-slate-500/5 z-20 p-2 flex flex-col gap-2 max-h-80 w-80 overflow-hidden"
-								>
-									{#each users as user (user.id)}
-										<div
-											class="flex items-center p-2 w-full h-full gap-1 rounded-md hover:bg-gray-400/10"
-											on:click={() => {
-												goto(`/profile/${user.pseudo}`);
-												isDropdownOpen = false;
-											}}
-										>
-											<div class="h-full w-[30%]">
-												<OnlineUserImg avatar={user.avatar} status={user.status} />
-											</div>
-											<div class="w-[70%] h-full flex items-center">
-												<p>{user.name.split(' ')[0]}</p>
-											</div>
-										</div>
-									{/each}
-								</div>
-							{/if}
 						</div>
 					</div>
 				</div>
@@ -168,8 +193,9 @@
 				<!-- Mobile menu button -->
 				<button
 					type="button"
-					class="relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+					class="relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
 					aria-expanded="false"
+					on:click={() => toggleModal('mobileMenu')}
 				>
 					<span class="absolute -inset-0.5" />
 					<span class="sr-only">Open menu</span>
@@ -209,7 +235,26 @@
 					</svg>
 				</button>
 			</div>
-			<div class="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
+			<div class="xl:col-span-4 hidden px-8 lg:flex lg:items-center lg:justify-around">
+				<button
+					on:click={() => {
+						goto('/messages');
+					}}
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6 text-white"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
+						/>
+					</svg>
+				</button>
 				<button
 					type="button"
 					class="relative ml-5 flex-shrink-0 rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -217,36 +262,19 @@
 				>
 					<span class="absolute -inset-1.5" />
 					<span class="sr-only">View notifications</span>
-					{#if $modalOpen !== 'notifications'}
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="w-7 h-7"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-							/>
-						</svg>
-					{:else}
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="w-7 h-7"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-							/>
-						</svg>
-					{/if}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6 transition duration-200 text-white"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+						/>
+					</svg>
 				</button>
 				<!-- Profile dropdown -->
 				<div class="relative ml-5 flex-shrink-0">
@@ -275,79 +303,11 @@
 	</div>
 
 	<!-- Mobile menu, show/hide based on menu state. -->
-	<nav class="md:hidden" aria-label="Global">
-		<div class="mx-auto max-w-3xl space-y-1 px-2 pb-3 pt-2 sm:px-4">
-			<!-- Current: "bg-gray-100 text-gray-900", Default: "hover:bg-gray-50" -->
-			<a
-				href="#"
-				aria-current="page"
-				class="bg-gray-100 text-gray-900 block rounded-md py-2 px-3 text-base font-medium"
-				>Dashboard</a
-			>
-			<a href="#" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium"
-				>Friends</a
-			>
-		</div>
-		<div class="border-t border-gray-200 pb-3 pt-4">
-			<div class="mx-auto flex max-w-3xl items-center px-4 sm:px-6">
-				<div class="flex-shrink-0">
-					<img
-						class="h-10 w-10 rounded-full"
-						src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-						alt=""
-					/>
-				</div>
-				<div class="ml-3">
-					<div class="text-base font-medium text-gray-800">Chelsea Hagon</div>
-					<div class="text-sm font-medium text-gray-500">chelsea.hagon@example.com</div>
-				</div>
-				<button
-					type="button"
-					class="relative ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-				>
-					<span class="absolute -inset-1.5" />
-					<span class="sr-only">View notifications</span>
-
-					<svg
-						class="h-6 w-6"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						aria-hidden="true"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-						/>
-					</svg>
-				</button>
-			</div>
-			<div class="mx-auto mt-3 max-w-3xl space-y-1 px-2 sm:px-4">
-				<a
-					href="#"
-					class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-					>Profile</a
-				>
-				<a
-					href="#"
-					class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-					>Settings</a
-				>
-				<a
-					href="/signout"
-					class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-					>Sign out</a
-				>
-			</div>
-		</div>
-	</nav>
 </header>
 <ModalWrapper bind:isOpen={isModalOpen}>
 	{#if $modalOpen === 'userMenu'}
 		<div
-			class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+			class="absolute right-12 z-10 bg-black mt-2 w-48 tracking-wide origin-top-right rounded-md py-1 shadow-2xl ring-1 ring-blue-500/10 focus:outline-none"
 			role="menu"
 			aria-orientation="vertical"
 			aria-labelledby="user-menu-button"
@@ -355,21 +315,21 @@
 		>
 			<a
 				href={`/profile/${user.pseudo}`}
-				class="block px-4 py-2 text-sm text-gray-700"
+				class="block px-4 py-2 text-sm text-white hover:bg-gray-500/5 rounded-md"
 				role="menuitem"
 				tabindex="-1"
 				id="user-menu-item-0">Profile</a
 			>
 			<a
 				href="/settings"
-				class="block px-4 py-2 text-sm text-gray-700"
+				class="block px-4 py-2 text-sm text-white hover:bg-gray-500/5 rounded-md"
 				role="menuitem"
 				tabindex="-1"
 				id="user-menu-item-1">Settings</a
 			>
 			<a
 				href="/signout"
-				class="block px-4 py-2 text-sm text-gray-700"
+				class="block px-4 py-2 text-sm text-white hover:bg-gray-500/5 rounded-md"
 				role="menuitem"
 				tabindex="-1"
 				id="user-menu-item-2">Sign out</a
@@ -377,10 +337,10 @@
 		</div>
 	{:else if $modalOpen === 'notifications'}
 		<div
-			class="pl-4 absolute overflow-hidden right-0 h-48 w-[250px] bg-white origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
+			class="pl-4 absolute overflow-hidden right-16 h-48 w-[250px] text-white bg-black origin-top-right rounded-md shadow-2xl ring-1 ring-blue-500/10 ring-opacity-5 z-50"
 		>
 			<header class="pt-2 text-left h-[30%] w-full">
-				<h1 class="font-medium text-[15px]">Notifications</h1>
+				<h1 class="font-medium text-[15px] tracking-wide">Notifications</h1>
 				<p class="text-gray-500 text-[13px]">Here are your friend requests</p>
 			</header>
 			<ul class="overflow-y-auto h-[70%] w-full">
@@ -414,6 +374,98 @@
 					<p>Aucune demande d'ami</p>
 				{/if}
 			</ul>
+		</div>
+	{:else if $modalOpen === 'mobileMenu'}
+		<nav
+			class="fixed p-2 rounded-md bg-white top-16 right-2 flex origin-top-right w-1/4"
+			aria-label="Global"
+		>
+			<div
+				class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
+			/>
+			<div class="absolute inset-0 bg-black z-1 rounded-md" />
+			<div class="relative h-full flex flex-col z-2 w-full pt-2 pb-4 gap-4">
+				<a
+					href={`/notifications`}
+					class="rounded-md bg-white/95 shadow-md text-[15px] ring-1 ring-slate-500/20 p-2 flex items-center justify-center"
+					><svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+						/>
+					</svg>
+				</a>
+				<a
+					href={`/profile/${user.pseudo}`}
+					class="rounded-md bg-white/95 shadow-md text-[15px] ring-1 ring-slate-500/20 p-2 flex items-center justify-center"
+					><svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+						/>
+					</svg>
+				</a>
+				<a
+					href="/settings"
+					class="rounded-md bg-white/95 shadow-md text-[15px] ring-1 ring-slate-500/20 p-2 flex items-center justify-center"
+					><svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"
+						/>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+						/>
+					</svg>
+				</a>
+			</div>
+		</nav>
+	{:else if inputFocus && users.length}
+		<div
+			class="dropdown-menu overflow-auto no-scrollbar bg-black fixed top-14 right-[40%] sm:right-[50%] rounded-md ring-1 ring-blue-500/10 ring-opacity-5 p-2 shadow-lg flex flex-col gap-2 max-h-32 sm:max-h-60 h-auto w-auto"
+		>
+			{#each users as user (user.id)}
+				<div
+					class="flex items-center p-2 text-white w-full h-full gap-1 hover:bg-gray-400/10"
+					on:click={() => {
+						goto(`/profile/${user.pseudo}`);
+						inputFocus = false;
+					}}
+				>
+					<div class="h-full w-[30%]">
+						<OnlineUserImg avatar={user.avatar} status={user.status} />
+					</div>
+					<div class="w-[70%] h-full text-white sm:text-medium flex items-center">
+						<p>{user.name.split(' ')[0]}</p>
+					</div>
+				</div>
+			{/each}
 		</div>
 	{/if}
 </ModalWrapper>
