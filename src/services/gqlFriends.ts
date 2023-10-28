@@ -35,8 +35,8 @@ export const getFriends = async () => {
 						name
 						pseudo
 						avatar
-						isTwoFactorEnabled
 						status
+						channelId
 					}
 				}
 			`

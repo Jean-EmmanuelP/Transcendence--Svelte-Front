@@ -6,15 +6,16 @@
 	import UserComponent from "$components/friends/user_component.svelte";
 	import FriendComponent from "$components/friends/friend_component.svelte";
 	import ActiveFriendComponent from "$components/friends/active_friend_component.svelte";
+	import type { FriendInterface } from "../../../interfaces/types";
 
 	let pseudo: string = "";
-	let users: AuthenticationType[] = [];
+	let users: FriendInterface[] = [];
 
 	onMount(async () => {
 		try {
 			const tempFriends = await getFriends();
 
-			tempFriends.forEach((element: AuthenticationType) => {
+			tempFriends.forEach((element: FriendInterface) => {
 				users.push(element);
 			});
 			users = [...users];

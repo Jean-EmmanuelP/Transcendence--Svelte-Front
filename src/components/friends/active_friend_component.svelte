@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { AuthenticationType } from '../../stores/authentication';
-	export let user: AuthenticationType;
+	import type { FriendInterface } from '../../interfaces/types';
+	export let user: FriendInterface;
 
 </script>
 

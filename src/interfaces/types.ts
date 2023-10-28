@@ -68,6 +68,16 @@ export interface FriendRequestInterface {
 	sender: RequestUserInterface;
 }
 
+export interface FriendInterface {
+	id: string;
+	avatar: string;
+	name: string;
+	pseudo: string;
+	email: string;
+	channelId: string;
+	status: string;
+}
+
 export enum GroupActions {
 	KICK = "KICK",
 	BAN = "BAN",
