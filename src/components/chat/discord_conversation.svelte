@@ -22,7 +22,7 @@
 		alt="chat-user"
 	/>
 	<div class="ml-3 flex flex-col justify-start content-start place-content-start justify-items-start">
-		<p class="text-sm text-left">{!group.isDirectMessage && "#"}{group.name}</p>
+		<p class="text-sm text-left">{!group.isDirectMessage ? "#" : ""}{group.name}</p>
 		{#if !group.isDirectMessage }
 			<p class="text-xs text-left">{group.members.length + 1} members</p>
 		{/if}

@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { afterUpdate } from 'svelte';
-	import type { PageData } from './$types';
 	import { getChannel } from '../../../services/gqlGroups';
 	import type { GroupInterface } from '../../../interfaces/types';
 	import type { PageDataInterface } from './+page';
 	import DiscordChat from '$components/chat/discord_chat.svelte';
+	import DiscordChannelMember from '$components/chat/discord_channel_member.svelte';
 
 	export let data: PageDataInterface;
 
@@ -171,8 +171,13 @@
 		<div class="flex-1 flex flex-col max-h-full">
 			<DiscordChat group={channel} />
 		</div>
-		<div class="ml-5 pl-5 w-1/4 border-l-gray-800 border-l-2 hidden md:flex flex-col">
-			<p class="mt-5 mb-5 text-base font-semibold">Channel information</p>
+		<div class="ml-5 pl-5 pr-5 w-1/4 border-l-gray-800 border-l-2 hidden md:flex flex-col">
+			<p class="mt-5 mb-3 text-base font-semibold">Members</p>
+			{#if !loading}
+				{#each channel.members as member}
+					<DiscordChannelMember {member} {channel}/>
+				{/each}
+			{/if}
 		</div>
 	</div>
 </div>
