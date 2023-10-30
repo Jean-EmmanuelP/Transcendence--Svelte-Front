@@ -243,7 +243,7 @@
 						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 relative bg-slate-900 rounded-md w-full h-full flex flex-col"
 					>
 						<div class="h-[20%] w-full flex items-center justify-center font-bold">Ranking</div>
-						<div class="no-scrollbar h-[80%] w-full px-4 overflow-auto">
+						<div class="no-scrollbar h-[75%] w-full px-4 overflow-auto">
 							{#each Array(5) as _, index (index)}
 								<div
 									class="relative text-white ring-1 gap-2 hover:scale-105 transition duration-150 mb-4 ring-slate-400/20 bg-slate-700/20 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md"
@@ -265,6 +265,7 @@
 								</div>
 							{/each}
 						</div>
+						<div class="w-full h-[5%]"></div>
 					</div>
 				</div>
 				<div class="w-1/2 h-full flex justify-center p-2">
@@ -292,7 +293,7 @@
 								<p class="text-center pt-2 font-bold pl-2">Recent games</p>
 							</div>
 						</div>
-						<div class="relative w-full h-[90%] border border-white p-2">
+						<div class="relative w-full h-[90%] p-2">
 							{#if slideLevel !== 2}
 							<button
 								class="hover:font-extrabold transition duration-75 absolute top-[40%] right-2 p-2 border border-slate-700 rounded-full hover:scale-105 text-white font-semibold"
