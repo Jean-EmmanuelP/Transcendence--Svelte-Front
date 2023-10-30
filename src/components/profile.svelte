@@ -311,7 +311,7 @@
 											/>
 										</g>
 									</svg>
-									<h1 class="pl-2 font-bold">0</h1>
+									<h1 class="pl-2 font-bold text-2xl">0</h1>
 								</div>
 								<div class="rounded-full flex h-3 w-[60%] ring-1 ring-slate-600 shadow-lg">
 									<div class="relative bg-green-700 brightness-125 h-full w-[40%]">
@@ -335,14 +335,14 @@
 										<div class="absolute top-4 text-green-700"><p>43 victories</p></div>
 									</div>
 									<div class="relative bg-gray-400 brightness-105 h-full w-[10%]">
-										<div class="absolute flex gap-2 items-center justify-center -top-6 right-0">
+										<div class="absolute flex gap-2 items-center -top-6 right-0">
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
 												fill="none"
 												viewBox="0 0 24 24"
 												stroke-width="1"
 												stroke="currentColor"
-												class="w-4 h-4 bg-gray-700 rounded-md flex items-center justify-center"
+												class="w-4 h-4 bg-gray-700 rounded-md"
 											>
 												<path
 													stroke-linecap="round"
@@ -350,7 +350,6 @@
 													d="M6 9h12m-12 6.75h12"
 												/>
 											</svg>
-
 											<h1 class="font-bold tracking-wide text-gray-700">10%</h1>
 										</div>
 										<div class="absolute top-4 text-gray-700 w-screen"><p>10 pat</p></div>
