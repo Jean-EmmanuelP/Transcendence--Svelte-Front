@@ -330,7 +330,7 @@
 													d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
 												/>
 											</svg>
-											<h1 class="font-bold tracking-wide text-green-700">42%</h1>
+											<h1 class="font-bold tracking-wide text-green-700">34%</h1>
 										</div>
 										<div class="absolute top-4 text-green-700"><p>43 victories</p></div>
 									</div>
@@ -340,20 +340,20 @@
 												xmlns="http://www.w3.org/2000/svg"
 												fill="none"
 												viewBox="0 0 24 24"
-												stroke-width="1.5"
+												stroke-width="1"
 												stroke="currentColor"
-												class="w-4 h-4 bg-gray-700 rounded-md"
+												class="w-4 h-4 bg-gray-700 rounded-md flex items-center justify-center"
 											>
 												<path
 													stroke-linecap="round"
 													stroke-linejoin="round"
-													d="M3.75 9h16.5m-16.5 6.75h16.5"
+													d="M6 9h12m-12 6.75h12"
 												/>
 											</svg>
 
-											<h1 class="font-bold tracking-wide text-gray-700">66%</h1>
+											<h1 class="font-bold tracking-wide text-gray-700">10%</h1>
 										</div>
-										<div class="absolute top-4 right-0 text-gray-700"><p>140 looses</p></div>
+										<div class="absolute top-4 text-gray-700"><p>10 pat</p></div>
 									</div>
 									<div class="relative bg-red-700 brightness-200 h-full w-[50%]">
 										<div class="absolute flex gap-2 items-center justify-center -top-6 right-0">
