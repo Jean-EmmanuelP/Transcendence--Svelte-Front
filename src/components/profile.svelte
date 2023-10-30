@@ -294,7 +294,7 @@
 						</div>
 						<div class="relative w-full h-[70%] p-2">
 							<button
-								class="absolute top-[40%] right-2 p-2 border border-slate-700 rounded-full hover:scale-105 text-white font-semibold"
+								class="hover:font-extrabold transition duration-75 absolute top-[40%] right-2 p-2 border border-slate-700 rounded-full hover:scale-105 text-white font-semibold"
 								on:click={() => upSlide()}>&gt;</button
 							>
 							{#if slideLevel === 0}
