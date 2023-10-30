@@ -64,7 +64,7 @@
 		<div class="h-full w-full flex flex-col">
 			<!-- le haut de ma page -->
 			<div
-				class="flex flex-row px-2 py-2 h-[50%] w-full gap-2 bg-slate-900/20 backdrop-blur-lg rounded-md"
+				class="flex flex-row px-2 py-2 h-[50%] w-full gap-2 rounded-md"
 			>
 				<!-- Image div to the left -->
 				<div class="relativ h-full w-[21%] flex items-center justify-start rounded-md">
@@ -83,7 +83,7 @@
 				<div class={`pl-2 ${!isCurrentUserProfile && 'pb-2'} h-full w-[35%]`}>
 					{#if isCurrentUserProfile}
 						<div
-							class="flex gap-2 ring-1 ring-slate-800 shadow-md bg-blue-950/30 flex-col items-center justify-center mb-2 h-full w-full rounded-md"
+							class="flex gap-2 ring-1 ring-slate-800 shadow-md bg-slate-900/40 flex-col items-center justify-center mb-2 h-full w-full rounded-md"
 						>
 							<h1 class="sm:font-extrabold sm:text-xl sm:tracking-wider">{user.name}</h1>
 							<p class="font-medium">Pseudo: {user.pseudo}</p>
@@ -126,7 +126,7 @@
 						</div>
 					{:else}
 						<div
-							class="flex gap-2 ring-1 ring-slate-800 shadow-md bg-blue-950/30 flex-col items-center justify-center mb-2 h-2/3 w-full rounded-md"
+							class="flex gap-2 ring-1 ring-slate-800 shadow-md bg-slate-900/40 flex-col items-center justify-center mb-2 h-2/3 w-full rounded-md"
 						>
 							<h1 class="sm:font-extrabold sm:text-xl sm:tracking-wider">{user.name}</h1>
 							<p class="font-medium">Pseudo: {user.pseudo}</p>
@@ -168,7 +168,7 @@
 							</div>
 						</div>
 						<div
-							class="flex flex-row h-1/3 w-full ring-1 ring-slate-800 shadow-md rounded-md bg-blue-950/30"
+							class="flex flex-row h-1/3 w-full ring-1 ring-slate-800 shadow-md rounded-md bg-slate-900/40"
 						>
 							{#if !isCurrentUserProfile}
 								<div class="p-5 w-1/2 h-full flex items-center justify-center">
@@ -177,7 +177,7 @@
 											class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
 										/>
 										<div
-											class="relative px-5 py-2.5 ring-1 ring-slate-700 shadow-md hover:font-bold rounded-md bg-slate-900 w-full h-full flex flex-row items-center justify-start"
+											class="relative px-5 py-2.5 ring-1 ring-slate-700 shadow-md hover:font-bold rounded-md bg-slate-900/40 w-full h-full flex flex-row items-center justify-start"
 										>
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -204,7 +204,7 @@
 											class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
 										/>
 										<div
-											class="relative flex flex-row bg-slate-900 px-5 py-2.5 ring-1 ring-slate-700 shadow-md hover:font-bold rounded-md"
+											class="relative flex flex-row bg-slate-900/40 px-5 py-2.5 ring-1 ring-slate-700 shadow-md hover:font-bold rounded-md"
 										>
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -230,14 +230,12 @@
 				</div>
 				<div class="w-[44%] h-full flex justify-center">
 					<div
-						class="border border-white ring-1 ring-slate-800 shadow-md bg-blue-950/30 rounded-md bg-slate-900 w-full h-full flex flex-col"
+						class="ring-1 ring-slate-800 shadow-md rounded-md bg-slate-900/40 w-full h-full flex flex-col"
 					>
-						<h1 class="border border-white text-center pt-2 font-bold h-[10%] w-full">
-							Achievments
-						</h1>
-						<div class="h-[90%] flex items-center justify-center w-full">
+						<h1 class="text-center pt-2 font-bold h-[10%] w-full">Achievments</h1>
+						<div class="slider h-[90%] flex items-center justify-center w-full">
 							<div
-								class="bg-white ring-1 ring-slate-950 rounded-md shadow-md w-52 h-52 p-3 border border-blue-700"
+								class="slides bg-white ring-1 ring-slate-950 rounded-md shadow-md w-52 h-52 p-3 hover:scale-110 transition duration-75"
 							>
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.19 115"
 									><title>League of Legends World Championship logo</title><path
@@ -272,7 +270,7 @@
 			<div class="w-full h-[40%] flex gflex-row">
 				<div class="w-1/2 h-full flex justify-center p-2">
 					<div
-						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 relative bg-slate-900 rounded-md w-full h-full flex flex-col"
+						class="ring-1 ring-slate-800 shadow-md relative bg-slate-900/40 rounded-md w-full h-full flex flex-col"
 					>
 						<div class="h-[20%] w-full flex items-center justify-center font-bold">Ranking</div>
 						<div class="no-scrollbar h-[75%] w-full px-4 overflow-auto">
@@ -302,7 +300,7 @@
 				</div>
 				<div class="w-1/2 h-full flex justify-center p-2">
 					<div
-						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 rounded-md bg-slate-900 w-full h-full flex flex-col"
+						class="ring-1 ring-slate-800 shadow-md bg-slate-900/40 rounded-md w-full h-full flex flex-col"
 					>
 						<div class="w-full relative h-[10%]">
 							<div class="relative flex flex-row items-center justify-center">
