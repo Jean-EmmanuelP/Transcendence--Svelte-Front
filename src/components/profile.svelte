@@ -388,7 +388,12 @@
 									</div>
 								</div>
 							{:else if slideLevel === 1}
-								<div>bonjour</div>
+								<div class="flex flex-col items-center justify-center">longest winning streak</div>
+								<div
+									class="absolute top-[15%] right-1/2 transform translate-x-1/2 translate-y-[10%] flex items-center justify-center text-[50px]"
+								>
+									🔥<span class="font-bold brightness-125">5</span>
+								</div>
 							{/if}
 						</div>
 					</div>
