@@ -313,10 +313,48 @@
 									</svg>
 									<h1 class="pl-2 font-bold">0</h1>
 								</div>
-								<div class="overflow-hidden rounded-full flex h-3 w-[60%] ring-1 ring-slate-600 shadow-lg">
-									<div class="bg-green-700 brightness-125 h-full w-[40%]"></div>
-									<div class="bg-gray-400 brightness-105 h-full w-[10%]"></div>
-									<div class="bg-red-700 brightness-200 h-full w-[50%]"></div>
+								<div class="rounded-full flex h-3 w-[60%] ring-1 ring-slate-600 shadow-lg">
+									<div class="relative bg-green-700 brightness-125 h-full w-[40%]">
+										<div class="absolute flex gap-2 items-center justify-center -top-6">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												fill="green"
+												viewBox="0 0 24 24"
+												stroke-width="1.5"
+												stroke="currentColor"
+												class="w-4 h-4 text-black"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+												/>
+											</svg>
+											<h1 class="font-bold tracking-wide text-green-700">42%</h1>
+										</div>
+									</div>
+									<div class="bg-gray-400 brightness-105 h-full w-[10%]">
+										<div />
+									</div>
+									<div class="relative bg-red-700 brightness-200 h-full w-[50%]">
+										<div class="absolute flex gap-2 items-center justify-center -top-6 right-0">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												fill="red"
+												viewBox="0 0 24 24"
+												stroke-width="1.5"
+												stroke="currentColor"
+												class="w-4 h-4 text-black"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+												/>
+											</svg>
+											<h1 class="font-bold tracking-wide text-red-700">66%</h1>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
