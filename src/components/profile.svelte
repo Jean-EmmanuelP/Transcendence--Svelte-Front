@@ -234,19 +234,23 @@
 			<div class="w-full h-1/2 flex flex-row">
 				<div class="w-1/2 h-full flex justify-center p-2">
 					<div
-						class="ring-1 ring-slate-800 shadow-md  bg-blue-950/30 bg-slate-900 rounded-md w-full h-full flex flex-col"
+						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 bg-slate-900 rounded-md w-full h-full flex flex-col"
 					>
 						<p class="text-center pt-2 h-[20%] w-full">Rank</p>
-						<div class="no-scrollbar h-[80%] w-full px-2 pt-2">
-							<div class="text-white ring-1 gap-2 ring-slate-400/20 bg-slate-700/20 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md overflow-hidden">
-								<div class="h-full w-[12%] rounded-full overflow-hidden">
-									<img src={user.avatar} alt="" class="w-full h-full">
+						<div class="no-scrollbar h-[60%] w-full px-2 pt-2 overflow-auto border border-white">
+							{#each Array(5) as _, index (index)}
+								<div
+									class="text-white ring-1 gap-2 ring-slate-400/20 bg-slate-700/20 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md overflow-hidden"
+								>
+									<div class="h-full w-[12%] rounded-full overflow-hidden">
+										<img src={user.avatar} alt="" class="w-full h-full" />
+									</div>
+									<div class="relative h-full w-[88%] flex flex-row items-center justify-between">
+										<p class="p-2">{user.pseudo}</p>
+										<h1 class="absolute top-2 right-2">21</h1>
+									</div>
 								</div>
-								<div class="relative h-full w-[88%] flex flex-row items-center justify-between">
-									<p class="p-2">{user.pseudo}</p>
-									<h1 class="absolute top-2 right-2">21</h1>
-								</div>
-							</div>
+							{/each}
 						</div>
 					</div>
 				</div>
