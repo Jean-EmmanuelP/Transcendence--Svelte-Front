@@ -265,7 +265,7 @@
 					<div
 						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 rounded-md bg-slate-900 w-full h-full flex flex-col"
 					>
-						<div class="w-full relative border border-white h-[10%]">
+						<div class="w-full relative h-[10%]">
 							<div class="relative flex flex-row items-center justify-center">
 								<div class="absolute transform -translate-x-16 translate-y-1">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
@@ -286,7 +286,7 @@
 								<p class="text-center pt-2 font-bold pl-2">Recent games</p>
 							</div>
 						</div>
-						<div class="w-full h-[70%] border p-2 border-red-500">
+						<div class="w-full h-[70%] p-2">
 							<div class="flex flex-col items-center justify-center">
 								<div class="font-medium text-[14px] text-gray-300/80 tracking-tight">Games</div>
 								<div class="flex flex-row items-center pt-2 pb-6">
