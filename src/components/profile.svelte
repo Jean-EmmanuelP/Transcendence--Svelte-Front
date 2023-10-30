@@ -299,8 +299,8 @@
 							>
 							{#if slideLevel !== 0}
 							<button
-							class="hover:font-extrabold transition duration-75 absolute top-[40%] right-2 p-2 border border-slate-700 rounded-full hover:scale-105 text-white font-semibold"
-							on:click={() => Slide(-1)}>&gt;</button
+							class="hover:font-extrabold transition duration-75 absolute top-[40%] left-2 p-2 border border-slate-700 rounded-full hover:scale-105 text-white font-semibold"
+							on:click={() => Slide(-1)}>&lt;</button
 						>
 							{/if}
 							{#if slideLevel === 0}
