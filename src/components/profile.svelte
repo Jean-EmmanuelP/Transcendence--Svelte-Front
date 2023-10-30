@@ -234,7 +234,7 @@
 			<div class="w-full h-1/2 flex flex-row">
 				<div class="w-1/2 h-full flex justify-center p-2">
 					<div
-						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 bg-slate-900 rounded-md w-full h-full flex flex-col"
+						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 relative bg-slate-900 rounded-md w-full h-full flex flex-col"
 					>
 						<div class="h-[20%] w-full flex items-center justify-center font-bold">Ranking</div>
 						<div class="no-scrollbar h-[60%] w-full px-4 overflow-auto">
@@ -245,7 +245,9 @@
 									<div
 										class="absolute -inset-[-0.3px] bg-gradient-to-r from-red-500/30 to-blue-500/30 rounded-lg rounded-l-full blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
 									/>
-									<div class="w-full h-full relative bg-slate-700/60 ring-1 rounded-md rounded-l-full ring-slate-400/20 text-white">
+									<div
+										class="w-full h-full relative bg-slate-700/60 ring-1 rounded-md rounded-l-full ring-slate-400/20 text-white"
+									>
 										<div class="relative h-full w-[11%] rounded-full overflow-hidden">
 											<img src={user.avatar} alt="" class="w-full h-full" />
 										</div>
@@ -263,7 +265,25 @@
 					<div
 						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 rounded-md bg-slate-900 w-full h-full flex flex-col"
 					>
-						<p class="text-center pt-2 font-bold">Recent games</p>
+						<div class="relative flex flex-row items-center justify-center">
+							<div class="absolute transform -translate-x-16 translate-y-1">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
+									<path
+										fill="#28a745"
+										d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75z"
+									/>
+									<path
+										fill="#007bff"
+										d="M9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625z"
+									/>
+									<path
+										fill="#dc3545"
+										d="M16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
+									/>
+								</svg>
+							</div>
+							<p class="text-center pt-2 font-bold pl-2">Recent games</p>
+						</div>
 					</div>
 				</div>
 			</div>
