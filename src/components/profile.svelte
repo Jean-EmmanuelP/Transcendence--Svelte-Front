@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { getUserInformationPerPseudo } from '../services/gqlUser';
-	import Progress from '$components/action_components/progress.svelte';
 	import type { searchUser } from '../interfaces/types';
 	import { page } from '$app/stores';
 	import { onDestroy, onMount } from 'svelte';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
 	import { sendFriendRequest } from '../services/gqlFriends';
-	import OnlineUserImg from './action_components/online-user.svelte';
+	import Progress from './action_components/progress.svelte';
 
 	let isLoading = true;
 	let isError = false;
@@ -121,8 +120,11 @@
 										/>
 									</svg>
 									<p class="pl-2 font-medium">Online</p>
-								{/if}
-							</div>
+									{/if}
+								</div>
+								<div class="w-full flex items-center justify-center">
+									<Progress progress={30} />
+								</div>
 						</div>
 					{:else}
 						<div
