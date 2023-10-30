@@ -236,18 +236,23 @@
 					<div
 						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 bg-slate-900 rounded-md w-full h-full flex flex-col"
 					>
-						<div class="h-[20%] w-full flex items-center justify-center">Rank</div>
+						<div class="h-[20%] w-full flex items-center justify-center font-bold">Ranking</div>
 						<div class="no-scrollbar h-[60%] w-full px-4 overflow-auto">
 							{#each Array(5) as _, index (index)}
 								<div
-									class="text-white ring-1 gap-2 mb-2 ring-slate-400/20 bg-slate-700/20 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md overflow-hidden"
+									class="relative text-white ring-1 gap-2 mb-4 ring-slate-400/20 bg-slate-700/20 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md"
 								>
-									<div class="h-full w-[12%] rounded-full overflow-hidden">
-										<img src={user.avatar} alt="" class="w-full h-full" />
-									</div>
-									<div class="relative h-full w-[88%] flex flex-row items-center justify-between">
-										<p class="p-2">{user.pseudo}</p>
-										<h1 class="absolute top-2 right-2">21</h1>
+									<div
+										class="absolute -inset-[-0.3px] bg-gradient-to-r from-red-500/30 to-blue-500/30 rounded-lg rounded-l-full blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
+									/>
+									<div class="w-full h-full relative bg-slate-700 ring-1 rounded-md rounded-l-full ring-slate-400/20 text-white">
+										<div class="relative h-full w-[11%] rounded-full overflow-hidden">
+											<img src={user.avatar} alt="" class="w-full h-full" />
+										</div>
+										<div class="h-full w-[89%] flex flex-row items-center justify-between">
+											<p class="absolute top-5 left-20">{user.pseudo}</p>
+											<h1 class="absolute top-2 right-2">{index}</h1>
+										</div>
 									</div>
 								</div>
 							{/each}
@@ -258,7 +263,7 @@
 					<div
 						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 rounded-md bg-slate-900 w-full h-full flex flex-col"
 					>
-						<p class="text-center pt-2">Recent games</p>
+						<p class="text-center pt-2 font-bold">Recent games</p>
 					</div>
 				</div>
 			</div>
