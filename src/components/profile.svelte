@@ -237,12 +237,12 @@
 						class="ring-1 ring-slate-800 shadow-md  bg-blue-950/30 bg-slate-900 rounded-md w-full h-full flex flex-col"
 					>
 						<p class="text-center pt-2 h-[20%] w-full">Rank</p>
-						<div class="no-scrollbar h-[80%] w-full border px-2 pt-2">
-							<div class="text-white bg-slate-700/20 flex flex-row h-1/3 w-full rounded-md shadow-md overflow-hidden">
-								<div class="h-full w-1/3">
-									<img src={user.avatar} alt="" class="w-full h-full object-contain">
+						<div class="no-scrollbar h-[80%] w-full px-2 pt-2">
+							<div class="text-white bg-slate-700/20 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md overflow-hidden">
+								<div class="h-full w-[12%] rounded-full overflow-hidden">
+									<img src={user.avatar} alt="" class="w-full h-full">
 								</div>
-								<div class="h-full w-2/3 flex flex-row justify-between">
+								<div class="h-full w-[88%] flex flex-row justify-between">
 									<p class="p-2">{user.pseudo}</p>
 									<h1 class="p-2">21</h1>
 								</div>
