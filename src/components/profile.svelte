@@ -286,7 +286,8 @@
 								<p class="text-center pt-2 font-bold pl-2">Recent games</p>
 							</div>
 						</div>
-						<div class="w-full h-[70%] p-2">
+						<div class="relative w-full h-[70%] p-2">
+							<button class="absolute top-[40%] right-2 p-2 border border-slate-700 rounded-full hover:scale-105 text-white">&gt;</button>
 							<div class="flex flex-col items-center justify-center">
 								<div class="font-medium text-[14px] text-gray-300/80 tracking-tight">Games</div>
 								<div class="flex flex-row items-center pt-2 pb-10">
