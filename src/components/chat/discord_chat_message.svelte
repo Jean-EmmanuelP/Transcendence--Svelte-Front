@@ -53,7 +53,7 @@
 				>
 					<img
 						alt="Mervin.Graham"
-						src="https://api.dicebear.com/7.x/bottts/svg?seed=Tselmeg"
+						src="https://api.dicebear.com/7.x/bottts/svg?seed={message.user.pseudo}"
 						decoding="async"
 						data-nimg="fixed"
 						class="mt-0.5 mr-4 w-10 h-10 rounded-full"
