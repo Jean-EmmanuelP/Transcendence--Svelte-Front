@@ -276,13 +276,13 @@
 						<div class="no-scrollbar h-[75%] w-full px-4 overflow-auto">
 							{#each Array(5) as _, index (index)}
 								<div
-									class="relative text-white ring-1 gap-2 hover:scale-105 transition duration-150 mb-4 ring-slate-400/20 bg-slate-700/20 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md"
+									class="relative text-white ring-1 gap-2 hover:scale-105 transition duration-150 mb-4 ring-slate-400/20 bg-slate-700/10 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md"
 								>
 									<div
 										class="absolute -inset-[-0.3px] bg-gradient-to-r from-red-500/30 to-blue-500/30 rounded-lg rounded-l-full blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
 									/>
 									<div
-										class="w-full h-full relative bg-slate-700/60 ring-1 rounded-md rounded-l-full ring-slate-400/20 text-white"
+										class="w-full h-full relative bg-slate-900/50  ring-1 rounded-md rounded-l-full ring-black/20 shadow-lg text-white"
 									>
 										<div class="relative h-full w-[11%] rounded-full overflow-hidden">
 											<img src={user.avatar} alt="" class="w-full h-full" />
