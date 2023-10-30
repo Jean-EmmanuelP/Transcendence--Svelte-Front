@@ -353,7 +353,7 @@
 
 											<h1 class="font-bold tracking-wide text-gray-700">10%</h1>
 										</div>
-										<div class="absolute top-4 text-gray-700"><p>10 pat</p></div>
+										<div class="absolute top-4 text-gray-700 w-screen"><p>10 pat</p></div>
 									</div>
 									<div class="relative bg-red-700 brightness-200 h-full w-[50%]">
 										<div class="absolute flex gap-2 items-center justify-center -top-6 right-0">
