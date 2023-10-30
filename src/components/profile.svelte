@@ -314,9 +314,9 @@
 									<h1 class="pl-2 font-bold">0</h1>
 								</div>
 								<div class="overflow-hidden rounded-full flex h-3 w-[60%] ring-1 ring-slate-600 shadow-lg">
-									<div class="bg-green-500 h-full w-[40%]"></div>
-									<div class="bg-gray-500/40 h-full w-[10%]"></div>
-									<div class="bg-red-500 h-full w-[50%]"></div>
+									<div class="bg-green-700 brightness-125 h-full w-[40%]"></div>
+									<div class="bg-gray-500/70 h-full w-[10%]"></div>
+									<div class="bg-red-700 brightness-125 h-full w-[50%]"></div>
 								</div>
 							</div>
 						</div>
