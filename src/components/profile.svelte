@@ -289,7 +289,7 @@
 						<div class="w-full h-[70%] border p-2 border-red-500">
 							<div class="flex flex-col items-center justify-center">
 								<div class="font-medium text-[14px] text-gray-300/80 tracking-tight">Games</div>
-								<div class="flex flex-row items-center py-2">
+								<div class="flex flex-row items-center pt-2 pb-6">
 									<svg
 										class="font-bold"
 										xmlns="http://www.w3.org/2000/svg"
