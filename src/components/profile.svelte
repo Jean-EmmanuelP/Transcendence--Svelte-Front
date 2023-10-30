@@ -48,7 +48,7 @@
 		}
 	}
 
-	let slideLevel:number = 0;
+	let slideLevel: number = 0;
 	async function Slide(slideNumber: number) {
 		slideLevel += slideNumber;
 		console.log(slideLevel);
@@ -298,10 +298,10 @@
 								on:click={() => Slide(1)}>&gt;</button
 							>
 							{#if slideLevel !== 0}
-							<button
-							class="hover:font-extrabold transition duration-75 absolute top-[40%] left-2 p-2 border border-slate-700 rounded-full hover:scale-105 text-white font-semibold"
-							on:click={() => Slide(-1)}>&lt;</button
-						>
+								<button
+									class="hover:font-extrabold transition duration-75 absolute top-[40%] left-2 p-2 border border-slate-700 rounded-full hover:scale-105 text-white font-semibold"
+									on:click={() => Slide(-1)}>&lt;</button
+								>
 							{/if}
 							{#if slideLevel === 0}
 								<div class="flex flex-col items-center justify-center">
@@ -394,12 +394,22 @@
 									</div>
 								</div>
 							{:else if slideLevel === 1}
-								<div class="relative flex flex-col items-center justify-center font-semibold text-gray-400 tracking-wide pt-5">Longest winning streak</div>
+								<div
+									class="relative flex flex-col items-center justify-center font-semibold text-gray-400 tracking-wide pt-5"
+								>
+									Longest winning streak
+								</div>
 								<div
 									class="absolute top-[25%] right-1/2 transform translate-x-1/2 translate-y-[10%] flex items-center justify-center text-[50px]"
 								>
 									🔥<span class="font-bold brightness-125">5</span>
 								</div>
+							{:else if slideLevel === 2}
+							<div class="absolute top-[35%] flex-row left-[33%] flex items-center">
+									<img src={user.avatar} class="shadow-md ring-1 ring-slate-800 rounded-full object-contain w-16 h-16" alt="">
+									<p class="p-4 font-bold">versus</p>
+									<img src={user.avatar} class="shadow-md ring-1 ring-slate-800 rounded-full object-contain w-16 h-16" alt="">
+							</div>
 							{/if}
 						</div>
 					</div>
