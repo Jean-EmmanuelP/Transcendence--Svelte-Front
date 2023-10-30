@@ -238,7 +238,7 @@
 					>
 						<p class="text-center pt-2 h-[20%] w-full">Rank</p>
 						<div class="no-scrollbar h-[80%] w-full px-2 pt-2">
-							<div class="text-white bg-slate-700/20 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md overflow-hidden">
+							<div class="text-white ring-1 ring-slate-400/20 bg-slate-700/20 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md overflow-hidden">
 								<div class="h-full w-[12%] rounded-full overflow-hidden">
 									<img src={user.avatar} alt="" class="w-full h-full">
 								</div>
