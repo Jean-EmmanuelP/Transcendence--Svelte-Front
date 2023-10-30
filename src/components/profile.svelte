@@ -48,9 +48,9 @@
 		}
 	}
 
-	let slideLevel = 0;
-	async function upSlide() {
-		slideLevel += 1;
+	let slideLevel:number = 0;
+	async function Slide(slideNumber: number) {
+		slideLevel += slideNumber;
 		console.log(slideLevel);
 	}
 </script>
@@ -295,8 +295,14 @@
 						<div class="relative w-full h-[70%] p-2">
 							<button
 								class="hover:font-extrabold transition duration-75 absolute top-[40%] right-2 p-2 border border-slate-700 rounded-full hover:scale-105 text-white font-semibold"
-								on:click={() => upSlide()}>&gt;</button
+								on:click={() => Slide(1)}>&gt;</button
 							>
+							{#if slideLevel !== 0}
+							<button
+							class="hover:font-extrabold transition duration-75 absolute top-[40%] right-2 p-2 border border-slate-700 rounded-full hover:scale-105 text-white font-semibold"
+							on:click={() => Slide(-1)}>&gt;</button
+						>
+							{/if}
 							{#if slideLevel === 0}
 								<div class="flex flex-col items-center justify-center">
 									<div class="font-medium text-[14px] text-gray-300/80 tracking-tight">Games</div>
