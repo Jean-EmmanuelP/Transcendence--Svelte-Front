@@ -245,7 +245,7 @@
 									<div
 										class="absolute -inset-[-0.3px] bg-gradient-to-r from-red-500/30 to-blue-500/30 rounded-lg rounded-l-full blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
 									/>
-									<div class="w-full h-full relative bg-slate-700 ring-1 rounded-md rounded-l-full ring-slate-400/20 text-white">
+									<div class="w-full h-full relative bg-slate-700/60 ring-1 rounded-md rounded-l-full ring-slate-400/20 text-white">
 										<div class="relative h-full w-[11%] rounded-full overflow-hidden">
 											<img src={user.avatar} alt="" class="w-full h-full" />
 										</div>
