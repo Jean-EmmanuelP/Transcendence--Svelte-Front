@@ -35,8 +35,8 @@ export const getFriends = async () => {
 						name
 						pseudo
 						avatar
-						isTwoFactorEnabled
 						status
+						channelId
 					}
 				}
 			`
@@ -58,7 +58,14 @@ export const getPendingFriendRequests = async () => {
 						senderId
 						receiverId
 						status
+						receiver {
+							id
+							avatar
+							name
+							pseudo
+						}
 						sender {
+							id
 							avatar
 							name
 							pseudo
@@ -68,6 +75,39 @@ export const getPendingFriendRequests = async () => {
 			`
 		});
 		return response.data.getPendingSentFriendRequests;
+	} catch (error) {
+		console.error(error);
+		throw new Error('Error fetching user information');
+	}
+};
+
+export const getPendingRequests = async () => {
+	try {
+		const response = await client.query({
+			query: gql`
+				{
+					getPendingFriendRequests {
+						id
+						senderId
+						receiverId
+						status
+						receiver {
+							id
+							avatar
+							name
+							pseudo
+						}
+						sender {
+							id
+							avatar
+							name
+							pseudo
+						}
+					}
+				}
+			`
+		});
+		return response.data.getPendingFriendRequests;
 	} catch (error) {
 		console.error(error);
 		throw new Error('Error fetching user information');
@@ -106,6 +146,25 @@ export const rejectFriendRequest = async (pseudo: string) => {
 			}
 		});
 		return response.data.rejectFriendRequest;
+	} catch (error) {
+		console.log(error.message);
+		throw new Error('Error during the rejectFriendRequest');
+	}
+};
+
+export const cancelFriendRequest = async (pseudo: string) => {
+	try {
+		const response = await client.mutate({
+			mutation: gql`
+				mutation cancelSentFriendRequest($pseudo: String!) {
+					cancelSentFriendRequest(receiverPseudo: $pseudo)
+				}
+			`,
+			variables: {
+				pseudo: pseudo
+			}
+		});
+		return response.data.cancelSentFriendRequest;
 	} catch (error) {
 		console.log(error.message);
 		throw new Error('Error during the rejectFriendRequest');

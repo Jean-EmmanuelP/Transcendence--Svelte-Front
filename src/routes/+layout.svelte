@@ -39,8 +39,9 @@
         </svg>
     </button>
 </div> -->
+
 <Circles />
-{#if currentpage !== '/register' && currentpage !== '/login'}
+{#if currentpage !== '/register' && currentpage !== '/login' && !currentpage.includes('/messages')}
 	<div class="h-screen w-screen flex overflow-hidden bg-black bg-cover bg-no-repeat">
 		<!-- <div class={`${$activePage === 'dashboard' ? `w-[15%]` : `w-[5%]`} h-screen`}>
 			<Sidebar sidebaricon={$activePage !== 'dashboard' ? 'icon' : 'normal'} />

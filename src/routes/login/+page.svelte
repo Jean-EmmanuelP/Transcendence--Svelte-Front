@@ -248,6 +248,7 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="group/notmember">
 					<p
 						class="relative mt-4 pb-2 group-hover/notmember:text-white tracking-wide text-center text-[15px] sm:text-sm text-white/50 font-semibold"
@@ -257,6 +258,7 @@
 							href="/register"
 							class="font-bold leading-6 text-blue-600 tracking-wide hover:text-blue-500 brightness:100 group-hover/notmember:brightness-200"
 						>
+
 							Register an account
 						</a>
 					</p>

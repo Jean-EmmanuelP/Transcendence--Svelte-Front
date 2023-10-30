@@ -104,6 +104,7 @@
 		let posX = 0;
 		let posY = 0;
 
+
 		if (laserElement && playElement && blobElement) {
 			setTimeout(() => {
 				blobElement.style.opacity = '1';
