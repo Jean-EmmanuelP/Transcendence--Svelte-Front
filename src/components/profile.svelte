@@ -243,7 +243,7 @@
 						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 relative bg-slate-900 rounded-md w-full h-full flex flex-col"
 					>
 						<div class="h-[20%] w-full flex items-center justify-center font-bold">Ranking</div>
-						<div class="no-scrollbar h-[60%] w-full px-4 overflow-auto">
+						<div class="no-scrollbar h-[80%] w-full px-4 overflow-auto">
 							{#each Array(5) as _, index (index)}
 								<div
 									class="relative text-white ring-1 gap-2 hover:scale-105 transition duration-150 mb-4 ring-slate-400/20 bg-slate-700/20 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md"
@@ -292,7 +292,7 @@
 								<p class="text-center pt-2 font-bold pl-2">Recent games</p>
 							</div>
 						</div>
-						<div class="relative w-full h-[70%] p-2">
+						<div class="relative w-full h-[90%] border border-white p-2">
 							{#if slideLevel !== 2}
 							<button
 								class="hover:font-extrabold transition duration-75 absolute top-[40%] right-2 p-2 border border-slate-700 rounded-full hover:scale-105 text-white font-semibold"
@@ -397,17 +397,17 @@
 								</div>
 							{:else if slideLevel === 1}
 								<div
-									class="relative flex flex-col items-center justify-center font-semibold text-gray-400 tracking-wide pt-5"
+									class="h-full w-full flex flex-col items-center justify-center font-semibold text-gray-400 tracking-wide pt-5"
 								>
 									Longest winning streak
-								</div>
-								<div
-									class="absolute top-[25%] right-1/2 transform translate-x-1/2 translate-y-[10%] flex items-center justify-center text-[50px]"
-								>
-									🔥<span class="font-bold brightness-125">5</span>
+									<p
+										class="flex items-center justify-center text-[50px]"
+									>
+										🔥<span class="font-bold brightness-125">5</span>
+									</p>
 								</div>
 							{:else if slideLevel === 2}
-							<div class="absolute top-[35%] flex-row left-[33%] flex items-center">
+							<div class="h-full w-full flex items-center justify-center">
 									<img src={user.avatar} class="shadow-md ring-1 ring-slate-800 rounded-full object-contain w-16 h-16" alt="">
 									<p class="p-4 font-bold">versus</p>
 									<img src={user.avatar} class="shadow-md ring-1 ring-slate-800 rounded-full object-contain w-16 h-16" alt="">
