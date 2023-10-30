@@ -289,7 +289,7 @@
 						<div class="w-full h-[70%] p-2">
 							<div class="flex flex-col items-center justify-center">
 								<div class="font-medium text-[14px] text-gray-300/80 tracking-tight">Games</div>
-								<div class="flex flex-row items-center pt-2 pb-6">
+								<div class="flex flex-row items-center pt-2 pb-10">
 									<svg
 										class="font-bold"
 										xmlns="http://www.w3.org/2000/svg"
@@ -334,8 +334,26 @@
 										</div>
 										<div class="absolute top-4 text-green-700"><p>43 victories</p></div>
 									</div>
-									<div class="bg-gray-400 brightness-105 h-full w-[10%]">
-										<div />
+									<div class="relative bg-gray-400 brightness-105 h-full w-[10%]">
+										<div class="absolute flex gap-2 items-center justify-center -top-6 right-0">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke-width="1.5"
+												stroke="currentColor"
+												class="w-4 h-4 bg-gray-700 rounded-md"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M3.75 9h16.5m-16.5 6.75h16.5"
+												/>
+											</svg>
+
+											<h1 class="font-bold tracking-wide text-gray-700">66%</h1>
+										</div>
+										<div class="absolute top-4 right-0 text-gray-700"><p>140 looses</p></div>
 									</div>
 									<div class="relative bg-red-700 brightness-200 h-full w-[50%]">
 										<div class="absolute flex gap-2 items-center justify-center -top-6 right-0">
