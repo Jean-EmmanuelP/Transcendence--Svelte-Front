@@ -64,7 +64,7 @@
 		<div class="h-full w-full flex flex-col">
 			<!-- le haut de ma page -->
 			<div
-				class="flex flex-row px-2 py-2 h-1/2 w-full gap-2 bg-slate-900/20 backdrop-blur-lg rounded-md"
+				class="flex flex-row px-2 py-2 h-[50%] w-full gap-2 bg-slate-900/20 backdrop-blur-lg rounded-md"
 			>
 				<!-- Image div to the left -->
 				<div class="relativ h-full w-[21%] flex items-center justify-start rounded-md">
@@ -237,7 +237,7 @@
 				</div>
 			</div>
 			<!-- le bas de ma page -->
-			<div class="w-full h-1/2 flex flex-row">
+			<div class="w-full h-[40%] flex gflex-row">
 				<div class="w-1/2 h-full flex justify-center p-2">
 					<div
 						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 relative bg-slate-900 rounded-md w-full h-full flex flex-col"
@@ -267,7 +267,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="w-1/2 h-full flex justify-center p-2">
+				<div class="w-1/2 h-full border border-white flex justify-center p-2">
 					<div
 						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 rounded-md bg-slate-900 w-full h-full flex flex-col"
 					>
