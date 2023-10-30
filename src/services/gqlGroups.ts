@@ -20,16 +20,22 @@ export const getGroups = async () => {
 						isDirectMessage
 						ownerId
 						owner {
+							id
+							pseudo
 							name
 							avatar
 							status
 						}
 						members {
+							id
+							pseudo
 							name
 							avatar
 							status
 						}
 						admins {
+							id
+							pseudo
 							name
 							avatar
 							status
@@ -57,16 +63,22 @@ export const getAllGroups = async () => {
 						isDirectMessage
 						ownerId
 						owner {
+							id
+							pseudo
 							name
 							avatar
 							status
 						}
 						members {
+							id
+							pseudo
 							name
 							avatar
 							status
 						}
 						admins {
+							id
+							pseudo
 							name
 							avatar
 							status
@@ -97,18 +109,21 @@ export const getGroup = async (channelId: string) => {
 						ownerId
 						owner {
 							id
+							pseudo
 							name
 							avatar
 							status
 						}
 						members {
 							id
+							pseudo
 							name
 							avatar
 							status
 						}
 						admins {
 							id
+							pseudo
 							name
 							avatar
 							status
@@ -140,16 +155,22 @@ export const getChannel = async (groupId: string) => {
 						isDirectMessage
 						ownerId
 						owner {
+							id
+							pseudo
 							name
 							avatar
 							status
 						}
 						members {
+							id
+							pseudo
 							name
 							avatar
 							status
 						}
 						admins {
+							id
+							pseudo
 							name
 							avatar
 							status

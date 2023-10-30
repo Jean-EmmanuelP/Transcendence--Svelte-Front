@@ -36,7 +36,9 @@ export interface searchUser {
 }
 
 export interface GroupMemberInterface {
+	id: string;
     name: string;
+    pseudo: string;
     avatar: string;
     status: string;
 }
