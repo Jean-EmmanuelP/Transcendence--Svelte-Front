@@ -236,11 +236,11 @@
 					<div
 						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 bg-slate-900 rounded-md w-full h-full flex flex-col"
 					>
-						<p class="text-center pt-2 h-[20%] w-full">Rank</p>
-						<div class="no-scrollbar h-[60%] w-full px-2 pt-2 overflow-auto border border-white">
+						<div class="h-[20%] w-full flex items-center justify-center">Rank</div>
+						<div class="no-scrollbar h-[60%] w-full px-4 overflow-auto">
 							{#each Array(5) as _, index (index)}
 								<div
-									class="text-white ring-1 gap-2 ring-slate-400/20 bg-slate-700/20 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md overflow-hidden"
+									class="text-white ring-1 gap-2 mb-2 ring-slate-400/20 bg-slate-700/20 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md overflow-hidden"
 								>
 									<div class="h-full w-[12%] rounded-full overflow-hidden">
 										<img src={user.avatar} alt="" class="w-full h-full" />
