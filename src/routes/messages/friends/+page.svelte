@@ -33,7 +33,7 @@
 			class="bg-gray-800 my-5 border text-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
 			placeholder="Search with pseudo"
 		/>
-		<div class="overflow-y-scroll max-w-full scrollbar-hide">
+		<div class="overflow-y-scroll no-scrollbar max-w-full scrollbar-hide">
 			{#each users.filter(e => {
 				const pattern = new RegExp(`\\b${pseudo}`, 'i');
 				return pattern.test(e.pseudo);

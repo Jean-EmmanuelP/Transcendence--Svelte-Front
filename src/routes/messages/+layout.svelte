@@ -33,7 +33,7 @@
 			</svg>
 		</button>
 		<div
-			class="overflow-y-scroll max-w-full scrollbar-hide flex-1 pt-3 space-y-[21px] font-medium text-gray-300 "
+			class="overflow-y-scroll no-scrollbar max-w-full scrollbar-hide flex-1 pt-3 space-y-[21px] font-medium text-gray-300 "
 		>
 			<div>
 				<div class="mt-[5px] space-y-0.5">

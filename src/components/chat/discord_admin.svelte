@@ -1,17 +1,25 @@
 <script lang="ts">
-	import { sendFriendRequest } from '../../services/gqlFriends';
-	import type { AuthenticationType } from '../../stores/authentication';
-	export let user: AuthenticationType;
-	export let handleSent: (pseudo: string) => void;
+	import { onDestroy } from 'svelte';
+	import { GroupActions, type GroupInterface, type GroupMemberInterface } from '../../interfaces/types';
+	import { doGroupAction } from '../../services/gqlGroups';
+	import { authentication, type AuthenticationType } from '../../stores/authentication';
+	export let user: GroupMemberInterface;
+	export let channel: GroupInterface;
+	export let handleSent: () => void;
+
+	let userStore: AuthenticationType;
+	const unsubscribe = authentication.subscribe((value) => {
+		userStore = value;
+	});
+	onDestroy(unsubscribe);
 
 	let loading = false;
 	async function simulateAsyncAction() {
 		loading = true;
 		// Simulating an asynchronous action
 		try {
-			const result = await sendFriendRequest(user.pseudo);
-			console.log(result);
-			handleSent(user.pseudo);
+			const result = await doGroupAction(channel.id, user.id, 0, GroupActions.DOWNADMIN);
+			handleSent();
 			loading = false;
 		} catch (e) {
 			loading = false;
@@ -34,10 +42,11 @@
 			alt=""
 		/>
 		<div class="font-medium">
-			<div>{user.name}</div>
+			<div>{user.name} 🤡</div>
 			<div class="text-sm text-gray-500">{user.pseudo}</div>
 		</div>
 	</div>
+	{#if userStore.id !== user.id}
 	<button
 		type="button"
 		class="text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2"
@@ -60,17 +69,10 @@
 			</svg>
 			Loading
 		{:else}
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="w-6 h-6"
-			>
-				<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
 			</svg>
-			<span class="sr-only">Icon description</span>
 		{/if}
 	</button>
+	{/if}
 </div>

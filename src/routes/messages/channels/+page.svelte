@@ -37,7 +37,7 @@
 			class="bg-gray-800 my-5 border text-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
 			placeholder="Search with name"
 		/>
-		<div class="overflow-y-scroll max-w-full scrollbar-hide">
+		<div class="overflow-y-scroll max-w-full scrollbar-hide no-scrollbar">
 			{#each channels.filter(e => {
 				const pattern = new RegExp(`\\b${name}`, 'i');
 				return pattern.test(e.name);

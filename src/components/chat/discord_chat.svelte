@@ -67,7 +67,7 @@
 	}
 </script>
 
-<div class="overflow-y-scroll flex-auto h-60" bind:this={scrollContainer}>
+<div class="overflow-y-scroll flex-auto h-60 no-scrollbar" bind:this={scrollContainer}>
 	{#if loading}
 			<div class="text-center">
 				<div role="status">
