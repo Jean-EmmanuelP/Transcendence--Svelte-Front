@@ -267,7 +267,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="w-1/2 h-full border border-white flex justify-center p-2">
+				<div class="w-1/2 h-full flex justify-center p-2">
 					<div
 						class="ring-1 ring-slate-800 shadow-md bg-blue-950/30 rounded-md bg-slate-900 w-full h-full flex flex-col"
 					>
@@ -293,10 +293,12 @@
 							</div>
 						</div>
 						<div class="relative w-full h-[70%] p-2">
+							{#if slideLevel !== 2}
 							<button
 								class="hover:font-extrabold transition duration-75 absolute top-[40%] right-2 p-2 border border-slate-700 rounded-full hover:scale-105 text-white font-semibold"
 								on:click={() => Slide(1)}>&gt;</button
 							>
+							{/if}
 							{#if slideLevel !== 0}
 								<button
 									class="hover:font-extrabold transition duration-75 absolute top-[40%] left-2 p-2 border border-slate-700 rounded-full hover:scale-105 text-white font-semibold"
