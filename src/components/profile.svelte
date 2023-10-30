@@ -332,6 +332,7 @@
 											</svg>
 											<h1 class="font-bold tracking-wide text-green-700">42%</h1>
 										</div>
+										<div class="absolute top-4 text-green-700"><p>43 victories</p></div>
 									</div>
 									<div class="bg-gray-400 brightness-105 h-full w-[10%]">
 										<div />
@@ -354,6 +355,7 @@
 											</svg>
 											<h1 class="font-bold tracking-wide text-red-700">66%</h1>
 										</div>
+										<div class="absolute top-4 right-0 text-red-700"><p>140 looses</p></div>
 									</div>
 								</div>
 							</div>
