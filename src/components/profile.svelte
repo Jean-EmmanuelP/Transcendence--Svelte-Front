@@ -231,7 +231,7 @@
 						</div>
 					{/if}
 				</div>
-				<div class="w-full sm:w-[44%] sm:h-full mt-9 sm:mt-auto flex justify-center">
+				<div class="w-full sm:w-[44%] sm:h-full mt-[25px] sm:mt-auto flex justify-center">
 					<div
 						class="ring-1 ring-slate-800 shadow-md rounded-md bg-slate-900/40 w-full h-full flex flex-col p-2 sm:p-0"
 					>
@@ -301,7 +301,7 @@
 						<div class="w-full h-[5%]" />
 					</div>
 				</div>
-				<div class="w-full sm:w-1/2 sm:h-full flex justify-center p-0 sm:p-2">
+				<div class="w-full sm:w-1/2 sm:h-full hidden sm:flex justify-center p-0 sm:p-2">
 					<div
 						class="ring-1 ring-slate-800 shadow-md bg-slate-900/40 rounded-md w-full h-full flex flex-col"
 					>
