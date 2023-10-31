@@ -60,14 +60,14 @@
 {:else if isError}
 	<p>Somethign went wrong. Please try again.0</p>
 {:else}
-	<div class="w-full h-full flex flex-col sm:flex-row text-white items-center justify-center px-20 py-4 overflow-y-auto no-scrollbar">
-		<div class="h-full w-full flex flex-col">
+	<div class="w-full sm:h-full flex flex-col sm:flex-row text-white items-center justify-center px-20 py-4 overflow-y-auto no-scrollbar">
+		<div class="relative sm:h-full w-full flex flex-col">
 			<!-- le haut de ma page -->
 			<div
-				class="flex flex-col sm:flex-row px-2 py-2 h-[50%] w-full gap-2 rounded-md"
+				class="flex flex-col sm:flex-row px-2 py-2 sm:h-[50%] w-full gap-2 rounded-md"
 			>
 				<!-- Image div to the left -->
-				<div class="relative h-full w-full sm:w-[21%] flex items-center justify-start rounded-md">
+				<div class="relative sm:h-full w-full sm:w-[21%] flex items-center justify-start rounded-md">
 					<div class="relative w-full h-full">
 						<div
 							class="absolute -inset-0.5 bg-gradient-to-r from-red-800 to-blue-800 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
@@ -83,7 +83,7 @@
 				<div class={`pl-2 ${!isCurrentUserProfile && 'sm:pb-2'} h-full w-full sm:w-[35%]`}>
 					{#if isCurrentUserProfile}
 						<div
-							class="flex gap-1 sm:gap-2 ring-1 ring-slate-800 shadow-md bg-slate-900/40 flex-col items-center justify-center mb-2 h-full w-full rounded-md"
+							class="flex gap-1 sm:gap-2 ring-1 pb-2 sm:pb-auto ring-slate-800 shadow-md bg-slate-900/40 flex-col items-center justify-center mb-2 sm:h-full w-full rounded-md"
 						>
 							<h1 class="font-bold sm:font-extrabold text-sm sm:text-xl sm:tracking-wider">{user.name}</h1>
 							<p class="text-xs sm:text-base font-medium">Pseudo: {user.pseudo}</p>
@@ -171,10 +171,10 @@
 							</div>
 						</div>
 						<div
-							class="flex flex-col sm:flex-row sm:h-1/3 w-full ring-1 ring-slate-800 shadow-md rounded-md bg-slate-900/40"
+							class="flex flex-col  mt-2 sm:mt-auto sm:flex-row sm:h-1/3 w-full ring-1 ring-slate-800 shadow-md rounded-md bg-slate-900/40"
 						>
 							{#if !isCurrentUserProfile}
-								<div class="p-5 w-full sm:w-1/2 h-full flex items-center justify-center">
+								<div class="p-4 sm:p-5 w-full sm:w-1/2 sm:h-full flex items-center justify-center">
 									<div class="relative group">
 										<div
 											class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
@@ -231,14 +231,14 @@
 						</div>
 					{/if}
 				</div>
-				<div class="w-full sm:w-[44%] h-full mt-7 sm:mt-auto flex justify-center">
+				<div class="w-full sm:w-[44%] sm:h-full mt-9 sm:mt-auto flex justify-center">
 					<div
-						class="ring-1 ring-slate-800 shadow-md rounded-md bg-slate-900/40 w-full h-full flex flex-col"
+						class="ring-1 ring-slate-800 shadow-md rounded-md bg-slate-900/40 w-full h-full flex flex-col p-2 sm:p-0"
 					>
-						<h1 class="text-center pt-2 font-bold h-[10%] w-full">Achievments</h1>
-						<div class="slider h-[90%] flex items-center justify-center w-full">
+						<h1 class="text-[10px] sm:text-base text-center sm:pt-2 pb-1 sm:pb-auto font-semibold sm:h-[10%] w-full">Achievments</h1>
+						<div class="sm:h-[90%] flex items-center justify-center w-full">
 							<div
-								class="slides bg-white ring-1 ring-slate-950 rounded-md shadow-md w-52 h-52 p-3 hover:scale-110 transition duration-75"
+								class="bg-white ring-1 ring-slate-950 rounded-md shadow-md sm:w-52 sm:h-52 w-16 h-w-16 p-3 hover:scale-110 transition duration-75"
 							>
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.19 115"
 									><title>League of Legends World Championship logo</title><path
@@ -270,8 +270,8 @@
 				</div>
 			</div>
 			<!-- le bas de ma page -->
-			<div class="w-full h-[40%] hidden sm:flex flex-row">
-				<div class="w-1/2 h-full flex justify-center p-2">
+			<div class="w-full sm:h-[40%] flex flex-col sm:flex-row">
+				<div class="w-full sm:w-1/2 h-full flex justify-center p-2">
 					<div
 						class="ring-1 ring-slate-800 shadow-md relative bg-slate-900/40 rounded-md w-full h-full flex flex-col"
 					>
@@ -301,7 +301,7 @@
 						<div class="w-full h-[5%]" />
 					</div>
 				</div>
-				<div class="w-1/2 h-full flex justify-center p-2">
+				<div class="w-full sm:w-1/2 h-full flex justify-center p-2">
 					<div
 						class="ring-1 ring-slate-800 shadow-md bg-slate-900/40 rounded-md w-full h-full flex flex-col"
 					>
