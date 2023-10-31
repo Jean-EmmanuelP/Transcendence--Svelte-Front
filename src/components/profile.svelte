@@ -60,8 +60,8 @@
 {:else if isError}
 	<p>Somethign went wrong. Please try again.0</p>
 {:else}
-	<div class="w-full sm:h-full flex flex-col sm:flex-row text-white items-center justify-center px-20 py-4 overflow-y-auto no-scrollbar">
-		<div class="relative sm:h-full w-full flex flex-col">
+	<div class="w-full h-screen sm:h-full flex flex-col sm:flex-row text-white items-center justify-center px-20 py-4 overflow-auto">
+		<div class="relative h-screen sm:mb-0 sm:h-full w-full flex flex-col">
 			<!-- le haut de ma page -->
 			<div
 				class="flex flex-col sm:flex-row px-2 py-2 sm:h-[50%] w-full gap-2 rounded-md"
@@ -83,7 +83,7 @@
 				<div class={`pl-2 ${!isCurrentUserProfile && 'sm:pb-2'} h-full w-full sm:w-[35%]`}>
 					{#if isCurrentUserProfile}
 						<div
-							class="flex gap-1 sm:gap-2 ring-1 pb-2 sm:pb-auto ring-slate-800 shadow-md bg-slate-900/40 flex-col items-center justify-center mb-2 sm:h-full w-full rounded-md"
+							class="flex gap-1 sm:gap-2 ring-1 pb-2 sm:pb-auto ring-slate-800 shadow-md bg-slate-900/40 flex-col items-center justify-center sm:mb-2 sm:h-full w-full rounded-md"
 						>
 							<h1 class="font-bold sm:font-extrabold text-sm sm:text-xl sm:tracking-wider">{user.name}</h1>
 							<p class="text-xs sm:text-base font-medium">Pseudo: {user.pseudo}</p>
@@ -131,7 +131,7 @@
 						<div
 							class="flex gap-1 sm:gap-2 ring-1 ring-slate-800 shadow-md bg-slate-900/40 flex-col items-center justify-center sm:mb-2 h-2/3 w-full rounded-md"
 						>
-							<h1 class="sm:font-extrabold font-bold text-sm sm:text-xl sm:tracking-wider">{user.name}</h1>
+							<h1 class="sm:font-extrabold font-bold text-sm sm:text-xl sm:tracking-wider text-center">{user.name}</h1>
 							<p class="text-xs sm:text-base font-semibold sm:font-medium">Pseudo: {user.pseudo}</p>
 							<p class="text-xs sm:text-base font-semibold sm:font-medium">Email: {user.email}</p>
 							<div class="flex flex-row pt-1 sm:pt-2">
@@ -271,9 +271,9 @@
 			</div>
 			<!-- le bas de ma page -->
 			<div class="w-full sm:h-[40%] flex flex-col sm:flex-row">
-				<div class="w-full sm:w-1/2 h-full flex justify-center sm:p-2">
+				<div class="w-full sm:w-1/2 sm:h-full flex justify-center sm:p-2">
 					<div
-						class="ring-1 ring-slate-800 shadow-md relative bg-slate-900/40 max-h-[60%] sm:max-h-full rounded-md w-full h-full flex flex-col"
+						class="ring-1 ring-slate-800 shadow-md relative bg-slate-900/40 max-h-[150px] sm:max-h-full rounded-md w-full sm:h-full flex flex-col"
 					>
 						<div class="h-[20%] w-full flex items-center justify-center font-semibold text-xs sm:text-base sm:font-bold">Ranking</div>
 						<div class="no-scrollbar h-[75%] w-full px-2 sm:px-4 overflow-auto">
@@ -301,14 +301,14 @@
 						<div class="w-full h-[5%]" />
 					</div>
 				</div>
-				<div class="w-full sm:w-1/2 h-full flex justify-center p-2">
+				<div class="w-full sm:w-1/2 sm:h-full flex justify-center p-0 sm:p-2">
 					<div
 						class="ring-1 ring-slate-800 shadow-md bg-slate-900/40 rounded-md w-full h-full flex flex-col"
 					>
 						<div class="w-full relative h-[10%]">
 							<div class="relative flex flex-row items-center justify-center">
-								<div class="absolute transform -translate-x-16 translate-y-1">
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
+								<div class="absolute transform -translate-x-12 sm:-translate-x-16 translate-y-1">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 sm:w-6 sm:h-6">
 										<path
 											fill="#28a745"
 											d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75z"
@@ -323,7 +323,7 @@
 										/>
 									</svg>
 								</div>
-								<p class="text-center pt-2 font-bold pl-2">Recent games</p>
+								<p class="text-center pt-2 sm:font-bold font-semibold pl-2 text-xs sm:text-base">Recent games</p>
 							</div>
 						</div>
 						<div class="relative w-full h-[90%] p-2">
@@ -341,7 +341,7 @@
 							{/if}
 							{#if slideLevel === 0}
 								<div class="flex flex-col items-center justify-center">
-									<div class="font-medium text-[14px] text-gray-300/80 tracking-tight">Games</div>
+									<div class="font-medium sm:text-[14px] text-gray-300/80 tracking-tight text-[12px]">Games</div>
 									<div class="flex flex-row items-center pt-2 pb-10">
 										<svg
 											class="font-bold"
