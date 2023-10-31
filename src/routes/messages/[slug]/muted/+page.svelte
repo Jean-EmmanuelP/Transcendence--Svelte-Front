@@ -1,10 +1,13 @@
 <script lang="ts">
-	import { afterUpdate } from "svelte";
+	import { afterUpdate, onDestroy } from "svelte";
 	import type { GroupInterface, GroupMemberInterface } from "../../../../interfaces/types";
 	import DiscordAvailableAdmin from "$components/chat/discord_available_admin.svelte";
 	import type { PageDataInterface } from "../+layout";
 	import { getChannel } from "../../../../services/gqlGroups";
 	import DiscordAdmin from "$components/chat/discord_admin.svelte";
+	import DiscordAvailableMute from "$components/chat/discord_available_mute.svelte";
+	import { authentication, type AuthenticationType } from "../../../../stores/authentication";
+	import DiscordMuted from "$components/chat/discord_muted.svelte";
 
 	export let data: PageDataInterface;
 
@@ -13,6 +16,12 @@
 	let channel: GroupInterface;
 	let loading: boolean = true;
 	let prevChannelId: string = '';
+
+	let userStore: AuthenticationType;
+	const unsubscribe = authentication.subscribe((value) => {
+		userStore = value;
+	});
+	onDestroy(unsubscribe);
 
 	async function loadChannel(groupId: string) {
 		try {
@@ -41,14 +50,14 @@
 </script>
 
 <div class="mx-7 w-full">
-	<p class="mt-5 text-base font-semibold uppercase">Admins</p>
+	<p class="mt-5 text-base font-semibold uppercase">Muted</p>
 	<div class="overflow-y-scroll no-scrollbar max-w-full scrollbar-hide mt-3">
 		{#if !loading}
-			{#each channel.admins.filter(e => {
-				const pattern = new RegExp(`\\b${pseudo}`, 'i');
-				return pattern.test(e.pseudo);
-			}) as user}
-				<DiscordAdmin user={user} channel={channel} handleSent={update}/>
+			{#if channel.mutes.length === 0}
+				<div>No one is muted</div>
+			{/if}
+			{#each channel.mutes as mute}
+				<DiscordMuted muteInfo={mute} channel={channel} handleSent={update}/>
 			{/each}
 		{/if}
 	</div>
@@ -63,12 +72,14 @@
 	<div class="overflow-y-scroll no-scrollbar max-w-full scrollbar-hide">
 		{#if !loading}
 			{#each channel.members.filter(e => {
-				if (channel.admins.find(c => e.id === c.id))
+				if (channel.mutes.find(c => e.id === c.userId))
+					return (false);
+				if (e.id === userStore.id)
 					return (false);
 				const pattern = new RegExp(`\\b${pseudo}`, 'i');
 				return pattern.test(e.pseudo);
 			}) as user}
-				<DiscordAvailableAdmin user={user} channel={channel} handleSent={update}/>
+				<DiscordAvailableMute user={user} channel={channel} handleSent={update}/>
 			{/each}
 		{/if}
 	</div>

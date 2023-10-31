@@ -43,12 +43,31 @@ export interface GroupMemberInterface {
     status: string;
 }
 
+
+export interface GroupMutesInterface {
+	userId: string;
+	channelId: string;
+	mutedId: Date;
+	reason: string;
+	expireAt: Date;
+	mutedBy: string;
+	user: GroupMemberInterface;
+}
+export interface GroupBansInterface {
+	userId: string;
+	channelId: string;
+	bannedBy: string;
+	user: GroupMemberInterface;
+}
+
 export interface GroupInterface {
     id: string;
     name: string;
     isPrivate: boolean;
     isDirectMessage: boolean;
     ownerId: string;
+    mutes: GroupMutesInterface[];
+    bans: GroupBansInterface[];
     owner: GroupMemberInterface[];
     members: GroupMemberInterface[];
     admins: GroupMemberInterface[];

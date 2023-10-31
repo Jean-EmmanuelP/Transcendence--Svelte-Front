@@ -161,6 +161,31 @@ export const getChannel = async (groupId: string) => {
 							avatar
 							status
 						}
+						mutes {
+							userId
+							channelId
+							expireAt
+							mutedBy
+							user {
+								id
+								pseudo
+								name
+								avatar
+								status
+							}
+						}
+						bans {
+							userId
+							channelId
+							bannedBy
+							user {
+								id
+								pseudo
+								name
+								avatar
+								status
+							}
+						}
 						members {
 							id
 							pseudo
@@ -344,7 +369,7 @@ export const joinChannel = async (channelId: string, passwordInput: string) => {
 };
 
 
-export const doGroupAction = async (channelId: string, userId: string, duration: number, action: GroupActions) => {
+export const doGroupAction = async (channelId: string, userId: string, duration: number|undefined, action: GroupActions) => {
 	try {
 		const response = await client.mutate({
 			mutation: gql`

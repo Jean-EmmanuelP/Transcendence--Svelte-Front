@@ -60,15 +60,19 @@
 		</div>
 		<div class="hidden mx-2 w-px h-6 bg-white/[.06] md:block" />
 		{#if !loading && !channel.isDirectMessage}
-			<a href="/messages/{channel.id}/admins" class="{currentpage.includes("admins") && "bg-gray-800"} px-2 mx-2 py-1 rounded-md text-sm font-medium text-gray-200 truncate md:block hover:bg-gray-800">
-				Admins
-			</a>
-			<a href="/messages/{channel.id}/muted" class="{currentpage.includes("muted") && "bg-gray-800"} px-2 mx-2 py-1 rounded-md text-sm font-medium text-gray-200 truncate md:block hover:bg-gray-800">
-				Muted
-			</a>
-			<a href="/messages/{channel.id}/banned" class="{currentpage.includes("banned") && "bg-gray-800"} px-2 mx-2 py-1 rounded-md text-sm font-medium text-gray-200 truncate md:block hover:bg-gray-800">
-				Banned
-			</a>
+			{#if channel.ownerId === data.user.id}
+				<a href="/messages/{channel.id}/admins" class="{currentpage.includes("admins") && "bg-gray-800"} px-2 mx-2 py-1 rounded-md text-sm font-medium text-gray-200 truncate md:block hover:bg-gray-800">
+					Admins
+				</a>
+			{/if}
+			{#if channel.admins.find(e => e.id === data.user.id)}
+				<a href="/messages/{channel.id}/muted" class="{currentpage.includes("muted") && "bg-gray-800"} px-2 mx-2 py-1 rounded-md text-sm font-medium text-gray-200 truncate md:block hover:bg-gray-800">
+					Muted
+				</a>
+				<a href="/messages/{channel.id}/banned" class="{currentpage.includes("banned") && "bg-gray-800"} px-2 mx-2 py-1 rounded-md text-sm font-medium text-gray-200 truncate md:block hover:bg-gray-800">
+					Banned
+				</a>
+			{/if}
 		{/if}
 	</div>
 	<div class="flex flex-1">
