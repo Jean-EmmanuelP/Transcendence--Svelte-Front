@@ -6,6 +6,7 @@
 	import { authentication, type AuthenticationType } from '../stores/authentication';
 	import { sendFriendRequest } from '../services/gqlFriends';
 	import Progress from './action_components/progress.svelte';
+	import Device from 'svelte-device-info';
 
 	let isLoading = true;
 	let isError = false;
@@ -18,6 +19,7 @@
 	});
 	onDestroy(unsubscribe);
 
+	$: isMobile = Device.isMobile;
 	$: {
 		isCurrentUserProfile = userStore.pseudo === userPseudo;
 	}
@@ -58,7 +60,7 @@
 	<p>Loading...</p>
 {:else if isError}
 	<p>Somethign went wrong. Please try again.0</p>
-{:else}
+{:else if !isMobile}
 	<div class="w-full h-full flex text-white items-center justify-center px-20 py-4">
 		<div class="h-full w-full flex flex-col">
 			<!-- le haut de ma page -->
@@ -458,6 +460,8 @@
 			</div>
 		</div>
 	</div>
+{:else}
+	<div class="text-white"></div>
 {/if}
 
 <!-- <Progress progress={30} /> -->
