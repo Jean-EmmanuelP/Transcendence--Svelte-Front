@@ -60,15 +60,15 @@
 	<p>Loading...</p>
 {:else if isError}
 	<p>Somethign went wrong. Please try again.0</p>
-{:else if !isMobile}
-	<div class="w-full h-full flex text-white items-center justify-center px-20 py-4">
+{:else}
+	<div class="w-full h-full flex text-white items-center justify-center px-20 py-4 overflow-y-auto no-scrollbar">
 		<div class="h-full w-full flex flex-col">
 			<!-- le haut de ma page -->
 			<div
-				class="flex flex-row px-2 py-2 h-[50%] w-full gap-2 rounded-md"
+				class="flex flex-col sm:flex-row px-2 py-2 h-[50%] w-full gap-2 rounded-md"
 			>
 				<!-- Image div to the left -->
-				<div class="relativ h-full w-[21%] flex items-center justify-start rounded-md">
+				<div class="relative h-full w-full sm:w-[21%] flex items-center justify-start rounded-md">
 					<div class="relative w-full h-full">
 						<div
 							class="absolute -inset-0.5 bg-gradient-to-r from-red-800 to-blue-800 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
@@ -81,7 +81,7 @@
 					</div>
 				</div>
 				<!-- Information div to the right -->
-				<div class={`pl-2 ${!isCurrentUserProfile && 'pb-2'} h-full w-[35%]`}>
+				<div class={`pl-2 ${!isCurrentUserProfile && 'pb-2'} h-full w-full sm:w-[35%]`}>
 					{#if isCurrentUserProfile}
 						<div
 							class="flex gap-2 ring-1 ring-slate-800 shadow-md bg-slate-900/40 flex-col items-center justify-center mb-2 h-full w-full rounded-md"
@@ -460,8 +460,6 @@
 			</div>
 		</div>
 	</div>
-{:else}
-	<div class="text-white"></div>
 {/if}
 
 <!-- <Progress progress={30} /> -->
