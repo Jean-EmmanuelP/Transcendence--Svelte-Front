@@ -271,15 +271,15 @@
 			</div>
 			<!-- le bas de ma page -->
 			<div class="w-full sm:h-[40%] flex flex-col sm:flex-row">
-				<div class="w-full sm:w-1/2 h-full flex justify-center p-2">
+				<div class="w-full sm:w-1/2 h-full flex justify-center sm:p-2">
 					<div
-						class="ring-1 ring-slate-800 shadow-md relative bg-slate-900/40 rounded-md w-full h-full flex flex-col"
+						class="ring-1 ring-slate-800 shadow-md relative bg-slate-900/40 max-h-[60%] sm:max-h-full rounded-md w-full h-full flex flex-col"
 					>
-						<div class="h-[20%] w-full flex items-center justify-center font-bold">Ranking</div>
-						<div class="no-scrollbar h-[75%] w-full px-4 overflow-auto">
+						<div class="h-[20%] w-full flex items-center justify-center font-semibold text-xs sm:text-base sm:font-bold">Ranking</div>
+						<div class="no-scrollbar h-[75%] w-full px-2 sm:px-4 overflow-auto">
 							{#each Array(5) as _, index (index)}
 								<div
-									class="relative text-white ring-1 gap-2 hover:scale-105 transition duration-150 mb-4 ring-slate-400/20 bg-slate-700/10 flex flex-row h-1/3 w-full rounded-md rounded-l-full shadow-md"
+									class="relative text-white ring-1 gap-1 sm:gap-2 hover:scale-105 transition duration-150 mb-2 sm:mb-4 ring-slate-400/20 bg-slate-700/10 flex flex-row h-1/4 sm:h-1/3 w-full rounded-md rounded-l-full shadow-md"
 								>
 									<div
 										class="absolute -inset-[-0.3px] bg-gradient-to-r from-red-500/30 to-blue-500/30 rounded-lg rounded-l-full blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
@@ -287,12 +287,12 @@
 									<div
 										class="w-full h-full relative bg-slate-900/50  ring-1 rounded-md rounded-l-full ring-black/20 shadow-lg text-white"
 									>
-										<div class="relative h-full w-[11%] rounded-full overflow-hidden">
+										<div class="relative h-full w-[20%] sm:w-[11%] rounded-full overflow-hidden">
 											<img src={user.avatar} alt="" class="w-full h-full" />
 										</div>
 										<div class="h-full w-[89%] flex flex-row items-center justify-between">
-											<p class="absolute top-5 left-20">{user.pseudo}</p>
-											<h1 class="absolute top-2 right-2">{index}</h1>
+											<p class="absolute top-2 sm:top-5 left-14 sm:left-20 text-xs sm:text-base">{user.pseudo}</p>
+											<h1 class="absolute top-2 right-2 text-xs sm:text-base">{index}</h1>
 										</div>
 									</div>
 								</div>
