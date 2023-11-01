@@ -3,7 +3,7 @@ import { setContext } from '@apollo/client/link/context';
 import Cookies from 'js-cookie';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3000/graphql',
+  uri: 'http://42pong.com:3000/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {

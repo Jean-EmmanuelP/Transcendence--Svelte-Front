@@ -73,6 +73,11 @@
 					Banned
 				</a>
 			{/if}
+			{#if channel.ownerId === data.user.id}
+				<a href="/messages/{channel.id}/settings" class="{currentpage.includes("settings") && "bg-gray-800"} px-2 mx-2 py-1 rounded-md text-sm font-medium text-gray-200 truncate md:block hover:bg-gray-800">
+					Settings
+				</a>
+			{/if}
 		{/if}
 	</div>
 	<div class="flex flex-1">

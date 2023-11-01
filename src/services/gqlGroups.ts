@@ -368,6 +368,29 @@ export const joinChannel = async (channelId: string, passwordInput: string) => {
 	}
 };
 
+export const setChannelPassword = async (channelId: string, password: string | undefined) => {
+	try {
+		const response = await client.mutate({
+			mutation: gql`
+				mutation setChannelPassword($input: ChannelPasswordInput!) {
+					setChannelPassword(input: $input) {
+						success
+					}
+				}
+			`,
+			variables: {
+				input: {
+					channelId,
+					password
+				}
+			}
+		});
+		return response.data.setChannelPassword;
+	} catch (error) {
+		console.log(error);
+		throw new Error('Error updating groups');
+	}
+};
 
 export const doGroupAction = async (channelId: string, userId: string, duration: number|undefined, action: GroupActions) => {
 	try {

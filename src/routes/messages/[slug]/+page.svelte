@@ -24,6 +24,10 @@
 		}
 	}
 
+	async function onUpdate() {
+		channel = await getChannel(data.slug);
+	}
+
 	afterUpdate(async () => {
 		if (data.slug !== prevChannelId) {
 			if (data.slug && data.slug.length > 0) {
@@ -42,7 +46,7 @@
 	<p class="mt-5 mb-3 text-base font-semibold">Members</p>
 	{#if !loading}
 		{#each channel.members as member}
-			<DiscordChannelMember {member} {channel}/>
+			<DiscordChannelMember {member} {channel} handleUpdate={onUpdate}/>
 		{/each}
 	{/if}
 </div>
