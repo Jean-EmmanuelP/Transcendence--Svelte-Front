@@ -4,6 +4,7 @@
 	import { getGroups } from '../../services/gqlGroups.js';
 	import type { GroupInterface } from '../../interfaces/types.js';
 	import { page } from '$app/stores';
+	import socket from '../../services/socket.js';
 
 	let groups: GroupInterface[] = [];
 	let currentPage : string;
@@ -13,6 +14,7 @@
 	});
 
 	onMount(async () => {
+		socket;
 		try {
 			groups = await getGroups();
 		} catch (e) {}

@@ -7,18 +7,26 @@
 	import FriendComponent from "$components/friends/friend_component.svelte";
 	import ActiveFriendComponent from "$components/friends/active_friend_component.svelte";
 	import type { FriendInterface } from "../../../interfaces/types";
+	import socket from "../../../services/socket";
 
 	let pseudo: string = "";
 	let users: FriendInterface[] = [];
 
-	onMount(async () => {
-		try {
-			const tempFriends = await getFriends();
+	async function loadFriends() {
+		const tempFriends = await getFriends();
 
-			tempFriends.forEach((element: FriendInterface) => {
-				users.push(element);
-			});
-			users = [...users];
+		tempFriends.forEach((element: FriendInterface) => {
+			users.push(element);
+		});
+		users = [...users];
+	}
+
+	onMount(async () => {
+		socket.on("updateChat", () => {
+			loadFriends();
+		});
+		try {
+			loadFriends();
 		} catch (e) {
 
 		}
