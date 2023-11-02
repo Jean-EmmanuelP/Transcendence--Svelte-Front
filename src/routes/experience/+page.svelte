@@ -3,7 +3,7 @@
 
 <div class="feature-animation square-animation w-full h-full bg-white overflow-auto no-scrollbar">
 	<div class="sphere-animation">
-		<svg class="sphere" viewBox="0 0 440 440">
+		<svg class="sphere" viewBox="0 0 440 440" width="220" height="220">
 			<defs>
 				<linearGradient id="sphereGradient" x1="0%" x2="0%" y1="0%" y2="0%">
 					<stop stop-color="#373734" offset="0%" />
