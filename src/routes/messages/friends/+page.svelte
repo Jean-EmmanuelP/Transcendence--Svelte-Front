@@ -28,7 +28,7 @@
 		try {
 			loadFriends();
 		} catch (e) {
-
+			console.log('There was an error during the loadFriends!');
 		}
 	})
 </script>

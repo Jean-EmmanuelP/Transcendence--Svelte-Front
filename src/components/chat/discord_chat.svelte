@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { beforeUpdate, afterUpdate } from 'svelte';
+	import { beforeUpdate, afterUpdate, onMount } from 'svelte';
 	import type { GroupInterface, MessageInterface } from '../../interfaces/types';
 	import { getMessages, sendMessage } from '../../services/gqlGroups';
 	import DiscordChatMessage from './discord_chat_message.svelte';
+	import socket from '../../services/socket';
 
 	export let group: GroupInterface;
 
@@ -65,6 +66,17 @@
 		}
 		return (false);
 	}
+
+	onMount(async () => {
+		socket.on("updateChat", () => {
+			loadMessages();
+		});
+		try {
+			loadMessages();
+		} catch (e) {
+			console.log('There was an error during the loadMessages!');
+		}
+	})
 </script>
 
 <div class="overflow-y-scroll flex-auto h-60 no-scrollbar" bind:this={scrollContainer}>
