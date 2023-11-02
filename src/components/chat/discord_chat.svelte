@@ -69,12 +69,17 @@
 
 	onMount(async () => {
 		socket.on("updateChat", () => {
-			loadMessages();
+			if (group && group.id) {
+				loadMessages(group.id);
+			}
 		});
-		try {
-			loadMessages();
-		} catch (e) {
-			console.log('There was an error during the loadMessages!');
+
+		if (group && group.id) {
+			try {
+				loadMessages(group.id);
+			} catch (e) {
+				console.log('There was an error during the loadMessages!');
+			}
 		}
 	})
 </script>
