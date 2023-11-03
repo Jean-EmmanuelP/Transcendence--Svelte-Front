@@ -1,3 +1,5 @@
+Transcendence over in 1 week
+
 Temporary ReadMe:
 
 Not over yet :
