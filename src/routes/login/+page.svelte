@@ -1,15 +1,18 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
 	import { goto } from '$app/navigation';
+	import { fade } from 'svelte/transition';
 	import AuthServices from '../../services/auth';
 	import Cookies from 'js-cookie';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
 	import { authentication } from '../../stores/authentication';
 	import Device from 'svelte-device-info';
+	import { onDestroy } from 'svelte';
 
 	const loading = writable(false);
-	const serverError = writable(undefined);
+	const serverError = writable<string | undefined>(undefined);
+	let timeoutId: any;
 
 	$: isMobile = Device.isMobile;
 	const { form, handleChange, errors, state, handleSubmit } = createForm({
@@ -23,27 +26,59 @@
 		}),
 		onSubmit: async (values) => {
 			loading.set(true);
+			serverError.set(undefined);
 			try {
-				console.log(`went here`);
 				const response = await AuthServices.loginCredentials(values.email, values.password);
 				if (Cookies.get('access_token')) Cookies.remove('access_token');
 				Cookies.set('access_token', response.token, { expires: 1 });
 				authentication.setUser(response);
 				goto('/');
 			} catch (error) {
-				const errorMessage = error.response?.statusText || 'An error occurred';
+				let errorMessage = 'An unexpected error occured. Please try again.';
+				if (error.response && error.response.data && error.response.data.message) {
+					errorMessage = error.response.data.message;
+				} else if (error.request) {
+					errorMessage = 'No response from server. Check your network connection';
+				} else {
+					errorMessage = error.message;
+				}
 				serverError.set(errorMessage);
 			} finally {
 				loading.set(false);
 			}
 		}
 	});
-	$: $serverError && console.log($serverError);
+
+	function clearErrorTimeout() {
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+			timeoutId = null;
+		}
+	}
+
+	$: if ($serverError) {
+		clearErrorTimeout();
+		timeoutId = setTimeout(() => {
+			serverError.set(undefined);
+		}, 3000);
+		onDestroy(() => {
+			clearTimeout(timeoutId);
+		});
+	}
 </script>
 
 <div
 	class="flex h-screen w-screen flex-col bg-black items-center justify-center py-12 sm:px-6 lg:px-8"
 >
+	{#if $serverError}
+		<div
+			class="z-10 p-2 rounded-md bg-red-500 text-white fixed top-4 right-4"
+			in:fade={{ duration: 300 }}
+			out:fade={{ duration: 300 }}
+		>
+			{$serverError}
+		</div>
+	{/if}
 	<div class="sm:mx-auto flex flex-col items-center justify-center sm:w-full sm:max-w-md">
 		<div class="relative w-[50px] h-[40px]">
 			<svg
