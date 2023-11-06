@@ -114,7 +114,7 @@
 						/>
 					</div>
 					{#if $errors.firstName}
-						<small>{$errors.firstName}</small>
+						<small class="text-white">{$errors.firstName}</small>
 					{/if}
 				</div>
 				<div>
@@ -133,7 +133,7 @@
 						/>
 					</div>
 					{#if $errors.lastName}
-						<small>{$errors.lastName}</small>
+						<small class="text-white">{$errors.lastName}</small>
 					{/if}
 				</div>
 				<div>
@@ -152,7 +152,7 @@
 						/>
 					</div>
 					{#if $errors.email}
-						<small>{$errors.email}</small>
+						<small class="text-white">{$errors.email}</small>
 					{/if}
 				</div>
 
@@ -173,7 +173,7 @@
 						/>
 					</div>
 					{#if $errors.password}
-						<small>{$errors.password}</small>
+						<small class="text-white">{$errors.password}</small>
 					{/if}
 				</div>
 				<div>
