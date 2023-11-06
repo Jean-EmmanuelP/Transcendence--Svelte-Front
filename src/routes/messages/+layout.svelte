@@ -14,7 +14,12 @@
 	});
 
 	onMount(async () => {
-		socket;
+		socket.on("connect", () => {
+			console.log("Connected");
+		});
+		socket.on("updateChat", async () => {
+			groups = await getGroups();
+		});
 		try {
 			groups = await getGroups();
 		} catch (e) {}

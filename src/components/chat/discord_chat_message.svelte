@@ -49,7 +49,6 @@
 			loading = false;
 		}
 	}
-	console.log(message)
 
 </script>
 

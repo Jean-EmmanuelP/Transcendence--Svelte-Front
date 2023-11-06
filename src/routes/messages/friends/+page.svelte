@@ -14,7 +14,7 @@
 
 	async function loadFriends() {
 		const tempFriends = await getFriends();
-
+		users = [];
 		tempFriends.forEach((element: FriendInterface) => {
 			users.push(element);
 		});

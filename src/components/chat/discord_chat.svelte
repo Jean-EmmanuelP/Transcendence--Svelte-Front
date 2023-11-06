@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { beforeUpdate, afterUpdate } from 'svelte';
+	import { beforeUpdate, afterUpdate, onMount } from 'svelte';
 	import type { GroupInterface, MessageInterface } from '../../interfaces/types';
 	import { getMessages, sendMessage } from '../../services/gqlGroups';
 	import DiscordChatMessage from './discord_chat_message.svelte';
+	import socket from '../../services/socket';
 
 	export let group: GroupInterface;
 
@@ -19,8 +20,8 @@
 	async function loadMessages(groupId: string) {
 		try {
 			loading = true;
-			messages = await getMessages(groupId);
-			message = "";
+			const tempMsgs = await getMessages(groupId);
+			messages = [...tempMsgs];
 			loading = false;
 		} catch (e) {
 			console.log(e);
@@ -34,6 +35,20 @@
 			loadMessages(group.id);
 		}
 	});
+
+	onMount(async () => {
+		socket.on("updateChat", async () => {
+			console.log("------UPDATE---------");
+			if (group)
+				try {
+					messages = await getMessages(group.id);
+					scrollDown();
+				} catch (e) {
+
+				}
+			console.log(messages);
+		});
+	})
 
 	async function handleSend() {
 		try {

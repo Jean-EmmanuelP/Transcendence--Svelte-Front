@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { afterUpdate } from 'svelte';
+	import { afterUpdate, onMount } from 'svelte';
 	import { getChannel } from '../../../services/gqlGroups';
 	import type { GroupInterface } from '../../../interfaces/types';
 	import type { PageDataInterface } from './+layout';
 	import DiscordChat from '$components/chat/discord_chat.svelte';
 	import DiscordChannelMember from '$components/chat/discord_channel_member.svelte';
+	import socket from '../../../services/socket';
 
 	export let data: PageDataInterface;
 
@@ -27,6 +28,12 @@
 	async function onUpdate() {
 		channel = await getChannel(data.slug);
 	}
+
+	onMount(async () => {
+		socket.on("updateChat", async () => {
+			channel = await getChannel(data.slug);
+		});
+	})
 
 	afterUpdate(async () => {
 		if (data.slug !== prevChannelId) {
