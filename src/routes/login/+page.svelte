@@ -24,17 +24,21 @@
 		onSubmit: async (values) => {
 			loading.set(true);
 			try {
+				console.log(`went here`);
 				const response = await AuthServices.loginCredentials(values.email, values.password);
 				if (Cookies.get('access_token')) Cookies.remove('access_token');
 				Cookies.set('access_token', response.token, { expires: 1 });
 				authentication.setUser(response);
 				goto('/');
 			} catch (error) {
-				serverError.set(error.statusText);
+				const errorMessage = error.response?.statusText || 'An error occurred';
+				serverError.set(errorMessage);
+			} finally {
 				loading.set(false);
 			}
 		}
 	});
+	$: $serverError && console.log($serverError);
 </script>
 
 <div
@@ -77,7 +81,9 @@
 				<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
 			</svg>
 		</div>
-		<h2 class="m-4 text-center text-medium sm:text-2xl font-bold leading-9 tracking-tight text-white">
+		<h2
+			class="m-4 text-center text-medium sm:text-2xl font-bold leading-9 tracking-tight text-white"
+		>
 			Sign in to your account
 		</h2>
 	</div>
@@ -93,7 +99,9 @@
 				<div class="relative px-6 py-6 shadow sm:rounded-lg sm:px-12">
 					<form class="space-y-6" on:submit|preventDefault={handleSubmit}>
 						<div>
-							<label for="email" class="block text-[14px] sm:text-sm font-medium leading-6 text-white">Email</label
+							<label
+								for="email"
+								class="block text-[14px] sm:text-sm font-medium leading-6 text-white">Email</label
 							>
 							<div class="mt-2">
 								<input
@@ -107,7 +115,7 @@
 								/>
 							</div>
 							{#if $errors.email}
-								<small>{$errors.email}</small>
+								<small class="text-white">{$errors.email}</small>
 							{/if}
 						</div>
 
@@ -127,21 +135,21 @@
 								/>
 							</div>
 							{#if $errors.password}
-								<small>{$errors.password}</small>
+								<small class="text-white">{$errors.password}</small>
 							{/if}
 						</div>
 
 						<div class="flex items-center justify-between">
 							<div class="text-sm leading-6">
-								<a href="#" class="font-semibold text-white/70 hover:text-white text-[14px] sm:text-sm">Forgot password?</a
+								<a
+									href="#"
+									class="font-semibold text-white/70 hover:text-white text-[14px] sm:text-sm"
+									>Forgot password?</a
 								>
 							</div>
 						</div>
 
 						<div>
-							{#if $serverError}
-								<small>{$serverError}</small>
-							{/if}
 							{#if !loading}
 								<button
 									disabled
@@ -253,12 +261,11 @@
 					<p
 						class="relative mt-4 pb-2 group-hover/notmember:text-white tracking-wide text-center text-[15px] sm:text-sm text-white/50 font-semibold"
 					>
-						Not a member?{' '}{#if isMobile}<br/>{/if}
+						Not a member?{' '}{#if isMobile}<br />{/if}
 						<a
 							href="/register"
 							class="font-bold leading-6 text-blue-600 tracking-wide hover:text-blue-500 brightness:100 group-hover/notmember:brightness-200"
 						>
-
 							Register an account
 						</a>
 					</p>
