@@ -121,12 +121,27 @@
 								class="absolute -inset-0.5 bg-gradient-to-r from-red-500/80 to-blue-500/80 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
 							/>
 							<button
+								id="openModalButton"
 								type="button"
 								class="relative rounded-md bg-white px-3 py-2 text-black text-sm font-semibold shadow-sm transition duration-300 group-hover:font-bold"
 								>Change avatar</button
 							>
+							<div id="fileUploadModal" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
+								<div class="modal-content bg-white p-6 m-auto max-w-md">
+									<span class="close absolute top-0 right-0 p-4 text-2xl cursor-pointer"
+										>&times;</span
+									>
+									<h2 class="text-xl font-semibold">Sélectionner un fichier</h2>
+									<input type="file" id="fileInput" class="mt-2 border p-2" accept="image/*" />
+									<button id="uploadButton" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+										>Télécharger</button
+									>
+								</div>
+							</div>
 						</div>
-						<p class="mt-2 text-[11px] sm:text-xs leading-5 text-gray-300">JPG, GIF or PNG. 1MB max.</p>
+						<p class="mt-2 text-[11px] sm:text-xs leading-5 text-gray-300">
+							JPG, GIF or PNG. 1MB max.
+						</p>
 					</div>
 				</div>
 				<div class="col-span-full">
