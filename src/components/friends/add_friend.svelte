@@ -26,7 +26,7 @@
 			tempUsers.forEach((element: AuthenticationType) => {
 				if (!tempFriends.find((e: AuthenticationType) => e.pseudo === element.pseudo))
 				{
-					if (!pendingRequests.find((e) => e.receiverId === element.id) && $authentication.id !== element.id)
+					if (!pendingRequests.find((e:any) => e.receiverId === element.id) && $authentication.id !== element.id)
 						users.push(element);
 				}
 			});

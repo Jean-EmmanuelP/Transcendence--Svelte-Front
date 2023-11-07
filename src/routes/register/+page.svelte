@@ -6,9 +6,12 @@
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
 	import Device from 'svelte-device-info';
+	import { onDestroy } from 'svelte';
+	import { fade } from 'svelte/transition';
 
 	const loading = writable(false);
-	const serverError = writable(undefined);
+	const serverError = writable<string | undefined>(undefined);
+	let timeoutId: any;
 
 	$: isMobile = Device.isMobile;
 	const { form, handleChange, errors, state, handleSubmit } = createForm({
@@ -39,17 +42,52 @@
 				Cookies.set('access_token', response.accessToken, { expires: 1 });
 				goto('/');
 			} catch (error) {
-				serverError.set(error.statusText);
+				let errorMessage = 'An unexpected error occured. Please try again.';
+				if (error.response && error.response.data && error.response.data.message) {
+					errorMessage = error.response.data.message;
+				} else if (error.request) {
+					errorMessage = 'No response from server. Check your network connection';
+				} else {
+					errorMessage = error.message;
+				}
+				console.log(errorMessage);
+				serverError.set(errorMessage);
+			} finally {
 				loading.set(false);
 			}
 		}
 	});
-</script>
 
+	function clearErrorTimeout() {
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+			timeoutId = null;
+		}
+	}
+
+	$: if ($serverError) {
+		clearErrorTimeout();
+		timeoutId = setTimeout(() => {
+			serverError.set(undefined);
+		}, 3000);
+		onDestroy(() => {
+			clearTimeout(timeoutId);
+		});
+	}
+</script>
 
 <div
 	class="relative flex h-screen w-screen bg-black flex-col items-center p-4 justify-center sm:px-6 lg:px-8"
 >
+	{#if $serverError}
+		<div
+			class="z-10 p-2 rounded-md bg-red-500 text-white fixed top-4 right-4"
+			in:fade={{ duration: 300 }}
+			out:fade={{ duration: 300 }}
+		>
+			{$serverError}
+		</div>
+	{/if}
 	<div class="absolute inset-0 left-4 top-4 text-white h-[50px] w-[40px]">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +152,7 @@
 						/>
 					</div>
 					{#if $errors.firstName}
-						<small>{$errors.firstName}</small>
+						<small class="text-white">{$errors.firstName}</small>
 					{/if}
 				</div>
 				<div>
@@ -133,7 +171,7 @@
 						/>
 					</div>
 					{#if $errors.lastName}
-						<small>{$errors.lastName}</small>
+						<small class="text-white">{$errors.lastName}</small>
 					{/if}
 				</div>
 				<div>
@@ -152,7 +190,7 @@
 						/>
 					</div>
 					{#if $errors.email}
-						<small>{$errors.email}</small>
+						<small class="text-white">{$errors.email}</small>
 					{/if}
 				</div>
 
@@ -173,7 +211,7 @@
 						/>
 					</div>
 					{#if $errors.password}
-						<small>{$errors.password}</small>
+						<small class="text-white">{$errors.password}</small>
 					{/if}
 				</div>
 				<div>
@@ -205,7 +243,6 @@
 
 				<div class="mt-6 grid grid-cols-2 gap-4">
 					<a
-
 						href="http://42pong.com:3000/auth/42"
 						class="flex w-full items-center justify-center gap-3 rounded-md bg-[#1D9BF0]/40 hover:bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
 					>
@@ -238,7 +275,6 @@
 					</a>
 
 					<a
-
 						href="http://42pong.com:3000/auth/google"
 						class="flex w-full items-center justify-center gap-3 rounded-md bg-red-500/40 hover:bg-red-500 px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
 					>

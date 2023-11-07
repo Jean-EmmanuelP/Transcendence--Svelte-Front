@@ -4,6 +4,7 @@
 	import { getGroups } from '../../services/gqlGroups.js';
 	import type { GroupInterface } from '../../interfaces/types.js';
 	import { page } from '$app/stores';
+	import socket from '../../services/socket.js';
 
 	let groups: GroupInterface[] = [];
 	let currentPage : string;
@@ -13,6 +14,12 @@
 	});
 
 	onMount(async () => {
+		socket.on("connect", () => {
+			console.log("Connected");
+		});
+		socket.on("updateChat", async () => {
+			groups = await getGroups();
+		});
 		try {
 			groups = await getGroups();
 		} catch (e) {}
@@ -33,7 +40,7 @@
 			</svg>
 		</button>
 		<div
-			class="overflow-y-scroll max-w-full scrollbar-hide flex-1 pt-3 space-y-[21px] font-medium text-gray-300 "
+			class="overflow-y-scroll no-scrollbar max-w-full scrollbar-hide flex-1 pt-3 space-y-[21px] font-medium text-gray-300 "
 		>
 			<div>
 				<div class="mt-[5px] space-y-0.5">

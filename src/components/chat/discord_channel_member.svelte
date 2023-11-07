@@ -1,11 +1,21 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import type { GroupInterface, GroupMemberInterface } from '../../interfaces/types';
+	import { onDestroy, onMount } from 'svelte';
+	import { GroupActions, type GroupInterface, type GroupMemberInterface } from '../../interfaces/types';
+	import { doGroupAction } from '../../services/gqlGroups';
+	import { authentication, type AuthenticationType } from '../../stores/authentication';
 
 	export let member: GroupMemberInterface;
 	export let channel: GroupInterface;
+	export let handleUpdate: () => void;
+
+	let userStore: AuthenticationType;
+	const unsubscribe = authentication.subscribe((value) => {
+		userStore = value;
+	});
+	onDestroy(unsubscribe);
 
 	let isAdmin = false;
+	let hasAccess = false;
 	let isOwner = channel.ownerId === member.id;
 
 	for (let i = 0; i < channel.admins.length; i++) {
@@ -18,7 +28,26 @@
 		menuOpen = !menuOpen;
 	}
 
+	async function handleKick() {
+		try {
+			const result = await doGroupAction(
+				channel.id,
+				member.id,
+				undefined,
+				GroupActions.KICK
+			);
+			handleUpdate();
+		} catch (e) {
+
+		}
+
+	}
+
 	onMount(() => {
+		hasAccess = channel.ownerId === userStore.id;
+		for (let i = 0; i < channel.admins.length; i++) {
+			if (channel.admins[i].id === userStore.id) hasAccess = true;
+		}
 		window.addEventListener('click', handleOutsideClick);
 	});
 
@@ -55,10 +84,9 @@
 				</p>
 			</div>
 		</button>
-
 	</div>
 
-	{#if menuOpen}
+	{#if menuOpen && !isAdmin && userStore.id !== member.id && hasAccess}
 		<div
 			class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
 			role="menu"
@@ -68,6 +96,7 @@
 		>
 			<div class="py-1 w-full" role="none">
 				<button
+					on:click={handleKick}
 					class="text-gray-400 w-full text-left block px-4 py-2 text-sm hover:bg-gray-900 hover:text-white"
 					role="menuitem"
 					tabindex="-1"
@@ -75,31 +104,6 @@
 				>
 					Kick
 				</button>
-				<button
-					class="text-gray-400 w-full text-left block px-4 py-2 text-sm hover:bg-gray-900 hover:text-white"
-					role="menuitem"
-					tabindex="-1"
-					id="menu-item-0"
-				>
-					Ban
-				</button>
-				<button
-					class="text-gray-400 w-full text-left block px-4 py-2 text-sm hover:bg-gray-900 hover:text-white"
-					role="menuitem"
-					tabindex="-1"
-					id="menu-item-0"
-				>
-					Mute
-				</button>
-				<button
-					class="text-gray-400 w-full text-left block px-4 py-2 text-sm hover:bg-gray-900 hover:text-white"
-					role="menuitem"
-					tabindex="-1"
-					id="menu-item-0"
-				>
-					Grant Admin
-				</button>
-
 			</div>
 		</div>
 	{/if}

@@ -48,7 +48,7 @@
 
 <div class="mx-7">
 	<p class="mt-5 text-base mb-5 font-semibold uppercase">Pending - {requests.length + sentRequests.length}</p>
-	<div class="overflow-y-scroll max-w-full scrollbar-hide">
+	<div class="overflow-y-scroll no-scrollbar max-w-full scrollbar-hide">
 		{#each requests as request}
 			<PendingComponent request={request} handleAccept={handleAccepted} handleReject={handleAccepted}/>
 		{/each}

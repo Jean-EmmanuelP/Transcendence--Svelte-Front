@@ -1,17 +1,18 @@
 <script lang="ts">
+	import { GroupActions, type GroupInterface, type GroupMemberInterface } from '../../interfaces/types';
 	import { sendFriendRequest } from '../../services/gqlFriends';
-	import type { AuthenticationType } from '../../stores/authentication';
-	export let user: AuthenticationType;
-	export let handleSent: (pseudo: string) => void;
+	import { doGroupAction } from '../../services/gqlGroups';
+	export let user: GroupMemberInterface;
+	export let channel: GroupInterface;
+	export let handleSent: () => void;
 
 	let loading = false;
 	async function simulateAsyncAction() {
 		loading = true;
 		// Simulating an asynchronous action
 		try {
-			const result = await sendFriendRequest(user.pseudo);
-			console.log(result);
-			handleSent(user.pseudo);
+			const result = await doGroupAction(channel.id, user.id, 0, GroupActions.UPADMIN);
+			handleSent();
 			loading = false;
 		} catch (e) {
 			loading = false;
@@ -60,17 +61,9 @@
 			</svg>
 			Loading
 		{:else}
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="w-6 h-6"
-			>
-				<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
 			</svg>
-			<span class="sr-only">Icon description</span>
 		{/if}
 	</button>
 </div>

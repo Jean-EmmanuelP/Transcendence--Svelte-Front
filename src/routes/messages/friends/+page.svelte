@@ -7,20 +7,28 @@
 	import FriendComponent from "$components/friends/friend_component.svelte";
 	import ActiveFriendComponent from "$components/friends/active_friend_component.svelte";
 	import type { FriendInterface } from "../../../interfaces/types";
+	import socket from "../../../services/socket";
 
 	let pseudo: string = "";
 	let users: FriendInterface[] = [];
 
+	async function loadFriends() {
+		const tempFriends = await getFriends();
+		users = [];
+		tempFriends.forEach((element: FriendInterface) => {
+			users.push(element);
+		});
+		users = [...users];
+	}
+
 	onMount(async () => {
+		socket.on("updateChat", () => {
+			loadFriends();
+		});
 		try {
-			const tempFriends = await getFriends();
-
-			tempFriends.forEach((element: FriendInterface) => {
-				users.push(element);
-			});
-			users = [...users];
+			loadFriends();
 		} catch (e) {
-
+			console.log('There was an error during the loadFriends!');
 		}
 	})
 </script>
@@ -33,7 +41,7 @@
 			class="bg-gray-800 my-5 border text-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
 			placeholder="Search with pseudo"
 		/>
-		<div class="overflow-y-scroll max-w-full scrollbar-hide">
+		<div class="overflow-y-scroll no-scrollbar max-w-full scrollbar-hide">
 			{#each users.filter(e => {
 				const pattern = new RegExp(`\\b${pseudo}`, 'i');
 				return pattern.test(e.pseudo);
