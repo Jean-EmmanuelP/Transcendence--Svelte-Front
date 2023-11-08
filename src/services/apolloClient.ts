@@ -1,9 +1,10 @@
+import { PUBLIC_BACKEND_URL } from '$env/static/public';
 import { ApolloClient, InMemoryCache, createHttpLink, type DefaultOptions } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
 import Cookies from 'js-cookie';
 
 const httpLink = createHttpLink({
-  uri: 'http://42pong.com:3000/graphql',
+  uri: `${PUBLIC_BACKEND_URL}/graphql`,
 });
 
 const authLink = setContext((_, { headers }) => {

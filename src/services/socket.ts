@@ -1,3 +1,4 @@
+import { PUBLIC_BACKEND_URL } from '$env/static/public';
 import Cookies from 'js-cookie';
 import io from 'socket.io-client';
 
@@ -10,7 +11,7 @@ const transportOptions = {
 		}
 	}
 }
-const socket = io('http://42pong.com:3000', {
+const socket = io(PUBLIC_BACKEND_URL, {
 	query: {
         token
 	},

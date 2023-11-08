@@ -1,6 +1,5 @@
 import { redirect } from '@sveltejs/kit';
 import type { Handle } from '@sveltejs/kit';
-import { authentication } from './stores/authentication';
 import { userInformation } from './services/gqlUser';
 
 const unProtectedRoutes = ['/login', '/register'];
@@ -21,11 +20,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 				const { id, email, name, pseudo, avatar, isTwoFactorEnabled, status } = res.userInformation;
 				console.log("Hook userInfo", res.userInformation);
 				event.locals.user = res.userInformation;
-				// authentication.setUser({id, email, name, pseudo, avatar, isTwoFactorEnabled, status});
 			} catch (e) {
-				console.log("EEEEE")
-				// event.cookies.delete('access_token');
-				// throw redirect(303, '/login');
+				event.cookies.delete('access_token');
+				throw redirect(303, '/login');
 			}
 		}
 		if (event.url.pathname === '/signout') {
