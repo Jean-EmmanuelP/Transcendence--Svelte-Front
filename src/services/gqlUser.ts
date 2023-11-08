@@ -76,6 +76,8 @@ export const userInformationNoToken = async () => {
 				}
 			`
 		});
+		if (!response.data)
+			throw new Error('Error fetching user information');
 		return response.data.userInformation;
 	} catch (error) {
 		console.log(error);

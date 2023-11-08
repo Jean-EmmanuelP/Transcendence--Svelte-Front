@@ -1,9 +1,10 @@
 import axios from "axios";
 import Cookie from "js-cookie";
+import { PUBLIC_BACKEND_URL } from "$env/static/public";
 
 // Create a instance of axios to use the same base url.
 const axiosAPI = axios.create({
-	baseURL: "http://42pong.com:3000"
+	baseURL: PUBLIC_BACKEND_URL
 });
 
 axiosAPI.interceptors.response.use(

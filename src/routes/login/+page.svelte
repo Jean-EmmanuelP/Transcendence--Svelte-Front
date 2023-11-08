@@ -9,6 +9,7 @@
 	import { authentication } from '../../stores/authentication';
 	import Device from 'svelte-device-info';
 	import { onDestroy } from 'svelte';
+	import { PUBLIC_BACKEND_URL } from '$env/static/public';
 
 	const loading = writable(false);
 	const serverError = writable<string | undefined>(undefined);
@@ -32,7 +33,10 @@
 				if (Cookies.get('access_token')) Cookies.remove('access_token');
 				Cookies.set('access_token', response.token, { expires: 1 });
 				authentication.setUser(response);
-				goto('/');
+				if (response.isTwoFactorEnabled)
+					goto('/2fa');
+				else
+					goto('/');
 			} catch (error) {
 				let errorMessage = 'An unexpected error occured. Please try again.';
 				if (error.response && error.response.data && error.response.data.message) {
@@ -235,7 +239,7 @@
 
 						<div class="mt-6 grid grid-cols-2 gap-4">
 							<a
-								href="http://42pong.com:3000/auth/42"
+								href="{PUBLIC_BACKEND_URL}/auth/42"
 								class="flex w-full items-center justify-center gap-3 rounded-md bg-[#1D9BF0]/40 hover:bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
 							>
 								<svg
@@ -267,7 +271,7 @@
 							</a>
 
 							<a
-								href="http://42pong.com:3000/auth/google"
+								href="{PUBLIC_BACKEND_URL}/auth/google"
 								class="flex w-full items-center justify-center gap-3 rounded-md bg-red-500/40 hover:bg-red-500 px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
 							>
 								<svg viewBox="0 0 48 48" class="h-5 w-5">

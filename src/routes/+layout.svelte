@@ -12,11 +12,6 @@
 	export let data: LayoutData;
 	if (data.user) authentication.setUser(data.user);
 
-	onMount(async () => {
-		const userInfo = await userInformationNoToken();
-		console.log(userInfo.userInformation);
-		console.log('Access', Cookies.get('access_token'));
-	});
 	let currentpage = $page.url.pathname;
 	const unsubscribe = page.subscribe((value) => {
 		currentpage = value.url.pathname;
@@ -41,7 +36,7 @@
 </div> -->
 
 <Circles />
-{#if currentpage !== '/register' && currentpage !== '/login' && !currentpage.includes('/messages')}
+{#if currentpage !== '/register' && currentpage !== '/2fa' && currentpage !== '/login' && !currentpage.includes('/messages')}
 	<div class="h-screen w-screen flex overflow-hidden bg-black bg-cover bg-no-repeat">
 		<!-- <div class={`${$activePage === 'dashboard' ? `w-[15%]` : `w-[5%]`} h-screen`}>
 			<Sidebar sidebaricon={$activePage !== 'dashboard' ? 'icon' : 'normal'} />

@@ -13,7 +13,7 @@
 	let newPassword = '';
 	let confirmPassword = '';
 	let enabled: boolean;
-	let qrCodeUrl = null;
+	let qrCodeUrl: string | null = null;
 
 	const onsubscribe = authentication.subscribe((value) => {
 		console.log('Subscribe', value);
@@ -291,33 +291,41 @@
 			</p>
 		</div>
 
-		<form class="md:col-span-2" on:submit|preventDefault={handleActivate2FA}>
-			<div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
-				<div class="col-span-full">
-					<div class="flex items-center sm:mt-8">
-						<button
-							type="submit"
-							class={`${
-								enabled ? 'bg-blue-800' : 'bg-gray-200'
-							} relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2`}
-							role="switch"
-							aria-checked="false"
-							aria-labelledby="annual-billing-label"
-						>
-							<span
-								aria-hidden="true"
-								class={` ${
-									enabled ? 'translate-x-5' : 'translate-x-0'
-								} translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out`}
-							/>
-						</button>
-						<span class="ml-3 text-sm" id="annual-billing-label">
-							<span class="font-medium text-white">{enabled ? `Disable 2FA` : `Enable 2FA`}</span>
-						</span>
+		<div class="flex flex-col">
+			<form class="md:col-span-2" on:submit|preventDefault={handleActivate2FA}>
+				<div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
+					<div class="col-span-full">
+						<div class="flex items-center sm:mt-8">
+							<button
+								type="submit"
+								class={`${
+									enabled ? 'bg-blue-800' : 'bg-gray-200'
+								} relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2`}
+								role="switch"
+								aria-checked="false"
+								aria-labelledby="annual-billing-label"
+							>
+								<span
+									aria-hidden="true"
+									class={` ${
+										enabled ? 'translate-x-5' : 'translate-x-0'
+									} translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out`}
+								/>
+							</button>
+							<span class="ml-3 text-sm" id="annual-billing-label">
+								<span class="font-medium text-white">{enabled ? `Disable 2FA` : `Enable 2FA`}</span>
+							</span>
+
+						</div>
 					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+			{#if qrCodeUrl !== null}
+				<img class="mt-5" src="{qrCodeUrl}" alt="2FA"/>
+			{/if}
+		</div>
+
+
 	</div>
 	<div
 		class="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8 mb-32"
