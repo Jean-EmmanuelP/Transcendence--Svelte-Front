@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
-	import { deleteAccount, updateUserPseudo } from '../services/gqlUser';
+	import { deleteAccount, updateAvatar, updateUserPseudo } from '../services/gqlUser';
 	import { changeUserPassword } from '../services/gqlUser';
 	import { writable } from 'svelte/store';
 	import API from '../services/api';
 	import { goto } from '$app/navigation';
+	import { storage, ref, uploadBytes, getDownloadURL } from './../utils/firebaseConfig';
 
 	let pseudo = writable('');
 	let user: AuthenticationType;
@@ -98,24 +99,25 @@
 		}
 	}
 
-	function handleFileSelect(event: any) {
-		file = event.target.files[0];
+	async function uploadAvatar(file: File) {
+		const storageRef = ref(storage, `avatars/${file.name}`);
+		await uploadBytes(storageRef, file);
+		const url = await getDownloadURL(storageRef);
+		return url;
+	}
+
+	async function handleFileSelect(event: any) {
+		const file = event.target.files[0];
 		if (file) {
-			handleAvatarUpload(file);
+			try {
+				const avatarUrl = await uploadAvatar(file);
+				// Envoyez l'URL à votre API NestJS ici
+				await updateAvatar(avatarUrl);
+			} catch (error) {
+				console.error('Erreur lors du téléchargement de l’avatar :', error);
+			}
 		}
 	}
-
-	async function handleAvatarUpload(file: any) {
-		const formData = new FormData();
-		formData.append('image', file);
-
-		// Utilisation de fetch ou de Apollo Client pour envoyer la mutation avec le fichier
-		// ... Code pour envoyer la requête à votre API GraphQL
-
-		// Mettre à jour l'interface utilisateur avec la réponse
-		// ... Code pour mettre à jour le store user avec la nouvelle URL de l'avatar
-	}
-
 	function triggerFileInput() {
 		document.getElementById('fileInput')?.click();
 	}
