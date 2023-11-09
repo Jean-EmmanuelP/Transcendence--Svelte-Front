@@ -14,6 +14,7 @@
 	let confirmPassword = '';
 	let enabled: boolean;
 	let qrCodeUrl: string | null = null;
+	let file;
 
 	const onsubscribe = authentication.subscribe((value) => {
 		console.log('Subscribe', value);
@@ -96,6 +97,28 @@
 			alert('Une erreur est survenue. Veuillez reessayer.');
 		}
 	}
+
+	function handleFileSelect(event: any) {
+		file = event.target.files[0];
+		if (file) {
+			handleAvatarUpload(file);
+		}
+	}
+
+	async function handleAvatarUpload(file: any) {
+		const formData = new FormData();
+		formData.append('image', file);
+
+		// Utilisation de fetch ou de Apollo Client pour envoyer la mutation avec le fichier
+		// ... Code pour envoyer la requête à votre API GraphQL
+
+		// Mettre à jour l'interface utilisateur avec la réponse
+		// ... Code pour mettre à jour le store user avec la nouvelle URL de l'avatar
+	}
+
+	function triggerFileInput() {
+		document.getElementById('fileInput')?.click();
+	}
 </script>
 
 <div class="w-full h-full overflow-auto">
@@ -124,8 +147,16 @@
 								id="openModalButton"
 								type="button"
 								class="relative rounded-md bg-white px-3 py-2 text-black text-sm font-semibold shadow-sm transition duration-300 group-hover:font-bold"
-								>Change avatar</button
+								on:click={triggerFileInput}>Change avatar</button
 							>
+							<!-- hidden file input -->
+							<input
+								type="file"
+								id="fileInput"
+								class="hidden"
+								accept="image/*"
+								on:change={handleFileSelect}
+							/>
 							<div id="fileUploadModal" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
 								<div class="modal-content bg-white p-6 m-auto max-w-md">
 									<span class="close absolute top-0 right-0 p-4 text-2xl cursor-pointer"
@@ -315,17 +346,14 @@
 							<span class="ml-3 text-sm" id="annual-billing-label">
 								<span class="font-medium text-white">{enabled ? `Disable 2FA` : `Enable 2FA`}</span>
 							</span>
-
 						</div>
 					</div>
 				</div>
 			</form>
 			{#if qrCodeUrl !== null}
-				<img class="mt-5" src="{qrCodeUrl}" alt="2FA"/>
+				<img class="mt-5" src={qrCodeUrl} alt="2FA" />
 			{/if}
 		</div>
-
-
 	</div>
 	<div
 		class="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8 mb-32"
