@@ -15,7 +15,6 @@
 	let confirmPassword = '';
 	let enabled: boolean;
 	let qrCodeUrl: string | null = null;
-	let file;
 
 	const onsubscribe = authentication.subscribe((value) => {
 		console.log('Subscribe', value);
@@ -113,6 +112,7 @@
 				const avatarUrl = await uploadAvatar(file);
 				// Envoyez l'URL à votre API NestJS ici
 				await updateAvatar(avatarUrl);
+				authentication.update((val) => ({ ...val, avatar: avatarUrl }));
 			} catch (error) {
 				console.error('Erreur lors du téléchargement de l’avatar :', error);
 			}

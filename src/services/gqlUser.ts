@@ -143,19 +143,19 @@ export const deleteAccount = async () => {
 
 export const updateAvatar = async (avatarUrl: string) => {
 	try {
-		const response = await client.mutate({
-			mutation: gql`
-				mutation UploadAvatar($avatarUrl: String!) {
-					uploadAvatar(avatar: $avatarUrl)
-				}
-			`,
-			variables: {
-				avatarUrl
-			}
-		});
-		return response.data.uploadAvatar;
+	  const response = await client.mutate({
+		mutation: gql`
+		  mutation UploadAvatar($avatarUrl: String!) {
+			uploadAvatar(avatarUrl: $avatarUrl)
+		  }
+		`,
+		variables: {
+		  avatarUrl
+		}
+	  });
+	  return response.data.uploadAvatar;
 	} catch (error) {
-		console.log(error);
-		throw new Error('Error updating user avatar');
+	  console.log(error);
+	  throw new Error('Error updating user avatar');
 	}
-};
+  };
