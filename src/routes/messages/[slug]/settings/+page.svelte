@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { setChannelPassword } from "../../../../services/gqlGroups";
-	import { afterUpdate } from "svelte";
-	import type { GroupInterface } from "../../../../interfaces/types";
-	import type { PageDataInterface } from "../+layout";
-	import { getChannel } from "../../../../services/gqlGroups";
+	import { setChannelPassword } from '../../../../services/gqlGroups';
+	import { afterUpdate } from 'svelte';
+	import type { GroupInterface } from '../../../../interfaces/types';
+	import type { PageDataInterface } from '../+layout';
+	import { getChannel } from '../../../../services/gqlGroups';
 
 	export let data: PageDataInterface;
 	let channel: GroupInterface;
@@ -16,15 +16,13 @@
 		if ((isPrivate && password.length > 0) || !isPrivate) {
 			loading = true;
 			try {
-				if (isPrivate)
-					await setChannelPassword(channel.id, undefined);
-				else
-					await setChannelPassword(channel.id, password);
+				if (isPrivate) await setChannelPassword(channel.id, undefined);
+				else await setChannelPassword(channel.id, password);
 				loading = false;
 				isPrivate = false;
 				update();
-				name = "";
-				password = "";
+				name = '';
+				password = '';
 			} catch (e) {
 				loading = false;
 			}
@@ -38,7 +36,7 @@
 			loading = true;
 			channel = await getChannel(groupId);
 			isPrivate = channel.isPrivate;
-			console.log(channel);
+			// console.log(channel);
 			loading = false;
 		} catch (e) {
 			console.log(e);
