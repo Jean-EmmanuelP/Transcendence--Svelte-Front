@@ -46,7 +46,7 @@
 				} else {
 					errorMessage = error.message;
 				}
-				serverError.set(errorMessage);
+				serverError.set(error.data.message);
 			} finally {
 				loading.set(false);
 			}
