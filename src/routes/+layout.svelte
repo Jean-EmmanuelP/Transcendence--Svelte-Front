@@ -12,6 +12,9 @@
 	export let data: LayoutData;
 	if (data.user) authentication.setUser(data.user);
 
+	onMount(() => {
+		console.log("Front token: ", Cookies.get("access_token"));
+	});
 	let currentpage = $page.url.pathname;
 	const unsubscribe = page.subscribe((value) => {
 		currentpage = value.url.pathname;
