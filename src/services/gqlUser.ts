@@ -11,7 +11,6 @@ export const userInformation = async (access_token: string) => {
 					userInformation {
 						id
 						email
-						password
 						name
 						pseudo
 						avatar

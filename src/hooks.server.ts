@@ -15,8 +15,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 		if (access_token && !unProtectedRoutes.includes(event.url.pathname)) {
 			try {
 				const res = await userInformation(access_token ?? "");
-				const { id, email, name, pseudo, avatar, isTwoFactorEnabled, status } = res.userInformation;
-				("Hook userInfo", res.userInformation);
 				event.locals.user = res.userInformation;
 			} catch (e) {
 				event.cookies.delete('access_token');
