@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
-	import { deleteAccount, updateUserPseudo } from '../services/gqlUser';
+	import { deleteAccount, updateAvatar, updateUserPseudo } from '../services/gqlUser';
 	import { changeUserPassword } from '../services/gqlUser';
 	import { writable } from 'svelte/store';
 	import API from '../services/api';
 	import { goto } from '$app/navigation';
+	import { storage, ref, uploadBytes, getDownloadURL } from './../utils/firebaseConfig';
 
 	let pseudo = writable('');
 	let user: AuthenticationType;
@@ -14,6 +15,7 @@
 	let confirmPassword = '';
 	let enabled: boolean;
 	let qrCodeUrl: string | null = null;
+	let file;
 
 	const onsubscribe = authentication.subscribe((value) => {
 		console.log('Subscribe', value);
@@ -96,6 +98,29 @@
 			alert('Une erreur est survenue. Veuillez reessayer.');
 		}
 	}
+
+	async function uploadAvatar(file: File) {
+		const storageRef = ref(storage, `avatars/${file.name}`);
+		await uploadBytes(storageRef, file);
+		const url = await getDownloadURL(storageRef);
+		return url;
+	}
+
+	async function handleFileSelect(event: any) {
+		const file = event.target.files[0];
+		if (file) {
+			try {
+				const avatarUrl = await uploadAvatar(file);
+				// Envoyez l'URL à votre API NestJS ici
+				await updateAvatar(avatarUrl);
+			} catch (error) {
+				console.error('Erreur lors du téléchargement de l’avatar :', error);
+			}
+		}
+	}
+	function triggerFileInput() {
+		document.getElementById('fileInput')?.click();
+	}
 </script>
 
 <div class="w-full h-full overflow-auto">
@@ -124,8 +149,16 @@
 								id="openModalButton"
 								type="button"
 								class="relative rounded-md bg-white px-3 py-2 text-black text-sm font-semibold shadow-sm transition duration-300 group-hover:font-bold"
-								>Change avatar</button
+								on:click={triggerFileInput}>Change avatar</button
 							>
+							<!-- hidden file input -->
+							<input
+								type="file"
+								id="fileInput"
+								class="hidden"
+								accept="image/*"
+								on:change={handleFileSelect}
+							/>
 							<div id="fileUploadModal" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
 								<div class="modal-content bg-white p-6 m-auto max-w-md">
 									<span class="close absolute top-0 right-0 p-4 text-2xl cursor-pointer"
@@ -315,17 +348,14 @@
 							<span class="ml-3 text-sm" id="annual-billing-label">
 								<span class="font-medium text-white">{enabled ? `Disable 2FA` : `Enable 2FA`}</span>
 							</span>
-
 						</div>
 					</div>
 				</div>
 			</form>
 			{#if qrCodeUrl !== null}
-				<img class="mt-5" src="{qrCodeUrl}" alt="2FA"/>
+				<img class="mt-5" src={qrCodeUrl} alt="2FA" />
 			{/if}
 		</div>
-
-
 	</div>
 	<div
 		class="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8 mb-32"

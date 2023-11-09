@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { afterUpdate, onDestroy } from "svelte";
-	import type { GroupInterface, GroupMemberInterface } from "../../../../interfaces/types";
-	import DiscordAvailableAdmin from "$components/chat/discord_available_admin.svelte";
-	import type { PageDataInterface } from "../+layout";
-	import { getChannel } from "../../../../services/gqlGroups";
-	import DiscordAdmin from "$components/chat/discord_admin.svelte";
-	import DiscordAvailableMute from "$components/chat/discord_available_mute.svelte";
-	import { authentication, type AuthenticationType } from "../../../../stores/authentication";
-	import DiscordMuted from "$components/chat/discord_muted.svelte";
+	import { afterUpdate, onDestroy } from 'svelte';
+	import type { GroupInterface, GroupMemberInterface } from '../../../../interfaces/types';
+	import DiscordAvailableAdmin from '$components/chat/discord_available_admin.svelte';
+	import type { PageDataInterface } from '../+layout';
+	import { getChannel } from '../../../../services/gqlGroups';
+	import DiscordAdmin from '$components/chat/discord_admin.svelte';
+	import DiscordAvailableMute from '$components/chat/discord_available_mute.svelte';
+	import { authentication, type AuthenticationType } from '../../../../stores/authentication';
+	import DiscordMuted from '$components/chat/discord_muted.svelte';
 
 	export let data: PageDataInterface;
 
-	let pseudo: string = "";
+	let pseudo: string = '';
 
 	let channel: GroupInterface;
 	let loading: boolean = true;
@@ -27,7 +27,7 @@
 		try {
 			loading = true;
 			channel = await getChannel(groupId);
-			console.log(channel);
+			// console.log(channel);
 			loading = false;
 		} catch (e) {
 			console.log(e);
@@ -57,7 +57,7 @@
 				<div>No one is muted</div>
 			{/if}
 			{#each channel.mutes as mute}
-				<DiscordMuted muteInfo={mute} channel={channel} handleSent={update}/>
+				<DiscordMuted muteInfo={mute} {channel} handleSent={update} />
 			{/each}
 		{/if}
 	</div>
@@ -71,15 +71,13 @@
 	/>
 	<div class="overflow-y-scroll no-scrollbar max-w-full scrollbar-hide">
 		{#if !loading}
-			{#each channel.members.filter(e => {
-				if (channel.mutes.find(c => e.id === c.userId))
-					return (false);
-				if (e.id === userStore.id)
-					return (false);
+			{#each channel.members.filter((e) => {
+				if (channel.mutes.find((c) => e.id === c.userId)) return false;
+				if (e.id === userStore.id) return false;
 				const pattern = new RegExp(`\\b${pseudo}`, 'i');
 				return pattern.test(e.pseudo);
 			}) as user}
-				<DiscordAvailableMute user={user} channel={channel} handleSent={update}/>
+				<DiscordAvailableMute {user} {channel} handleSent={update} />
 			{/each}
 		{/if}
 	</div>

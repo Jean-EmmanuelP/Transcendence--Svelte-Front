@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie';
 import client from './apolloClient';
 import { gql } from '@apollo/client/core/index.js';
+import { index } from './../../.svelte-kit/output/server/nodes/16';
 
 export const userInformation = async (access_token: string) => {
 	try {
@@ -35,7 +36,7 @@ export const getUserInformationPerPseudo = async (pseudo: string) => {
 	try {
 		const response = await client.query({
 			query: gql`
-					query GetUserInformation($pseudo: String!) {
+				query GetUserInformation($pseudo: String!) {
 					getUserInformationWithPseudo(pseudo: $pseudo) {
 						id
 						email
@@ -75,8 +76,7 @@ export const userInformationNoToken = async () => {
 				}
 			`
 		});
-		if (!response.data)
-			throw new Error('Error fetching user information');
+		if (!response.data) throw new Error('Error fetching user information');
 		return response.data.userInformation;
 	} catch (error) {
 		console.log(error);
@@ -137,5 +137,24 @@ export const deleteAccount = async () => {
 	} catch (error) {
 		console.log(error);
 		throw new Error('Error deleting user account');
+	}
+};
+
+export const updateAvatar = async (avatarUrl: string) => {
+	try {
+		const response = await client.mutate({
+			mutation: gql`
+				mutation UploadAvatar($avatarUrl: String!) {
+					uploadAvatar(avatar: $avatarUrl)
+				}
+			`,
+			variables: {
+				avatarUrl
+			}
+		});
+		return response.data.uploadAvatar;
+	} catch (error) {
+		console.log(error);
+		throw new Error('Error updating user avatar');
 	}
 };

@@ -203,7 +203,7 @@
 			/>
 		</div>
 		<div class="w-full h-full flex items-center justify-center transparent">
-			<div class="relative border border-white h-full w-full flex items-center justify-center">
+			<div class="relative h-full w-full flex items-center justify-center">
 				{#if !clickedPlay && !clickedPlayWithFriends && !clickedMatchmaking}
 					<button
 						on:click={() => clickedButton('play')}

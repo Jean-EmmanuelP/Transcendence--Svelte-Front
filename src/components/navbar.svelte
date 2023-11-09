@@ -60,14 +60,14 @@
 			modalOpen.set(null);
 		} else {
 			modalOpen.set(modalType);
-			console.log(`modalOpen === `, $modalOpen);
+			// console.log(`modalOpen === `, $modalOpen);
 		}
 	}
 	onMount(loadPendingRequests);
 	async function loadPendingRequests() {
 		try {
 			pendingRequests = await getPendingFriendRequests();
-			console.log(`This is the pending Request : `, pendingRequests);
+			// console.log(`This is the pending Request : `, pendingRequests);
 		} catch (error) {
 			console.error(`Erreur lors du chargement des demandes d'amis`);
 		}
@@ -75,9 +75,9 @@
 
 	async function handleAcceptFriendRequest(pseudo: string) {
 		try {
-			console.log(`It went here`, pseudo);
+			// console.log(`It went here`, pseudo);
 			const methodAcceptFriendRequest = await acceptFriendRequest(pseudo);
-			console.log(methodAcceptFriendRequest);
+			// console.log(methodAcceptFriendRequest);
 		} catch (error) {
 			console.error(`Error during the mutation accept friend request`);
 		}
@@ -85,9 +85,9 @@
 
 	async function handleRefuseFriendRequest(pseudo: string) {
 		try {
-			console.log(`It went here`, pseudo);
+			// console.log(`It went here`, pseudo);
 			const methodRejectFriendRequest = await rejectFriendRequest(pseudo);
-			console.log(methodRejectFriendRequest);
+			// console.log(methodRejectFriendRequest);
 		} catch (error) {
 			console.error(`Error during the mutation reject friend request`);
 		}
@@ -276,7 +276,11 @@
 						/>
 					</svg>
 					{#if pendingRequests.length > 1}
-						<div class="absolute bottom-0 -right-1 rounded-full bg-red-500 text-white h-4 w-4 text-[8px] text-center flex items-center justify-center">{pendingRequests.length}</div>
+						<div
+							class="absolute bottom-0 -right-1 rounded-full bg-red-500 text-white h-4 w-4 text-[8px] text-center flex items-center justify-center"
+						>
+							{pendingRequests.length}
+						</div>
 					{/if}
 				</button>
 				<!-- Profile dropdown -->
