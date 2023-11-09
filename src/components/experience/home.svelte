@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { activeColor } from '../../stores/currentNavigation';
-	import Court from '$components/game/court.svelte';
+	// import Court from '$components/game/court.svelte';
 
 	let clickedPlay: boolean = false;
 	let mouseX = 0;
@@ -326,8 +326,8 @@
 							/>
 						</div>
 					</div>
-				{:else if clickedPlay && (clickedPlayWithFriends || clickedMatchmaking)}
-						<Court userinformation="yes" userinformation_opponent="yes" />
+				<!-- {:else if clickedPlay && (clickedPlayWithFriends || clickedMatchmaking)} -->
+						<!-- <Court userinformation="yes" userinformation_opponent="yes" /> -->
 					<!-- <div
 						class="relative text-white flex flex-col gap-6 items-center justify-center w-[200px] h-[200px]"
 					>
