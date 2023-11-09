@@ -41,7 +41,7 @@
 	async function handleSendFriendRequest() {
 		try {
 			const result = await sendFriendRequest(userPseudo);
-			console.log(result);
+			// console.log(result);
 		} catch (error) {
 			console.error('Error sending friend request:', error.message);
 			alert(error.message);
@@ -51,7 +51,7 @@
 	let slideLevel: number = 0;
 	async function Slide(slideNumber: number) {
 		slideLevel += slideNumber;
-		console.log(slideLevel);
+		// console.log(slideLevel);
 	}
 </script>
 
@@ -60,14 +60,16 @@
 {:else if isError}
 	<p>Somethign went wrong. Please try again.0</p>
 {:else}
-	<div class="w-full h-screen sm:h-full flex flex-col sm:flex-row text-white items-center justify-center px-20 py-4 overflow-auto">
+	<div
+		class="w-full h-screen sm:h-full flex flex-col sm:flex-row text-white items-center justify-center px-20 py-4 overflow-auto"
+	>
 		<div class="relative h-screen sm:mb-0 sm:h-full w-full flex flex-col">
 			<!-- le haut de ma page -->
-			<div
-				class="flex flex-col sm:flex-row px-2 py-2 sm:h-[50%] w-full gap-2 rounded-md"
-			>
+			<div class="flex flex-col sm:flex-row px-2 py-2 sm:h-[50%] w-full gap-2 rounded-md">
 				<!-- Image div to the left -->
-				<div class="relative sm:h-full w-full sm:w-[21%] flex items-center justify-start rounded-md">
+				<div
+					class="relative sm:h-full w-full sm:w-[21%] flex items-center justify-start rounded-md"
+				>
 					<div class="relative w-full h-full">
 						<div
 							class="absolute -inset-0.5 bg-gradient-to-r from-red-800 to-blue-800 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
@@ -85,7 +87,9 @@
 						<div
 							class="flex gap-1 sm:gap-2 ring-1 pb-2 sm:pb-auto ring-slate-800 shadow-md bg-slate-900/40 flex-col items-center justify-center sm:mb-2 sm:h-full w-full rounded-md"
 						>
-							<h1 class="font-bold sm:font-extrabold text-sm sm:text-xl sm:tracking-wider">{user.name}</h1>
+							<h1 class="font-bold sm:font-extrabold text-sm sm:text-xl sm:tracking-wider">
+								{user.name}
+							</h1>
 							<p class="text-xs sm:text-base font-medium">Pseudo: {user.pseudo}</p>
 							<p class="text-xs sm:text-base font-medium">Email: {user.email}</p>
 							<div class="flex flex-row pt-2">
@@ -121,17 +125,21 @@
 										/>
 									</svg>
 									<p class="pl-2 text-xs sm:text-base font-medium">Online</p>
-									{/if}
-								</div>
-								<div class="w-full flex items-center justify-center">
-									<Progress progress={30} />
-								</div>
+								{/if}
+							</div>
+							<div class="w-full flex items-center justify-center">
+								<Progress progress={30} />
+							</div>
 						</div>
 					{:else}
 						<div
 							class="flex gap-1 sm:gap-2 ring-1 ring-slate-800 shadow-md bg-slate-900/40 flex-col items-center justify-center sm:mb-2 h-2/3 w-full rounded-md"
 						>
-							<h1 class="sm:font-extrabold font-bold text-sm sm:text-xl sm:tracking-wider text-center">{user.name}</h1>
+							<h1
+								class="sm:font-extrabold font-bold text-sm sm:text-xl sm:tracking-wider text-center"
+							>
+								{user.name}
+							</h1>
 							<p class="text-xs sm:text-base font-semibold sm:font-medium">Pseudo: {user.pseudo}</p>
 							<p class="text-xs sm:text-base font-semibold sm:font-medium">Email: {user.email}</p>
 							<div class="flex flex-row pt-1 sm:pt-2">
@@ -171,7 +179,7 @@
 							</div>
 						</div>
 						<div
-							class="flex flex-col  mt-2 sm:mt-auto sm:flex-row sm:h-1/3 w-full ring-1 ring-slate-800 shadow-md rounded-md bg-slate-900/40"
+							class="flex flex-col mt-2 sm:mt-auto sm:flex-row sm:h-1/3 w-full ring-1 ring-slate-800 shadow-md rounded-md bg-slate-900/40"
 						>
 							{#if !isCurrentUserProfile}
 								<div class="p-4 sm:p-5 w-full sm:w-1/2 sm:h-full flex items-center justify-center">
@@ -201,7 +209,9 @@
 										</div>
 									</div>
 								</div>
-								<div class="w-full sm:w-1/2 h-full flex items-center pb-2 sm:pb-auto justify-center">
+								<div
+									class="w-full sm:w-1/2 h-full flex items-center pb-2 sm:pb-auto justify-center"
+								>
 									<div class="relative group flex flex-row rounded-md">
 										<div
 											class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"
@@ -235,7 +245,11 @@
 					<div
 						class="ring-1 ring-slate-800 shadow-md rounded-md bg-slate-900/40 w-full h-full flex flex-col p-2 sm:p-0"
 					>
-						<h1 class="text-[10px] sm:text-base text-center sm:pt-2 pb-1 sm:pb-auto font-semibold sm:h-[10%] w-full">Achievments</h1>
+						<h1
+							class="text-[10px] sm:text-base text-center sm:pt-2 pb-1 sm:pb-auto font-semibold sm:h-[10%] w-full"
+						>
+							Achievments
+						</h1>
 						<div class="sm:h-[90%] flex items-center justify-center w-full">
 							<div
 								class="bg-white ring-1 ring-slate-950 rounded-md shadow-md sm:w-52 sm:h-52 w-16 h-w-16 p-3 hover:scale-110 transition duration-75"
@@ -275,7 +289,11 @@
 					<div
 						class="ring-1 ring-slate-800 shadow-md relative bg-slate-900/40 max-h-[150px] sm:max-h-full rounded-md w-full sm:h-full flex flex-col"
 					>
-						<div class="h-[20%] w-full flex items-center justify-center font-semibold text-xs sm:text-base sm:font-bold">Ranking</div>
+						<div
+							class="h-[20%] w-full flex items-center justify-center font-semibold text-xs sm:text-base sm:font-bold"
+						>
+							Ranking
+						</div>
 						<div class="no-scrollbar h-[75%] w-full px-2 sm:px-4 overflow-auto">
 							{#each Array(5) as _, index (index)}
 								<div
@@ -285,13 +303,15 @@
 										class="absolute -inset-[-0.3px] bg-gradient-to-r from-red-500/30 to-blue-500/30 rounded-lg rounded-l-full blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
 									/>
 									<div
-										class="w-full h-full relative bg-slate-900/50  ring-1 rounded-md rounded-l-full ring-black/20 shadow-lg text-white"
+										class="w-full h-full relative bg-slate-900/50 ring-1 rounded-md rounded-l-full ring-black/20 shadow-lg text-white"
 									>
 										<div class="relative h-full w-[20%] sm:w-[11%] rounded-full overflow-hidden">
 											<img src={user.avatar} alt="" class="w-full h-full" />
 										</div>
 										<div class="h-full w-[89%] flex flex-row items-center justify-between">
-											<p class="absolute top-2 sm:top-5 left-14 sm:left-20 text-xs sm:text-base">{user.pseudo}</p>
+											<p class="absolute top-2 sm:top-5 left-14 sm:left-20 text-xs sm:text-base">
+												{user.pseudo}
+											</p>
 											<h1 class="absolute top-2 right-2 text-xs sm:text-base">{index}</h1>
 										</div>
 									</div>
@@ -308,7 +328,11 @@
 						<div class="w-full relative h-[10%]">
 							<div class="relative flex flex-row items-center justify-center">
 								<div class="absolute transform -translate-x-12 sm:-translate-x-16 translate-y-1">
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 sm:w-6 sm:h-6">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										class="w-4 h-4 sm:w-6 sm:h-6"
+									>
 										<path
 											fill="#28a745"
 											d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75z"
@@ -323,7 +347,9 @@
 										/>
 									</svg>
 								</div>
-								<p class="text-center pt-2 sm:font-bold font-semibold pl-2 text-xs sm:text-base">Recent games</p>
+								<p class="text-center pt-2 sm:font-bold font-semibold pl-2 text-xs sm:text-base">
+									Recent games
+								</p>
 							</div>
 						</div>
 						<div class="relative w-full h-[90%] p-2">
@@ -341,7 +367,11 @@
 							{/if}
 							{#if slideLevel === 0}
 								<div class="flex flex-col items-center justify-center">
-									<div class="font-medium sm:text-[14px] text-gray-300/80 tracking-tight text-[12px]">Games</div>
+									<div
+										class="font-medium sm:text-[14px] text-gray-300/80 tracking-tight text-[12px]"
+									>
+										Games
+									</div>
 									<div class="flex flex-row items-center pt-2 pb-10">
 										<svg
 											class="font-bold"

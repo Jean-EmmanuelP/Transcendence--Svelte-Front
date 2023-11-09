@@ -21,13 +21,13 @@ function createAuthentication() {
 	});
 
 	return {
-	  subscribe,
-	  update,
-	  setUser: (user: AuthenticationType) => {
-		console.log("storeUser", user);
-		set({...user});
-	},
-	  // Add other necessary methods or customizations here
+		subscribe,
+		update,
+		setUser: (user: AuthenticationType) => {
+			// console.log("storeUser", user);
+			set({ ...user });
+		},
+		// Add other necessary methods or customizations here
 	};
 }
 

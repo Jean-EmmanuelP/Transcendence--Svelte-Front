@@ -1,7 +1,6 @@
 import Cookies from 'js-cookie';
 import client from './apolloClient';
 import { gql } from '@apollo/client/core/index.js';
-import { index } from './../../.svelte-kit/output/server/nodes/16';
 
 export const userInformation = async (access_token: string) => {
 	try {
@@ -11,7 +10,6 @@ export const userInformation = async (access_token: string) => {
 					userInformation {
 						id
 						email
-						password
 						name
 						pseudo
 						avatar

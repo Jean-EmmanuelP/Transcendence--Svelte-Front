@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import io from 'socket.io-client';
 
 const token = Cookies.get("access_token");
-console.log("Socket toke: ", token);
+// console.log("Socket toke: ", token);
 const transportOptions = {
 	polling: {
 		extraHeaders: {
@@ -13,7 +13,7 @@ const transportOptions = {
 }
 const socket = io(PUBLIC_BACKEND_URL, {
 	query: {
-        token
+		token
 	},
 	transportOptions
 });

@@ -17,7 +17,7 @@
 
 	function handleClick(event: CustomEvent<Conversation>) {
 		selectedConversation = event.detail;
-		console.log(selectedConversation);
+		// console.log(selectedConversation);
 	}
 
 	let newMessage = '';
@@ -28,14 +28,12 @@
 		}
 	}
 
-	
 	function handleKeyDown(event: KeyboardEvent) {
-		if(event.key === 'Enter' && !event.shiftKey) {
+		if (event.key === 'Enter' && !event.shiftKey) {
 			event.preventDefault();
 			sendMessage();
 		}
 	}
-
 </script>
 
 <div class="flex h-full w-full border border-gray-500/50">
@@ -61,7 +59,9 @@
 	</div>
 	<div class="flex flex-col border-l border-gray-500/50 h-full w-[73%]">
 		{#if selectedConversation}
-			<div class="px-2 flex items-center justify-between h-[10%] w-full border-b border-gray-500/50">
+			<div
+				class="px-2 flex items-center justify-between h-[10%] w-full border-b border-gray-500/50"
+			>
 				<div class="h-full w-[30%] flex items-center gap-2">
 					<div class="h-16 w-16">
 						<img
@@ -88,7 +88,9 @@
 					</div>
 				{/each}
 			</div>
-			<div class="h-[5%] border border-gray-500/ rounded-full mx-[2px] p-2 flex w-full justify-between m-2">
+			<div
+				class="h-[5%] border border-gray-500/ rounded-full mx-[2px] p-2 flex w-full justify-between m-2"
+			>
 				<input
 					bind:value={newMessage}
 					on:keydown={handleKeyDown}
@@ -102,9 +104,7 @@
 				>
 			</div>
 		{:else}
-			<div
-				class=" flex flex-col items-center justify-center h-full w-full gap-2"
-			>
+			<div class=" flex flex-col items-center justify-center h-full w-full gap-2">
 				<img
 					src="https://i.postimg.cc/6p8Hp6fr/Screenshot-2023-10-12-004957.png"
 					width="100px"
