@@ -183,7 +183,7 @@
 	*/
 </script>
 
-<div class="parent-enter-effect relative h-full w-full flex items-center justify-center">
+<div class="parent-enter-effect relative w-full h-full flex items-center justify-center">
 	<div
 		class=" blob-bg opacity-0 absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl"
 		bind:this={blobElement}
@@ -191,7 +191,7 @@
 	<div
 		on:mouseleave={handleMouseLeave}
 		on:mousemove={handleMouseMove}
-		class="h-[80%] w-[80%] z-10 ring-1 ring-gray-600/20 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-black laser-effect"
+		class="w-[80%] h-[80%] z-10 ring-1 ring-gray-600/20 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-black laser-effect"
 		bind:this={laserElement}
 	>
 		<div
@@ -229,3 +229,6 @@
 		</div>
 	</div>
 </div>
+
+<style>
+</style>

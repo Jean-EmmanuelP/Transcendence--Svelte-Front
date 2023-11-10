@@ -45,6 +45,7 @@
 			console.log('[Lobby room] Game found. Room: ', data.roomId);
 
 			socket.emit('ready-mm', { roomId: data.roomId });
+			roomId = data.roomId;
 			isWaiting = false;
 		});
 	});
@@ -68,19 +69,19 @@
 			<Waiting />
 		{:else if isWaiting === false}
 			{console.log('Entered here in game')}
-			<Game {socket} />
+			<Game {socket} {roomId} />
 		{/if}
 	{:else if mode === 'playFriend'}
 		{#if isWaiting === true}
 			<Waiting />
 		{:else if isWaiting === false}
-			<Game {socket} />
+			<Game {socket} {roomId} />
 		{/if}
 	{:else if mode === 'playBot'}
 		{#if isWaiting === true}
 			<Waiting />
 		{:else if isWaiting === false}
-			<Game {socket} />
+			<Game {socket} {roomId} />
 		{/if}
 	{/if}
 {:else}
