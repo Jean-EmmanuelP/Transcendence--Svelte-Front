@@ -15,7 +15,6 @@
 	let confirmPassword = '';
 	let enabled: boolean;
 	let qrCodeUrl: string | null = null;
-	let file;
 
 	const onsubscribe = authentication.subscribe((value) => {
 		console.log('Subscribe', value);
@@ -113,6 +112,7 @@
 				const avatarUrl = await uploadAvatar(file);
 				// Envoyez l'URL à votre API NestJS ici
 				await updateAvatar(avatarUrl);
+				authentication.update((val) => ({ ...val, avatar: avatarUrl }));
 			} catch (error) {
 				console.error('Erreur lors du téléchargement de l’avatar :', error);
 			}
@@ -121,6 +121,8 @@
 	function triggerFileInput() {
 		document.getElementById('fileInput')?.click();
 	}
+
+	$: console.log(qrCodeUrl);
 </script>
 
 <div class="w-full h-full overflow-auto">
@@ -263,7 +265,7 @@
 							name="current_password"
 							type="password"
 							autocomplete="current-password"
-							class="block w-full ring-0 border border-white rounded-md shadow-sm bg-white py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+							class="block w-full ring-1 border border-white rounded-md shadow-sm bg-white py-1.5 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
 							bind:value={currentPassword}
 						/>
 					</div>
@@ -279,7 +281,7 @@
 							name="new_password"
 							type="password"
 							autocomplete="new-password"
-							class="block w-full ring-0 border border-white rounded-md shadow-sm bg-white py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+							class="block w-full ring-1 border border-white rounded-md shadow-sm bg-white py-1.5 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
 							bind:value={newPassword}
 						/>
 					</div>
@@ -295,7 +297,7 @@
 							name="confirm_password"
 							type="password"
 							autocomplete="new-password"
-							class="block w-full ring-0 border border-white rounded-md shadow-sm bg-white py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+							class="block w-full ring-1 border border-white rounded-md shadow-sm bg-white py-1.5 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
 							bind:value={confirmPassword}
 						/>
 					</div>
