@@ -3,6 +3,7 @@
 	import type { MessageInterface } from '../../interfaces/types';
 	import { deleteMessage } from '../../services/gqlGroups';
 	import { authentication, type AuthenticationType } from '../../stores/authentication';
+	import { getAvatar } from '../../utils/avatarGetter';
 
 	export let isGrouped: boolean = false;
 	export let message: MessageInterface;
@@ -61,7 +62,7 @@
 				>
 					<img
 						alt="Mervin.Graham"
-						src="https://api.dicebear.com/7.x/bottts/svg?seed={message.user.pseudo}"
+						src={getAvatar(message.user.avatar, message.user.pseudo)}
 						decoding="async"
 						data-nimg="fixed"
 						class="mt-0.5 mr-4 w-10 h-10 rounded-full"
@@ -71,7 +72,8 @@
 			</div>
 			<div class="w-full">
 				<p class="flex items-baseline">
-					<span class="mr-2 font-medium text-green-400">{message.user.name}</span><span
+					<a href="/profile/{message.user.pseudo}" class="mr-2 font-medium text-green-400">{message.user.name}</a>
+					<span
 						class="text-xs font-medium text-gray-400">{formatRelativeDate(message.createdAt)}</span
 					>
 				</p>

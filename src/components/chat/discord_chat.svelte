@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { beforeUpdate, afterUpdate, onDestroy, onMount } from 'svelte';
+	import { beforeUpdate, afterUpdate, onMount } from 'svelte';
 	import type { GroupInterface, MessageInterface } from '../../interfaces/types';
 	import { getMessages, sendMessage } from '../../services/gqlGroups';
 	import DiscordChatMessage from './discord_chat_message.svelte';
@@ -10,11 +10,12 @@
 	let loading: boolean = false;
 	let prevGroupId: string;
 	let messages: MessageInterface[] = [];
-	let message: string = '';
+	let message: string = "";
 	let scrollContainer: HTMLElement;
 
 	function scrollDown() {
-		scrollContainer.scrollTop = scrollContainer.scrollHeight;
+		if (scrollContainer)
+			scrollContainer.scrollTop = scrollContainer.scrollHeight;
 	}
 
 	async function loadMessages(groupId: string) {
@@ -33,93 +34,77 @@
 		if (group && group.id !== prevGroupId) {
 			prevGroupId = group.id;
 			loadMessages(group.id);
+			scrollDown();
 		}
 	});
 
-	onMount(async () => {
+	onMount(() => {
 		socket.on("updateChat", async () => {
-			console.log("------UPDATE---------");
-			if (group)
-				try {
-					messages = await getMessages(group.id);
-					scrollDown();
-				} catch (e) {
-
-				}
-			console.log(messages);
-		});
-	})
+			messages = await getMessages(group.id);
+			scrollDown();
+		})
+	});
 
 	async function handleSend() {
-		if (!message.trim()) return;
 		try {
-			socket.emit('newMessage', { groupId: group.id, message });
-			message = '';
+			await sendMessage(group.id, message);
+			messages = await getMessages(group.id);
+			message = "";
+			scrollDown();
 		} catch (e) {
 			console.log(e);
 		}
 	}
 
 	function onDelete(item: MessageInterface) {
-		const i = messages.findIndex((e) => e.id === item.id);
-		if (i >= 0) {
+		const i = messages.findIndex(e => e.id === item.id);
+		if (i >= 0)
+		{
 			messages.splice(i, 1);
 			messages = [...messages];
 		}
 	}
 
-	function checkGrouped(items: MessageInterface[], item: MessageInterface) {
-		const index = items.findIndex((e) => e.id === item.id);
-		if (index <= 0) return false;
+	function checkGrouped(items: MessageInterface[], item: MessageInterface)
+	{
+		const index = items.findIndex(e => e.id === item.id);
+		if (index <= 0)
+			return (false);
 		if (items[index - 1].userId === items[index].userId) {
-			return true;
+			return (true);
 		}
-		return false;
+		return (false);
 	}
-
-	onMount(async () => {
-		socket.on('newMessage', (newMessage: any) => {
-			if (newMessage.groupId === group.id) {
-				messages = [...messages, newMessage];
-				scrollDown();
-				// loadMessages(group.id);
-			}
-		});
-
-		if (group && group.id) {
-			loadMessages(group.id);
-		}
-	});
-
-	onDestroy(() => {
-		socket.off('newMessage');
-	});
 </script>
 
 <div class="overflow-y-scroll flex-auto h-60 no-scrollbar" bind:this={scrollContainer}>
 	{#if loading}
-		<div class="text-center">
-			<div role="status">
-				<svg
-					aria-hidden="true"
-					class="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
-					viewBox="0 0 100 101"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-						fill="currentFill"
-					/>
-				</svg>
-				<span class="sr-only">Loading...</span>
+			<div class="text-center">
+				<div role="status">
+					<svg
+						aria-hidden="true"
+						class="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+						viewBox="0 0 100 101"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+							fill="currentFill"
+						/>
+					</svg>
+					<span class="sr-only">Loading...</span>
+				</div>
 			</div>
-		</div>
-	{:else}
-		{#each messages as message}
-			<DiscordChatMessage {message} isGrouped={!checkGrouped(messages, message)} {onDelete} />
-		{/each}
-	{/if}
+		{:else}
+			{#each messages as message}
+				<DiscordChatMessage
+					message={message}
+					isGrouped={!checkGrouped(messages, message)}
+					onDelete={onDelete}
+				/>
+			{/each}
+		{/if}
 </div>
 <div class="pb-6 px-4 flex-initial h-16">
 	<div class="flex rounded-lg overflow-hidden">
@@ -131,8 +116,7 @@
 		/>
 		<button
 			on:click={handleSend}
-			class="text-3xl text-grey border-r-4 border-gray-600 bg-gray-600 p-2"
-		>
+			class="text-3xl text-grey border-r-4 border-gray-600 bg-gray-600 p-2">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"

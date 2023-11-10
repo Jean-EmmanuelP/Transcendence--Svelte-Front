@@ -2,6 +2,7 @@
 	import { GroupActions, type GroupInterface, type GroupMemberInterface } from '../../interfaces/types';
 	import { sendFriendRequest } from '../../services/gqlFriends';
 	import { doGroupAction } from '../../services/gqlGroups';
+	import { getAvatar } from '../../utils/avatarGetter';
 	export let user: GroupMemberInterface;
 	export let channel: GroupInterface;
 	export let handleSent: () => void;
@@ -28,17 +29,17 @@
 </script>
 
 <div class="flex w-full justify-between mb-3 content-center">
-	<div class="flex items-center space-x-4">
+	<a href="/profile/{user.pseudo}" class="flex items-center space-x-4">
 		<img
 			class="w-10 h-10 rounded-full"
-			src="https://api.dicebear.com/7.x/bottts/svg?seed={user.pseudo}"
+			src={getAvatar(user.avatar, user.pseudo)}
 			alt=""
 		/>
 		<div class="font-medium">
 			<div>{user.name}</div>
 			<div class="text-sm text-gray-500">{user.pseudo}</div>
 		</div>
-	</div>
+	</a>
 	<button
 		type="button"
 		class="text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2"

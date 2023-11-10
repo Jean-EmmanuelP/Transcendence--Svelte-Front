@@ -238,7 +238,7 @@
 			<div class="xl:col-span-4 hidden px-8 lg:flex lg:items-center lg:justify-around">
 				<button
 					on:click={() => {
-						goto('/messages');
+						goto('/messages/friends');
 					}}
 				>
 					<svg

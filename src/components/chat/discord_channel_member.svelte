@@ -3,6 +3,7 @@
 	import { GroupActions, type GroupInterface, type GroupMemberInterface } from '../../interfaces/types';
 	import { doGroupAction } from '../../services/gqlGroups';
 	import { authentication, type AuthenticationType } from '../../stores/authentication';
+	import { getAvatar } from '../../utils/avatarGetter';
 
 	export let member: GroupMemberInterface;
 	export let channel: GroupInterface;
@@ -71,7 +72,7 @@
 		>
 			<img
 				class="w-8 h-8 rounded-full bg-indigo-400"
-				src="https://api.dicebear.com/7.x/bottts/svg?seed={member.pseudo}"
+				src={getAvatar(member.avatar, member.pseudo)}
 				alt="chat-user"
 			/>
 			<div
@@ -86,7 +87,7 @@
 		</button>
 	</div>
 
-	{#if menuOpen && !isAdmin && userStore.id !== member.id && hasAccess}
+	{#if menuOpen}
 		<div
 			class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
 			role="menu"
@@ -94,6 +95,7 @@
 			aria-labelledby="menu-button"
 			tabindex="-1"
 		>
+			{#if !isAdmin && userStore.id !== member.id && hasAccess}
 			<div class="py-1 w-full" role="none">
 				<button
 					on:click={handleKick}
@@ -104,6 +106,18 @@
 				>
 					Kick
 				</button>
+			</div>
+			{/if}
+			<div class="py-1 w-full" role="none">
+				<a
+					href="/profile/{member.pseudo}"
+					class="text-gray-400 w-full text-left block px-4 py-2 text-sm hover:bg-gray-900 hover:text-white"
+					role="menuitem"
+					tabindex="-1"
+					id="menu-item-0"
+				>
+					See profile
+				</a>
 			</div>
 		</div>
 	{/if}
