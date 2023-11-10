@@ -3,61 +3,78 @@
 	import { onMount } from 'svelte';
 
 	export let socket: Socket;
+	export let roomId: string;
 
-	const court = document.getElementById('court');
-	const ball = document.getElementById('ball');
-	const paddleLeft = document.getElementById('paddleLeft');
-	const paddleRight = document.getElementById('paddleRight');
-	const playerOneScoreElement = document.getElementById('playerOneScore');
-	const playerTwoScoreElement = document.getElementById('playerTwoScore');
-	const gameScale = court?.offsetWidth;
+	let width = 0;
+	let height = 0;
 
+	$: console.log('This is the width', width);
+	$: console.log('This is the height', height);
+
+	/** @brief Convert the power of paddle into the red color */
 	function getColorBasedOnValue(value: number) {
-		// Ensure the value is within the valid range (1 to 100)
 		value = Math.max(1, Math.min(100, value - 10));
-
-		// Calculate the red component of the color
 		const red = 255 - (value - 1) * 2.55;
-
-		// Create and return the RGB color as a string
 		return `rgb(255, ${red}, ${red})`;
 	}
 
+	document.addEventListener('keydown', function (event) {
+		console.log('Key pressed', event.key);
+		socket.emit('keyDown', { roomId: roomId, key: event.key });
+	});
+
+	document.addEventListener('keyup', function (event) {
+		console.log('Key released', event.key);
+		socket.emit('keyUp', { roomId: roomId, key: event.key });
+	});
+
 	onMount(() => {
+		const court = document.getElementById('court');
+		const ball = document.getElementById('ball');
+		const paddleLeft = document.getElementById('paddleLeft');
+		const paddleRight = document.getElementById('paddleRight');
+		const playerOneScoreElement = document.getElementById('playerOneScore');
+		const playerTwoScoreElement = document.getElementById('playerTwoScore');
+
 		console.log('[Game] Entered the game room');
 		/**
 		 * @attention	change the px to % in the game state
 		 */
 		socket.on('gameState', (gameState) => {
+			console.log('I started to recevie game state: ');
 			if (
 				!ball ||
 				!paddleRight ||
 				!paddleLeft ||
 				!playerOneScoreElement ||
-				!playerTwoScoreElement ||
-				!gameScale
+				!playerTwoScoreElement
 			) {
+				console.log('Ball', ball);
+				console.log('Paddle right', paddleRight);
+				console.log('Paddle left', paddleLeft);
+				console.log('Player one score', playerOneScoreElement);
+				console.log('Player two score', playerTwoScoreElement);
 				return;
 			}
 			console.log('I started to recevie game state');
-			ball.style.left = gameState.ball.x * gameScale + 'px';
-			ball.style.top = gameState.ball.y * gameScale + 'px';
-			ball.style.width = gameState.ball.radius * gameScale + 'px';
-			ball.style.height = gameState.ball.radius * gameScale + 'px';
+			ball.style.left = gameState.ball.x * width + 'px';
+			ball.style.top = gameState.ball.y * width + 'px';
+			ball.style.width = gameState.ball.radius * width + 'px';
+			ball.style.height = gameState.ball.radius * width + 'px';
 
-			paddleLeft.style.top = gameState.playerOne.y * gameScale + 'px';
-			paddleLeft.style.left = gameState.playerOne.x * gameScale + 'px';
-			paddleLeft.style.width = gameState.playerOne.width * gameScale + 'px';
-			paddleLeft.style.height = gameState.playerOne.height * gameScale + 'px';
+			paddleLeft.style.top = gameState.playerOne.y * width + 'px';
+			paddleLeft.style.left = gameState.playerOne.x * width + 'px';
+			paddleLeft.style.width = gameState.playerOne.width * width + 'px';
+			paddleLeft.style.height = gameState.playerOne.height * width + 'px';
 			paddleLeft.style.transform =
 				'translate(-50%, -50%)' + 'rotate(' + gameState.playerOne.angle + 'deg)';
 			paddleLeft.style.backgroundColor = getColorBasedOnValue(gameState.playerOne.attack);
 			playerOneScoreElement.innerHTML = gameState.playerOne.score;
 
-			paddleRight.style.top = gameState.playerTwo.y * gameScale + 'px';
-			paddleRight.style.left = gameState.playerTwo.x * gameScale + 'px';
-			paddleRight.style.width = gameState.playerTwo.width * gameScale + 'px';
-			paddleRight.style.height = gameState.playerTwo.height * gameScale + 'px';
+			paddleRight.style.top = gameState.playerTwo.y * width + 'px';
+			paddleRight.style.left = gameState.playerTwo.x * width + 'px';
+			paddleRight.style.width = gameState.playerTwo.width * width + 'px';
+			paddleRight.style.height = gameState.playerTwo.height * width + 'px';
 			paddleRight.style.transform =
 				'translate(-50%, -50%)' + 'rotate(' + gameState.playerTwo.angle + 'deg)';
 			paddleRight.style.backgroundColor = getColorBasedOnValue(gameState.playerTwo.attack);
@@ -69,13 +86,15 @@
 <div
 	class="court relative h-full w-full flex items-center justify-center text-white text-lg"
 	id="court"
+	bind:clientWidth={width}
+	bind:clientHeight={height}
 >
 	<div class="scoreboard" id="scoreboard">
 		Player A: <span id="playerOneScore">0</span> - Player B: <span id="playerTwoScore">0</span>
 	</div>
 	<div class="paddle" id="paddleLeft" />
 	<div class="paddle" id="paddleRight" />
-	<div class="ball" />
+	<div class="ball" id="ball" />
 	<div class="result" />
 </div>
 
@@ -102,7 +121,7 @@
 	#paddleLeft {
 		top: 1/2;
 		left: 20%;
-		/* transform: translate(-50%, -50%); */
+		transform: translate(-50%, -50%);
 	}
 
 	#paddleRight {
