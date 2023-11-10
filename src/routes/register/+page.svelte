@@ -8,6 +8,8 @@
 	import Device from 'svelte-device-info';
 	import { onDestroy } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { userInformationNoToken } from '../../services/gqlUser';
+	import { authentication } from '../../stores/authentication';
 
 	const loading = writable(false);
 	const serverError = writable<string | undefined>(undefined);
@@ -40,6 +42,8 @@
 				const response = await AuthServices.register(values);
 				if (Cookies.get('access_token')) Cookies.remove('access_token');
 				Cookies.set('access_token', response.accessToken, { expires: 1 });
+				const user = await userInformationNoToken();
+				authentication.setUser(user);
 				goto('/');
 			} catch (error) {
 				let errorMessage = 'An unexpected error occured. Please try again.';

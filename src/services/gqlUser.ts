@@ -65,7 +65,6 @@ export const userInformationNoToken = async () => {
 					userInformation {
 						id
 						email
-						password
 						name
 						pseudo
 						avatar
