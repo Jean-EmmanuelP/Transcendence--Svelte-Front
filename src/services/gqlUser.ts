@@ -141,19 +141,94 @@ export const deleteAccount = async () => {
 
 export const updateAvatar = async (avatarUrl: string) => {
 	try {
-	  const response = await client.mutate({
-		mutation: gql`
-		  mutation UploadAvatar($avatarUrl: String!) {
-			uploadAvatar(avatarUrl: $avatarUrl)
-		  }
-		`,
-		variables: {
-		  avatarUrl
-		}
-	  });
-	  return response.data.uploadAvatar;
+		const response = await client.mutate({
+			mutation: gql`
+				mutation UploadAvatar($avatarUrl: String!) {
+					uploadAvatar(avatarUrl: $avatarUrl)
+				}
+			`,
+			variables: {
+				avatarUrl
+			}
+		});
+		return response.data.uploadAvatar;
 	} catch (error) {
-	  console.log(error);
-	  throw new Error('Error updating user avatar');
+		console.log(error);
+		throw new Error('Error updating user avatar');
 	}
-  };
+};
+
+export const getRanking = async () => {
+	try {
+		const response = await client.query({
+			query: gql`
+				{
+					getRanking {
+						id
+						pseudo
+						eloScore
+						avatar
+					}
+				}
+			`
+		});
+		return response.data.getRanking;
+	} catch (error) {
+		console.log(error);
+		throw new Error('Error fetching ranking');
+	}
+};
+
+export const getUserMatchHistory = async () => {
+	try {
+		const response = await client.query({
+			query: gql`
+				{
+					getUserMatchHistory {
+						id
+						player1 {
+							id
+							pseudo
+							avatar
+						}
+						player2 {
+							id
+							pseudo
+							avatar
+						}
+						winnerId
+						playedAt
+					}
+				}
+			`
+		});
+		return response.data.getUserMatchHistory;
+	} catch (error) {
+		console.log(error);
+		throw new Error('Error fetching match history');
+	}
+};
+
+export const getUserStats = async () => {
+	try {
+		const response = await client.query({
+			query: gql`
+				{
+					getUserStats {
+						victories
+						draws
+						losses
+						winRatio
+						drawRatio
+						lossRatio
+						totalGames
+					}
+				}
+			`
+		});
+		return response.data.getUserStats;
+	} catch (error) {
+		console.error(error);
+		throw new Error(`Error fetching user stats`);
+	}
+};

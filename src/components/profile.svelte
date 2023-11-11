@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { getUserInformationPerPseudo } from '../services/gqlUser';
-	import type { searchUser } from '../interfaces/types';
+	import { getUserInformationPerPseudo, getUserStats } from '../services/gqlUser';
+	import type { searchUser, userStats } from '../interfaces/types';
 	import { page } from '$app/stores';
 	import { onDestroy, onMount } from 'svelte';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
 	import { sendFriendRequest } from '../services/gqlFriends';
+	import { getRanking, getUserMatchHistory } from '../services/gqlUser';
 	import Progress from './action_components/progress.svelte';
 	import Device from 'svelte-device-info';
 
@@ -12,7 +13,8 @@
 	let isError = false;
 	let userPseudo = $page.params.pseudo;
 	let isCurrentUserProfile: boolean = false;
-
+	let ranking: any[] = [];
+	let matchHistory = [];
 	let userStore: AuthenticationType;
 	const unsubscribe = authentication.subscribe((value) => {
 		userStore = value;
@@ -27,7 +29,31 @@
 		getUserInformation(userPseudo);
 	}
 	let user: searchUser;
-	onMount(() => getUserInformation(userPseudo));
+	let listContainer: HTMLDivElement;
+	let userStats: userStats;
+	onMount(async () => {
+		getUserInformation(userPseudo);
+		await loadRanking();
+		await loadMatchHistory();
+		userStats = await getUserStats();
+	});
+
+	async function loadRanking() {
+		try {
+			ranking = await getRanking();
+		} catch (error) {
+			console.error('Error fetching ranking:', error.message);
+		}
+	}
+
+	async function loadMatchHistory() {
+		try {
+			matchHistory = await getUserMatchHistory();
+		} catch (error) {
+			console.error('Error fetching match history:', error.message);
+		}
+	}
+
 	async function getUserInformation(userPseudo: string) {
 		try {
 			user = await getUserInformationPerPseudo(userPseudo);
@@ -51,8 +77,10 @@
 	let slideLevel: number = 0;
 	async function Slide(slideNumber: number) {
 		slideLevel += slideNumber;
-		// console.log(slideLevel);
 	}
+
+	let currentPlayerIndex: number;
+	$: currentPlayerIndex = ranking.findIndex((player) => player.pseudo === userStore.pseudo);
 </script>
 
 {#if isLoading}
@@ -90,8 +118,8 @@
 							<h1 class="font-bold sm:font-extrabold text-sm sm:text-xl sm:tracking-wider">
 								{user.name}
 							</h1>
-							<p class="text-xs sm:text-base font-medium">Pseudo: {user.pseudo}</p>
-							<p class="text-xs sm:text-base font-medium">Email: {user.email}</p>
+							<p class="text-xs sm:text-base font-medium">{user.pseudo}</p>
+							<p class="text-xs sm:text-base font-medium">{user.email}</p>
 							<div class="flex flex-row pt-2">
 								{#if user.status === 'ONLINE'}
 									<svg
@@ -140,8 +168,8 @@
 							>
 								{user.name}
 							</h1>
-							<p class="text-xs sm:text-base font-semibold sm:font-medium">Pseudo: {user.pseudo}</p>
-							<p class="text-xs sm:text-base font-semibold sm:font-medium">Email: {user.email}</p>
+							<p class="text-xs sm:text-base font-semibold sm:font-medium">{user.pseudo}</p>
+							<p class="text-xs sm:text-base font-semibold sm:font-medium">{user.email}</p>
 							<div class="flex flex-row pt-1 sm:pt-2">
 								{#if user.status === 'ONLINE'}
 									<svg
@@ -294,8 +322,11 @@
 						>
 							Ranking
 						</div>
-						<div class="no-scrollbar h-[75%] w-full px-2 sm:px-4 overflow-auto">
-							{#each Array(5) as _, index (index)}
+						<div
+							bind:this={listContainer}
+							class="no-scrollbar h-[75%] w-full px-2 sm:px-4 overflow-auto"
+						>
+							{#each ranking as user, index (index)}
 								<div
 									class="relative text-white ring-1 gap-1 sm:gap-2 hover:scale-105 transition duration-150 mb-2 sm:mb-4 ring-slate-400/20 bg-slate-700/10 flex flex-row h-1/4 sm:h-1/3 w-full rounded-md rounded-l-full shadow-md"
 								>
@@ -306,13 +337,13 @@
 										class="w-full h-full relative bg-slate-900/50 ring-1 rounded-md rounded-l-full ring-black/20 shadow-lg text-white"
 									>
 										<div class="relative h-full w-[20%] sm:w-[11%] rounded-full overflow-hidden">
-											<img src={user.avatar} alt="" class="w-full h-full" />
+											<img src={user.avatar} alt={user.pseudo} class="w-full h-full" />
 										</div>
 										<div class="h-full w-[89%] flex flex-row items-center justify-between">
 											<p class="absolute top-2 sm:top-5 left-14 sm:left-20 text-xs sm:text-base">
 												{user.pseudo}
 											</p>
-											<h1 class="absolute top-2 right-2 text-xs sm:text-base">{index}</h1>
+											<h1 class="absolute top-2 right-2 text-xs sm:text-base">#{index + 1}</h1>
 										</div>
 									</div>
 								</div>
@@ -365,7 +396,7 @@
 									on:click={() => Slide(-1)}>&lt;</button
 								>
 							{/if}
-							{#if slideLevel === 0}
+							{#if slideLevel === 0 && userStats}
 								<div class="flex flex-col items-center justify-center">
 									<div
 										class="font-medium sm:text-[14px] text-gray-300/80 tracking-tight text-[12px]"
@@ -394,10 +425,10 @@
 												/>
 											</g>
 										</svg>
-										<h1 class="pl-2 font-bold text-2xl">0</h1>
+										<h1 class="pl-2 font-bold text-2xl">{userStats.totalGames}</h1>
 									</div>
 									<div class="rounded-full flex h-3 w-[60%] ring-1 ring-slate-600 shadow-lg">
-										<div class="relative bg-green-700 brightness-125 h-full w-[40%]">
+										<div class="relative bg-green-700 brightness-125 h-full" style="width: {userStats.winRatio}%">
 											<div class="absolute flex gap-2 items-center justify-center -top-6">
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -413,31 +444,11 @@
 														d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
 													/>
 												</svg>
-												<h1 class="font-bold tracking-wide text-green-700">34%</h1>
+												<h1 class="font-bold tracking-wide text-green-700">{userStats.winRatio}</h1>
 											</div>
-											<div class="absolute top-4 text-green-700"><p>43 victories</p></div>
+											<div class="absolute top-4 text-green-700"><p>{userStats.victories}</p></div>
 										</div>
-										<div class="relative bg-gray-400 brightness-105 h-full w-[10%]">
-											<div class="absolute flex gap-2 items-center -top-6 right-0">
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													fill="none"
-													viewBox="0 0 24 24"
-													stroke-width="1"
-													stroke="currentColor"
-													class="w-4 h-4 bg-gray-700 rounded-md"
-												>
-													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
-														d="M6 9h12m-12 6.75h12"
-													/>
-												</svg>
-												<h1 class="font-bold tracking-wide text-gray-700">10%</h1>
-											</div>
-											<div class="absolute top-4 text-gray-700 w-screen"><p>10 pat</p></div>
-										</div>
-										<div class="relative bg-red-700 brightness-200 h-full w-[50%]">
+										<div class="relative bg-red-700 brightness-200 h-full" style="width: {userStats.lossRatio}%;">
 											<div class="absolute flex gap-2 items-center justify-center -top-6 right-0">
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -453,9 +464,9 @@
 														d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
 													/>
 												</svg>
-												<h1 class="font-bold tracking-wide text-red-700">66%</h1>
+												<h1 class="font-bold tracking-wide text-red-700">{userStats.lossRatio}</h1>
 											</div>
-											<div class="absolute top-4 right-0 text-red-700"><p>140 looses</p></div>
+											<div class="absolute top-4 right-0 text-red-700"><p>{userStats.losses}</p></div>
 										</div>
 									</div>
 								</div>

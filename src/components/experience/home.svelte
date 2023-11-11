@@ -84,7 +84,7 @@
 		}deg)`;
 		activeColor.set('');
 
-		blobElement.style.backgroundColor = 'red';
+		blobElement.style.backgroundColor = 'rgba(255, 0, 0, 0.25)';
 	}
 
 	function handleMouseLeave(event: any) {
@@ -95,8 +95,8 @@
 		blobElement.style.width = '80%';
 		blobElement.style.height = '80%';
 		blobElement.style.transform = 'translate(-50%, -50%) rotateX(0deg) rotateY(0deg)';
-		blobElement.style.backgroundColor = '#26619c';
-		activeColor.set('#26619c');
+		blobElement.style.backgroundColor = 'rgba(38, 97, 156, 0.25)';
+		activeColor.set('rgba(38, 97, 156, 0.25)');
 	}
 	let laserDirection = 'right';
 	onMount(() => {
@@ -180,7 +180,7 @@
 
 <div class="parent-enter-effect relative h-full w-full flex items-center justify-center">
 	<div
-		class=" blob-bg opacity-0 absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c] mix-blend-multiply filter blur-xl"
+		class=" blob-bg opacity-0 absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 w-[80%] h-[80%] bg-[#26619c]/20 mix-blend-multiply filter blur-xl"
 		bind:this={blobElement}
 	/>
 	<div

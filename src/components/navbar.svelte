@@ -98,219 +98,221 @@
 	}
 </script>
 
-<header
-	class="relative backdrop-blur-md p-1 lg:static lg:overflow-y-visible text-white border-b border-b-white/10 shadow-sm"
->
-	<div class="flex items-center justify-center">
-		<div
-			class="transparent relative w-[80%] flex flex-row items-center lg:gap-2 xl:grid xl:grid-cols-12"
-		>
+<div class="w-full flex items-center justify-center">
+	<header
+		class="mt-4 w-[80%] bg-gray-950/5 relative backdrop-blur-md py-[2px] lg:static lg:overflow-y-visible text-white border-y border-white/10 rounded-y rounded-full shadow-lg"
+	>
+		<div class="flex">
 			<div
-				class="flex pl-2 items-center md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-4"
+				class="transparent relative w-full flex flex-row items-center lg:gap-2 xl:grid xl:grid-cols-12"
 			>
-				<button
-					class="flex flex-row gap-2 items-center justify-center"
-					on:click={() => {
-						goto('/');
-					}}
+				<div
+					class="flex pl-2 items-center md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-4"
 				>
-					<div class="relative w-[50px] h-[40px]">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="text-white absolute top-0 left-0 w-full h-full"
-							width="50"
-							height="50"
-							viewBox="0 0 100 100"
-							><path
-								fill="#ffffff"
-								d="M1.22541 61.5228c-.2225-.9485.90748-1.5459 1.59638-.857L39.3342 97.1782c.6889.6889.0915 1.8189-.857 1.5964C20.0515 94.4522 5.54779 79.9485 1.22541 61.5228ZM.00189135 46.8891c-.01764375.2833.08887215.5599.28957165.7606L52.3503 99.7085c.2007.2007.4773.3075.7606.2896 2.3692-.1476 4.6938-.46 6.9624-.9259.7645-.157 1.0301-1.0963.4782-1.6481L2.57595 39.4485c-.55186-.5519-1.49117-.2863-1.648174.4782-.465915 2.2686-.77832 4.5932-.92588465 6.9624ZM4.21093 29.7054c-.16649.3738-.08169.8106.20765 1.1l64.77602 64.776c.2894.2894.7262.3742 1.1.2077 1.7861-.7956 3.5171-1.6927 5.1855-2.684.5521-.328.6373-1.0867.1832-1.5407L8.43566 24.3367c-.45409-.4541-1.21271-.3689-1.54074.1832-.99132 1.6684-1.88843 3.3994-2.68399 5.1855ZM12.6587 18.074c-.3701-.3701-.393-.9637-.0443-1.3541C21.7795 6.45931 35.1114 0 49.9519 0 77.5927 0 100 22.4073 100 50.0481c0 14.8405-6.4593 28.1724-16.7199 37.3375-.3903.3487-.984.3258-1.3542-.0443L12.6587 18.074Z"
-							/></svg
-						>
-						<svg
-							class="absolute top-0 left-0 w-full h-full"
-							xmlns="http://www.w3.org/2000/svg"
-							xmlns:xlink="http://www.w3.org/1999/xlink"
-							version="1.1"
-							id="Calque_1"
-							x="0px"
-							y="0px"
-							viewBox="0 -200 960 960"
-							enable-background="new 0 -200 960 960"
-							xml:space="preserve"
-						>
-							<polygon
-								id="polygon5"
-								points="32,412.6 362.1,412.6 362.1,578 526.8,578 526.8,279.1 197.3,279.1 526.8,-51.1 362.1,-51.1   32,279.1 "
+					<button
+						class="flex flex-row gap-2 items-center justify-center"
+						on:click={() => {
+							goto('/');
+						}}
+					>
+						<div class="relative w-[50px] h-[40px]">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="text-white absolute top-0 left-0 w-full h-full"
+								width="50"
+								height="50"
+								viewBox="0 0 100 100"
+								><path
+									fill="#ffffff"
+									d="M1.22541 61.5228c-.2225-.9485.90748-1.5459 1.59638-.857L39.3342 97.1782c.6889.6889.0915 1.8189-.857 1.5964C20.0515 94.4522 5.54779 79.9485 1.22541 61.5228ZM.00189135 46.8891c-.01764375.2833.08887215.5599.28957165.7606L52.3503 99.7085c.2007.2007.4773.3075.7606.2896 2.3692-.1476 4.6938-.46 6.9624-.9259.7645-.157 1.0301-1.0963.4782-1.6481L2.57595 39.4485c-.55186-.5519-1.49117-.2863-1.648174.4782-.465915 2.2686-.77832 4.5932-.92588465 6.9624ZM4.21093 29.7054c-.16649.3738-.08169.8106.20765 1.1l64.77602 64.776c.2894.2894.7262.3742 1.1.2077 1.7861-.7956 3.5171-1.6927 5.1855-2.684.5521-.328.6373-1.0867.1832-1.5407L8.43566 24.3367c-.45409-.4541-1.21271-.3689-1.54074.1832-.99132 1.6684-1.88843 3.3994-2.68399 5.1855ZM12.6587 18.074c-.3701-.3701-.393-.9637-.0443-1.3541C21.7795 6.45931 35.1114 0 49.9519 0 77.5927 0 100 22.4073 100 50.0481c0 14.8405-6.4593 28.1724-16.7199 37.3375-.3903.3487-.984.3258-1.3542-.0443L12.6587 18.074Z"
+								/></svg
+							>
+							<svg
+								class="absolute top-0 left-0 w-full h-full"
+								xmlns="http://www.w3.org/2000/svg"
+								xmlns:xlink="http://www.w3.org/1999/xlink"
+								version="1.1"
+								id="Calque_1"
+								x="0px"
+								y="0px"
+								viewBox="0 -200 960 960"
+								enable-background="new 0 -200 960 960"
+								xml:space="preserve"
+							>
+								<polygon
+									id="polygon5"
+									points="32,412.6 362.1,412.6 362.1,578 526.8,578 526.8,279.1 197.3,279.1 526.8,-51.1 362.1,-51.1   32,279.1 "
+								/>
+								<polygon id="polygon7" points="597.9,114.2 762.7,-51.1 597.9,-51.1 " />
+								<polygon
+									id="polygon9"
+									points="762.7,114.2 597.9,279.1 597.9,443.9 762.7,443.9 762.7,279.1 928,114.2 928,-51.1 762.7,-51.1 "
+								/>
+								<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
+							</svg>
+						</div>
+					</button>
+				</div>
+				<div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-4">
+					<div class="flex px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
+						<div class="w-full relative rounded-md h-full flex items-center justify-center">
+							<div
+								class="absolute -inset-[0.0001px] bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-20 hover:opacity-50 transition duration-1000 hover:duration-200 animate-tilt"
 							/>
-							<polygon id="polygon7" points="597.9,114.2 762.7,-51.1 597.9,-51.1 " />
-							<polygon
-								id="polygon9"
-								points="762.7,114.2 597.9,279.1 597.9,443.9 762.7,443.9 762.7,279.1 928,114.2 928,-51.1 762.7,-51.1 "
-							/>
-							<polygon id="polygon11" points="928,279.1 762.7,443.9 928,443.9 " />
-						</svg>
-					</div>
-				</button>
-			</div>
-			<div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-4">
-				<div class="flex px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
-					<div class="w-full relative rounded-md h-full flex items-center justify-center">
-						<div
-							class="absolute -inset-[0.0001px] bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-20 hover:opacity-50 transition duration-1000 hover:duration-200 animate-tilt"
-						/>
-						<label for="search" class="sr-only">Search</label>
-						<div class="relative group w-full h-full shadow-gray-50">
-							<div class="pointer-events-none absolute inset-y-1/2 left-1 flex items-center pl-3">
-								<svg
-									class="h-3 w-3 rotate-90 text-white/50 group-focus-within:text-white group-hover:text-white transition duration-200"
-									viewBox="0 0 20 20"
-									fill="currentColor"
-									aria-hidden="true"
-								>
-									<path
-										fill-rule="evenodd"
-										d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-										clip-rule="evenodd"
-									/>
-								</svg>
+							<label for="search" class="sr-only">Search</label>
+							<div class="relative group w-full h-full shadow-gray-50">
+								<div class="pointer-events-none absolute inset-y-1/2 left-1 flex items-center pl-3">
+									<svg
+										class="h-3 w-3 rotate-90 text-white/50 group-focus-within:text-white group-hover:text-white transition duration-200"
+										viewBox="0 0 20 20"
+										fill="currentColor"
+										aria-hidden="true"
+									>
+										<path
+											fill-rule="evenodd"
+											d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+											clip-rule="evenodd"
+										/>
+									</svg>
+								</div>
+								<input
+									id="search"
+									name="search"
+									class="block w-full h-full cursor-none caret-white bg-black shadow-black placeholder:text-white/50 group-hover:placeholder:text-white/80 transition ring-1 ring-gray-500/30 group/icon_search rounded-full shadow-lg border-0 py-2 pl-10 text-white placeholder:text-gray-400 focus:transition duration-200 focus:duration-300 focus:ring-1 focus:ring-inset focus:ring-blue-500/40 text-[11.5px] sm:text-[12px] sm:leading-6"
+									placeholder="Search players"
+									type="search"
+									autocomplete="off"
+									bind:value={term}
+									on:focus={handleInputFocus}
+									on:input={handleSearch}
+								/>
 							</div>
-							<input
-								id="search"
-								name="search"
-								class="block w-full h-full cursor-none caret-white bg-black shadow-black placeholder:text-white/50 group-hover:placeholder:text-white/80 transition ring-1 ring-gray-500/30 group/icon_search rounded-full shadow-lg border-0 py-2 pl-10 text-white placeholder:text-gray-400 focus:transition duration-200 focus:duration-300 focus:ring-1 focus:ring-inset focus:ring-blue-500/40 text-[11.5px] sm:text-[12px] sm:leading-6"
-								placeholder="Search players"
-								type="search"
-								autocomplete="off"
-								bind:value={term}
-								on:focus={handleInputFocus}
-								on:input={handleSearch}
-							/>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
-				<!-- Mobile menu button -->
-				<button
-					type="button"
-					class="relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
-					aria-expanded="false"
-					on:click={() => toggleModal('mobileMenu')}
-				>
-					<span class="absolute -inset-0.5" />
-					<span class="sr-only">Open menu</span>
-					<!--
+				<div class="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
+					<!-- Mobile menu button -->
+					<button
+						type="button"
+						class="relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+						aria-expanded="false"
+						on:click={() => toggleModal('mobileMenu')}
+					>
+						<span class="absolute -inset-0.5" />
+						<span class="sr-only">Open menu</span>
+						<!--
               Icon when menu is closed.
 
               Menu open: "hidden", Menu closed: "block"
             -->
-					<svg
-						class="block h-6 w-6"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						aria-hidden="true"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-						/>
-					</svg>
-					<!--
+						<svg
+							class="block h-6 w-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+							/>
+						</svg>
+						<!--
               Icon when menu is open.
 
               Menu open: "block", Menu closed: "hidden"
             -->
-					<svg
-						class="hidden h-6 w-6"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						aria-hidden="true"
-					>
-						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-					</svg>
-				</button>
-			</div>
-			<div class="xl:col-span-4 hidden px-8 lg:flex lg:items-center lg:justify-around">
-				<button
-					on:click={() => {
-						goto('/messages');
-					}}
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="w-6 h-6 text-white"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
-						/>
-					</svg>
-				</button>
-				<button
-					type="button"
-					class="relative ml-5 flex-shrink-0 rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-					on:click={() => toggleModal('notifications')}
-				>
-					<span class="absolute -inset-1.5" />
-					<span class="sr-only">View notifications</span>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="w-6 h-6 transition duration-200 text-white"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-						/>
-					</svg>
-					{#if pendingRequests.length > 1}
-						<div
-							class="absolute bottom-0 -right-1 rounded-full bg-red-500 text-white h-4 w-4 text-[8px] text-center flex items-center justify-center"
+						<svg
+							class="hidden h-6 w-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							aria-hidden="true"
 						>
-							{pendingRequests.length}
-						</div>
-					{/if}
-				</button>
-				<!-- Profile dropdown -->
-				<div class="relative ml-5 flex-shrink-0">
-					<div>
-						<button
-							type="button"
-							class="relative flex rounded-full bg-white focus:ring-offset-2"
-							id="user-menu-button"
-							aria-haspopup="true"
-							on:click={() => toggleModal('userMenu')}
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+				<div class="xl:col-span-4 hidden ml-14 px-4 lg:flex lg:items-center lg:justify-between">
+					<button
+						on:click={() => {
+							goto('/messages');
+						}}
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6 text-white"
 						>
-							<span class="absolute -inset-1.5" />
-							<span class="sr-only">Open user menu</span>
-							<img
-								class={`h-8 w-8 rounded-full ${
-									$modalOpen === 'userMenu' && `border-[2.3px] border-black`
-								}`}
-								src={user.avatar}
-								alt=""
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
 							/>
-						</button>
+						</svg>
+					</button>
+					<button
+						type="button"
+						class="relative ml-5 flex-shrink-0 rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+						on:click={() => toggleModal('notifications')}
+					>
+						<span class="absolute -inset-1.5" />
+						<span class="sr-only">View notifications</span>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6 transition duration-200 text-white"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+							/>
+						</svg>
+						{#if pendingRequests.length > 1}
+							<div
+								class="absolute bottom-0 -right-1 rounded-full bg-red-500 text-white h-4 w-4 text-[8px] text-center flex items-center justify-center"
+							>
+								{pendingRequests.length}
+							</div>
+						{/if}
+					</button>
+					<!-- Profile dropdown -->
+					<div class="relative ml-5 flex-shrink-0">
+						<div>
+							<button
+								type="button"
+								class="relative flex rounded-full bg-white focus:ring-offset-2"
+								id="user-menu-button"
+								aria-haspopup="true"
+								on:click={() => toggleModal('userMenu')}
+							>
+								<span class="absolute -inset-1.5" />
+								<span class="sr-only">Open user menu</span>
+								<img
+									class={`h-8 w-8 rounded-full ${
+										$modalOpen === 'userMenu' && `border-[2.3px] border-black`
+									}`}
+									src={user.avatar}
+									alt=""
+								/>
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Mobile menu, show/hide based on menu state. -->
-</header>
+		<!-- Mobile menu, show/hide based on menu state. -->
+	</header>
+</div>
 <ModalWrapper bind:isOpen={isModalOpen}>
 	{#if $modalOpen === 'userMenu'}
 		<div

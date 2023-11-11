@@ -11,7 +11,7 @@ export interface MessageInterface {
 	content: string;
 	userId: string;
 	user: RequestUserInterface;
-	createdAt: Date
+	createdAt: Date;
 }
 
 export interface Request {
@@ -26,6 +26,16 @@ export interface Request {
 	};
 }
 
+export interface userStats {
+	totalGames: number;
+	victories: number;
+	draws: number;
+	losses: number;
+	winRatio: number;
+	drawRatio: number;
+	lossRatio: number;
+}
+
 export interface searchUser {
 	id: string;
 	email: string;
@@ -37,12 +47,11 @@ export interface searchUser {
 
 export interface GroupMemberInterface {
 	id: string;
-    name: string;
-    pseudo: string;
-    avatar: string;
-    status: string;
+	name: string;
+	pseudo: string;
+	avatar: string;
+	status: string;
 }
-
 
 export interface GroupMutesInterface {
 	userId: string;
@@ -61,16 +70,16 @@ export interface GroupBansInterface {
 }
 
 export interface GroupInterface {
-    id: string;
-    name: string;
-    isPrivate: boolean;
-    isDirectMessage: boolean;
-    ownerId: string;
-    mutes: GroupMutesInterface[];
-    bans: GroupBansInterface[];
-    owner: GroupMemberInterface[];
-    members: GroupMemberInterface[];
-    admins: GroupMemberInterface[];
+	id: string;
+	name: string;
+	isPrivate: boolean;
+	isDirectMessage: boolean;
+	ownerId: string;
+	mutes: GroupMutesInterface[];
+	bans: GroupBansInterface[];
+	owner: GroupMemberInterface[];
+	members: GroupMemberInterface[];
+	admins: GroupMemberInterface[];
 }
 
 export interface RequestUserInterface {
@@ -100,12 +109,12 @@ export interface FriendInterface {
 }
 
 export enum GroupActions {
-	KICK = "KICK",
-	BAN = "BAN",
-	MUTE = "MUTE",
-	UNMUTE = "UNMUTE",
-	UNBAN = "UNBAN",
-	ADD = "ADD",
-	UPADMIN = "UPADMIN",
-	DOWNADMIN = "DOWNADMIN",
-  }
+	KICK = 'KICK',
+	BAN = 'BAN',
+	MUTE = 'MUTE',
+	UNMUTE = 'UNMUTE',
+	UNBAN = 'UNBAN',
+	ADD = 'ADD',
+	UPADMIN = 'UPADMIN',
+	DOWNADMIN = 'DOWNADMIN'
+}
