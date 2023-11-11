@@ -340,9 +340,14 @@
 											<img src={user.avatar} alt={user.pseudo} class="w-full h-full" />
 										</div>
 										<div class="h-full w-[89%] flex flex-row items-center justify-between">
-											<p class="absolute top-2 sm:top-5 left-14 sm:left-20 text-xs sm:text-base">
-												{user.pseudo}
-											</p>
+											<div class="absolute top-2 sm:top-2 flex flex-row sm:flex-col left-14 sm:left-20 text-xs sm:text-base">
+												<p>
+													{user.pseudo}
+												</p>
+												<p>
+													🎮 {user.eloScore}
+												</p>
+											</div>
 											<h1 class="absolute top-2 right-2 text-xs sm:text-base">#{index + 1}</h1>
 										</div>
 									</div>
