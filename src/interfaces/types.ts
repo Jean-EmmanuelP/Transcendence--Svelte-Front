@@ -44,6 +44,20 @@ export interface searchUser {
 	status: string;
 }
 
+export interface User {
+	id: string;
+	pseudo: string;
+	avatar: string;
+  }
+  
+  export interface MatchHistory {
+	id: string;
+	player1: User;
+	player2: User;
+	winnerId: string;
+	playedAt: string;
+  }
+
 export interface GroupMemberInterface {
 	id: string;
 	name: string;

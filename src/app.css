@@ -55,6 +55,40 @@
 			scrollbar-width: none;
 		}
 
+		.elegant-scrollbar::-webkit-scrollbar {
+			width: 5px;
+		}
+		
+		.elegant-scrollbar::-webkit-scrollbar-track {
+			background: #f1f1f1;
+		}
+		
+		.elegant-scrollbar::-webkit-scrollbar-thumb {
+			background: #888;
+			border-radius: 10px;
+		}
+		
+		.elegant-scrollbar::-webkit-scrollbar-thumb:hover {
+			background: #555;
+		}
+
+		.semi-transparent-scrollbar::-webkit-scrollbar {
+			width: 5px;
+		}
+		
+		.semi-transparent-scrollbar::-webkit-scrollbar-track {
+			background: rgba(0, 0, 80, 0.4);
+		}
+		
+		.semi-transparent-scrollbar::-webkit-scrollbar-thumb {
+			background: rgba(120, 120, 230, 1);
+			border-radius: 10px;
+		}
+		
+		.semi-transparent-scrollbar::-webkit-scrollbar-thumb:hover {
+			background: rgba(85, 85, 85, 0.5);
+		}
+
 		.laser-effect {
 			position: relative;
 			filter: brightness(1.15);

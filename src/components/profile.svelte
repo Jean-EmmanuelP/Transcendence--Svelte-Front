@@ -1,20 +1,19 @@
 <script lang="ts">
 	import { getUserInformationPerPseudo, getUserStats } from '../services/gqlUser';
-	import type { searchUser, userStats } from '../interfaces/types';
+	import type { MatchHistory, searchUser, userStats } from '../interfaces/types';
 	import { page } from '$app/stores';
 	import { onDestroy, onMount } from 'svelte';
 	import { authentication, type AuthenticationType } from '../stores/authentication';
 	import { sendFriendRequest } from '../services/gqlFriends';
 	import { getRanking, getUserMatchHistory } from '../services/gqlUser';
 	import Progress from './action_components/progress.svelte';
-	import Device from 'svelte-device-info';
 
 	let isLoading = true;
 	let isError = false;
 	let userPseudo = $page.params.pseudo;
 	let isCurrentUserProfile: boolean = false;
 	let ranking: any[] = [];
-	let matchHistory = [];
+	let matchHistory: MatchHistory[];
 	let userStore: AuthenticationType;
 	const unsubscribe = authentication.subscribe((value) => {
 		userStore = value;
@@ -36,11 +35,13 @@
 		await loadRanking();
 		await loadMatchHistory();
 		userStats = await getUserStats();
+		console.log("🚀 ~ file: profile.svelte:38 ~ onMount ~ userStats:", userStats)
 	});
 
 	async function loadRanking() {
 		try {
 			ranking = await getRanking();
+			console.log("🚀 ~ file: profile.svelte:43 ~ loadRanking ~ ranking:", ranking)
 		} catch (error) {
 			console.error('Error fetching ranking:', error.message);
 		}
@@ -49,6 +50,7 @@
 	async function loadMatchHistory() {
 		try {
 			matchHistory = await getUserMatchHistory();
+			console.log("🚀 ~ file: profile.svelte:51 ~ loadMatchHistory ~ matchHistory:", matchHistory)
 		} catch (error) {
 			console.error('Error fetching match history:', error.message);
 		}
@@ -78,9 +80,6 @@
 	async function Slide(slideNumber: number) {
 		slideLevel += slideNumber;
 	}
-
-	let currentPlayerIndex: number;
-	$: currentPlayerIndex = ranking.findIndex((player) => player.pseudo === userStore.pseudo);
 </script>
 
 {#if isLoading}
@@ -452,7 +451,7 @@
 														d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
 													/>
 												</svg>
-												<h1 class="font-bold tracking-wide text-green-700">{userStats.winRatio}</h1>
+												<h1 class="font-bold tracking-wide text-green-700">{userStats.winRatio}%</h1>
 											</div>
 											<div class="absolute top-4 text-green-700"><p>{userStats.victories}</p></div>
 										</div>
@@ -475,7 +474,7 @@
 														d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
 													/>
 												</svg>
-												<h1 class="font-bold tracking-wide text-red-700">{userStats.lossRatio}</h1>
+												<h1 class="font-bold tracking-wide text-red-700">{userStats.lossRatio}%</h1>
 											</div>
 											<div class="absolute top-4 right-0 text-red-700">
 												<p>{userStats.losses}</p>
@@ -492,19 +491,23 @@
 										🔥<span class="font-bold brightness-125">{userStats.longestStreak}</span>
 									</p>
 								</div>
-							{:else if slideLevel === 2}
-								<div class="h-full w-full flex items-center justify-center">
-									<img
-										src={user.avatar}
-										class="shadow-md ring-1 ring-slate-800 rounded-full object-contain w-16 h-16"
-										alt=""
-									/>
-									<p class="p-4 font-bold">versus</p>
-									<img
-										src={user.avatar}
-										class="shadow-md ring-1 ring-slate-800 rounded-full object-contain w-16 h-16"
-										alt=""
-									/>
+							{:else if slideLevel === 2 && matchHistory.length > 0}
+								<div class="h-full w-full flex flex-col semi-transparent-scrollbar overflow-auto items-center">
+									{#each matchHistory as user, index (index)}
+									<div class="flex mt-2 p-5">
+										<img
+											src={user.player1.avatar}
+											class={`${user.winnerId === user.player1.id ? 'border-green-500': 'border-red-500'} border-4 shadow-md ring-1 ring-slate-800 rounded-full object-contain w-16 h-16`}
+											alt=""
+										/>
+										<p class="p-4 font-bold">VS</p>
+										<img
+											src={user.player2.avatar}
+											class={`${user.winnerId === user.player2.id ? 'border-green-500': 'border-red-500'} border-4 shadow-md ring-1 ring-slate-800 rounded-full object-contain w-16 h-16`}
+											alt=""
+										/>
+									</div>
+									{/each}
 								</div>
 							{/if}
 						</div>
