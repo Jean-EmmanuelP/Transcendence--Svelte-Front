@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { FriendRequestInterface } from '../../interfaces/types';
 	import { acceptFriendRequest, cancelFriendRequest, rejectFriendRequest } from '../../services/gqlFriends';
+	import { getAvatar } from '../../utils/avatarGetter';
 	export let request: FriendRequestInterface;
 	export let handleReject: (req: FriendRequestInterface) => void;
 
@@ -25,17 +26,17 @@
 </script>
 
 <div class="flex w-full justify-between mb-3 content-center">
-	<div class="flex items-center space-x-4">
+	<a href="/profile/{request.receiver.pseudo}" class="flex items-center space-x-4">
 		<img
 			class="w-10 h-10 rounded-full"
-			src="https://api.dicebear.com/7.x/bottts/svg?seed={request.receiver.pseudo}"
+			src={getAvatar(request.receiver.avatar, request.receiver.pseudo)}
 			alt=""
 		/>
 		<div class="font-medium">
 			<div>{request.receiver.name}</div>
 			<div class="text-sm text-gray-500">Sent request</div>
 		</div>
-	</div>
+	</a>
 	<button
 		type="button"
 		class="text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2"

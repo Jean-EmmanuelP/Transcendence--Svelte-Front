@@ -2,8 +2,11 @@
 	import Cookies from 'js-cookie';
 	import AuthServices from '../../services/auth';
 	import { goto } from '$app/navigation';
-	let otp: string = '';
-	let loading: boolean = false;
+	import { userInformationNoToken } from '../../services/gqlUser';
+	import { authentication } from '../../stores/authentication';
+	let otp: string = "";
+
+	let loading : boolean = false;
 
 	async function handleSubmit() {
 		let token = Cookies.get('access_token');
@@ -12,7 +15,9 @@
 				loading = true;
 				const response = await AuthServices.check2FA(otp, token);
 				Cookies.set('access_token', response.accessToken, { expires: 1 });
-				goto('/');
+				const user = await userInformationNoToken();
+				authentication.setUser(user);
+				goto("/")
 			} catch (e) {
 				loading = false;
 			}

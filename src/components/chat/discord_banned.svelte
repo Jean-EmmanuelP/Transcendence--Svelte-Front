@@ -6,6 +6,7 @@
 	} from '../../interfaces/types';
 	import { doGroupAction } from '../../services/gqlGroups';
 	import moment from "moment"
+	import { getAvatar } from '../../utils/avatarGetter';
 	export let banInfo: GroupBansInterface;
 	export let channel: GroupInterface;
 	export let handleSent: () => void;
@@ -37,17 +38,17 @@
 </script>
 
 <div class="flex w-full justify-between mb-3 content-center">
-	<div class="flex items-center space-x-4">
+	<a href="/profile/{banInfo.user.pseudo}" class="flex items-center space-x-4">
 		<img
 			class="w-10 h-10 rounded-full"
-			src="https://api.dicebear.com/7.x/bottts/svg?seed={banInfo.user.pseudo}"
+			src={getAvatar(banInfo.user.avatar, banInfo.user.pseudo)}
 			alt=""
 		/>
 		<div class="font-medium">
 			<div>{banInfo.user.name}</div>
 			<div class="text-sm text-gray-500">{banInfo.user.pseudo}</div>
 		</div>
-	</div>
+	</a>
 	<div class="flex">
 		<button
 			class="ml-3 bg-gray-800 hover:bg-gray-900 rounded-full"

@@ -13,6 +13,8 @@
 	let roomId: string = ''; /** room id that we play */
 	let opponentId: string = ''; /** opponent id */
 
+	console.log('[Lobby room] Entered the lobby room');
+
 	function clickedButton(button: string, bool?: boolean) {
 		if (button === 'back_chosemode') {
 			isModeSelected = false;
@@ -33,8 +35,6 @@
 	}
 
 	onMount(() => {
-		console.log('[Lobby room] Entered the lobby room');
-
 		socket.on('waiting', (data: any) => {
 			console.log('[Lobby room] Waiting for an opponet', data);
 
@@ -42,9 +42,10 @@
 		});
 
 		socket.on('gameFound', (data: GameFound) => {
-			console.log('[Lobby room] Game found');
+			console.log('[Lobby room] Game found. Room: ', data.roomId);
 
 			socket.emit('ready-mm', { roomId: data.roomId });
+			roomId = data.roomId;
 			isWaiting = false;
 		});
 	});
@@ -62,25 +63,25 @@
 			<button on:click={() => clickedButton('playBot')}>Play Bot</button>
 		</div>
 	</div>
-{:else if isModeSelected !== true}
+{:else if isModeSelected === true}
 	{#if mode === 'mathchmaking'}
 		{#if isWaiting === true}
 			<Waiting />
 		{:else if isWaiting === false}
 			{console.log('Entered here in game')}
-			<Game {socket} />
+			<Game {socket} {roomId} />
 		{/if}
 	{:else if mode === 'playFriend'}
 		{#if isWaiting === true}
 			<Waiting />
 		{:else if isWaiting === false}
-			<Game {socket} />
+			<Game {socket} {roomId} />
 		{/if}
 	{:else if mode === 'playBot'}
 		{#if isWaiting === true}
 			<Waiting />
 		{:else if isWaiting === false}
-			<Game {socket} />
+			<Game {socket} {roomId} />
 		{/if}
 	{/if}
 {:else}

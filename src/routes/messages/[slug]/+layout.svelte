@@ -60,7 +60,7 @@
 		</div>
 		<div class="hidden mx-2 w-px h-6 bg-white/[.06] md:block" />
 		{#if !loading && !channel.isDirectMessage}
-			{#if channel.ownerId === data.user.id}
+			{#if data.user && channel.ownerId === data.user.id}
 				<a href="/messages/{channel.id}/admins" class="{currentpage.includes("admins") && "bg-gray-800"} px-2 mx-2 py-1 rounded-md text-sm font-medium text-gray-200 truncate md:block hover:bg-gray-800">
 					Admins
 				</a>
