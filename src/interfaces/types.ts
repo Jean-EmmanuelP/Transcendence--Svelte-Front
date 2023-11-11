@@ -29,10 +29,8 @@ export interface Request {
 export interface userStats {
 	totalGames: number;
 	victories: number;
-	draws: number;
 	losses: number;
 	winRatio: number;
-	drawRatio: number;
 	lossRatio: number;
 }
 

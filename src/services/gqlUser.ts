@@ -216,10 +216,8 @@ export const getUserStats = async () => {
 				{
 					getUserStats {
 						victories
-						draws
 						losses
 						winRatio
-						drawRatio
 						lossRatio
 						totalGames
 					}
