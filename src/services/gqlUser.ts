@@ -219,6 +219,7 @@ export const getUserStats = async () => {
 						winRatio
 						lossRatio
 						totalGames
+						longestStreak
 					}
 				}
 			`

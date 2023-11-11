@@ -428,7 +428,10 @@
 										<h1 class="pl-2 font-bold text-2xl">{userStats.totalGames}</h1>
 									</div>
 									<div class="rounded-full flex h-3 w-[60%] ring-1 ring-slate-600 shadow-lg">
-										<div class="relative bg-green-700 brightness-125 h-full" style="width: {userStats.winRatio}%">
+										<div
+											class="relative bg-green-700 brightness-125 h-full"
+											style="width: {userStats.winRatio}%"
+										>
 											<div class="absolute flex gap-2 items-center justify-center -top-6">
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -448,7 +451,10 @@
 											</div>
 											<div class="absolute top-4 text-green-700"><p>{userStats.victories}</p></div>
 										</div>
-										<div class="relative bg-red-700 brightness-200 h-full" style="width: {userStats.lossRatio}%;">
+										<div
+											class="relative bg-red-700 brightness-200 h-full"
+											style="width: {userStats.lossRatio}%;"
+										>
 											<div class="absolute flex gap-2 items-center justify-center -top-6 right-0">
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -466,17 +472,19 @@
 												</svg>
 												<h1 class="font-bold tracking-wide text-red-700">{userStats.lossRatio}</h1>
 											</div>
-											<div class="absolute top-4 right-0 text-red-700"><p>{userStats.losses}</p></div>
+											<div class="absolute top-4 right-0 text-red-700">
+												<p>{userStats.losses}</p>
+											</div>
 										</div>
 									</div>
 								</div>
-							{:else if slideLevel === 1}
+							{:else if slideLevel === 1 && userStats}
 								<div
 									class="h-full w-full flex flex-col items-center justify-center font-semibold text-gray-400 tracking-wide pt-5"
 								>
 									Longest winning streak
 									<p class="flex items-center justify-center text-[50px]">
-										🔥<span class="font-bold brightness-125">5</span>
+										🔥<span class="font-bold brightness-125">{userStats.longestStreak}</span>
 									</p>
 								</div>
 							{:else if slideLevel === 2}

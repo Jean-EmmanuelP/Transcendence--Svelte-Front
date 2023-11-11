@@ -32,6 +32,7 @@ export interface userStats {
 	losses: number;
 	winRatio: number;
 	lossRatio: number;
+	longestStreak: number;
 }
 
 export interface searchUser {
