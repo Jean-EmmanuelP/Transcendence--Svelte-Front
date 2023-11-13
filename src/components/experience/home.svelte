@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { activeColor } from '../../stores/currentNavigation';
 	import Lobby from '$components/game/lobby.svelte';
-	import type { Socket } from 'socket.io-client';
 	import gameSocket from '../../services/gameSocket';
+	import Game from '$components/game/game.svelte';
 
 	let clickedPlay: boolean = false;
 	let mouseX = 0;
@@ -20,6 +20,7 @@
 	let currentTiltX = 0;
 	let currentTiltY = 0;
 	let showDiv = false;
+	let roomId = '';
 	const lerpFactor = 0.2;
 
 	$: letters = text.split('');
@@ -122,62 +123,70 @@
 
 		let animationFrameId: number;
 
-		function updateLaserPosition() {
-			if (laserElement) {
-				switch (laserDirection) {
-					case 'right':
-						posX += laserSpeed;
-						if (posX >= laserElement.clientWidth) {
-							laserDirection = 'down';
-							laserElement.style.setProperty('--laser-width', '2px');
-							laserElement.style.setProperty('--laser-height', '100px');
-							posX = laserElement.clientWidth - 2;
-							posY = 0;
-						}
-						break;
-					case 'down':
-						posY += laserSpeed;
-						if (posY >= laserElement.clientHeight) {
-							laserDirection = 'left';
-							laserElement.style.setProperty('--laser-width', '100px');
-							laserElement.style.setProperty('--laser-height', '2px');
-							posX = laserElement.clientWidth;
-							posY = laserElement.clientHeight - 2;
-						}
-						break;
-					case 'left':
-						posX -= laserSpeed;
-						if (posX <= 0) {
-							laserDirection = 'up';
-							laserElement.style.setProperty('--laser-width', '2px');
-							laserElement.style.setProperty('--laser-height', '100px');
-							posX = 2;
-							posY = laserElement.clientHeight;
-						}
-						break;
-					case 'up':
-						posY -= laserSpeed;
-						if (posY <= 0) {
-							laserDirection = 'right';
-							laserElement.style.setProperty('--laser-width', '100px');
-							laserElement.style.setProperty('--laser-height', '2px');
-							posX = 0;
-							posY = 2;
-						}
-						break;
-				}
-
-				laserElement.style.setProperty('--laser-pos-x', posX + 'px');
-				laserElement.style.setProperty('--laser-pos-y', posY + 'px');
-				animationFrameId = requestAnimationFrame(updateLaserPosition);
+		gameSocket.emit('checkGame', null, (response: any) => {
+			if (response.roomId !== '-1') {
+				console.log(`[home] The user is in the Game: ${response.roomId}`);
+				roomId = response.roomId;
 			}
-		}
+		});
 
-		updateLaserPosition();
-		return () => {
-			cancelAnimationFrame(animationFrameId);
-		};
+		// function updateLaserPosition() {
+		// 	if (laserElement) {
+		// 		switch (laserDirection) {
+		// 			case 'right':
+		// 				posX += laserSpeed;
+		// 				if (posX >= laserElement.clientWidth) {
+		// 					laserDirection = 'down';
+		// 					laserElement.style.setProperty('--laser-width', '2px');
+		// 					laserElement.style.setProperty('--laser-height', '100px');
+		// 					posX = laserElement.clientWidth - 2;
+		// 					posY = 0;
+		// 				}
+		// 				break;
+		// 			case 'down':
+		// 				posY += laserSpeed;
+		// 				if (posY >= laserElement.clientHeight) {
+		// 					laserDirection = 'left';
+		// 					laserElement.style.setProperty('--laser-width', '100px');
+		// 					laserElement.style.setProperty('--laser-height', '2px');
+		// 					posX = laserElement.clientWidth;
+		// 					posY = laserElement.clientHeight - 2;
+		// 				}
+		// 				break;
+		// 			case 'left':
+		// 				posX -= laserSpeed;
+		// 				if (posX <= 0) {
+		// 					laserDirection = 'up';
+		// 					laserElement.style.setProperty('--laser-width', '2px');
+		// 					laserElement.style.setProperty('--laser-height', '100px');
+		// 					posX = 2;
+		// 					posY = laserElement.clientHeight;
+		// 				}
+		// 				break;
+		// 			case 'up':
+		// 				posY -= laserSpeed;
+		// 				if (posY <= 0) {
+		// 					laserDirection = 'right';
+		// 					laserElement.style.setProperty('--laser-width', '100px');
+		// 					laserElement.style.setProperty('--laser-height', '2px');
+		// 					posX = 0;
+		// 					posY = 2;
+		// 				}
+		// 				break;
+		// 		}
+
+		// 		laserElement.style.setProperty('--laser-pos-x', posX + 'px');
+		// 		laserElement.style.setProperty('--laser-pos-y', posY + 'px');
+		// 		animationFrameId = requestAnimationFrame(updateLaserPosition);
+		// 	}
+		// }
+
+		// updateLaserPosition();
+		// return () => {
+		// 	cancelAnimationFrame(animationFrameId);
+		// };
 	});
+
 	/*
 		Here is the socket logic game.gateway.ts so its the receiver
 	*/
@@ -191,7 +200,7 @@
 	<div
 		on:mouseleave={handleMouseLeave}
 		on:mousemove={handleMouseMove}
-		class="w-[80%] h-[80%] z-10 ring-1 ring-gray-600/20 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-black laser-effect"
+		class="w-[80%] aspect-video z-10 ring-1 ring-gray-600/20 backdrop-filter backdrop-blur-lg shadow-lg rounded-2xl transition duration-100 bg-black laser-effect"
 		bind:this={laserElement}
 	>
 		<div
@@ -219,7 +228,9 @@
 						bind:this={playElement}
 					/>
 				{:else if clickedPlay}
-					{#if gameSocket !== null}
+					{#if roomId !== ''}
+						<Game socket={gameSocket} {roomId} />
+					{:else if gameSocket !== null}
 						<Lobby socket={gameSocket} />
 					{:else}
 						{console.log('[lobby room] gameSocket is null')}

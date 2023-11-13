@@ -26,7 +26,7 @@
 		} else if (button === 'playFriend') {
 			isModeSelected = true;
 			mode = 'playFriend';
-			socket.emit('playFriend');
+			socket.emit('playFriend', { opponentId: opponentId });
 		} else if (button === 'playBot') {
 			isModeSelected = true;
 			mode = 'playBot';
@@ -44,7 +44,11 @@
 		socket.on('gameFound', (data: GameFound) => {
 			console.log('[Lobby room] Game found. Room: ', data.roomId);
 
-			socket.emit('ready-mm', { roomId: data.roomId });
+			if (mode === 'playFriend') {
+				socket.emit('ready-pf', { roomId: data.roomId });
+			} else {
+				socket.emit('ready-mm', { roomId: data.roomId });
+			}
 			roomId = data.roomId;
 			isWaiting = false;
 		});
@@ -52,15 +56,44 @@
 </script>
 
 {#if isModeSelected === false}
-	<div>
-		<div class="rectangle">
-			<button on:click={() => clickedButton('matchmaking')}>Matchmaking</button>
+	<div
+		class={`relative flex flex-col items-center justify-center h-full w-full transition duration-500 transform ease-in-out gap-2 md:gap-2 ${'opacity-100'}`}
+	>
+		<div class="relative flex w-full max-w-[200px] rounded-md ring-1 ring-gray-500/20 group/1">
+			<div
+				class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
+			/>
+			<button
+				class="uppercase relative w-full rounded-md bg-black text-white font-medium p-4 transition transform duration-500 hover:duration-300"
+				on:click={() => clickedButton('matchmaking')}
+			>
+				<span />
+				<p class="tracking-wider font-bold group-hover/1:font-extrabold">Matchmaking</p>
+			</button>
 		</div>
-		<div class="rectangle">
-			<button on:click={() => clickedButton('playFriend')}>Play Friend</button>
+		<div class="relative flex w-full max-w-[200px] rounded-md ring-1 ring-gray-500/20 group/1">
+			<div
+				class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
+			/>
+			<button
+				class="uppercase relative w-full rounded-md bg-black text-white font-medium p-4 transition transform duration-500 hover:duration-300"
+				on:click={() => clickedButton('playFriend')}
+			>
+				<span />
+				<p class="tracking-wider font-bold group-hover/1:font-extrabold">playFriend</p>
+			</button>
 		</div>
-		<div class="rectangle">
-			<button on:click={() => clickedButton('playBot')}>Play Bot</button>
+		<div class="relative flex w-full max-w-[200px] rounded-md ring-1 ring-gray-500/20 group/1">
+			<div
+				class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
+			/>
+			<button
+				class="uppercase relative w-full rounded-md bg-black text-white font-medium p-4 transition transform duration-500 hover:duration-300"
+				on:click={() => clickedButton('playBot')}
+			>
+				<span />
+				<p class="tracking-wider font-bold group-hover/1:font-extrabold">playBot</p>
+			</button>
 		</div>
 	</div>
 {:else if isModeSelected === true}
@@ -68,7 +101,6 @@
 		{#if isWaiting === true}
 			<Waiting />
 		{:else if isWaiting === false}
-			{console.log('Entered here in game')}
 			<Game {socket} {roomId} />
 		{/if}
 	{:else if mode === 'playFriend'}
@@ -89,9 +121,4 @@
 {/if}
 
 <style>
-	.rectangle {
-		width: 100px;
-		height: 100px;
-		background-color: red;
-	}
 </style>

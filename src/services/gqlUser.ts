@@ -208,6 +208,8 @@ export const getUserMatchHistory = async () => {
 	}
 };
 
+
+
 export const getUserStats = async () => {
 	try {
 		const response = await client.query({

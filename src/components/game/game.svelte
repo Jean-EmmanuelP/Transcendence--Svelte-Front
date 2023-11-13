@@ -95,7 +95,7 @@
 	<div class="paddle" id="paddleLeft" />
 	<div class="paddle" id="paddleRight" />
 	<div class="ball" id="ball" />
-	<div class="result" />
+	<!-- <div class="result" /> -->
 </div>
 
 <style>
