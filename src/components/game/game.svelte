@@ -4,6 +4,9 @@
 
 	export let socket: Socket;
 	export let roomId: string;
+	export let opponentName: string = 'Opponent';
+	export let yourName: string = 'You';
+	export let side: string = 'left';
 
 	let width = 0;
 	let height = 0;
@@ -35,6 +38,18 @@
 		const paddleRight = document.getElementById('paddleRight');
 		const playerOneScoreElement = document.getElementById('playerOneScore');
 		const playerTwoScoreElement = document.getElementById('playerTwoScore');
+		const playerOneNameElement = document.getElementById('playerOneName');
+		const playerTwoNameElement = document.getElementById('playerTwoName');
+
+		if (playerOneNameElement && playerTwoNameElement) {
+			if (side === 'left') {
+				playerOneNameElement.innerHTML = yourName;
+				playerTwoNameElement.innerHTML = opponentName;
+			} else {
+				playerOneNameElement.innerHTML = opponentName;
+				playerTwoNameElement.innerHTML = yourName;
+			}
+		}
 
 		console.log('[Game] Entered the game room');
 		/**
@@ -90,7 +105,8 @@
 	bind:clientHeight={height}
 >
 	<div class="scoreboard" id="scoreboard">
-		Player A: <span id="playerOneScore">0</span> - Player B: <span id="playerTwoScore">0</span>
+		<span id="playerOneName">Player A</span>: <span id="playerOneScore">0</span> -
+		<span id="playerTwoName">Player B</span>: <span id="playerTwoScore">0</span>
 	</div>
 	<div class="paddle" id="paddleLeft" />
 	<div class="paddle" id="paddleRight" />

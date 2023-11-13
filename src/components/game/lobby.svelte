@@ -12,6 +12,9 @@
 	let isWaiting: boolean = true; /** State: waiting for an opponent */
 	let roomId: string = ''; /** room id that we play */
 	let opponentId: string = ''; /** opponent id */
+	let opponentName: string = ''; /** opponent name */
+	let yourName: string = ''; /** your name */
+	let side: string = 'left'; /** side of the player */
 
 	console.log('[Lobby room] Entered the lobby room');
 
@@ -44,11 +47,10 @@
 		socket.on('gameFound', (data: GameFound) => {
 			console.log('[Lobby room] Game found. Room: ', data.roomId);
 
-			if (mode === 'playFriend') {
-				socket.emit('ready-pf', { roomId: data.roomId });
-			} else {
-				socket.emit('ready-mm', { roomId: data.roomId });
-			}
+			opponentName = data.opponentName;
+			yourName = data.yourName;
+			side = data.side;
+			socket.emit('ready', { roomId: data.roomId });
 			roomId = data.roomId;
 			isWaiting = false;
 		});
@@ -101,19 +103,19 @@
 		{#if isWaiting === true}
 			<Waiting />
 		{:else if isWaiting === false}
-			<Game {socket} {roomId} />
+			<Game {socket} {roomId} {opponentName} {yourName} {side} />
 		{/if}
 	{:else if mode === 'playFriend'}
 		{#if isWaiting === true}
 			<Waiting />
 		{:else if isWaiting === false}
-			<Game {socket} {roomId} />
+			<Game {socket} {roomId} {opponentName} {yourName} {side} />
 		{/if}
 	{:else if mode === 'playBot'}
 		{#if isWaiting === true}
 			<Waiting />
 		{:else if isWaiting === false}
-			<Game {socket} {roomId} />
+			<Game {socket} {roomId} {opponentName} {yourName} {side} />
 		{/if}
 	{/if}
 {:else}

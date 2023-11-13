@@ -22,6 +22,9 @@
 	let showDiv = false;
 	let roomId = '';
 	const lerpFactor = 0.2;
+	let yourName: string = '';
+	let opponentName: string = '';
+	let side: string = 'left';
 
 	$: letters = text.split('');
 
@@ -126,7 +129,11 @@
 		gameSocket.emit('checkGame', null, (response: any) => {
 			if (response.roomId !== '-1') {
 				console.log(`[home] The user is in the Game: ${response.roomId}`);
+				gameSocket.emit('ready', { roomId: '0' });
 				roomId = response.roomId;
+				yourName = response.yourName;
+				opponentName = response.opponentName;
+				side = response.side;
 			}
 		});
 
@@ -229,7 +236,7 @@
 					/>
 				{:else if clickedPlay}
 					{#if roomId !== ''}
-						<Game socket={gameSocket} {roomId} />
+						<Game socket={gameSocket} {roomId} {opponentName} {yourName} {side} />
 					{:else if gameSocket !== null}
 						<Lobby socket={gameSocket} />
 					{:else}
