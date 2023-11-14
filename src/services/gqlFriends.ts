@@ -171,6 +171,27 @@ export const cancelFriendRequest = async (pseudo: string) => {
 	}
 };
 
+
+export const unFriend = async (pseudo: string, channelId: string) => {
+	try {
+		const response = await client.mutate({
+			mutation: gql`
+				mutation unFriend($pseudo: String!, $channelId: String!) {
+					unFriend(receiverPseudo: $pseudo, channelId: $channelId)
+				}
+			`,
+			variables: {
+				pseudo: pseudo,
+				channelId: channelId
+			}
+		});
+		return response.data.unFriend;
+	} catch (error) {
+		console.log(error.message);
+		throw new Error('Error during the rejectFriendRequest');
+	}
+};
+
 export const sendFriendRequest = async (pseudo: string) => {
 	try {
 		const response = await client.mutate({

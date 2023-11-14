@@ -65,7 +65,7 @@
 					Admins
 				</a>
 			{/if}
-			{#if channel.admins.find(e => e.id === data.user.id)}
+			{#if data.user && channel.admins.find(e => e.id === data.user.id)}
 				<a href="/messages/{channel.id}/muted" class="{currentpage.includes("muted") && "bg-gray-800"} px-2 mx-2 py-1 rounded-md text-sm font-medium text-gray-200 truncate md:block hover:bg-gray-800">
 					Muted
 				</a>
@@ -73,7 +73,7 @@
 					Banned
 				</a>
 			{/if}
-			{#if channel.ownerId === data.user.id}
+			{#if data.user && channel.ownerId === data.user.id}
 				<a href="/messages/{channel.id}/settings" class="{currentpage.includes("settings") && "bg-gray-800"} px-2 mx-2 py-1 rounded-md text-sm font-medium text-gray-200 truncate md:block hover:bg-gray-800">
 					Settings
 				</a>

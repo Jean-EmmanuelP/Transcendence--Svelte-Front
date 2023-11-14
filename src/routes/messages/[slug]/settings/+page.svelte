@@ -16,8 +16,8 @@
 		if ((isPrivate && password.length > 0) || !isPrivate) {
 			loading = true;
 			try {
-				if (isPrivate) await setChannelPassword(channel.id, undefined);
-				else await setChannelPassword(channel.id, password);
+				if (isPrivate) await setChannelPassword(channel.id, password);
+				else await setChannelPassword(channel.id, undefined);
 				loading = false;
 				isPrivate = false;
 				update();
