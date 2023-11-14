@@ -16,9 +16,10 @@
 	onMount(() => {
 		console.log('Front token: ', Cookies.get('access_token'));
 
-		gameSocket.on('connect', () => {
-			console.log('[Front:connection] Connected: ', Cookies.get('access_token'));
-		});
+		if (Cookies.get('access_token'))
+			gameSocket.on('connect', () => {
+				console.log('[Front:connection] Connected: ', Cookies.get('access_token'));
+			});
 	});
 	let currentpage = $page.url.pathname;
 	const unsubscribe = page.subscribe((value) => {

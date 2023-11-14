@@ -295,6 +295,30 @@ export const deleteMessage = async (messageId: string) => {
 	}
 };
 
+export const updateMessageInvite = async (messageId: string, accepted: boolean) => {
+	try {
+		const response = await client.mutate({
+			mutation: gql`
+				mutation updateMessageInvite($input: UpdateMessageInviteInput !) {
+					updateMessageInvite(input: $input) {
+						success
+					}
+				}
+			`,
+			variables: {
+				input: {
+					messageId,
+					accepted
+				}
+			}
+		});
+		return response.data.updateMessageInvite;
+	} catch (error) {
+		console.log(error);
+		throw new Error('Error updating groups');
+	}
+};
+
 export const createGroup = async (name: string, isPrivate: boolean,
 	password: string) => {
 	try {

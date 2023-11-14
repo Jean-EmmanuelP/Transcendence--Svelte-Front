@@ -100,6 +100,7 @@
 			{#each messages as message}
 				<DiscordChatMessage
 					message={message}
+					group={group}
 					isGrouped={!checkGrouped(messages, message)}
 					onDelete={onDelete}
 				/>
