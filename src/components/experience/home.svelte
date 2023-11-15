@@ -3,8 +3,9 @@
 	import { fade } from 'svelte/transition';
 	import { activeColor } from '../../stores/currentNavigation';
 	import Lobby from '$components/game/lobby.svelte';
-	import gameSocket from '../../services/gameSocket';
+	import { getGameSocket, initGameSocket } from '../../services/gameSocket';
 	import Game from '$components/game/game.svelte';
+	import type { Socket } from 'socket.io-client';
 
 	let clickedPlay: boolean = false;
 	let mouseX = 0;
@@ -107,6 +108,7 @@
 		activeColor.set('rgba(38, 97, 156, 0.25)');
 	}
 
+	let gameSocket: Socket;
 	let laserDirection = 'right';
 	onMount(() => {
 		if (!laserElement || !playElement || !blobElement) return;
@@ -125,7 +127,8 @@
 		}
 
 		let animationFrameId: number;
-
+		initGameSocket();
+		gameSocket = getGameSocket();
 		gameSocket.emit('checkGame', null, (response: any) => {
 			if (response.roomId !== '-1') {
 				console.log(`[home] The user is in the Game: ${response.roomId}`);

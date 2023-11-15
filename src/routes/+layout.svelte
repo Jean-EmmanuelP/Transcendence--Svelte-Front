@@ -8,18 +8,12 @@
 	import Cookies from 'js-cookie';
 	import { userInformationNoToken } from '../services/gqlUser';
 	import Circles from '$components/mouse/circles.svelte';
-	import gameSocket from '../services/gameSocket';
 
 	export let data: LayoutData;
 	if (data.user) authentication.setUser(data.user);
 
 	onMount(() => {
-		console.log('Front token: ', Cookies.get('access_token'));
-
-		if (Cookies.get('access_token'))
-			gameSocket.on('connect', () => {
-				console.log('[Front:connection] Connected: ', Cookies.get('access_token'));
-			});
+		
 	});
 	let currentpage = $page.url.pathname;
 	const unsubscribe = page.subscribe((value) => {

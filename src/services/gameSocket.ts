@@ -1,20 +1,32 @@
+import { PUBLIC_BACKEND_URL } from '$env/static/public';
 import Cookies from 'js-cookie';
-import io from 'socket.io-client';
+import io, { Socket } from 'socket.io-client';
 
-const token = Cookies.get("access_token");
-// console.log("Socket toke: ", token);
-const transportOptions = {
-    polling: {
-        extraHeaders: {
-            Authorization: token,
-        }
-    }
+let gameSocket: Socket;
+
+export function initGameSocket() {
+	const token = Cookies.get("access_token");
+	if (token && !gameSocket) {
+		const transportOptions = {
+			polling: {
+				extraHeaders: {
+					Authorization: token,
+				}
+			}
+		}
+		gameSocket = io(`${PUBLIC_BACKEND_URL}/game`, {
+			query: {
+				token
+			},
+			transportOptions
+		});
+	}
 }
-const gameSocket = io("http://localhost:3000/game", {
-    query: {
-        token
-    },
-    transportOptions
-});
 
-export default gameSocket;
+export function getGameSocket() {
+	if (!gameSocket) {
+	  throw new Error('Socket not initialized. Call initSocket() first.');
+	}
+	return gameSocket;
+}
+

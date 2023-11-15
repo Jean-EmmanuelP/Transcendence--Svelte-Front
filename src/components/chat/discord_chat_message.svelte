@@ -5,6 +5,8 @@
 	import { authentication, type AuthenticationType } from '../../stores/authentication';
 	import { getAvatar } from '../../utils/avatarGetter';
 	import { goto } from '$app/navigation';
+	import { getGameSocket, initGameSocket } from '../../services/gameSocket';
+	import type { Socket } from 'socket.io-client';
 
 	export let isGrouped: boolean = false;
 	export let message: MessageInterface;
@@ -53,20 +55,51 @@
 		}
 	}
 
-	async function handleInvitation(accepted: boolean) {
+	async function handleInvitation(content: string) {
 		try {
-			const res = await updateMessageInvite(message.id, accepted);
+			const res = await updateMessageInvite(message.id, content);
 		} catch (e) {
 
 		}
 	}
 
-	async function handleGoToGame() {
-		try {
-			//Call play with a friend here
-			goto("/");
-		} catch (e) {
+	async function handleGoToGame(content: string) {
+		let opponentId: string = "";
+		let gameSocket: Socket;
 
+		if (content.includes("done"))
+			return ;
+		if (content.includes("started"))
+		{
+			try {
+				await handleInvitation("/invite true started done");
+				goto("/");
+			} catch (e) {
+
+			}
+		}
+		else {
+			for (let i = 0; i < group.members.length; i++)
+			{
+				if (group.members[i].id !== userStore.id)
+					opponentId = group.members[i].id;
+			}
+			try {
+				gameSocket = getGameSocket();
+				await handleInvitation("/invite true started");
+				gameSocket.emit("playfriend", {opponentId: opponentId})
+				goto("/");
+			} catch (e) {
+				initGameSocket();
+				try {
+					gameSocket = getGameSocket();
+					await handleInvitation("/invite true started");
+					gameSocket.emit("playfriend", {opponentId: opponentId})
+					goto("/");
+				} catch (e) {
+
+				}
+			}
 		}
 	}
 
@@ -103,22 +136,22 @@
 					</p>
 					{#if message.content.includes("true")}
 						<div class="flex">
-							<button on:click={() => handleGoToGame()} class="bg-gray-800 hover:bg-gray-900 p-3 mr-2 rounded-md mt-3 text-center">
+							<button on:click={() => handleGoToGame(message.content)} class="bg-gray-800 hover:bg-gray-900 p-3 mr-2 rounded-md mt-3 text-center">
 								Go to game
 							</button>
 						</div>
 					{:else if message.content.includes("false")}
 						<div class="flex">
-							<button  disabled={true} on:click={() => handleInvitation(false)} class="bg-gray-800 hover:bg-gray-900 p-3 rounded-md mt-3 text-center">
+							<button  disabled={true} on:click={() => handleInvitation("/invite false")} class="bg-gray-800 hover:bg-gray-900 p-3 rounded-md mt-3 text-center">
 								Declined
 							</button>
 						</div>
 					{:else}
 					<div class="flex">
-						<button disabled={message.userId === userStore.id} on:click={() => handleInvitation(true)} class="bg-gray-800 hover:bg-gray-900 p-3 mr-2 rounded-md mt-3 text-center">
+						<button disabled={message.userId === userStore.id} on:click={() => handleInvitation("/invite true")} class="bg-gray-800 hover:bg-gray-900 p-3 mr-2 rounded-md mt-3 text-center">
 							Accept
 						</button>
-						<button  disabled={message.userId === userStore.id} on:click={() => handleInvitation(false)} class="bg-gray-800 hover:bg-gray-900 p-3 rounded-md mt-3 text-center">
+						<button  disabled={message.userId === userStore.id} on:click={() => handleInvitation("/invite false")} class="bg-gray-800 hover:bg-gray-900 p-3 rounded-md mt-3 text-center">
 							Decline
 						</button>
 					</div>

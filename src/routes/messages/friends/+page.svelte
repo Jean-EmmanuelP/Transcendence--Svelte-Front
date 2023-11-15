@@ -7,7 +7,7 @@
 	import FriendComponent from "$components/friends/friend_component.svelte";
 	import ActiveFriendComponent from "$components/friends/active_friend_component.svelte";
 	import type { FriendInterface } from "../../../interfaces/types";
-	import socket from "../../../services/socket";
+	import {getSocket} from "../../../services/socket";
 
 	let pseudo: string = "";
 	let users: FriendInterface[] = [];
@@ -22,9 +22,13 @@
 	}
 
 	onMount(async () => {
-		socket.on("updateChat", () => {
-			loadFriends();
-		});
+		try {
+			getSocket().on("updateChat", () => {
+				loadFriends();
+			});
+		} catch (e) {
+			console.log("Socket is not initialized");
+		}
 		try {
 			loadFriends();
 		} catch (e) {

@@ -4,7 +4,7 @@
 	import { getGroups } from '../../services/gqlGroups.js';
 	import type { GroupInterface } from '../../interfaces/types.js';
 	import { page } from '$app/stores';
-	import socket from '../../services/socket.js';
+	import {getSocket, initSocket} from '../../services/socket.js';
 
 	let groups: GroupInterface[] = [];
 	let currentPage : string;
@@ -14,12 +14,17 @@
 	});
 
 	onMount(async () => {
-		socket.on("connect", () => {
-			console.log("Connected");
-		});
-		socket.on("updateChat", async () => {
-			groups = await getGroups();
-		});
+		initSocket();
+		try {
+			getSocket().on("connect", () => {
+				console.log("Connected");
+			});
+			getSocket().on("updateChat", async () => {
+				groups = await getGroups();
+			});
+		} catch (e) {
+			console.log("Socket not initialized");
+		}
 		try {
 			groups = await getGroups();
 		} catch (e) {}
