@@ -295,7 +295,7 @@ export const deleteMessage = async (messageId: string) => {
 	}
 };
 
-export const updateMessageInvite = async (messageId: string, accepted: boolean) => {
+export const updateMessageInvite = async (messageId: string, content: string) => {
 	try {
 		const response = await client.mutate({
 			mutation: gql`
@@ -308,7 +308,7 @@ export const updateMessageInvite = async (messageId: string, accepted: boolean) 
 			variables: {
 				input: {
 					messageId,
-					accepted
+					content
 				}
 			}
 		});

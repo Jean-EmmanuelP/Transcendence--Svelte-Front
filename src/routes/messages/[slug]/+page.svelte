@@ -5,7 +5,7 @@
 	import type { PageDataInterface } from './+layout';
 	import DiscordChat from '$components/chat/discord_chat.svelte';
 	import DiscordChannelMember from '$components/chat/discord_channel_member.svelte';
-	import socket from '../../../services/socket';
+	import {getSocket} from '../../../services/socket';
 
 	export let data: PageDataInterface;
 
@@ -30,9 +30,13 @@
 	}
 
 	onMount(async () => {
-		socket.on("updateChat", async () => {
-			channel = await getChannel(data.slug);
-		});
+		try {
+			getSocket().on("updateChat", async () => {
+				channel = await getChannel(data.slug);
+			});
+		} catch (e) {
+			console.log("Socket is not initialized");
+		}
 	})
 
 	afterUpdate(async () => {
@@ -52,7 +56,7 @@
 <div class="ml-5 pl-5 pr-5 w-1/4 border-l-gray-800 border-l-2 hidden md:flex flex-col">
 	<p class="mt-5 mb-3 text-base font-semibold">Members</p>
 	{#if !loading}
-		{#each channel.members as member}
+		{#each channel && channel.members as member}
 			<DiscordChannelMember {member} {channel} handleUpdate={onUpdate}/>
 		{/each}
 	{/if}
