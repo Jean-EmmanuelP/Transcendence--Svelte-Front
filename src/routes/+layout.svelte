@@ -10,10 +10,10 @@
 	import Circles from '$components/mouse/circles.svelte';
 
 	export let data: LayoutData;
-	if (data.user) authentication.setUser(data.user);
+	if (data && data.user) authentication.setUser(data.user);
 
 	onMount(() => {
-		
+
 	});
 	let currentpage = $page.url.pathname;
 	const unsubscribe = page.subscribe((value) => {

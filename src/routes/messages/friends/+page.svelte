@@ -7,7 +7,7 @@
 	import FriendComponent from "$components/friends/friend_component.svelte";
 	import ActiveFriendComponent from "$components/friends/active_friend_component.svelte";
 	import type { FriendInterface } from "../../../interfaces/types";
-	import {getSocket} from "../../../services/socket";
+	import {getSocket, initSocket} from "../../../services/socket";
 
 	let pseudo: string = "";
 	let users: FriendInterface[] = [];
@@ -22,6 +22,7 @@
 	}
 
 	onMount(async () => {
+		initSocket();
 		try {
 			getSocket().on("updateChat", () => {
 				loadFriends();

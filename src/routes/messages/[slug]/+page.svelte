@@ -5,7 +5,7 @@
 	import type { PageDataInterface } from './+layout';
 	import DiscordChat from '$components/chat/discord_chat.svelte';
 	import DiscordChannelMember from '$components/chat/discord_channel_member.svelte';
-	import {getSocket} from '../../../services/socket';
+	import {getSocket, initSocket} from '../../../services/socket';
 
 	export let data: PageDataInterface;
 
@@ -30,6 +30,7 @@
 	}
 
 	onMount(async () => {
+		initSocket();
 		try {
 			getSocket().on("updateChat", async () => {
 				channel = await getChannel(data.slug);

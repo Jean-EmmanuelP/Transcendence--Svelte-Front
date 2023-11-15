@@ -4,18 +4,27 @@
 	import type { GroupInterface } from '../../../interfaces/types';
 	import type { PageDataInterface } from './+layout';
 	import { page } from '$app/stores';
+	import { authentication, type AuthenticationType } from '../../../stores/authentication';
 
 	export let data: PageDataInterface;
 
 	let channel: GroupInterface;
 	let loading: boolean = true;
 	let prevChannelId: string = '';
-
-	let currentpage = $page.url.pathname;
+	let userStore: AuthenticationType;
+	const unsubscribeUserStore = authentication.subscribe((value) => {
+		userStore = value;
+	});
+	onDestroy(unsubscribeUserStore);
+	let currentpage = "";
 	const unsubscribe = page.subscribe((value) => {
 		currentpage = value.url.pathname;
 	});
-	onDestroy(unsubscribe);
+
+	onDestroy(() => {
+		unsubscribeUserStore();
+		unsubscribe();
+	});
 
 	async function loadChannel(groupId: string) {
 		try {
@@ -30,7 +39,7 @@
 	}
 
 	afterUpdate(async () => {
-		if (data.slug !== prevChannelId) {
+		if (data.slug && data.slug !== prevChannelId) {
 			if (data.slug && data.slug.length > 0) {
 				prevChannelId = data.slug;
 				loadChannel(data.slug);
@@ -60,12 +69,12 @@
 		</div>
 		<div class="hidden mx-2 w-px h-6 bg-white/[.06] md:block" />
 		{#if !loading && !channel.isDirectMessage}
-			{#if data.user && channel.ownerId === data.user.id}
+			{#if userStore && channel.ownerId === userStore.id}
 				<a href="/messages/{channel.id}/admins" class="{currentpage.includes("admins") && "bg-gray-800"} px-2 mx-2 py-1 rounded-md text-sm font-medium text-gray-200 truncate md:block hover:bg-gray-800">
 					Admins
 				</a>
 			{/if}
-			{#if data.user && channel.admins.find(e => e.id === data.user.id)}
+			{#if userStore && channel.admins.find(e => e.id === userStore.id)}
 				<a href="/messages/{channel.id}/muted" class="{currentpage.includes("muted") && "bg-gray-800"} px-2 mx-2 py-1 rounded-md text-sm font-medium text-gray-200 truncate md:block hover:bg-gray-800">
 					Muted
 				</a>
@@ -73,7 +82,7 @@
 					Banned
 				</a>
 			{/if}
-			{#if data.user && channel.ownerId === data.user.id}
+			{#if userStore && channel.ownerId === userStore.id}
 				<a href="/messages/{channel.id}/settings" class="{currentpage.includes("settings") && "bg-gray-800"} px-2 mx-2 py-1 rounded-md text-sm font-medium text-gray-200 truncate md:block hover:bg-gray-800">
 					Settings
 				</a>

@@ -7,7 +7,7 @@
 	let loading: boolean = false;
 
 	async function handleClick() {
-		if (name.length > 0 && (isPrivate && password.length > 0) || !isPrivate) {
+		if (name.length > 0 && ((isPrivate && password.length > 0) || !isPrivate)) {
 			loading = true;
 			try {
 				if (isPrivate)

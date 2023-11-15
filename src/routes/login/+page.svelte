@@ -178,7 +178,7 @@
 							{/if}
 						</div>
 
-						<div class="flex items-center justify-between">
+						<!-- <div class="flex items-center justify-between">
 							<div class="text-sm leading-6">
 								<a
 									href="#"
@@ -186,7 +186,7 @@
 									>Forgot password?</a
 								>
 							</div>
-						</div>
+						</div> -->
 
 						<div>
 							{#if !loading}
