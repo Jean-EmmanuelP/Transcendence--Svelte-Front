@@ -26,7 +26,8 @@
 
 	async function handleMutationPseudo() {
 		try {
-			await updateUserPseudo($pseudo);
+			if ($pseudo.length > 0)
+				await updateUserPseudo($pseudo);
 			authentication.update((val) => ({ ...val, pseudo: $pseudo }));
 		} catch (error) {
 			console.log(`Error`, error);
@@ -167,7 +168,7 @@
 										>&times;</span
 									>
 									<h2 class="text-xl font-semibold">Sélectionner un fichier</h2>
-									<input type="file" id="fileInput" class="mt-2 border p-2" accept="image/*" />
+									<!-- <input type="file" id="fileInput" class="mt-2 border p-2" accept="image/*" /> -->
 									<button id="uploadButton" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
 										>Télécharger</button
 									>

@@ -10,6 +10,7 @@
 	import { fade } from 'svelte/transition';
 	import { userInformationNoToken } from '../../services/gqlUser';
 	import { authentication } from '../../stores/authentication';
+	import { PUBLIC_BACKEND_URL } from '$env/static/public';
 
 	const loading = writable(false);
 	const serverError = writable<string | undefined>(undefined);
@@ -26,11 +27,7 @@
 		validationSchema: yup.object().shape({
 			password: yup
 				.string()
-				.min(8, 'Password must be at least 8 characters long')
-				.matches(
-					/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
-					'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character'
-				)
+				.min(1, 'Password must be at least 1 characters long')
 				.required('Password is required'),
 			firstName: yup.string().required('First name is required'),
 			lastName: yup.string().required('Last name is required'),
@@ -247,7 +244,7 @@
 
 				<div class="mt-6 grid grid-cols-2 gap-4">
 					<a
-						href="http://42pong.com:3000/auth/42"
+						href="{PUBLIC_BACKEND_URL}/auth/42"
 						class="flex w-full items-center justify-center gap-3 rounded-md bg-[#1D9BF0]/40 hover:bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
 					>
 						<svg
@@ -279,7 +276,7 @@
 					</a>
 
 					<a
-						href="http://42pong.com:3000/auth/google"
+						href="{PUBLIC_BACKEND_URL}/auth/google"
 						class="flex w-full items-center justify-center gap-3 rounded-md bg-red-500/40 hover:bg-red-500 px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
 					>
 						<svg viewBox="0 0 48 48" class="h-5 w-5">

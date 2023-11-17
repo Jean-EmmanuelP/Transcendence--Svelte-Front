@@ -39,6 +39,8 @@
 		/>
 		<div class="overflow-y-scroll max-w-full scrollbar-hide no-scrollbar">
 			{#each channels.filter(e => {
+				if (name.length == 0)
+					return (true);
 				const pattern = new RegExp(`\\b${name}`, 'i');
 				return pattern.test(e.name);
 			}) as channel}

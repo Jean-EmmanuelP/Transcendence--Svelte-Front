@@ -256,7 +256,7 @@
 							/>
 						</svg>
 					</button>
-					<button
+					<!-- <button
 						type="button"
 						class="relative ml-5 flex-shrink-0 rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 						on:click={() => toggleModal('notifications')}
@@ -283,7 +283,7 @@
 								{pendingRequests.length}
 							</div>
 						{/if}
-					</button>
+					</button> -->
 					<!-- Profile dropdown -->
 					<div class="relative ml-5 flex-shrink-0">
 						<div>

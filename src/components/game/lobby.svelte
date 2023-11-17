@@ -73,7 +73,7 @@
 				<p class="tracking-wider font-bold group-hover/1:font-extrabold">Matchmaking</p>
 			</button>
 		</div>
-		<div class="relative flex w-full max-w-[200px] rounded-md ring-1 ring-gray-500/20 group/1">
+		<!-- <div class="relative flex w-full max-w-[200px] rounded-md ring-1 ring-gray-500/20 group/1">
 			<div
 				class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
 			/>
@@ -96,7 +96,7 @@
 				<span />
 				<p class="tracking-wider font-bold group-hover/1:font-extrabold">playBot</p>
 			</button>
-		</div>
+		</div> -->
 	</div>
 {:else if isModeSelected === true}
 	{#if mode === 'mathchmaking'}

@@ -7,19 +7,21 @@ let socket : Socket;
 export function initSocket() {
 	const token = Cookies.get("access_token");
 	// console.log("Socket toke: ", token);
-	const transportOptions = {
-		polling: {
-			extraHeaders: {
-				Authorization: token,
+	if (token && !socket) {
+		const transportOptions = {
+			polling: {
+				extraHeaders: {
+					Authorization: token,
+				}
 			}
 		}
+		socket = io(PUBLIC_BACKEND_URL, {
+			query: {
+				token
+			},
+			transportOptions
+		});
 	}
-	socket = io(PUBLIC_BACKEND_URL, {
-		query: {
-			token
-		},
-		transportOptions
-	});
 }
 
 export function getSocket() {

@@ -3,7 +3,7 @@
 	import type { GroupInterface, MessageInterface } from '../../interfaces/types';
 	import { getMessages, sendMessage } from '../../services/gqlGroups';
 	import DiscordChatMessage from './discord_chat_message.svelte';
-	import {getSocket} from '../../services/socket';
+	import {getSocket, initSocket} from '../../services/socket';
 
 	export let group: GroupInterface;
 
@@ -39,10 +39,15 @@
 	});
 
 	onMount(() => {
-		getSocket().on("updateChat", async () => {
-			messages = await getMessages(group.id);
-			scrollDown();
-		})
+		try {
+			initSocket();
+			getSocket().on("updateChat", async () => {
+				messages = await getMessages(group.id);
+				scrollDown();
+			})
+		} catch (e) {
+
+		}
 	});
 
 	async function handleSend() {
