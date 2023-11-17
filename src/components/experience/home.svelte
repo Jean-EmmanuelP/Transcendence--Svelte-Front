@@ -118,11 +118,16 @@
 
 		if (laserElement && playElement && blobElement) {
 			setTimeout(() => {
-				blobElement.style.opacity = '1';
-				playElement.style.opacity = '1';
-				playElement.style.backgroundColor = 'white';
-				laserElement.style.transform = `scale(1) rotateX(0deg) rotateY(0deg)`;
-				laserElement.style.opacity = '1';
+				if (blobElement && blobElement.style)
+					blobElement.style.opacity = '1';
+				if (playElement && playElement.style) {
+					playElement.style.opacity = '1';
+					playElement.style.backgroundColor = 'white';
+				}
+				if (laserElement && laserElement.style) {
+					laserElement.style.transform = `scale(1) rotateX(0deg) rotateY(0deg)`;
+					laserElement.style.opacity = '1';
+				}
 			}, 250);
 		}
 
