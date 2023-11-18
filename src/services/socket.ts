@@ -15,7 +15,7 @@ export function initSocket() {
 				}
 			}
 		}
-		socket = io(PUBLIC_BACKEND_URL, {
+		socket = io("/", {
 			query: {
 				token
 			},
