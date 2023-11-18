@@ -2,7 +2,7 @@ import { PUBLIC_BACKEND_URL } from '$env/static/public';
 import Cookies from 'js-cookie';
 import io, { Socket } from 'socket.io-client';
 
-let gameSocket: Socket;
+let gameSocket: Socket | null = null;
 
 export function initGameSocket() {
 	const token = Cookies.get("access_token");
