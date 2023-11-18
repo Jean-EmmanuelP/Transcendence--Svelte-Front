@@ -14,7 +14,7 @@ export function initGameSocket() {
 				}
 			}
 		}
-		gameSocket = io(`/game`, {
+		gameSocket = io(`http://42pong.com:3000/game`, {
 			query: {
 				token
 			},

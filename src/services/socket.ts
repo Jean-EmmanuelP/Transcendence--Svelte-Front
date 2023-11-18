@@ -15,7 +15,7 @@ export function initSocket() {
 				}
 			}
 		}
-		socket = io("/", {
+		socket = io("http://42pong.com:3000", {
 			query: {
 				token
 			},
