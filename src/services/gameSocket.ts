@@ -14,7 +14,7 @@ export function initGameSocket() {
 				}
 			}
 		}
-		gameSocket = io(`${PUBLIC_BACKEND_URL}/game`, {
+		gameSocket = io(`/back/game`, {
 			query: {
 				token
 			},
