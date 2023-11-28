@@ -26,10 +26,6 @@
 			isModeSelected = true;
 			mode = 'mathchmaking';
 			socket.emit('matchmaking');
-		} else if (button === 'playFriend') {
-			isModeSelected = true;
-			mode = 'playFriend';
-			socket.emit('playFriend', { opponentId: opponentId });
 		} else if (button === 'playBot') {
 			isModeSelected = true;
 			mode = 'playBot';
@@ -50,7 +46,8 @@
 			opponentName = data.opponentName;
 			yourName = data.yourName;
 			side = data.side;
-			socket.emit('ready', { roomId: data.roomId });
+			if (mode !== "playBot")
+				socket.emit('ready', { roomId: data.roomId });
 			roomId = data.roomId;
 			isWaiting = false;
 		});
@@ -84,7 +81,7 @@
 				<span />
 				<p class="tracking-wider font-bold group-hover/1:font-extrabold">playFriend</p>
 			</button>
-		</div>
+		</div> -->
 		<div class="relative flex w-full max-w-[200px] rounded-md ring-1 ring-gray-500/20 group/1">
 			<div
 				class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-lg blur opacity-50 group-hover/1:opacity-75 transition duration-1000 group-hover/1:duration-200 animate-tilt"
@@ -96,16 +93,10 @@
 				<span />
 				<p class="tracking-wider font-bold group-hover/1:font-extrabold">playBot</p>
 			</button>
-		</div> -->
+		</div>
 	</div>
 {:else if isModeSelected === true}
 	{#if mode === 'mathchmaking'}
-		{#if isWaiting === true}
-			<Waiting />
-		{:else if isWaiting === false}
-			<Game {socket} {roomId} {opponentName} {yourName} {side} />
-		{/if}
-	{:else if mode === 'playFriend'}
 		{#if isWaiting === true}
 			<Waiting />
 		{:else if isWaiting === false}
